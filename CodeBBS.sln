@@ -7,12 +7,15 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1-Domain", "1-Domain", "{9A
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2-Presentation", "2-Presentation", "{D4BEA2D9-BEA4-41FC-94E0-708B16ACD058}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3-Doc", "3-Doc", "{DB02471D-B9E1-453F-99F7-47A12A3EE953}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4-Doc", "4-Doc", "{DB02471D-B9E1-453F-99F7-47A12A3EE953}"
 	ProjectSection(SolutionItems) = preProject
 		数据原典.xls = 数据原典.xls
+		F:\SourceSince20160729\编程随想.txt = F:\SourceSince20160729\编程随想.txt
 	EndProjectSection
 EndProject
 Project("{F088123C-0E9E-452A-89E6-6BA2F21D5CAC}") = "LLGD", "LLGD\LLGD.modelproj", "{E54BDD16-2479-4A3F-A768-A03C7469830D}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3-UnitTest", "3-UnitTest", "{625AB3EB-3305-4F10-8E7C-19D1997DFE6B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
