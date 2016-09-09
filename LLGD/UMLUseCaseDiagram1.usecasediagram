@@ -1,0 +1,578 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<useCaseModelRoot xmlns:dm0="http://schemas.microsoft.com/VisualStudio/2008/DslTools/Core" xmlns:dm1="http://schemas.microsoft.com/dsltools/Kernel" xmlns:dm2="http://schemas.microsoft.com/dsltools/Component" xmlns:dm3="http://schemas.microsoft.com/dsltools/Activity" xmlns:dm4="http://schemas.microsoft.com/dsltools/Interaction" xmlns:dm5="http://schemas.microsoft.com/dsltools/UseCase" xmlns:dm6="http://schemas.microsoft.com/dsltools/UmlModelLibrary" xmlns:dm7="http://schemas.microsoft.com/dsltools/UmlDiagrams" xmlns:dm8="http://schemas.microsoft.com/dsltools/ModelStore" xmlns:dm9="http://schemas.microsoft.com/dsltools/LogicalClassDesigner" xmlns:dm10="http://schemas.microsoft.com/dsltools/SimpleShapesModel" dslVersion="1.0.0.0" Id="c829d259-6360-46ba-a74c-b07c9f6896fb" name="UMLUseCaseDiagram1" linkedPackageId="d5614333-d350-4664-8537-ffbd548782e7" xmlns="http://schemas.microsoft.com/dsltools/UseCaseModel">
+  <packagedElements>
+    <useCaseModelRootHasTypes>
+      <actor Id="dff3a58c-3602-49a7-b708-f78e1e818633" name="游客" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="d394226b-6b26-4c71-b020-5834794616a6" />
+      </actor>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <actor Id="0ac5acfb-ef4b-473a-9db4-d26729885436" name="普通用户" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="839b1733-5518-4e68-99dd-448206d76207" />
+      </actor>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <actor Id="b941924c-3a32-4c9a-882a-4bcff1c9574f" name="管理员" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="0d06eb94-bf1b-4a97-a02d-3b2d9448170c" />
+      </actor>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <actor Id="3f3ee99f-c0bd-4b4f-9e04-4287186fd056" name="后台管理员" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="071c8e75-f8a2-4422-ade9-59c9be49cf85" />
+      </actor>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="6701e09f-2e23-441d-80cc-58b0637053cd" name="登录" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="e324b92c-07b2-406d-a4a4-29c28bd893bd" />
+        <additions>
+          <include Id="2fe9f1c2-8821-4a2f-b0cd-d9c6a4cd7f93">
+            <useCaseMoniker Id="34cac645-87cf-4626-b8ef-113f0ef35029" LastKnownName="前台登录" />
+            <elementDefinition Id="856f48f1-bc22-4fb1-9833-2bdddb2d5806" />
+          </include>
+          <include Id="5e188b7e-9942-4031-b3f9-3a0acb8aa091">
+            <useCaseMoniker Id="fdce6a26-25b1-4f56-acd9-5939e9e89623" LastKnownName="前台转后台" />
+            <elementDefinition Id="1b2a3a15-2e02-45d1-99f8-5a67488215fe" />
+          </include>
+          <include Id="0c65becb-7c41-462f-b95b-c10632495028">
+            <useCaseMoniker Id="d2bf92fd-352c-4523-afc4-8cdac898e8c2" LastKnownName="后台登录" />
+            <elementDefinition Id="f15c4098-d040-4cf5-9fe1-acf52c460846" />
+          </include>
+        </additions>
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="34cac645-87cf-4626-b8ef-113f0ef35029" name="前台登录" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="3ccc509b-22ff-4ad0-8d27-0b9030323f45" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="d2bf92fd-352c-4523-afc4-8cdac898e8c2" name="后台登录" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="f9cbc7ad-f0bf-4eb3-bd16-aaa59af054fe" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="fdce6a26-25b1-4f56-acd9-5939e9e89623" name="前台转后台" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="54ed13a5-7b93-4365-bd3b-ca9a125a3140" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="80053a36-add9-4468-96f1-d7511be152bd" name="发帖" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="e6bf5920-0af0-4173-9d72-00f8c4aae2a0" />
+        <additions>
+          <include Id="c34f6114-0f78-4839-8526-8e68d4f664db">
+            <useCaseMoniker Id="9048f8a0-943e-460d-980f-10a059fb78b0" LastKnownName="设置阅读权限" />
+            <elementDefinition Id="b7b1cf10-e2e2-40c0-8f1f-ab4725ab8ce1" />
+          </include>
+        </additions>
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="505fe8fb-7f3a-4a3a-8a8a-5a6f22cf37b5" name="查看帖子" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="e00d4c73-f8d3-48b0-857d-17155ddac516" />
+        <suppliersInternal>
+          <dependency Id="b34fa876-254f-4585-87b8-6e63a8cc91df">
+            <useCaseMoniker Id="47b9f2e0-2ad5-4ae0-8d1e-2149f304b763" LastKnownName="下载附件" />
+            <elementDefinition Id="11d5a1fd-3cab-4198-815a-d231d7822743" />
+          </dependency>
+        </suppliersInternal>
+        <extendedCases>
+          <extend Id="4dd6e4a3-3016-473e-aff0-c207885c0e20">
+            <useCaseMoniker Id="241ca569-eba4-42bd-9f43-45ef21f6aabf" LastKnownName="搜索" />
+            <elementDefinition Id="5be866d5-08e6-402b-9250-1e27c31891d1" />
+          </extend>
+        </extendedCases>
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="6114ba69-7496-41f0-8c37-07bd0025ab0d" name="回帖" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="57bdabcc-f588-40fd-888c-c2e0bbd76886" />
+        <suppliersInternal>
+          <dependency Id="bcd4bf12-acaa-4dbc-b05f-60b2f6cc52a5">
+            <useCaseMoniker Id="505fe8fb-7f3a-4a3a-8a8a-5a6f22cf37b5" LastKnownName="查看帖子" />
+            <elementDefinition Id="f84d3ee0-222e-414c-89ee-701e4727fb24" />
+          </dependency>
+        </suppliersInternal>
+        <additions>
+          <include Id="f4e89c84-c639-4fb3-8280-c23974fd5f04">
+            <useCaseMoniker Id="523022ed-7a0d-4a9c-90b2-96320f35e9d6" LastKnownName="揭榜" />
+            <elementDefinition Id="eefdf4f4-4507-4e44-aa54-216a12193122" />
+          </include>
+          <include Id="efb18fe9-22c7-472b-a46c-1aa4a9deedce">
+            <useCaseMoniker Id="30251575-51a8-480a-a9a3-df4118282d7f" LastKnownName="投票" />
+            <elementDefinition Id="e08f7aa0-0f5c-404f-b624-a97774194bf4" />
+          </include>
+        </additions>
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="47b9f2e0-2ad5-4ae0-8d1e-2149f304b763" name="下载附件" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="5936e48a-0f4c-417a-a08d-ba862541737e" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="30251575-51a8-480a-a9a3-df4118282d7f" name="投票" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="8b305c18-5c9a-41ed-8bd6-b0038a38d7ae" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="523022ed-7a0d-4a9c-90b2-96320f35e9d6" name="揭榜" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="4795047d-53cb-4cd6-bdce-198042bc47c6" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="58e82714-d799-4352-97b6-84d1c1d15802" name="发带附件贴" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="c5961653-6c56-478c-8287-7f0c10573fe5" />
+        <generalsInternal>
+          <generalization Id="2fbdde3d-37a8-4feb-ae3c-00c51b4e3b88" isSubstitutable="false">
+            <useCaseMoniker Id="80053a36-add9-4468-96f1-d7511be152bd" LastKnownName="发帖" />
+            <elementDefinition Id="f5cd63c3-a563-47d6-babc-27f7cb2426d4" />
+          </generalization>
+        </generalsInternal>
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="ddf73b2e-31a7-491a-8bb9-405a7078744c" name="发投票贴" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="92bff389-175b-4bbb-bcf0-434c5381383a" />
+        <generalsInternal>
+          <generalization Id="bd5783c9-32fc-44d7-ab05-2033d744d7a5" isSubstitutable="false">
+            <useCaseMoniker Id="80053a36-add9-4468-96f1-d7511be152bd" LastKnownName="发帖" />
+            <elementDefinition Id="e253cd51-eb78-488b-822b-f44279da99fc" />
+          </generalization>
+        </generalsInternal>
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="e145cb7c-d3f0-4ef4-9814-fad37772deda" name="发悬赏贴" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="10333999-4776-43dd-b5c1-15e2f8e0041e" />
+        <generalsInternal>
+          <generalization Id="84ee6bd6-c51a-48b4-a59d-48b16602d47b" isSubstitutable="false">
+            <useCaseMoniker Id="80053a36-add9-4468-96f1-d7511be152bd" LastKnownName="发帖" />
+            <elementDefinition Id="6415f8d2-36fd-45ed-9842-9f6b55d0f976" />
+          </generalization>
+        </generalsInternal>
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="07fddbda-7496-496c-8de5-81358d5db2ca" name="积分管理" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="8e46ec32-befd-4c9b-9915-56a37ddce366" />
+        <additions>
+          <include Id="991b81f9-e266-48a6-9d9f-cf2d642067fb">
+            <useCaseMoniker Id="066f5d46-405a-4d2e-bc46-e282946e260f" LastKnownName="获取积分" />
+            <elementDefinition Id="d3c0b815-eb87-4373-b4c6-002f1018cef8" />
+          </include>
+          <include Id="de87a7ec-062b-4160-870f-d38d2c43fa6b">
+            <useCaseMoniker Id="bc08b511-3dd5-4bff-b023-906b22cd5abf" LastKnownName="消耗积分" />
+            <elementDefinition Id="d7f92b5c-86bd-45d7-9cda-74d30059ae8a" />
+          </include>
+        </additions>
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="066f5d46-405a-4d2e-bc46-e282946e260f" name="获取积分" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="db54dcfb-84c6-46fb-ae9a-c4e4e97b90cd" />
+        <suppliersInternal>
+          <dependency Id="67085429-bb04-4750-a0bd-270bb569d935">
+            <useCaseMoniker Id="80053a36-add9-4468-96f1-d7511be152bd" LastKnownName="发帖" />
+            <elementDefinition Id="f5de3a24-f6a3-4105-b9ac-d27cf2689bbe" />
+          </dependency>
+          <dependency Id="f1d8d2fb-e91d-4c20-9392-3b0a0860838c">
+            <useCaseMoniker Id="6114ba69-7496-41f0-8c37-07bd0025ab0d" LastKnownName="回帖" />
+            <elementDefinition Id="2a08a326-7c35-49e0-86dd-9171c72846c2" />
+          </dependency>
+        </suppliersInternal>
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="bc08b511-3dd5-4bff-b023-906b22cd5abf" name="消耗积分" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="bea94226-1430-45e8-81a6-f10f7832901d" />
+        <suppliersInternal>
+          <dependency Id="2656de85-29c7-4c29-988e-3b1c4c3e640a">
+            <useCaseMoniker Id="47b9f2e0-2ad5-4ae0-8d1e-2149f304b763" LastKnownName="下载附件" />
+            <elementDefinition Id="2b7e0c6c-9fef-4426-93a6-f5386c168612" />
+          </dependency>
+          <dependency Id="4867513b-64b4-407d-a29a-bd0eb2d1973e">
+            <useCaseMoniker Id="523022ed-7a0d-4a9c-90b2-96320f35e9d6" LastKnownName="揭榜" />
+            <elementDefinition Id="740e7c43-ceb9-44e2-95b2-e52955547fed" />
+          </dependency>
+        </suppliersInternal>
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="9048f8a0-943e-460d-980f-10a059fb78b0" name="设置阅读权限" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="eb0e54a7-d77f-4282-8b32-b7b17cf595d5" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="f5724fbb-fa9b-44c6-a834-23e8075a206c" name="版块管理" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="8d3ddd98-43dc-4b53-9e00-6d4eb72f78bd" />
+        <additions>
+          <include Id="7f449d66-bf52-4c4b-9674-851d615dd07e">
+            <useCaseMoniker Id="84a5ba18-fca6-4bd8-b0b2-1518eff3530f" LastKnownName="置顶帖子" />
+            <elementDefinition Id="d6243bac-c452-4c67-8adc-74599fd3bd27" />
+          </include>
+          <include Id="2907b6b0-00a4-48e3-a2da-07c9469f8448">
+            <useCaseMoniker Id="e4d65722-5af1-41cd-9a1f-4bf1f82ce414" LastKnownName="删帖" />
+            <elementDefinition Id="9a99a7cd-1e81-4dae-85f8-1024fa7794a7" />
+          </include>
+          <include Id="405ddfd5-f5a7-4d0b-ad14-9e5a1e5581d7">
+            <useCaseMoniker Id="b080df0e-007d-423b-a8f6-1b540a497ec6" LastKnownName="版块禁言" />
+            <elementDefinition Id="abe8bee6-fc1e-4466-8d98-4de6103933f9" />
+          </include>
+          <include Id="8ef066ee-2094-473a-b3cf-de6a544373ef">
+            <useCaseMoniker Id="01347251-cf52-4c0a-b3f0-f29e50992261" LastKnownName="查看数据" />
+            <elementDefinition Id="d5d109f0-e305-4db6-b6b5-2301eba02760" />
+          </include>
+          <include Id="c0a6768c-b250-4ce1-ab3c-46f6c9b687f3">
+            <useCaseMoniker Id="31a6f7bf-2777-4eed-8b8d-e7a90dcc99ad" LastKnownName="设置版块参数" />
+            <elementDefinition Id="ee8fa014-d836-4707-bdee-f23b4d002fea" />
+          </include>
+          <include Id="76679b07-9631-457b-a71c-0ce3fa9227c6">
+            <useCaseMoniker Id="0d2351e8-f3e3-4e89-87a8-3e326a7e99fe" LastKnownName="添加版块" />
+            <elementDefinition Id="4e844026-6315-4edf-8b65-15f7851a4888" />
+          </include>
+          <include Id="827621cb-8c3c-4ede-a26b-0d231f2e3b4b">
+            <useCaseMoniker Id="515a46f8-1920-4221-88a8-357985afc472" LastKnownName="删除版块" />
+            <elementDefinition Id="0fd2e436-d96c-40b0-9e07-3e96122ae9cc" />
+          </include>
+          <include Id="d0a004db-5d3b-4f1b-85c9-c8d65b8143a1">
+            <useCaseMoniker Id="4de1bbce-1a19-4a9b-905c-e40333fb9669" LastKnownName="发版块帖" />
+            <elementDefinition Id="aceb0d68-e36d-405e-8b46-a9c598c7a6c7" />
+          </include>
+        </additions>
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="84a5ba18-fca6-4bd8-b0b2-1518eff3530f" name="置顶帖子" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="fa6d73b0-29ac-4fd3-a1ce-25944eeeb16e" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="e4d65722-5af1-41cd-9a1f-4bf1f82ce414" name="删帖" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="e291cfdd-3a12-403f-9fbd-82bce2fc7e14" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="a07fd153-5409-40ce-ad03-0986892311df" name="发论坛帖" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="19ed53ee-786e-45cb-9267-3d0dc7f51122" />
+        <generalsInternal>
+          <generalization Id="db36a839-2cb2-4409-bfce-da3bd44c552c" isSubstitutable="false">
+            <useCaseMoniker Id="80053a36-add9-4468-96f1-d7511be152bd" LastKnownName="发帖" />
+            <elementDefinition Id="d401cf29-9218-4faf-ac54-b395581f0f9d" />
+          </generalization>
+        </generalsInternal>
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="4de1bbce-1a19-4a9b-905c-e40333fb9669" name="发版块帖" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="c5874c99-0209-413d-a810-4bc27d57079e" />
+        <generalsInternal>
+          <generalization Id="cd9e7703-8bcd-4263-ba2a-fabd0746e823" isSubstitutable="false">
+            <useCaseMoniker Id="80053a36-add9-4468-96f1-d7511be152bd" LastKnownName="发帖" />
+            <elementDefinition Id="133b090f-3fbb-4d4f-b31f-a19fc0e59942" />
+          </generalization>
+        </generalsInternal>
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="b080df0e-007d-423b-a8f6-1b540a497ec6" name="版块禁言" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="68bf460a-07bb-41ad-a722-e237b401b8dc" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="241ca569-eba4-42bd-9f43-45ef21f6aabf" name="搜索" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="48459748-c2ea-4fbb-839f-64a8b6488570" />
+        <additions>
+          <include Id="dc256053-78b3-4a25-abde-0d51fed0b845">
+            <useCaseMoniker Id="f2b3849c-d341-427b-aa81-69ccd3afb1f3" LastKnownName="按回复量" />
+            <elementDefinition Id="2b9bcee0-2d14-4808-b441-5db27a9b20e4" />
+          </include>
+          <include Id="e795ef27-9bc8-4753-bdf3-b76ffe09f119">
+            <useCaseMoniker Id="3ad6b3c9-be0b-4458-83ee-357bf15d771b" LastKnownName="按最后回复" />
+            <elementDefinition Id="96c043a6-836d-45cd-b7a7-25c732c28644" />
+          </include>
+          <include Id="c6e72853-cc54-441d-87a7-fe6c8605938f">
+            <useCaseMoniker Id="af07442d-8a7a-471a-b681-b51e0a5b1afd" LastKnownName="按最后查看" />
+            <elementDefinition Id="257f44c2-25b8-493a-979c-081229de6f6d" />
+          </include>
+          <include Id="407e9a10-2c66-4615-9bff-e66c148dfbdf">
+            <useCaseMoniker Id="812f224e-de20-4bee-8f3e-b931b2672d40" LastKnownName="按查看量" />
+            <elementDefinition Id="d310466c-bd03-4073-bb50-23974f037c0d" />
+          </include>
+        </additions>
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="01347251-cf52-4c0a-b3f0-f29e50992261" name="查看数据" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="13e4a3f0-0461-4e90-8353-acd90154afcc" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="d8924f11-6b74-48fb-88ed-2b1f5725fc91" name="帖子管理" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="a4f2450c-bc28-4d56-9b64-ecaa560cab8a" />
+        <additions>
+          <include Id="3f80899b-b6a6-433d-9fdf-2329e2577d0c">
+            <useCaseMoniker Id="cb9b4bfb-98b3-4e8c-8146-c1dde4b26c8b" LastKnownName="帖子禁言" />
+            <elementDefinition Id="7ed7f91b-600d-4539-b991-a352964faa6a" />
+          </include>
+          <include Id="48595852-5015-4f89-a006-5090415fb7e2">
+            <useCaseMoniker Id="953c1a9a-80f7-42d6-afc5-2d0344b4676f" LastKnownName="删除回复" />
+            <elementDefinition Id="24d48f6b-e73c-4c47-bb30-0e89e72ed828" />
+          </include>
+          <include Id="cf98c83f-ae21-4be2-a474-5f3dc6bd6a01">
+            <useCaseMoniker Id="6114ba69-7496-41f0-8c37-07bd0025ab0d" LastKnownName="回帖" />
+            <elementDefinition Id="5b84d71c-4de0-40c4-9bef-f1a815919b2e" />
+          </include>
+          <include Id="b4b1f12b-3ebd-426e-9a8b-6c21befa99c2">
+            <useCaseMoniker Id="505fe8fb-7f3a-4a3a-8a8a-5a6f22cf37b5" LastKnownName="查看帖子" />
+            <elementDefinition Id="ed04b152-e13c-4310-9f1a-7ebf92730d19" />
+          </include>
+          <include Id="9602b647-ad09-49c3-a86c-02ad212f4a57">
+            <useCaseMoniker Id="80053a36-add9-4468-96f1-d7511be152bd" LastKnownName="发帖" />
+            <elementDefinition Id="d3e5291b-446a-4fa1-9bda-002b803a13b0" />
+          </include>
+        </additions>
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="e22a1d53-cd75-4642-821a-70d4a8b631ea" name="域管理" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="b09e08d2-7d61-4bfb-aabf-285517cf8379" />
+        <additions>
+          <include Id="90ac3de1-8e90-476b-a62b-caa2834d9a97">
+            <useCaseMoniker Id="eda3ec3a-ab5b-478c-8df0-71f5d2de6e98" LastKnownName="设置域参数" />
+            <elementDefinition Id="4e0158a4-39f6-4d14-9794-1337e0486324" />
+          </include>
+          <include Id="adeb7e14-602a-4d07-8482-c5e186ba3cf8">
+            <useCaseMoniker Id="11e017ba-ad59-4d6f-8c49-087cf873073d" LastKnownName="添加域" />
+            <elementDefinition Id="3594d301-296a-4825-8d6e-e2b459342ddd" />
+          </include>
+          <include Id="13b97b77-2f7a-47ef-8567-75f16d997ee2">
+            <useCaseMoniker Id="2b314c2c-ba33-445b-8474-6f5b3d7e73f1" LastKnownName="删除域" />
+            <elementDefinition Id="8ed8133f-c07d-4458-bfea-d95d7e68c595" />
+          </include>
+        </additions>
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="31a6f7bf-2777-4eed-8b8d-e7a90dcc99ad" name="设置版块参数" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="14824ef4-4c48-4410-82fa-c73893887fc9" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="cb9b4bfb-98b3-4e8c-8146-c1dde4b26c8b" name="帖子禁言" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="8e309c19-ba8d-436a-8958-b923e51ae474" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="953c1a9a-80f7-42d6-afc5-2d0344b4676f" name="删除回复" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="5d92a42b-5464-42cc-9aa3-e23effa3b2ae" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="11e017ba-ad59-4d6f-8c49-087cf873073d" name="添加域" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="aebb2321-fcde-4be8-8f1c-6aaa6d2c3412" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="2b314c2c-ba33-445b-8474-6f5b3d7e73f1" name="删除域" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="b86f51dd-3dfa-4600-9ebe-6d91c9043b18" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="eda3ec3a-ab5b-478c-8df0-71f5d2de6e98" name="设置域参数" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="ae608e25-3ca6-4044-8121-b6cebd2bbad7" />
+        <additions>
+          <include Id="57475871-55a6-4f2d-bb5e-ed55261a1283">
+            <useCaseMoniker Id="c3b0f924-8a61-44cc-966b-577d7d22cad1" LastKnownName="设置域显示等级" />
+            <elementDefinition Id="018150c0-a390-49a0-872b-aae28898662c" />
+          </include>
+        </additions>
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="c3b0f924-8a61-44cc-966b-577d7d22cad1" name="设置域显示等级" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="aae51191-097f-434e-98e9-4b93adc60d79" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="0d2351e8-f3e3-4e89-87a8-3e326a7e99fe" name="添加版块" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="17b8a39b-a03a-4324-88d7-19192aead8ab" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="515a46f8-1920-4221-88a8-357985afc472" name="删除版块" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="86f7b562-5e9d-45d1-929e-83ed9cc73a73" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="1fabcdb5-ee96-4c51-ba98-c6e2dc7b35b9" name="用户管理" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="737356c3-de1d-441e-b86b-b15020176c41" />
+        <additions>
+          <include Id="ec6061a6-9d02-424c-9474-c9a84d38a257">
+            <useCaseMoniker Id="4a0415be-a5e9-4436-8d1c-f022086faca3" LastKnownName="用户注册" />
+            <elementDefinition Id="5f347eb2-f3f8-4995-a673-b46ca7422840" />
+          </include>
+          <include Id="75f6f023-574d-4177-ace9-a1f42bab5c87">
+            <useCaseMoniker Id="faaa845c-d899-4088-b8a4-70d6979100f6" LastKnownName="设置用户信息" />
+            <elementDefinition Id="358da31c-3a83-4e63-b0bd-3772a49d7f04" />
+          </include>
+          <include Id="7f10012a-2268-41a2-bf3a-3de82c4fa7ab">
+            <useCaseMoniker Id="3d53661e-b1ae-4561-8918-b210ac553474" LastKnownName="设置用户组" />
+            <elementDefinition Id="a427c691-d0b7-4f25-9391-8f678933faa8" />
+          </include>
+          <include Id="e31cd146-8999-4792-9301-30fd679f6939">
+            <useCaseMoniker Id="e61895c2-e55e-4d04-b944-e94133ffa641" LastKnownName="查看用户资料" />
+            <elementDefinition Id="c09dd2be-d3ee-4fda-9c55-b25d5d576e8b" />
+          </include>
+          <include Id="cd8191e7-a9c4-48b5-8532-e91d0d12696c">
+            <useCaseMoniker Id="8a319fa8-71f4-407d-8ad6-1f5d5409838f" LastKnownName="用户失效" />
+            <elementDefinition Id="ba658758-5365-4179-a361-e8d16a58b49b" />
+          </include>
+        </additions>
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="4a0415be-a5e9-4436-8d1c-f022086faca3" name="用户注册" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="6fb47f28-3122-4578-812e-98aa447744a7" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="3d53661e-b1ae-4561-8918-b210ac553474" name="设置用户组" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="f276741a-9f0e-487b-bcf4-6f50e5f9cd82" />
+        <additions>
+          <include Id="031b5d49-2c7b-41af-8715-371eefa46402">
+            <useCaseMoniker Id="a8d0bfd4-f74d-4d3e-86ba-40bd1501e9ce" LastKnownName="禁言" />
+            <elementDefinition Id="12b841ed-b878-4f56-86fd-c2a7901e6afd" />
+          </include>
+          <include Id="72439ad6-3d99-4591-b4c0-22121f9f3bbf">
+            <useCaseMoniker Id="9342da82-a3dc-44ac-bb1b-6f1b87e4b15b" LastKnownName="用户组升级" />
+            <elementDefinition Id="35a70122-f8d2-4044-bb5d-70f5d0f45c9e" />
+          </include>
+        </additions>
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="faaa845c-d899-4088-b8a4-70d6979100f6" name="设置用户信息" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="d7d19d73-ed59-4c9d-a9ae-c863d67c61eb" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="e61895c2-e55e-4d04-b944-e94133ffa641" name="查看用户资料" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="47bfc1cb-2563-4313-b291-5d62cb0c7231" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="a8d0bfd4-f74d-4d3e-86ba-40bd1501e9ce" name="禁言" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="7048c16e-2635-4f96-8ede-0b524bb31dd2" />
+        <additions>
+          <include Id="1f0a061c-2f14-42f2-a799-d54adefc442e">
+            <useCaseMoniker Id="cb9b4bfb-98b3-4e8c-8146-c1dde4b26c8b" LastKnownName="帖子禁言" />
+            <elementDefinition Id="6d3f7637-6d1a-4303-afc0-33a8b6466236" />
+          </include>
+          <include Id="f95591fc-21fa-40c2-8d15-180334ec25b1">
+            <useCaseMoniker Id="b080df0e-007d-423b-a8f6-1b540a497ec6" LastKnownName="版块禁言" />
+            <elementDefinition Id="b20af316-39cc-4d8c-8535-2513e3151612" />
+          </include>
+        </additions>
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="9342da82-a3dc-44ac-bb1b-6f1b87e4b15b" name="用户组升级" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="dc84012d-0b9c-409c-985a-c18be305713a" />
+        <suppliersInternal>
+          <dependency Id="80b4d292-bc80-40ef-ac3c-1ccc3cf7fafe">
+            <useCaseMoniker Id="07fddbda-7496-496c-8de5-81358d5db2ca" LastKnownName="积分管理" />
+            <elementDefinition Id="01d3e766-927f-463a-be8b-e1a778d4287e" />
+          </dependency>
+        </suppliersInternal>
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="8a319fa8-71f4-407d-8ad6-1f5d5409838f" name="用户失效" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="b535c848-87cc-4ea9-8113-041681605a81" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="f2b3849c-d341-427b-aa81-69ccd3afb1f3" name="按回复量" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="031a1230-b206-4816-8fd5-a87dd66191dd" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="3ad6b3c9-be0b-4458-83ee-357bf15d771b" name="按最后回复" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="d0b11bcd-8b5e-44ba-afa4-b00bf4f4f1d3" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="af07442d-8a7a-471a-b681-b51e0a5b1afd" name="按最后查看" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="f92e1f48-2eda-4b1b-ab55-3958276a6f8d" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="812f224e-de20-4bee-8f3e-b931b2672d40" name="按查看量" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="7cfac853-6524-4e8e-8008-f793565162d7" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="7e7ecc20-2331-4b54-be72-57cb7e84b689" name="每日签到" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="f4dc21ca-7c3d-479e-a1a1-075d0dfedd03" />
+      </useCase>
+    </useCaseModelRootHasTypes>
+    <useCaseModelRootHasTypes>
+      <useCase Id="a3991b71-57d5-40e7-9049-3226bccbfdcc" name="短消息" isAbstract="false" isLeaf="false">
+        <elementDefinition Id="7c4a0ded-94ef-405b-ba2c-e705f599560e" />
+        <suppliersInternal>
+          <dependency Id="34298bd4-ff64-48d2-9702-0ec9b4baa2b1">
+            <useCaseMoniker Id="953c1a9a-80f7-42d6-afc5-2d0344b4676f" LastKnownName="删除回复" />
+            <elementDefinition Id="5c4f90a3-a718-4cfa-b92d-41671eb01665" />
+          </dependency>
+          <dependency Id="412dd2af-98f8-4407-bdc0-988302360de0">
+            <useCaseMoniker Id="8a319fa8-71f4-407d-8ad6-1f5d5409838f" LastKnownName="用户失效" />
+            <elementDefinition Id="ab87c9fe-d282-49e4-912a-2e2585d2f073" />
+          </dependency>
+          <dependency Id="5ca8aba9-fb00-48f2-877a-cacea5c9c5f2">
+            <useCaseMoniker Id="cb9b4bfb-98b3-4e8c-8146-c1dde4b26c8b" LastKnownName="帖子禁言" />
+            <elementDefinition Id="886cfadd-55d4-42e0-b924-b5731fe7ff6d" />
+          </dependency>
+          <dependency Id="c6baa543-66e8-41b0-bc28-babef1efab88">
+            <useCaseMoniker Id="b080df0e-007d-423b-a8f6-1b540a497ec6" LastKnownName="版块禁言" />
+            <elementDefinition Id="eb09a3cb-cda4-4bef-8b3d-2f3c0ec4ee51" />
+          </dependency>
+          <dependency Id="82e1c5ca-e220-42ad-ab8e-e482b34e7f76">
+            <useCaseMoniker Id="9342da82-a3dc-44ac-bb1b-6f1b87e4b15b" LastKnownName="用户组升级" />
+            <elementDefinition Id="e3554d6a-d3ad-42cf-932a-951b1b7cd6db" />
+          </dependency>
+          <dependency Id="50764565-4a53-414e-8174-bb96eae6d0c2">
+            <useCaseMoniker Id="47b9f2e0-2ad5-4ae0-8d1e-2149f304b763" LastKnownName="下载附件" />
+            <elementDefinition Id="d146273c-4bd3-4dc3-bbdc-5c17a92a9db5" />
+          </dependency>
+          <dependency Id="ffcfc42e-ba0b-4cdd-8484-52738da4d45f">
+            <useCaseMoniker Id="6114ba69-7496-41f0-8c37-07bd0025ab0d" LastKnownName="回帖" />
+            <elementDefinition Id="2c528693-7c20-4374-8a5d-e3bed9f23d18" />
+          </dependency>
+        </suppliersInternal>
+      </useCase>
+    </useCaseModelRootHasTypes>
+  </packagedElements>
+  <package Id="d5614333-d350-4664-8537-ffbd548782e7" name="LLGD">
+    <elementDefinition Id="61107150-c054-4a6b-9f8f-2cd7cec45b4c" />
+    <profileInstances>
+      <packageHasProfileInstances Id="68466962-0e8c-41a6-a40a-75d264221008">
+        <profileInstance Id="1565183b-039c-4cbe-8e26-9bfd983f3d38" name="StandardProfileL2">
+          <elementDefinition Id="e34d544e-0fea-4ed6-ac5e-1b74119ac791" />
+        </profileInstance>
+        <elementDefinition Id="0caec977-1f8c-4ba3-a7db-8cc9ad9cc73b" />
+      </packageHasProfileInstances>
+      <packageHasProfileInstances Id="0a78a954-61c9-4c15-8f54-f425dcf60349">
+        <profileInstance Id="39ce7e5c-abbe-438e-a4d5-a6d110cb26c2" name="StandardProfileL3">
+          <elementDefinition Id="532ea607-fb19-44b8-8502-3351b05452be" />
+        </profileInstance>
+        <elementDefinition Id="29349502-908c-4fda-9054-c48619c59ed0" />
+      </packageHasProfileInstances>
+      <packageHasProfileInstances Id="9af5fb35-2882-4b23-bf75-4e73f19e5952">
+        <profileInstance Id="2b2161fd-2fcf-468f-aefc-88ba143bf278" name="TextTemplateBindings">
+          <elementDefinition Id="1cd9c646-b457-468c-8c4e-971b6c72a42c" />
+        </profileInstance>
+        <elementDefinition Id="8f0f7ff9-4fba-4db8-92ba-c3d3ea7694f3" />
+      </packageHasProfileInstances>
+    </profileInstances>
+  </package>
+</useCaseModelRoot>
