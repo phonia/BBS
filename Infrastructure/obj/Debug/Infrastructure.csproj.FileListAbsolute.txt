@@ -1,0 +1,4 @@
+E:\Code\BBS\Infrastructure\bin\Debug\Infrastructure.dll
+E:\Code\BBS\Infrastructure\bin\Debug\Infrastructure.pdb
+E:\Code\BBS\Infrastructure\obj\Debug\Infrastructure.dll
+E:\Code\BBS\Infrastructure\obj\Debug\Infrastructure.pdb

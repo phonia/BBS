@@ -1,0 +1,7 @@
+E:\Code\BBS\Model\obj\Debug\Model.csprojResolveAssemblyReference.cache
+E:\Code\BBS\Model\bin\Debug\Model.dll
+E:\Code\BBS\Model\bin\Debug\Model.pdb
+E:\Code\BBS\Model\bin\Debug\Infrastructure.dll
+E:\Code\BBS\Model\bin\Debug\Infrastructure.pdb
+E:\Code\BBS\Model\obj\Debug\Model.dll
+E:\Code\BBS\Model\obj\Debug\Model.pdb
