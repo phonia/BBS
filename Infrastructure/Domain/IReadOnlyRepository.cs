@@ -25,7 +25,7 @@ namespace Infrastructure
         /// <param name="predicate">查询条件</param>
         /// <param name="IsAscending">升序</param>
         /// <returns>返回非空实体集合</returns>
-        IEnumerable<T> GetFilter(Expression<Func<T, bool>> predicate, bool IsAscending=true);
+        IEnumerable<T> GetFilter(Expression<Func<T, bool>> predicate);
 
         /// <summary>
         /// 按查询条件获取聚合
@@ -34,7 +34,7 @@ namespace Infrastructure
         /// <param name="IsAscending">升序</param>
         /// <param name="Includes">聚合包含的实体</param>
         /// <returns>返回非空聚合</returns>
-        IEnumerable<T> GetFilter(Expression<Func<T, bool>> predicate, bool IsAscending, params String[] Includes);
+        IEnumerable<T> GetFilter(Expression<Func<T, bool>> predicate,  params String[] Includes);
 
         /// <summary>
         /// 按查询条件获取一页实体集合
@@ -46,7 +46,7 @@ namespace Infrastructure
         /// <param name="pageCount">每页实体数</param>
         /// <param name="IsAscending">升序</param>
         /// <returns>返回符合条件的实体集合</returns>
-        IEnumerable<T> GetPaged<Key>(Expression<Func<T, bool>> predicate, Expression<Func<T, Key>> keySelector, int pageIndex, int pageCount, bool IsAscending = true);
+        IEnumerable<T> GetPaged<Key>(Expression<Func<T, bool>> predicate, Expression<Func<T, Key>> keySelector, int pageIndex, int pageCount, bool isAscending = true);
 
         /// <summary>
         /// 按查询条件获取一页聚合

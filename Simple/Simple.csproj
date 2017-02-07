@@ -1,0 +1,1753 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProductVersion>
+    </ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{9C4FF6E0-3B7B-47FF-9CC7-389728979831}</ProjectGuid>
+    <ProjectTypeGuids>{E3E379DF-F4C6-4180-9B81-6769533ABE47};{349c5851-65df-11da-9384-00065b846f21};{fae04ec0-301f-11d3-bf4b-00c04f79efbc}</ProjectTypeGuids>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Simple</RootNamespace>
+    <AssemblyName>Simple</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <MvcBuildViews>false</MvcBuildViews>
+    <UseIISExpress>true</UseIISExpress>
+    <IISExpressSSLPort />
+    <IISExpressAnonymousAuthentication />
+    <IISExpressWindowsAuthentication />
+    <IISExpressUseClassicPipelineMode />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="AutoMapper, Version=4.1.1.0, Culture=neutral, PublicKeyToken=be96cd2c38ef1005, processorArchitecture=MSIL">
+      <HintPath>..\packages\AutoMapper.4.1.1\lib\net40\AutoMapper.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net40\EntityFramework.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.1.3\lib\net40\EntityFramework.SqlServer.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Practices.ServiceLocation, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\CommonServiceLocator.1.0\lib\NET35\Microsoft.Practices.ServiceLocation.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity, Version=2.1.505.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Unity.2.1.505.0\lib\NET35\Microsoft.Practices.Unity.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity.Configuration, Version=2.1.505.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Unity.2.1.505.0\lib\NET35\Microsoft.Practices.Unity.Configuration.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity.Interception, Version=2.1.505.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Unity.Interception.2.1.505.0\lib\NET35\Microsoft.Practices.Unity.Interception.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Microsoft.Practices.Unity.Interception.Configuration, Version=2.1.505.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Unity.Interception.2.1.505.0\lib\NET35\Microsoft.Practices.Unity.Interception.Configuration.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.IO, Version=2.6.10.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Bcl.1.1.10\lib\net40\System.IO.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Runtime, Version=2.6.10.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Bcl.1.1.10\lib\net40\System.Runtime.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Threading.Tasks, Version=2.6.10.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Bcl.1.1.10\lib\net40\System.Threading.Tasks.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.DynamicData" />
+    <Reference Include="System.Web.Entity" />
+    <Reference Include="System.Web.ApplicationServices" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Web" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Abstractions" />
+    <Reference Include="System.Web.Routing" />
+    <Reference Include="System.Xml" />
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.EnterpriseServices" />
+    <Reference Include="Microsoft.Web.Infrastructure, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Web.Infrastructure.1.0.0.0\lib\net40\Microsoft.Web.Infrastructure.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Web.Mvc.FixedDisplayModes, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.FixedDisplayModes.1.0.0\lib\net40\Microsoft.Web.Mvc.FixedDisplayModes.dll</HintPath>
+    </Reference>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\packages\Newtonsoft.Json.4.5.11\lib\net40\Newtonsoft.Json.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Net.Http.2.0.20710.0\lib\net40\System.Net.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.Formatting, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.4.0.20710.0\lib\net40\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Net.Http.WebRequest">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.Net.Http.2.0.20710.0\lib\net40\System.Net.Http.WebRequest.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.4.0.20710.0\lib\net40\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.4.0.20710.0\lib\net40\System.Web.Http.WebHost.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.4.0.20710.0\lib\net40\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Optimization">
+      <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.0.0\lib\net40\System.Web.Optimization.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Providers">
+      <HintPath>..\packages\Microsoft.AspNet.Providers.Core.1.2\lib\net40\System.Web.Providers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.Razor.2.0.20715.0\lib\net40\System.Web.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.20710.0\lib\net40\System.Web.WebPages.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.20710.0\lib\net40\System.Web.WebPages.Deployment.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.2.0.20710.0\lib\net40\System.Web.WebPages.Razor.dll</HintPath>
+    </Reference>
+    <Reference Include="WebGrease">
+      <Private>True</Private>
+      <HintPath>..\packages\WebGrease.1.3.0\lib\WebGrease.dll</HintPath>
+    </Reference>
+    <Reference Include="Antlr3.Runtime">
+      <Private>True</Private>
+      <HintPath>..\packages\WebGrease.1.3.0\lib\Antlr3.Runtime.dll</HintPath>
+    </Reference>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="App_Start\FilterConfig.cs" />
+    <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="App_Start\WebApiConfig.cs" />
+    <Compile Include="Common\AutoMapperBootStrapper.cs" />
+    <Compile Include="Common\Common.cs" />
+    <Compile Include="Common\MapperHelper.cs" />
+    <Compile Include="Common\UnityBootStrapper.cs" />
+    <Compile Include="Common\UnityControllerFactory.cs" />
+    <Compile Include="Common\UnityDependency.cs" />
+    <Compile Include="Controllers\BaseController.cs" />
+    <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Global.asax.cs">
+      <DependentUpon>Global.asax</DependentUpon>
+    </Compile>
+    <Compile Include="Models\IRepository\IUserRepository.cs" />
+    <Compile Include="Models\User.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repository\Configuration\UserConfiguration.cs" />
+    <Compile Include="Repository\DataContext.cs" />
+    <Compile Include="Repository\DataContextFactory.cs" />
+    <Compile Include="Repository\EFUnitOfWork.cs" />
+    <Compile Include="Repository\IEFUnitOfWork.cs" />
+    <Compile Include="Repository\Repository.cs" />
+    <Compile Include="Repository\UserRepository.cs" />
+    <Compile Include="Services\Imp\UserService.cs" />
+    <Compile Include="Services\Interface\IUserService.cs" />
+    <Compile Include="ViewModel\UserDTO.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Content\default.css" />
+    <Content Include="Content\ExtJSicons\anchor.png" />
+    <Content Include="Content\ExtJSicons\application\application.png" />
+    <Content Include="Content\ExtJSicons\application\application_add.png" />
+    <Content Include="Content\ExtJSicons\application\application_cascade.png" />
+    <Content Include="Content\ExtJSicons\application\application_delete.png" />
+    <Content Include="Content\ExtJSicons\application\application_double.png" />
+    <Content Include="Content\ExtJSicons\application\application_edit.png" />
+    <Content Include="Content\ExtJSicons\application\application_error.png" />
+    <Content Include="Content\ExtJSicons\application\application_form.png" />
+    <Content Include="Content\ExtJSicons\application\application_form_add.png" />
+    <Content Include="Content\ExtJSicons\application\application_form_delete.png" />
+    <Content Include="Content\ExtJSicons\application\application_form_edit.png" />
+    <Content Include="Content\ExtJSicons\application\application_form_magnify.png" />
+    <Content Include="Content\ExtJSicons\application\application_get.png" />
+    <Content Include="Content\ExtJSicons\application\application_go.png" />
+    <Content Include="Content\ExtJSicons\application\application_home.png" />
+    <Content Include="Content\ExtJSicons\application\application_key.png" />
+    <Content Include="Content\ExtJSicons\application\application_lightning.png" />
+    <Content Include="Content\ExtJSicons\application\application_link.png" />
+    <Content Include="Content\ExtJSicons\application\application_osx.png" />
+    <Content Include="Content\ExtJSicons\application\application_osx_terminal.png" />
+    <Content Include="Content\ExtJSicons\application\application_put.png" />
+    <Content Include="Content\ExtJSicons\application\application_side_boxes.png" />
+    <Content Include="Content\ExtJSicons\application\application_side_contract.png" />
+    <Content Include="Content\ExtJSicons\application\application_side_expand.png" />
+    <Content Include="Content\ExtJSicons\application\application_side_list.png" />
+    <Content Include="Content\ExtJSicons\application\application_side_tree.png" />
+    <Content Include="Content\ExtJSicons\application\application_split.png" />
+    <Content Include="Content\ExtJSicons\application\application_tile_horizontal.png" />
+    <Content Include="Content\ExtJSicons\application\application_tile_vertical.png" />
+    <Content Include="Content\ExtJSicons\application\application_view_columns.png" />
+    <Content Include="Content\ExtJSicons\application\application_view_detail.png" />
+    <Content Include="Content\ExtJSicons\application\application_view_gallery.png" />
+    <Content Include="Content\ExtJSicons\application\application_view_icons.png" />
+    <Content Include="Content\ExtJSicons\application\application_view_list.png" />
+    <Content Include="Content\ExtJSicons\application\application_view_tile.png" />
+    <Content Include="Content\ExtJSicons\application\application_xp.png" />
+    <Content Include="Content\ExtJSicons\application\application_xp_terminal.png" />
+    <Content Include="Content\ExtJSicons\arrow\accept.png" />
+    <Content Include="Content\ExtJSicons\arrow\add.png" />
+    <Content Include="Content\ExtJSicons\arrow\arrow_branch.png" />
+    <Content Include="Content\ExtJSicons\arrow\arrow_divide.png" />
+    <Content Include="Content\ExtJSicons\arrow\arrow_down.png" />
+    <Content Include="Content\ExtJSicons\arrow\arrow_in.png" />
+    <Content Include="Content\ExtJSicons\arrow\arrow_inout.png" />
+    <Content Include="Content\ExtJSicons\arrow\arrow_join.png" />
+    <Content Include="Content\ExtJSicons\arrow\arrow_left.png" />
+    <Content Include="Content\ExtJSicons\arrow\arrow_merge.png" />
+    <Content Include="Content\ExtJSicons\arrow\arrow_out.png" />
+    <Content Include="Content\ExtJSicons\arrow\arrow_redo.png" />
+    <Content Include="Content\ExtJSicons\arrow\arrow_refresh.png" />
+    <Content Include="Content\ExtJSicons\arrow\arrow_refresh_small.png" />
+    <Content Include="Content\ExtJSicons\arrow\arrow_rotate_anticlockwise.png" />
+    <Content Include="Content\ExtJSicons\arrow\arrow_rotate_clockwise.png" />
+    <Content Include="Content\ExtJSicons\arrow\arrow_switch.png" />
+    <Content Include="Content\ExtJSicons\arrow\arrow_turn_left.png" />
+    <Content Include="Content\ExtJSicons\arrow\arrow_turn_right.png" />
+    <Content Include="Content\ExtJSicons\arrow\arrow_undo.png" />
+    <Content Include="Content\ExtJSicons\arrow\arrow_up.png" />
+    <Content Include="Content\ExtJSicons\arrow\cross.png" />
+    <Content Include="Content\ExtJSicons\arrow_green.png" />
+    <Content Include="Content\ExtJSicons\asterisk_orange.png" />
+    <Content Include="Content\ExtJSicons\asterisk_yellow.png" />
+    <Content Include="Content\ExtJSicons\attach.png" />
+    <Content Include="Content\ExtJSicons\award-start\award_star_add.png" />
+    <Content Include="Content\ExtJSicons\award-start\award_star_bronze_1.png" />
+    <Content Include="Content\ExtJSicons\award-start\award_star_bronze_2.png" />
+    <Content Include="Content\ExtJSicons\award-start\award_star_bronze_3.png" />
+    <Content Include="Content\ExtJSicons\award-start\award_star_delete.png" />
+    <Content Include="Content\ExtJSicons\award-start\award_star_gold_1.png" />
+    <Content Include="Content\ExtJSicons\award-start\award_star_gold_2.png" />
+    <Content Include="Content\ExtJSicons\award-start\award_star_gold_3.png" />
+    <Content Include="Content\ExtJSicons\award-start\award_star_silver_1.png" />
+    <Content Include="Content\ExtJSicons\award-start\award_star_silver_2.png" />
+    <Content Include="Content\ExtJSicons\award-start\award_star_silver_3.png" />
+    <Content Include="Content\ExtJSicons\bell.png" />
+    <Content Include="Content\ExtJSicons\bell_add.png" />
+    <Content Include="Content\ExtJSicons\bell_delete.png" />
+    <Content Include="Content\ExtJSicons\bell_error.png" />
+    <Content Include="Content\ExtJSicons\bell_go.png" />
+    <Content Include="Content\ExtJSicons\bell_link.png" />
+    <Content Include="Content\ExtJSicons\bin.png" />
+    <Content Include="Content\ExtJSicons\bin_closed.png" />
+    <Content Include="Content\ExtJSicons\bin_empty.png" />
+    <Content Include="Content\ExtJSicons\bomb.png" />
+    <Content Include="Content\ExtJSicons\book.png" />
+    <Content Include="Content\ExtJSicons\book_add.png" />
+    <Content Include="Content\ExtJSicons\book_addresses.png" />
+    <Content Include="Content\ExtJSicons\book_delete.png" />
+    <Content Include="Content\ExtJSicons\book_edit.png" />
+    <Content Include="Content\ExtJSicons\book_error.png" />
+    <Content Include="Content\ExtJSicons\book_go.png" />
+    <Content Include="Content\ExtJSicons\book_key.png" />
+    <Content Include="Content\ExtJSicons\book_link.png" />
+    <Content Include="Content\ExtJSicons\book_next.png" />
+    <Content Include="Content\ExtJSicons\book_open.png" />
+    <Content Include="Content\ExtJSicons\book_previous.png" />
+    <Content Include="Content\ExtJSicons\box.png" />
+    <Content Include="Content\ExtJSicons\brick.png" />
+    <Content Include="Content\ExtJSicons\bricks.png" />
+    <Content Include="Content\ExtJSicons\brick_add.png" />
+    <Content Include="Content\ExtJSicons\brick_delete.png" />
+    <Content Include="Content\ExtJSicons\brick_edit.png" />
+    <Content Include="Content\ExtJSicons\brick_error.png" />
+    <Content Include="Content\ExtJSicons\brick_go.png" />
+    <Content Include="Content\ExtJSicons\brick_link.png" />
+    <Content Include="Content\ExtJSicons\briefcase.png" />
+    <Content Include="Content\ExtJSicons\bug\bug.png" />
+    <Content Include="Content\ExtJSicons\bug\bug_add.png" />
+    <Content Include="Content\ExtJSicons\bug\bug_delete.png" />
+    <Content Include="Content\ExtJSicons\bug\bug_edit.png" />
+    <Content Include="Content\ExtJSicons\bug\bug_error.png" />
+    <Content Include="Content\ExtJSicons\bug\bug_go.png" />
+    <Content Include="Content\ExtJSicons\bug\bug_link.png" />
+    <Content Include="Content\ExtJSicons\building.png" />
+    <Content Include="Content\ExtJSicons\building_add.png" />
+    <Content Include="Content\ExtJSicons\building_delete.png" />
+    <Content Include="Content\ExtJSicons\building_edit.png" />
+    <Content Include="Content\ExtJSicons\building_error.png" />
+    <Content Include="Content\ExtJSicons\building_go.png" />
+    <Content Include="Content\ExtJSicons\building_key.png" />
+    <Content Include="Content\ExtJSicons\building_link.png" />
+    <Content Include="Content\ExtJSicons\bullet_add.png" />
+    <Content Include="Content\ExtJSicons\bullet_arrow_bottom.png" />
+    <Content Include="Content\ExtJSicons\bullet_arrow_down.png" />
+    <Content Include="Content\ExtJSicons\bullet_arrow_top.png" />
+    <Content Include="Content\ExtJSicons\bullet_arrow_up.png" />
+    <Content Include="Content\ExtJSicons\bullet_black.png" />
+    <Content Include="Content\ExtJSicons\bullet_blue.png" />
+    <Content Include="Content\ExtJSicons\bullet_delete.png" />
+    <Content Include="Content\ExtJSicons\bullet_disk.png" />
+    <Content Include="Content\ExtJSicons\bullet_error.png" />
+    <Content Include="Content\ExtJSicons\bullet_feed.png" />
+    <Content Include="Content\ExtJSicons\bullet_go.png" />
+    <Content Include="Content\ExtJSicons\bullet_green.png" />
+    <Content Include="Content\ExtJSicons\bullet_key.png" />
+    <Content Include="Content\ExtJSicons\bullet_orange.png" />
+    <Content Include="Content\ExtJSicons\bullet_picture.png" />
+    <Content Include="Content\ExtJSicons\bullet_pink.png" />
+    <Content Include="Content\ExtJSicons\bullet_purple.png" />
+    <Content Include="Content\ExtJSicons\bullet_red.png" />
+    <Content Include="Content\ExtJSicons\bullet_star.png" />
+    <Content Include="Content\ExtJSicons\bullet_toggle_minus.png" />
+    <Content Include="Content\ExtJSicons\bullet_toggle_plus.png" />
+    <Content Include="Content\ExtJSicons\bullet_white.png" />
+    <Content Include="Content\ExtJSicons\bullet_wrench.png" />
+    <Content Include="Content\ExtJSicons\bullet_yellow.png" />
+    <Content Include="Content\ExtJSicons\cake.png" />
+    <Content Include="Content\ExtJSicons\calendar\calculator.png" />
+    <Content Include="Content\ExtJSicons\calendar\calculator_add.png" />
+    <Content Include="Content\ExtJSicons\calendar\calculator_delete.png" />
+    <Content Include="Content\ExtJSicons\calendar\calculator_edit.png" />
+    <Content Include="Content\ExtJSicons\calendar\calculator_error.png" />
+    <Content Include="Content\ExtJSicons\calendar\calculator_link.png" />
+    <Content Include="Content\ExtJSicons\calendar\calendar.png" />
+    <Content Include="Content\ExtJSicons\calendar\calendar_add.png" />
+    <Content Include="Content\ExtJSicons\calendar\calendar_delete.png" />
+    <Content Include="Content\ExtJSicons\calendar\calendar_edit.png" />
+    <Content Include="Content\ExtJSicons\calendar\calendar_link.png" />
+    <Content Include="Content\ExtJSicons\calendar\calendar_view_day.png" />
+    <Content Include="Content\ExtJSicons\calendar\calendar_view_month.png" />
+    <Content Include="Content\ExtJSicons\calendar\calendar_view_week.png" />
+    <Content Include="Content\ExtJSicons\camera\camera.png" />
+    <Content Include="Content\ExtJSicons\camera\camera_add.png" />
+    <Content Include="Content\ExtJSicons\camera\camera_delete.png" />
+    <Content Include="Content\ExtJSicons\camera\camera_edit.png" />
+    <Content Include="Content\ExtJSicons\camera\camera_error.png" />
+    <Content Include="Content\ExtJSicons\camera\camera_go.png" />
+    <Content Include="Content\ExtJSicons\camera\camera_link.png" />
+    <Content Include="Content\ExtJSicons\camera\camera_small.png" />
+    <Content Include="Content\ExtJSicons\cancel.png" />
+    <Content Include="Content\ExtJSicons\car and cart  and basket\basket.png" />
+    <Content Include="Content\ExtJSicons\car and cart  and basket\basket_add.png" />
+    <Content Include="Content\ExtJSicons\car and cart  and basket\basket_delete.png" />
+    <Content Include="Content\ExtJSicons\car and cart  and basket\basket_edit.png" />
+    <Content Include="Content\ExtJSicons\car and cart  and basket\basket_error.png" />
+    <Content Include="Content\ExtJSicons\car and cart  and basket\basket_go.png" />
+    <Content Include="Content\ExtJSicons\car and cart  and basket\basket_put.png" />
+    <Content Include="Content\ExtJSicons\car and cart  and basket\basket_remove.png" />
+    <Content Include="Content\ExtJSicons\car and cart  and basket\car.png" />
+    <Content Include="Content\ExtJSicons\car and cart  and basket\cart.png" />
+    <Content Include="Content\ExtJSicons\car and cart  and basket\cart_add.png" />
+    <Content Include="Content\ExtJSicons\car and cart  and basket\cart_delete.png" />
+    <Content Include="Content\ExtJSicons\car and cart  and basket\cart_edit.png" />
+    <Content Include="Content\ExtJSicons\car and cart  and basket\cart_error.png" />
+    <Content Include="Content\ExtJSicons\car and cart  and basket\cart_go.png" />
+    <Content Include="Content\ExtJSicons\car and cart  and basket\cart_put.png" />
+    <Content Include="Content\ExtJSicons\car and cart  and basket\cart_remove.png" />
+    <Content Include="Content\ExtJSicons\car and cart  and basket\car_add.png" />
+    <Content Include="Content\ExtJSicons\car and cart  and basket\car_delete.png" />
+    <Content Include="Content\ExtJSicons\cd\cd.png" />
+    <Content Include="Content\ExtJSicons\cd\cd_add.png" />
+    <Content Include="Content\ExtJSicons\cd\cd_burn.png" />
+    <Content Include="Content\ExtJSicons\cd\cd_delete.png" />
+    <Content Include="Content\ExtJSicons\cd\cd_edit.png" />
+    <Content Include="Content\ExtJSicons\cd\cd_eject.png" />
+    <Content Include="Content\ExtJSicons\cd\cd_go.png" />
+    <Content Include="Content\ExtJSicons\chart\chart_bar.png" />
+    <Content Include="Content\ExtJSicons\chart\chart_bar_add.png" />
+    <Content Include="Content\ExtJSicons\chart\chart_bar_delete.png" />
+    <Content Include="Content\ExtJSicons\chart\chart_bar_edit.png" />
+    <Content Include="Content\ExtJSicons\chart\chart_bar_error.png" />
+    <Content Include="Content\ExtJSicons\chart\chart_bar_link.png" />
+    <Content Include="Content\ExtJSicons\chart\chart_curve.png" />
+    <Content Include="Content\ExtJSicons\chart\chart_curve_add.png" />
+    <Content Include="Content\ExtJSicons\chart\chart_curve_delete.png" />
+    <Content Include="Content\ExtJSicons\chart\chart_curve_edit.png" />
+    <Content Include="Content\ExtJSicons\chart\chart_curve_error.png" />
+    <Content Include="Content\ExtJSicons\chart\chart_curve_go.png" />
+    <Content Include="Content\ExtJSicons\chart\chart_curve_link.png" />
+    <Content Include="Content\ExtJSicons\chart\chart_line.png" />
+    <Content Include="Content\ExtJSicons\chart\chart_line_add.png" />
+    <Content Include="Content\ExtJSicons\chart\chart_line_delete.png" />
+    <Content Include="Content\ExtJSicons\chart\chart_line_edit.png" />
+    <Content Include="Content\ExtJSicons\chart\chart_line_error.png" />
+    <Content Include="Content\ExtJSicons\chart\chart_line_link.png" />
+    <Content Include="Content\ExtJSicons\chart\chart_organisation.png" />
+    <Content Include="Content\ExtJSicons\chart\chart_organisation_add.png" />
+    <Content Include="Content\ExtJSicons\chart\chart_organisation_delete.png" />
+    <Content Include="Content\ExtJSicons\chart\chart_pie.png" />
+    <Content Include="Content\ExtJSicons\chart\chart_pie_add.png" />
+    <Content Include="Content\ExtJSicons\chart\chart_pie_delete.png" />
+    <Content Include="Content\ExtJSicons\chart\chart_pie_edit.png" />
+    <Content Include="Content\ExtJSicons\chart\chart_pie_error.png" />
+    <Content Include="Content\ExtJSicons\chart\chart_pie_link.png" />
+    <Content Include="Content\ExtJSicons\clock.png" />
+    <Content Include="Content\ExtJSicons\clock_add.png" />
+    <Content Include="Content\ExtJSicons\clock_delete.png" />
+    <Content Include="Content\ExtJSicons\clock_edit.png" />
+    <Content Include="Content\ExtJSicons\clock_error.png" />
+    <Content Include="Content\ExtJSicons\clock_go.png" />
+    <Content Include="Content\ExtJSicons\clock_link.png" />
+    <Content Include="Content\ExtJSicons\clock_pause.png" />
+    <Content Include="Content\ExtJSicons\clock_play.png" />
+    <Content Include="Content\ExtJSicons\clock_red.png" />
+    <Content Include="Content\ExtJSicons\clock_stop.png" />
+    <Content Include="Content\ExtJSicons\cog.png" />
+    <Content Include="Content\ExtJSicons\cog_add.png" />
+    <Content Include="Content\ExtJSicons\cog_delete.png" />
+    <Content Include="Content\ExtJSicons\cog_edit.png" />
+    <Content Include="Content\ExtJSicons\cog_error.png" />
+    <Content Include="Content\ExtJSicons\cog_go.png" />
+    <Content Include="Content\ExtJSicons\coins.png" />
+    <Content Include="Content\ExtJSicons\coins_add.png" />
+    <Content Include="Content\ExtJSicons\coins_delete.png" />
+    <Content Include="Content\ExtJSicons\color_swatch.png" />
+    <Content Include="Content\ExtJSicons\color_wheel.png" />
+    <Content Include="Content\ExtJSicons\comment.png" />
+    <Content Include="Content\ExtJSicons\comments.png" />
+    <Content Include="Content\ExtJSicons\comments_add.png" />
+    <Content Include="Content\ExtJSicons\comments_delete.png" />
+    <Content Include="Content\ExtJSicons\comment_add.png" />
+    <Content Include="Content\ExtJSicons\comment_delete.png" />
+    <Content Include="Content\ExtJSicons\comment_edit.png" />
+    <Content Include="Content\ExtJSicons\compress.png" />
+    <Content Include="Content\ExtJSicons\computer.png" />
+    <Content Include="Content\ExtJSicons\computer_add.png" />
+    <Content Include="Content\ExtJSicons\computer_delete.png" />
+    <Content Include="Content\ExtJSicons\computer_edit.png" />
+    <Content Include="Content\ExtJSicons\computer_error.png" />
+    <Content Include="Content\ExtJSicons\computer_go.png" />
+    <Content Include="Content\ExtJSicons\computer_key.png" />
+    <Content Include="Content\ExtJSicons\computer_link.png" />
+    <Content Include="Content\ExtJSicons\connect.png" />
+    <Content Include="Content\ExtJSicons\contrast.png" />
+    <Content Include="Content\ExtJSicons\contrast_decrease.png" />
+    <Content Include="Content\ExtJSicons\contrast_high.png" />
+    <Content Include="Content\ExtJSicons\contrast_increase.png" />
+    <Content Include="Content\ExtJSicons\contrast_low.png" />
+    <Content Include="Content\ExtJSicons\controller.png" />
+    <Content Include="Content\ExtJSicons\controller_add.png" />
+    <Content Include="Content\ExtJSicons\controller_delete.png" />
+    <Content Include="Content\ExtJSicons\controller_error.png" />
+    <Content Include="Content\ExtJSicons\control\control_eject.png" />
+    <Content Include="Content\ExtJSicons\control\control_eject_blue.png" />
+    <Content Include="Content\ExtJSicons\control\control_end.png" />
+    <Content Include="Content\ExtJSicons\control\control_end_blue.png" />
+    <Content Include="Content\ExtJSicons\control\control_equalizer.png" />
+    <Content Include="Content\ExtJSicons\control\control_equalizer_blue.png" />
+    <Content Include="Content\ExtJSicons\control\control_fastforward.png" />
+    <Content Include="Content\ExtJSicons\control\control_fastforward_blue.png" />
+    <Content Include="Content\ExtJSicons\control\control_pause.png" />
+    <Content Include="Content\ExtJSicons\control\control_pause_blue.png" />
+    <Content Include="Content\ExtJSicons\control\control_play.png" />
+    <Content Include="Content\ExtJSicons\control\control_play_blue.png" />
+    <Content Include="Content\ExtJSicons\control\control_repeat.png" />
+    <Content Include="Content\ExtJSicons\control\control_repeat_blue.png" />
+    <Content Include="Content\ExtJSicons\control\control_rewind.png" />
+    <Content Include="Content\ExtJSicons\control\control_rewind_blue.png" />
+    <Content Include="Content\ExtJSicons\control\control_start.png" />
+    <Content Include="Content\ExtJSicons\control\control_start_blue.png" />
+    <Content Include="Content\ExtJSicons\control\control_stop.png" />
+    <Content Include="Content\ExtJSicons\control\control_stop_blue.png" />
+    <Content Include="Content\ExtJSicons\creditcards.png" />
+    <Content Include="Content\ExtJSicons\css\css.png" />
+    <Content Include="Content\ExtJSicons\css\css_add.png" />
+    <Content Include="Content\ExtJSicons\css\css_delete.png" />
+    <Content Include="Content\ExtJSicons\css\css_go.png" />
+    <Content Include="Content\ExtJSicons\css\css_valid.png" />
+    <Content Include="Content\ExtJSicons\cup.png" />
+    <Content Include="Content\ExtJSicons\cup_add.png" />
+    <Content Include="Content\ExtJSicons\cup_delete.png" />
+    <Content Include="Content\ExtJSicons\cup_edit.png" />
+    <Content Include="Content\ExtJSicons\cup_error.png" />
+    <Content Include="Content\ExtJSicons\cup_go.png" />
+    <Content Include="Content\ExtJSicons\cup_key.png" />
+    <Content Include="Content\ExtJSicons\cup_link.png" />
+    <Content Include="Content\ExtJSicons\cursor.png" />
+    <Content Include="Content\ExtJSicons\cut.png" />
+    <Content Include="Content\ExtJSicons\cut_red.png" />
+    <Content Include="Content\ExtJSicons\database.png" />
+    <Content Include="Content\ExtJSicons\database_add.png" />
+    <Content Include="Content\ExtJSicons\database_connect.png" />
+    <Content Include="Content\ExtJSicons\database_delete.png" />
+    <Content Include="Content\ExtJSicons\database_edit.png" />
+    <Content Include="Content\ExtJSicons\database_error.png" />
+    <Content Include="Content\ExtJSicons\database_gear.png" />
+    <Content Include="Content\ExtJSicons\database_go.png" />
+    <Content Include="Content\ExtJSicons\database_key.png" />
+    <Content Include="Content\ExtJSicons\database_lightning.png" />
+    <Content Include="Content\ExtJSicons\database_link.png" />
+    <Content Include="Content\ExtJSicons\database_refresh.png" />
+    <Content Include="Content\ExtJSicons\database_save.png" />
+    <Content Include="Content\ExtJSicons\database_table.png" />
+    <Content Include="Content\ExtJSicons\Date\date.png" />
+    <Content Include="Content\ExtJSicons\Date\date_add.png" />
+    <Content Include="Content\ExtJSicons\Date\date_delete.png" />
+    <Content Include="Content\ExtJSicons\Date\date_edit.png" />
+    <Content Include="Content\ExtJSicons\Date\date_error.png" />
+    <Content Include="Content\ExtJSicons\Date\date_go.png" />
+    <Content Include="Content\ExtJSicons\Date\date_link.png" />
+    <Content Include="Content\ExtJSicons\Date\date_magnify.png" />
+    <Content Include="Content\ExtJSicons\Date\date_next.png" />
+    <Content Include="Content\ExtJSicons\Date\date_previous.png" />
+    <Content Include="Content\ExtJSicons\delete.png" />
+    <Content Include="Content\ExtJSicons\disconnect.png" />
+    <Content Include="Content\ExtJSicons\disk.png" />
+    <Content Include="Content\ExtJSicons\disk_multiple.png" />
+    <Content Include="Content\ExtJSicons\door.png" />
+    <Content Include="Content\ExtJSicons\door_in.png" />
+    <Content Include="Content\ExtJSicons\door_open.png" />
+    <Content Include="Content\ExtJSicons\door_out.png" />
+    <Content Include="Content\ExtJSicons\drink.png" />
+    <Content Include="Content\ExtJSicons\drink_empty.png" />
+    <Content Include="Content\ExtJSicons\driver\drive.png" />
+    <Content Include="Content\ExtJSicons\driver\drive_add.png" />
+    <Content Include="Content\ExtJSicons\driver\drive_burn.png" />
+    <Content Include="Content\ExtJSicons\driver\drive_cd.png" />
+    <Content Include="Content\ExtJSicons\driver\drive_cd_empty.png" />
+    <Content Include="Content\ExtJSicons\driver\drive_delete.png" />
+    <Content Include="Content\ExtJSicons\driver\drive_disk.png" />
+    <Content Include="Content\ExtJSicons\driver\drive_edit.png" />
+    <Content Include="Content\ExtJSicons\driver\drive_error.png" />
+    <Content Include="Content\ExtJSicons\driver\drive_go.png" />
+    <Content Include="Content\ExtJSicons\driver\drive_key.png" />
+    <Content Include="Content\ExtJSicons\driver\drive_link.png" />
+    <Content Include="Content\ExtJSicons\driver\drive_magnify.png" />
+    <Content Include="Content\ExtJSicons\driver\drive_network.png" />
+    <Content Include="Content\ExtJSicons\driver\drive_rename.png" />
+    <Content Include="Content\ExtJSicons\driver\drive_user.png" />
+    <Content Include="Content\ExtJSicons\driver\drive_web.png" />
+    <Content Include="Content\ExtJSicons\dvd.png" />
+    <Content Include="Content\ExtJSicons\dvd_add.png" />
+    <Content Include="Content\ExtJSicons\dvd_delete.png" />
+    <Content Include="Content\ExtJSicons\dvd_edit.png" />
+    <Content Include="Content\ExtJSicons\dvd_error.png" />
+    <Content Include="Content\ExtJSicons\dvd_go.png" />
+    <Content Include="Content\ExtJSicons\dvd_key.png" />
+    <Content Include="Content\ExtJSicons\dvd_link.png" />
+    <Content Include="Content\ExtJSicons\email\email.png" />
+    <Content Include="Content\ExtJSicons\email\email_add.png" />
+    <Content Include="Content\ExtJSicons\email\email_attach.png" />
+    <Content Include="Content\ExtJSicons\email\email_delete.png" />
+    <Content Include="Content\ExtJSicons\email\email_edit.png" />
+    <Content Include="Content\ExtJSicons\email\email_error.png" />
+    <Content Include="Content\ExtJSicons\email\email_go.png" />
+    <Content Include="Content\ExtJSicons\email\email_link.png" />
+    <Content Include="Content\ExtJSicons\email\email_open.png" />
+    <Content Include="Content\ExtJSicons\email\email_open_image.png" />
+    <Content Include="Content\ExtJSicons\emoticon_evilgrin.png" />
+    <Content Include="Content\ExtJSicons\emoticon_grin.png" />
+    <Content Include="Content\ExtJSicons\emoticon_happy.png" />
+    <Content Include="Content\ExtJSicons\emoticon_smile.png" />
+    <Content Include="Content\ExtJSicons\emoticon_surprised.png" />
+    <Content Include="Content\ExtJSicons\emoticon_tongue.png" />
+    <Content Include="Content\ExtJSicons\emoticon_unhappy.png" />
+    <Content Include="Content\ExtJSicons\emoticon_waii.png" />
+    <Content Include="Content\ExtJSicons\emoticon_wink.png" />
+    <Content Include="Content\ExtJSicons\error.png" />
+    <Content Include="Content\ExtJSicons\error_add.png" />
+    <Content Include="Content\ExtJSicons\error_delete.png" />
+    <Content Include="Content\ExtJSicons\error_go.png" />
+    <Content Include="Content\ExtJSicons\exclamation.png" />
+    <Content Include="Content\ExtJSicons\eye.png" />
+    <Content Include="Content\ExtJSicons\feed\feed.png" />
+    <Content Include="Content\ExtJSicons\feed\feed_add.png" />
+    <Content Include="Content\ExtJSicons\feed\feed_delete.png" />
+    <Content Include="Content\ExtJSicons\feed\feed_disk.png" />
+    <Content Include="Content\ExtJSicons\feed\feed_edit.png" />
+    <Content Include="Content\ExtJSicons\feed\feed_error.png" />
+    <Content Include="Content\ExtJSicons\feed\feed_go.png" />
+    <Content Include="Content\ExtJSicons\feed\feed_key.png" />
+    <Content Include="Content\ExtJSicons\feed\feed_link.png" />
+    <Content Include="Content\ExtJSicons\feed\feed_magnify.png" />
+    <Content Include="Content\ExtJSicons\female.png" />
+    <Content Include="Content\ExtJSicons\film\film.png" />
+    <Content Include="Content\ExtJSicons\film\film_add.png" />
+    <Content Include="Content\ExtJSicons\film\film_delete.png" />
+    <Content Include="Content\ExtJSicons\film\film_edit.png" />
+    <Content Include="Content\ExtJSicons\film\film_error.png" />
+    <Content Include="Content\ExtJSicons\film\film_go.png" />
+    <Content Include="Content\ExtJSicons\film\film_key.png" />
+    <Content Include="Content\ExtJSicons\film\film_link.png" />
+    <Content Include="Content\ExtJSicons\film\film_save.png" />
+    <Content Include="Content\ExtJSicons\find.png" />
+    <Content Include="Content\ExtJSicons\flag\flag_blue.png" />
+    <Content Include="Content\ExtJSicons\flag\flag_green.png" />
+    <Content Include="Content\ExtJSicons\flag\flag_orange.png" />
+    <Content Include="Content\ExtJSicons\flag\flag_pink.png" />
+    <Content Include="Content\ExtJSicons\flag\flag_purple.png" />
+    <Content Include="Content\ExtJSicons\flag\flag_red.png" />
+    <Content Include="Content\ExtJSicons\flag\flag_yellow.png" />
+    <Content Include="Content\ExtJSicons\folder\folder.png" />
+    <Content Include="Content\ExtJSicons\folder\folder_add.png" />
+    <Content Include="Content\ExtJSicons\folder\folder_bell.png" />
+    <Content Include="Content\ExtJSicons\folder\folder_brick.png" />
+    <Content Include="Content\ExtJSicons\folder\folder_bug.png" />
+    <Content Include="Content\ExtJSicons\folder\folder_camera.png" />
+    <Content Include="Content\ExtJSicons\folder\folder_database.png" />
+    <Content Include="Content\ExtJSicons\folder\folder_delete.png" />
+    <Content Include="Content\ExtJSicons\folder\folder_edit.png" />
+    <Content Include="Content\ExtJSicons\folder\folder_error.png" />
+    <Content Include="Content\ExtJSicons\folder\folder_explore.png" />
+    <Content Include="Content\ExtJSicons\folder\folder_feed.png" />
+    <Content Include="Content\ExtJSicons\folder\folder_find.png" />
+    <Content Include="Content\ExtJSicons\folder\folder_go.png" />
+    <Content Include="Content\ExtJSicons\folder\folder_heart.png" />
+    <Content Include="Content\ExtJSicons\folder\folder_image.png" />
+    <Content Include="Content\ExtJSicons\folder\folder_key.png" />
+    <Content Include="Content\ExtJSicons\folder\folder_lightbulb.png" />
+    <Content Include="Content\ExtJSicons\folder\folder_link.png" />
+    <Content Include="Content\ExtJSicons\folder\folder_magnify.png" />
+    <Content Include="Content\ExtJSicons\folder\folder_page.png" />
+    <Content Include="Content\ExtJSicons\folder\folder_page_white.png" />
+    <Content Include="Content\ExtJSicons\folder\folder_palette.png" />
+    <Content Include="Content\ExtJSicons\folder\folder_picture.png" />
+    <Content Include="Content\ExtJSicons\folder\folder_star.png" />
+    <Content Include="Content\ExtJSicons\folder\folder_table.png" />
+    <Content Include="Content\ExtJSicons\folder\folder_user.png" />
+    <Content Include="Content\ExtJSicons\folder\folder_wrench.png" />
+    <Content Include="Content\ExtJSicons\font.png" />
+    <Content Include="Content\ExtJSicons\font_add.png" />
+    <Content Include="Content\ExtJSicons\font_delete.png" />
+    <Content Include="Content\ExtJSicons\font_go.png" />
+    <Content Include="Content\ExtJSicons\group\group.png" />
+    <Content Include="Content\ExtJSicons\group\group_add.png" />
+    <Content Include="Content\ExtJSicons\group\group_delete.png" />
+    <Content Include="Content\ExtJSicons\group\group_edit.png" />
+    <Content Include="Content\ExtJSicons\group\group_error.png" />
+    <Content Include="Content\ExtJSicons\group\group_gear.png" />
+    <Content Include="Content\ExtJSicons\group\group_go.png" />
+    <Content Include="Content\ExtJSicons\group\group_key.png" />
+    <Content Include="Content\ExtJSicons\group\group_link.png" />
+    <Content Include="Content\ExtJSicons\heart.png" />
+    <Content Include="Content\ExtJSicons\heart_add.png" />
+    <Content Include="Content\ExtJSicons\heart_delete.png" />
+    <Content Include="Content\ExtJSicons\help.png" />
+    <Content Include="Content\ExtJSicons\hourglass.png" />
+    <Content Include="Content\ExtJSicons\hourglass_add.png" />
+    <Content Include="Content\ExtJSicons\hourglass_delete.png" />
+    <Content Include="Content\ExtJSicons\hourglass_go.png" />
+    <Content Include="Content\ExtJSicons\hourglass_link.png" />
+    <Content Include="Content\ExtJSicons\house.png" />
+    <Content Include="Content\ExtJSicons\house_go.png" />
+    <Content Include="Content\ExtJSicons\house_link.png" />
+    <Content Include="Content\ExtJSicons\html.png" />
+    <Content Include="Content\ExtJSicons\html_add.png" />
+    <Content Include="Content\ExtJSicons\html_delete.png" />
+    <Content Include="Content\ExtJSicons\html_go.png" />
+    <Content Include="Content\ExtJSicons\html_valid.png" />
+    <Content Include="Content\ExtJSicons\image.png" />
+    <Content Include="Content\ExtJSicons\images.png" />
+    <Content Include="Content\ExtJSicons\images_send.png" />
+    <Content Include="Content\ExtJSicons\image_add.png" />
+    <Content Include="Content\ExtJSicons\image_delete.png" />
+    <Content Include="Content\ExtJSicons\image_edit.png" />
+    <Content Include="Content\ExtJSicons\image_link.png" />
+    <Content Include="Content\ExtJSicons\information.png" />
+    <Content Include="Content\ExtJSicons\ipod\ipod.png" />
+    <Content Include="Content\ExtJSicons\ipod\ipod_cast.png" />
+    <Content Include="Content\ExtJSicons\ipod\ipod_cast_add.png" />
+    <Content Include="Content\ExtJSicons\ipod\ipod_cast_delete.png" />
+    <Content Include="Content\ExtJSicons\ipod\ipod_sound.png" />
+    <Content Include="Content\ExtJSicons\joystick.png" />
+    <Content Include="Content\ExtJSicons\joystick_add.png" />
+    <Content Include="Content\ExtJSicons\joystick_delete.png" />
+    <Content Include="Content\ExtJSicons\joystick_error.png" />
+    <Content Include="Content\ExtJSicons\key.png" />
+    <Content Include="Content\ExtJSicons\keyboard\keyboard.png" />
+    <Content Include="Content\ExtJSicons\keyboard\keyboard_add.png" />
+    <Content Include="Content\ExtJSicons\keyboard\keyboard_delete.png" />
+    <Content Include="Content\ExtJSicons\keyboard\keyboard_magnify.png" />
+    <Content Include="Content\ExtJSicons\key_add.png" />
+    <Content Include="Content\ExtJSicons\key_delete.png" />
+    <Content Include="Content\ExtJSicons\key_go.png" />
+    <Content Include="Content\ExtJSicons\layers.png" />
+    <Content Include="Content\ExtJSicons\layout\layout.png" />
+    <Content Include="Content\ExtJSicons\layout\layout_add.png" />
+    <Content Include="Content\ExtJSicons\layout\layout_content.png" />
+    <Content Include="Content\ExtJSicons\layout\layout_delete.png" />
+    <Content Include="Content\ExtJSicons\layout\layout_edit.png" />
+    <Content Include="Content\ExtJSicons\layout\layout_error.png" />
+    <Content Include="Content\ExtJSicons\layout\layout_header.png" />
+    <Content Include="Content\ExtJSicons\layout\layout_link.png" />
+    <Content Include="Content\ExtJSicons\layout\layout_sidebar.png" />
+    <Content Include="Content\ExtJSicons\layout\overlays.png" />
+    <Content Include="Content\ExtJSicons\lightbulb.png" />
+    <Content Include="Content\ExtJSicons\lightbulb_add.png" />
+    <Content Include="Content\ExtJSicons\lightbulb_delete.png" />
+    <Content Include="Content\ExtJSicons\lightbulb_off.png" />
+    <Content Include="Content\ExtJSicons\lightning.png" />
+    <Content Include="Content\ExtJSicons\lightning_add.png" />
+    <Content Include="Content\ExtJSicons\lightning_delete.png" />
+    <Content Include="Content\ExtJSicons\lightning_go.png" />
+    <Content Include="Content\ExtJSicons\link.png" />
+    <Content Include="Content\ExtJSicons\link_add.png" />
+    <Content Include="Content\ExtJSicons\link_break.png" />
+    <Content Include="Content\ExtJSicons\link_delete.png" />
+    <Content Include="Content\ExtJSicons\link_edit.png" />
+    <Content Include="Content\ExtJSicons\link_error.png" />
+    <Content Include="Content\ExtJSicons\link_go.png" />
+    <Content Include="Content\ExtJSicons\lock\lock.png" />
+    <Content Include="Content\ExtJSicons\lock\lock_add.png" />
+    <Content Include="Content\ExtJSicons\lock\lock_break.png" />
+    <Content Include="Content\ExtJSicons\lock\lock_delete.png" />
+    <Content Include="Content\ExtJSicons\lock\lock_edit.png" />
+    <Content Include="Content\ExtJSicons\lock\lock_go.png" />
+    <Content Include="Content\ExtJSicons\lock\lock_open.png" />
+    <Content Include="Content\ExtJSicons\lorry.png" />
+    <Content Include="Content\ExtJSicons\lorry_add.png" />
+    <Content Include="Content\ExtJSicons\lorry_delete.png" />
+    <Content Include="Content\ExtJSicons\lorry_error.png" />
+    <Content Include="Content\ExtJSicons\lorry_flatbed.png" />
+    <Content Include="Content\ExtJSicons\lorry_go.png" />
+    <Content Include="Content\ExtJSicons\lorry_link.png" />
+    <Content Include="Content\ExtJSicons\male.png" />
+    <Content Include="Content\ExtJSicons\map\magifier_zoom_out.png" />
+    <Content Include="Content\ExtJSicons\map\magnifier.png" />
+    <Content Include="Content\ExtJSicons\map\magnifier_zoom_in.png" />
+    <Content Include="Content\ExtJSicons\map\map.png" />
+    <Content Include="Content\ExtJSicons\map\map_add.png" />
+    <Content Include="Content\ExtJSicons\map\map_delete.png" />
+    <Content Include="Content\ExtJSicons\map\map_edit.png" />
+    <Content Include="Content\ExtJSicons\map\map_go.png" />
+    <Content Include="Content\ExtJSicons\map\map_magnify.png" />
+    <Content Include="Content\ExtJSicons\medal_bronze_1.png" />
+    <Content Include="Content\ExtJSicons\medal_bronze_2.png" />
+    <Content Include="Content\ExtJSicons\medal_bronze_3.png" />
+    <Content Include="Content\ExtJSicons\medal_bronze_add.png" />
+    <Content Include="Content\ExtJSicons\medal_bronze_delete.png" />
+    <Content Include="Content\ExtJSicons\medal_gold_1.png" />
+    <Content Include="Content\ExtJSicons\medal_gold_2.png" />
+    <Content Include="Content\ExtJSicons\medal_gold_3.png" />
+    <Content Include="Content\ExtJSicons\medal_gold_add.png" />
+    <Content Include="Content\ExtJSicons\medal_gold_delete.png" />
+    <Content Include="Content\ExtJSicons\medal_silver_1.png" />
+    <Content Include="Content\ExtJSicons\medal_silver_2.png" />
+    <Content Include="Content\ExtJSicons\medal_silver_3.png" />
+    <Content Include="Content\ExtJSicons\medal_silver_add.png" />
+    <Content Include="Content\ExtJSicons\medal_silver_delete.png" />
+    <Content Include="Content\ExtJSicons\money.png" />
+    <Content Include="Content\ExtJSicons\money_add.png" />
+    <Content Include="Content\ExtJSicons\money_delete.png" />
+    <Content Include="Content\ExtJSicons\money_dollar.png" />
+    <Content Include="Content\ExtJSicons\money_euro.png" />
+    <Content Include="Content\ExtJSicons\money_pound.png" />
+    <Content Include="Content\ExtJSicons\money_yen.png" />
+    <Content Include="Content\ExtJSicons\monitor\monitor.png" />
+    <Content Include="Content\ExtJSicons\monitor\monitor_add.png" />
+    <Content Include="Content\ExtJSicons\monitor\monitor_delete.png" />
+    <Content Include="Content\ExtJSicons\monitor\monitor_edit.png" />
+    <Content Include="Content\ExtJSicons\monitor\monitor_error.png" />
+    <Content Include="Content\ExtJSicons\monitor\monitor_go.png" />
+    <Content Include="Content\ExtJSicons\monitor\monitor_lightning.png" />
+    <Content Include="Content\ExtJSicons\monitor\monitor_link.png" />
+    <Content Include="Content\ExtJSicons\mouse.png" />
+    <Content Include="Content\ExtJSicons\mouse_add.png" />
+    <Content Include="Content\ExtJSicons\mouse_delete.png" />
+    <Content Include="Content\ExtJSicons\mouse_error.png" />
+    <Content Include="Content\ExtJSicons\music.png" />
+    <Content Include="Content\ExtJSicons\new.png" />
+    <Content Include="Content\ExtJSicons\newspaper\newspaper.png" />
+    <Content Include="Content\ExtJSicons\newspaper\newspaper_add.png" />
+    <Content Include="Content\ExtJSicons\newspaper\newspaper_delete.png" />
+    <Content Include="Content\ExtJSicons\newspaper\newspaper_go.png" />
+    <Content Include="Content\ExtJSicons\newspaper\newspaper_link.png" />
+    <Content Include="Content\ExtJSicons\notes\note.png" />
+    <Content Include="Content\ExtJSicons\notes\note_add.png" />
+    <Content Include="Content\ExtJSicons\notes\note_delete.png" />
+    <Content Include="Content\ExtJSicons\notes\note_edit.png" />
+    <Content Include="Content\ExtJSicons\notes\note_error.png" />
+    <Content Include="Content\ExtJSicons\notes\note_go.png" />
+    <Content Include="Content\ExtJSicons\package.png" />
+    <Content Include="Content\ExtJSicons\package_add.png" />
+    <Content Include="Content\ExtJSicons\package_delete.png" />
+    <Content Include="Content\ExtJSicons\package_go.png" />
+    <Content Include="Content\ExtJSicons\package_green.png" />
+    <Content Include="Content\ExtJSicons\package_link.png" />
+    <Content Include="Content\ExtJSicons\page\page.png" />
+    <Content Include="Content\ExtJSicons\page\page_add.png" />
+    <Content Include="Content\ExtJSicons\page\page_attach.png" />
+    <Content Include="Content\ExtJSicons\page\page_code.png" />
+    <Content Include="Content\ExtJSicons\page\page_copy.png" />
+    <Content Include="Content\ExtJSicons\page\page_delete.png" />
+    <Content Include="Content\ExtJSicons\page\page_edit.png" />
+    <Content Include="Content\ExtJSicons\page\page_error.png" />
+    <Content Include="Content\ExtJSicons\page\page_excel.png" />
+    <Content Include="Content\ExtJSicons\page\page_find.png" />
+    <Content Include="Content\ExtJSicons\page\page_gear.png" />
+    <Content Include="Content\ExtJSicons\page\page_go.png" />
+    <Content Include="Content\ExtJSicons\page\page_green.png" />
+    <Content Include="Content\ExtJSicons\page\page_key.png" />
+    <Content Include="Content\ExtJSicons\page\page_lightning.png" />
+    <Content Include="Content\ExtJSicons\page\page_link.png" />
+    <Content Include="Content\ExtJSicons\page\page_paintbrush.png" />
+    <Content Include="Content\ExtJSicons\page\page_paste.png" />
+    <Content Include="Content\ExtJSicons\page\page_red.png" />
+    <Content Include="Content\ExtJSicons\page\page_refresh.png" />
+    <Content Include="Content\ExtJSicons\page\page_save.png" />
+    <Content Include="Content\ExtJSicons\page\page_white.png" />
+    <Content Include="Content\ExtJSicons\page\page_white_acrobat.png" />
+    <Content Include="Content\ExtJSicons\page\page_white_actionscript.png" />
+    <Content Include="Content\ExtJSicons\page\page_white_add.png" />
+    <Content Include="Content\ExtJSicons\page\page_white_c.png" />
+    <Content Include="Content\ExtJSicons\page\page_white_camera.png" />
+    <Content Include="Content\ExtJSicons\page\page_white_cd.png" />
+    <Content Include="Content\ExtJSicons\page\page_white_code.png" />
+    <Content Include="Content\ExtJSicons\page\page_white_code_red.png" />
+    <Content Include="Content\ExtJSicons\page\page_white_coldfusion.png" />
+    <Content Include="Content\ExtJSicons\page\page_white_compressed.png" />
+    <Content Include="Content\ExtJSicons\page\page_white_copy.png" />
+    <Content Include="Content\ExtJSicons\page\page_white_cplusplus.png" />
+    <Content Include="Content\ExtJSicons\page\page_white_csharp.png" />
+    <Content Include="Content\ExtJSicons\page\page_white_cup.png" />
+    <Content Include="Content\ExtJSicons\page\page_white_database.png" />
+    <Content Include="Content\ExtJSicons\page\page_white_delete.png" />
+    <Content Include="Content\ExtJSicons\page\page_white_dvd.png" />
+    <Content Include="Content\ExtJSicons\page\page_white_edit.png" />
+    <Content Include="Content\ExtJSicons\page\page_white_error.png" />
+    <Content Include="Content\ExtJSicons\page\page_white_excel.png" />
+    <Content Include="Content\ExtJSicons\page\page_white_find.png" />
+    <Content Include="Content\ExtJSicons\page\page_white_flash.png" />
+    <Content Include="Content\ExtJSicons\page\page_white_freehand.png" />
+    <Content Include="Content\ExtJSicons\page\page_white_gear.png" />
+    <Content Include="Content\ExtJSicons\page\page_white_get.png" />
+    <Content Include="Content\ExtJSicons\page\page_white_go.png" />
+    <Content Include="Content\ExtJSicons\page\page_white_h.png" />
+    <Content Include="Content\ExtJSicons\page\page_white_horizontal.png" />
+    <Content Include="Content\ExtJSicons\page\page_white_key.png" />
+    <Content Include="Content\ExtJSicons\page\page_white_lightning.png" />
+    <Content Include="Content\ExtJSicons\page\page_white_link.png" />
+    <Content Include="Content\ExtJSicons\page\page_white_magnify.png" />
+    <Content Include="Content\ExtJSicons\page\page_white_medal.png" />
+    <Content Include="Content\ExtJSicons\page\page_white_office.png" />
+    <Content Include="Content\ExtJSicons\page\page_white_paint.png" />
+    <Content Include="Content\ExtJSicons\page\page_white_paintbrush.png" />
+    <Content Include="Content\ExtJSicons\page\page_white_paste.png" />
+    <Content Include="Content\ExtJSicons\page\page_white_php.png" />
+    <Content Include="Content\ExtJSicons\page\page_white_picture.png" />
+    <Content Include="Content\ExtJSicons\page\page_white_powerpoint.png" />
+    <Content Include="Content\ExtJSicons\page\page_white_put.png" />
+    <Content Include="Content\ExtJSicons\page\page_white_ruby.png" />
+    <Content Include="Content\ExtJSicons\page\page_white_stack.png" />
+    <Content Include="Content\ExtJSicons\page\page_white_star.png" />
+    <Content Include="Content\ExtJSicons\page\page_white_swoosh.png" />
+    <Content Include="Content\ExtJSicons\page\page_white_text.png" />
+    <Content Include="Content\ExtJSicons\page\page_white_text_width.png" />
+    <Content Include="Content\ExtJSicons\page\page_white_tux.png" />
+    <Content Include="Content\ExtJSicons\page\page_white_vector.png" />
+    <Content Include="Content\ExtJSicons\page\page_white_visualstudio.png" />
+    <Content Include="Content\ExtJSicons\page\page_white_width.png" />
+    <Content Include="Content\ExtJSicons\page\page_white_word.png" />
+    <Content Include="Content\ExtJSicons\page\page_white_world.png" />
+    <Content Include="Content\ExtJSicons\page\page_white_wrench.png" />
+    <Content Include="Content\ExtJSicons\page\page_white_zip.png" />
+    <Content Include="Content\ExtJSicons\page\page_word.png" />
+    <Content Include="Content\ExtJSicons\page\page_world.png" />
+    <Content Include="Content\ExtJSicons\page\paste_plain.png" />
+    <Content Include="Content\ExtJSicons\page\paste_word.png" />
+    <Content Include="Content\ExtJSicons\page\report.png" />
+    <Content Include="Content\ExtJSicons\page\report_add.png" />
+    <Content Include="Content\ExtJSicons\page\report_delete.png" />
+    <Content Include="Content\ExtJSicons\page\report_disk.png" />
+    <Content Include="Content\ExtJSicons\page\report_edit.png" />
+    <Content Include="Content\ExtJSicons\page\report_go.png" />
+    <Content Include="Content\ExtJSicons\page\report_key.png" />
+    <Content Include="Content\ExtJSicons\page\report_link.png" />
+    <Content Include="Content\ExtJSicons\page\report_magnify.png" />
+    <Content Include="Content\ExtJSicons\page\report_picture.png" />
+    <Content Include="Content\ExtJSicons\page\report_user.png" />
+    <Content Include="Content\ExtJSicons\page\report_word.png" />
+    <Content Include="Content\ExtJSicons\paintbrush.png" />
+    <Content Include="Content\ExtJSicons\paintcan.png" />
+    <Content Include="Content\ExtJSicons\palette.png" />
+    <Content Include="Content\ExtJSicons\pencil.png" />
+    <Content Include="Content\ExtJSicons\pencil_add.png" />
+    <Content Include="Content\ExtJSicons\pencil_delete.png" />
+    <Content Include="Content\ExtJSicons\pencil_go.png" />
+    <Content Include="Content\ExtJSicons\phone.png" />
+    <Content Include="Content\ExtJSicons\phone_add.png" />
+    <Content Include="Content\ExtJSicons\phone_delete.png" />
+    <Content Include="Content\ExtJSicons\phone_sound.png" />
+    <Content Include="Content\ExtJSicons\photo and pic\photo.png" />
+    <Content Include="Content\ExtJSicons\photo and pic\photos.png" />
+    <Content Include="Content\ExtJSicons\photo and pic\photo_add.png" />
+    <Content Include="Content\ExtJSicons\photo and pic\photo_delete.png" />
+    <Content Include="Content\ExtJSicons\photo and pic\photo_link.png" />
+    <Content Include="Content\ExtJSicons\photo and pic\picture.png" />
+    <Content Include="Content\ExtJSicons\photo and pic\pictures.png" />
+    <Content Include="Content\ExtJSicons\photo and pic\picture_add.png" />
+    <Content Include="Content\ExtJSicons\photo and pic\picture_delete.png" />
+    <Content Include="Content\ExtJSicons\photo and pic\picture_edit.png" />
+    <Content Include="Content\ExtJSicons\photo and pic\picture_empty.png" />
+    <Content Include="Content\ExtJSicons\photo and pic\picture_error.png" />
+    <Content Include="Content\ExtJSicons\photo and pic\picture_go.png" />
+    <Content Include="Content\ExtJSicons\photo and pic\picture_key.png" />
+    <Content Include="Content\ExtJSicons\photo and pic\picture_link.png" />
+    <Content Include="Content\ExtJSicons\photo and pic\picture_save.png" />
+    <Content Include="Content\ExtJSicons\pilcrow.png" />
+    <Content Include="Content\ExtJSicons\pill.png" />
+    <Content Include="Content\ExtJSicons\pill_add.png" />
+    <Content Include="Content\ExtJSicons\pill_delete.png" />
+    <Content Include="Content\ExtJSicons\pill_go.png" />
+    <Content Include="Content\ExtJSicons\plugin.png" />
+    <Content Include="Content\ExtJSicons\plugin_add.png" />
+    <Content Include="Content\ExtJSicons\plugin_delete.png" />
+    <Content Include="Content\ExtJSicons\plugin_disabled.png" />
+    <Content Include="Content\ExtJSicons\plugin_edit.png" />
+    <Content Include="Content\ExtJSicons\plugin_error.png" />
+    <Content Include="Content\ExtJSicons\plugin_go.png" />
+    <Content Include="Content\ExtJSicons\plugin_link.png" />
+    <Content Include="Content\ExtJSicons\printer\printer.png" />
+    <Content Include="Content\ExtJSicons\printer\printer_add.png" />
+    <Content Include="Content\ExtJSicons\printer\printer_delete.png" />
+    <Content Include="Content\ExtJSicons\printer\printer_empty.png" />
+    <Content Include="Content\ExtJSicons\printer\printer_error.png" />
+    <Content Include="Content\ExtJSicons\rainbow.png" />
+    <Content Include="Content\ExtJSicons\resultset_first.png" />
+    <Content Include="Content\ExtJSicons\resultset_last.png" />
+    <Content Include="Content\ExtJSicons\resultset_next.png" />
+    <Content Include="Content\ExtJSicons\resultset_previous.png" />
+    <Content Include="Content\ExtJSicons\rosette.png" />
+    <Content Include="Content\ExtJSicons\rss.png" />
+    <Content Include="Content\ExtJSicons\rss_add.png" />
+    <Content Include="Content\ExtJSicons\rss_delete.png" />
+    <Content Include="Content\ExtJSicons\rss_go.png" />
+    <Content Include="Content\ExtJSicons\rss_valid.png" />
+    <Content Include="Content\ExtJSicons\ruby.png" />
+    <Content Include="Content\ExtJSicons\ruby_add.png" />
+    <Content Include="Content\ExtJSicons\ruby_delete.png" />
+    <Content Include="Content\ExtJSicons\ruby_gear.png" />
+    <Content Include="Content\ExtJSicons\ruby_get.png" />
+    <Content Include="Content\ExtJSicons\ruby_go.png" />
+    <Content Include="Content\ExtJSicons\ruby_key.png" />
+    <Content Include="Content\ExtJSicons\ruby_link.png" />
+    <Content Include="Content\ExtJSicons\ruby_put.png" />
+    <Content Include="Content\ExtJSicons\script\script.png" />
+    <Content Include="Content\ExtJSicons\script\script_add.png" />
+    <Content Include="Content\ExtJSicons\script\script_code.png" />
+    <Content Include="Content\ExtJSicons\script\script_code_red.png" />
+    <Content Include="Content\ExtJSicons\script\script_delete.png" />
+    <Content Include="Content\ExtJSicons\script\script_edit.png" />
+    <Content Include="Content\ExtJSicons\script\script_error.png" />
+    <Content Include="Content\ExtJSicons\script\script_gear.png" />
+    <Content Include="Content\ExtJSicons\script\script_go.png" />
+    <Content Include="Content\ExtJSicons\script\script_key.png" />
+    <Content Include="Content\ExtJSicons\script\script_lightning.png" />
+    <Content Include="Content\ExtJSicons\script\script_link.png" />
+    <Content Include="Content\ExtJSicons\script\script_palette.png" />
+    <Content Include="Content\ExtJSicons\script\script_save.png" />
+    <Content Include="Content\ExtJSicons\server.png" />
+    <Content Include="Content\ExtJSicons\server_add.png" />
+    <Content Include="Content\ExtJSicons\server_chart.png" />
+    <Content Include="Content\ExtJSicons\server_compressed.png" />
+    <Content Include="Content\ExtJSicons\server_connect.png" />
+    <Content Include="Content\ExtJSicons\server_database.png" />
+    <Content Include="Content\ExtJSicons\server_delete.png" />
+    <Content Include="Content\ExtJSicons\server_edit.png" />
+    <Content Include="Content\ExtJSicons\server_error.png" />
+    <Content Include="Content\ExtJSicons\server_go.png" />
+    <Content Include="Content\ExtJSicons\server_key.png" />
+    <Content Include="Content\ExtJSicons\server_lightning.png" />
+    <Content Include="Content\ExtJSicons\server_link.png" />
+    <Content Include="Content\ExtJSicons\server_uncompressed.png" />
+    <Content Include="Content\ExtJSicons\shading.png" />
+    <Content Include="Content\ExtJSicons\shape_align_bottom.png" />
+    <Content Include="Content\ExtJSicons\shape_align_center.png" />
+    <Content Include="Content\ExtJSicons\shape_align_left.png" />
+    <Content Include="Content\ExtJSicons\shape_align_middle.png" />
+    <Content Include="Content\ExtJSicons\shape_align_right.png" />
+    <Content Include="Content\ExtJSicons\shape_align_top.png" />
+    <Content Include="Content\ExtJSicons\shape_flip_horizontal.png" />
+    <Content Include="Content\ExtJSicons\shape_flip_vertical.png" />
+    <Content Include="Content\ExtJSicons\shape_group.png" />
+    <Content Include="Content\ExtJSicons\shape_handles.png" />
+    <Content Include="Content\ExtJSicons\shape_move_back.png" />
+    <Content Include="Content\ExtJSicons\shape_move_backwards.png" />
+    <Content Include="Content\ExtJSicons\shape_move_forwards.png" />
+    <Content Include="Content\ExtJSicons\shape_move_front.png" />
+    <Content Include="Content\ExtJSicons\shape_rotate_anticlockwise.png" />
+    <Content Include="Content\ExtJSicons\shape_rotate_clockwise.png" />
+    <Content Include="Content\ExtJSicons\shape_square.png" />
+    <Content Include="Content\ExtJSicons\shape_square_add.png" />
+    <Content Include="Content\ExtJSicons\shape_square_delete.png" />
+    <Content Include="Content\ExtJSicons\shape_square_edit.png" />
+    <Content Include="Content\ExtJSicons\shape_square_error.png" />
+    <Content Include="Content\ExtJSicons\shape_square_go.png" />
+    <Content Include="Content\ExtJSicons\shape_square_key.png" />
+    <Content Include="Content\ExtJSicons\shape_square_link.png" />
+    <Content Include="Content\ExtJSicons\shape_ungroup.png" />
+    <Content Include="Content\ExtJSicons\shield.png" />
+    <Content Include="Content\ExtJSicons\shield_add.png" />
+    <Content Include="Content\ExtJSicons\shield_delete.png" />
+    <Content Include="Content\ExtJSicons\shield_go.png" />
+    <Content Include="Content\ExtJSicons\sitemap.png" />
+    <Content Include="Content\ExtJSicons\sitemap_color.png" />
+    <Content Include="Content\ExtJSicons\sound.png" />
+    <Content Include="Content\ExtJSicons\sound_add.png" />
+    <Content Include="Content\ExtJSicons\sound_delete.png" />
+    <Content Include="Content\ExtJSicons\sound_low.png" />
+    <Content Include="Content\ExtJSicons\sound_mute.png" />
+    <Content Include="Content\ExtJSicons\sound_none.png" />
+    <Content Include="Content\ExtJSicons\spellcheck.png" />
+    <Content Include="Content\ExtJSicons\sport_8ball.png" />
+    <Content Include="Content\ExtJSicons\sport_basketball.png" />
+    <Content Include="Content\ExtJSicons\sport_football.png" />
+    <Content Include="Content\ExtJSicons\sport_golf.png" />
+    <Content Include="Content\ExtJSicons\sport_raquet.png" />
+    <Content Include="Content\ExtJSicons\sport_shuttlecock.png" />
+    <Content Include="Content\ExtJSicons\sport_soccer.png" />
+    <Content Include="Content\ExtJSicons\sport_tennis.png" />
+    <Content Include="Content\ExtJSicons\star.png" />
+    <Content Include="Content\ExtJSicons\status_away.png" />
+    <Content Include="Content\ExtJSicons\status_busy.png" />
+    <Content Include="Content\ExtJSicons\status_offline.png" />
+    <Content Include="Content\ExtJSicons\status_online.png" />
+    <Content Include="Content\ExtJSicons\stop.png" />
+    <Content Include="Content\ExtJSicons\style.png" />
+    <Content Include="Content\ExtJSicons\style_add.png" />
+    <Content Include="Content\ExtJSicons\style_delete.png" />
+    <Content Include="Content\ExtJSicons\style_edit.png" />
+    <Content Include="Content\ExtJSicons\style_go.png" />
+    <Content Include="Content\ExtJSicons\sum.png" />
+    <Content Include="Content\ExtJSicons\tab.png" />
+    <Content Include="Content\ExtJSicons\table\table.png" />
+    <Content Include="Content\ExtJSicons\table\table_add.png" />
+    <Content Include="Content\ExtJSicons\table\table_delete.png" />
+    <Content Include="Content\ExtJSicons\table\table_edit.png" />
+    <Content Include="Content\ExtJSicons\table\table_error.png" />
+    <Content Include="Content\ExtJSicons\table\table_gear.png" />
+    <Content Include="Content\ExtJSicons\table\table_go.png" />
+    <Content Include="Content\ExtJSicons\table\table_key.png" />
+    <Content Include="Content\ExtJSicons\table\table_lightning.png" />
+    <Content Include="Content\ExtJSicons\table\table_link.png" />
+    <Content Include="Content\ExtJSicons\table\table_multiple.png" />
+    <Content Include="Content\ExtJSicons\table\table_refresh.png" />
+    <Content Include="Content\ExtJSicons\table\table_relationship.png" />
+    <Content Include="Content\ExtJSicons\table\table_row_delete.png" />
+    <Content Include="Content\ExtJSicons\table\table_row_insert.png" />
+    <Content Include="Content\ExtJSicons\table\table_save.png" />
+    <Content Include="Content\ExtJSicons\table\table_sort.png" />
+    <Content Include="Content\ExtJSicons\tab_add.png" />
+    <Content Include="Content\ExtJSicons\tab_delete.png" />
+    <Content Include="Content\ExtJSicons\tab_edit.png" />
+    <Content Include="Content\ExtJSicons\tab_go.png" />
+    <Content Include="Content\ExtJSicons\tag.png" />
+    <Content Include="Content\ExtJSicons\tag\tag_blue.png" />
+    <Content Include="Content\ExtJSicons\tag\tag_blue_add.png" />
+    <Content Include="Content\ExtJSicons\tag\tag_blue_delete.png" />
+    <Content Include="Content\ExtJSicons\tag\tag_blue_edit.png" />
+    <Content Include="Content\ExtJSicons\tag\tag_green.png" />
+    <Content Include="Content\ExtJSicons\tag\tag_orange.png" />
+    <Content Include="Content\ExtJSicons\tag\tag_pink.png" />
+    <Content Include="Content\ExtJSicons\tag\tag_purple.png" />
+    <Content Include="Content\ExtJSicons\tag\tag_red.png" />
+    <Content Include="Content\ExtJSicons\tag\tag_yellow.png" />
+    <Content Include="Content\ExtJSicons\telephone.png" />
+    <Content Include="Content\ExtJSicons\telephone_add.png" />
+    <Content Include="Content\ExtJSicons\telephone_delete.png" />
+    <Content Include="Content\ExtJSicons\telephone_edit.png" />
+    <Content Include="Content\ExtJSicons\telephone_error.png" />
+    <Content Include="Content\ExtJSicons\telephone_go.png" />
+    <Content Include="Content\ExtJSicons\telephone_key.png" />
+    <Content Include="Content\ExtJSicons\telephone_link.png" />
+    <Content Include="Content\ExtJSicons\television\television.png" />
+    <Content Include="Content\ExtJSicons\television\television_add.png" />
+    <Content Include="Content\ExtJSicons\television\television_delete.png" />
+    <Content Include="Content\ExtJSicons\textfield.png" />
+    <Content Include="Content\ExtJSicons\textfield_add.png" />
+    <Content Include="Content\ExtJSicons\textfield_delete.png" />
+    <Content Include="Content\ExtJSicons\textfield_key.png" />
+    <Content Include="Content\ExtJSicons\textfield_rename.png" />
+    <Content Include="Content\ExtJSicons\text_align_center.png" />
+    <Content Include="Content\ExtJSicons\text_align_justify.png" />
+    <Content Include="Content\ExtJSicons\text_align_left.png" />
+    <Content Include="Content\ExtJSicons\text_align_right.png" />
+    <Content Include="Content\ExtJSicons\text_allcaps.png" />
+    <Content Include="Content\ExtJSicons\text_bold.png" />
+    <Content Include="Content\ExtJSicons\text_columns.png" />
+    <Content Include="Content\ExtJSicons\text_dropcaps.png" />
+    <Content Include="Content\ExtJSicons\text_heading_1.png" />
+    <Content Include="Content\ExtJSicons\text_heading_2.png" />
+    <Content Include="Content\ExtJSicons\text_heading_3.png" />
+    <Content Include="Content\ExtJSicons\text_heading_4.png" />
+    <Content Include="Content\ExtJSicons\text_heading_5.png" />
+    <Content Include="Content\ExtJSicons\text_heading_6.png" />
+    <Content Include="Content\ExtJSicons\text_horizontalrule.png" />
+    <Content Include="Content\ExtJSicons\text_indent.png" />
+    <Content Include="Content\ExtJSicons\text_indent_remove.png" />
+    <Content Include="Content\ExtJSicons\text_italic.png" />
+    <Content Include="Content\ExtJSicons\text_kerning.png" />
+    <Content Include="Content\ExtJSicons\text_letterspacing.png" />
+    <Content Include="Content\ExtJSicons\text_letter_omega.png" />
+    <Content Include="Content\ExtJSicons\text_linespacing.png" />
+    <Content Include="Content\ExtJSicons\text_list_bullets.png" />
+    <Content Include="Content\ExtJSicons\text_list_numbers.png" />
+    <Content Include="Content\ExtJSicons\text_lowercase.png" />
+    <Content Include="Content\ExtJSicons\text_padding_bottom.png" />
+    <Content Include="Content\ExtJSicons\text_padding_left.png" />
+    <Content Include="Content\ExtJSicons\text_padding_right.png" />
+    <Content Include="Content\ExtJSicons\text_padding_top.png" />
+    <Content Include="Content\ExtJSicons\text_replace.png" />
+    <Content Include="Content\ExtJSicons\text_signature.png" />
+    <Content Include="Content\ExtJSicons\text_smallcaps.png" />
+    <Content Include="Content\ExtJSicons\text_strikethrough.png" />
+    <Content Include="Content\ExtJSicons\text_subscript.png" />
+    <Content Include="Content\ExtJSicons\text_superscript.png" />
+    <Content Include="Content\ExtJSicons\text_underline.png" />
+    <Content Include="Content\ExtJSicons\text_uppercase.png" />
+    <Content Include="Content\ExtJSicons\thumb_down.png" />
+    <Content Include="Content\ExtJSicons\thumb_up.png" />
+    <Content Include="Content\ExtJSicons\tick.png" />
+    <Content Include="Content\ExtJSicons\time.png" />
+    <Content Include="Content\ExtJSicons\timeline_marker.png" />
+    <Content Include="Content\ExtJSicons\time_add.png" />
+    <Content Include="Content\ExtJSicons\time_delete.png" />
+    <Content Include="Content\ExtJSicons\time_go.png" />
+    <Content Include="Content\ExtJSicons\transmit.png" />
+    <Content Include="Content\ExtJSicons\transmit_add.png" />
+    <Content Include="Content\ExtJSicons\transmit_blue.png" />
+    <Content Include="Content\ExtJSicons\transmit_delete.png" />
+    <Content Include="Content\ExtJSicons\transmit_edit.png" />
+    <Content Include="Content\ExtJSicons\transmit_error.png" />
+    <Content Include="Content\ExtJSicons\transmit_go.png" />
+    <Content Include="Content\ExtJSicons\tux.png" />
+    <Content Include="Content\ExtJSicons\user\user.png" />
+    <Content Include="Content\ExtJSicons\user\user_add.png" />
+    <Content Include="Content\ExtJSicons\user\user_comment.png" />
+    <Content Include="Content\ExtJSicons\user\user_delete.png" />
+    <Content Include="Content\ExtJSicons\user\user_edit.png" />
+    <Content Include="Content\ExtJSicons\user\user_female.png" />
+    <Content Include="Content\ExtJSicons\user\user_go.png" />
+    <Content Include="Content\ExtJSicons\user\user_gray.png" />
+    <Content Include="Content\ExtJSicons\user\user_green.png" />
+    <Content Include="Content\ExtJSicons\user\user_orange.png" />
+    <Content Include="Content\ExtJSicons\user\user_red.png" />
+    <Content Include="Content\ExtJSicons\user\user_suit.png" />
+    <Content Include="Content\ExtJSicons\vcard\vcard.png" />
+    <Content Include="Content\ExtJSicons\vcard\vcard_add.png" />
+    <Content Include="Content\ExtJSicons\vcard\vcard_delete.png" />
+    <Content Include="Content\ExtJSicons\vcard\vcard_edit.png" />
+    <Content Include="Content\ExtJSicons\vector.png" />
+    <Content Include="Content\ExtJSicons\vector_add.png" />
+    <Content Include="Content\ExtJSicons\vector_delete.png" />
+    <Content Include="Content\ExtJSicons\wand.png" />
+    <Content Include="Content\ExtJSicons\weather_clouds.png" />
+    <Content Include="Content\ExtJSicons\weather_cloudy.png" />
+    <Content Include="Content\ExtJSicons\weather_lightning.png" />
+    <Content Include="Content\ExtJSicons\weather_rain.png" />
+    <Content Include="Content\ExtJSicons\weather_snow.png" />
+    <Content Include="Content\ExtJSicons\weather_sun.png" />
+    <Content Include="Content\ExtJSicons\webcam.png" />
+    <Content Include="Content\ExtJSicons\webcam_add.png" />
+    <Content Include="Content\ExtJSicons\webcam_delete.png" />
+    <Content Include="Content\ExtJSicons\webcam_error.png" />
+    <Content Include="Content\ExtJSicons\world\world.png" />
+    <Content Include="Content\ExtJSicons\world\world_add.png" />
+    <Content Include="Content\ExtJSicons\world\world_delete.png" />
+    <Content Include="Content\ExtJSicons\world\world_edit.png" />
+    <Content Include="Content\ExtJSicons\world\world_go.png" />
+    <Content Include="Content\ExtJSicons\world\world_link.png" />
+    <Content Include="Content\ExtJSicons\wrench.png" />
+    <Content Include="Content\ExtJSicons\wrench_orange.png" />
+    <Content Include="Content\ExtJSicons\xhtml.png" />
+    <Content Include="Content\ExtJSicons\xhtml_add.png" />
+    <Content Include="Content\ExtJSicons\xhtml_delete.png" />
+    <Content Include="Content\ExtJSicons\xhtml_go.png" />
+    <Content Include="Content\ExtJSicons\xhtml_valid.png" />
+    <Content Include="Content\ExtJSicons\zoom\zoom.png" />
+    <Content Include="Content\ExtJSicons\zoom\zoom_in.png" />
+    <Content Include="Content\ExtJSicons\zoom\zoom_out.png" />
+    <Content Include="Content\icon.css" />
+    <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_55_fbf9ee_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_75_dadada_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_75_e6e6e6_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_glass_95_fef1ec_1x400.png" />
+    <Content Include="Content\themes\base\images\ui-bg_highlight-soft_75_cccccc_1x100.png" />
+    <Content Include="Content\themes\base\images\ui-icons_222222_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_454545_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_888888_256x240.png" />
+    <Content Include="Content\themes\base\images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="Content\themes\base\jquery-ui.css" />
+    <Content Include="Content\themes\base\jquery.ui.accordion.css" />
+    <Content Include="Content\themes\base\jquery.ui.all.css" />
+    <Content Include="Content\themes\base\jquery.ui.autocomplete.css" />
+    <Content Include="Content\themes\base\jquery.ui.base.css" />
+    <Content Include="Content\themes\base\jquery.ui.button.css" />
+    <Content Include="Content\themes\base\jquery.ui.core.css" />
+    <Content Include="Content\themes\base\jquery.ui.datepicker.css" />
+    <Content Include="Content\themes\base\jquery.ui.dialog.css" />
+    <Content Include="Content\themes\base\jquery.ui.progressbar.css" />
+    <Content Include="Content\themes\base\jquery.ui.resizable.css" />
+    <Content Include="Content\themes\base\jquery.ui.selectable.css" />
+    <Content Include="Content\themes\base\jquery.ui.slider.css" />
+    <Content Include="Content\themes\base\jquery.ui.tabs.css" />
+    <Content Include="Content\themes\base\jquery.ui.theme.css" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_flat_0_aaaaaa_40x100.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_flat_75_ffffff_40x100.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_glass_55_fbf9ee_1x400.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_glass_65_ffffff_1x400.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_glass_75_dadada_1x400.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_glass_75_e6e6e6_1x400.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_glass_95_fef1ec_1x400.png" />
+    <Content Include="Content\themes\base\minified\images\ui-bg_highlight-soft_75_cccccc_1x100.png" />
+    <Content Include="Content\themes\base\minified\images\ui-icons_222222_256x240.png" />
+    <Content Include="Content\themes\base\minified\images\ui-icons_2e83ff_256x240.png" />
+    <Content Include="Content\themes\base\minified\images\ui-icons_454545_256x240.png" />
+    <Content Include="Content\themes\base\minified\images\ui-icons_888888_256x240.png" />
+    <Content Include="Content\themes\base\minified\images\ui-icons_cd0a0a_256x240.png" />
+    <Content Include="Content\themes\base\minified\jquery-ui.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.accordion.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.autocomplete.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.button.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.core.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.datepicker.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.dialog.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.progressbar.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.resizable.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.selectable.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.slider.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.tabs.min.css" />
+    <Content Include="Content\themes\base\minified\jquery.ui.theme.min.css" />
+    <Content Include="Global.asax" />
+    <Content Include="Content\Site.css" />
+    <Content Include="Content\ExtJSicons\application\Thumbs.db" />
+    <Content Include="Content\ExtJSicons\arrow\Thumbs.db" />
+    <Content Include="Content\ExtJSicons\award-start\Thumbs.db" />
+    <Content Include="Content\ExtJSicons\bug\Thumbs.db" />
+    <Content Include="Content\ExtJSicons\calendar\Thumbs.db" />
+    <Content Include="Content\ExtJSicons\camera\Thumbs.db" />
+    <Content Include="Content\ExtJSicons\car and cart  and basket\Thumbs.db" />
+    <Content Include="Content\ExtJSicons\cd\Thumbs.db" />
+    <Content Include="Content\ExtJSicons\chart\Thumbs.db" />
+    <Content Include="Content\ExtJSicons\control\Thumbs.db" />
+    <Content Include="Content\ExtJSicons\css\Thumbs.db" />
+    <Content Include="Content\ExtJSicons\Date\Thumbs.db" />
+    <Content Include="Content\ExtJSicons\driver\Thumbs.db" />
+    <Content Include="Content\ExtJSicons\email\Thumbs.db" />
+    <Content Include="Content\ExtJSicons\feed\Thumbs.db" />
+    <Content Include="Content\ExtJSicons\film\Thumbs.db" />
+    <Content Include="Content\ExtJSicons\flag\Thumbs.db" />
+    <Content Include="Content\ExtJSicons\folder\Thumbs.db" />
+    <Content Include="Content\ExtJSicons\group\Thumbs.db" />
+    <Content Include="Content\ExtJSicons\ipod\Thumbs.db" />
+    <Content Include="Content\ExtJSicons\keyboard\Thumbs.db" />
+    <Content Include="Content\ExtJSicons\layout\Thumbs.db" />
+    <Content Include="Content\ExtJSicons\lock\Thumbs.db" />
+    <Content Include="Content\ExtJSicons\map\Thumbs.db" />
+    <Content Include="Content\ExtJSicons\monitor\Thumbs.db" />
+    <Content Include="Content\ExtJSicons\newspaper\Thumbs.db" />
+    <Content Include="Content\ExtJSicons\notes\Thumbs.db" />
+    <Content Include="Content\ExtJSicons\page\Thumbs.db" />
+    <Content Include="Content\ExtJSicons\photo and pic\Thumbs.db" />
+    <Content Include="Content\ExtJSicons\printer\Thumbs.db" />
+    <Content Include="Content\ExtJSicons\script\Thumbs.db" />
+    <Content Include="Content\ExtJSicons\table\Thumbs.db" />
+    <Content Include="Content\ExtJSicons\tag\Thumbs.db" />
+    <Content Include="Content\ExtJSicons\television\Thumbs.db" />
+    <Content Include="Content\ExtJSicons\Thumbs.db" />
+    <Content Include="Content\ExtJSicons\user\Thumbs.db" />
+    <Content Include="Content\ExtJSicons\vcard\Thumbs.db" />
+    <Content Include="Content\ExtJSicons\world\Thumbs.db" />
+    <Content Include="Content\ExtJSicons\zoom\Thumbs.db" />
+    <None Include="Scripts\jquery-1.8.2.intellisense.js" />
+    <Content Include="Scripts\jquery-1.8.2.js" />
+    <Content Include="Scripts\jquery-1.8.2.min.js" />
+    <None Include="Scripts\jquery.validate-vsdoc.js" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\changelog.txt" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\demo.css" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\easyloader.js" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\jquery.easyui.min.js" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\jquery.min.js" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\license_freeware.txt" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\locale\easyui-lang-af.js" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\locale\easyui-lang-am.js" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\locale\easyui-lang-ar.js" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\locale\easyui-lang-bg.js" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\locale\easyui-lang-ca.js" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\locale\easyui-lang-cs.js" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\locale\easyui-lang-cz.js" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\locale\easyui-lang-da.js" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\locale\easyui-lang-de.js" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\locale\easyui-lang-el.js" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\locale\easyui-lang-en.js" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\locale\easyui-lang-es.js" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\locale\easyui-lang-fr.js" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\locale\easyui-lang-it.js" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\locale\easyui-lang-jp.js" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\locale\easyui-lang-nl.js" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\locale\easyui-lang-pl.js" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\locale\easyui-lang-pt_BR.js" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\locale\easyui-lang-ru.js" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\locale\easyui-lang-sv_SE.js" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\locale\easyui-lang-tr.js" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\locale\easyui-lang-zh_CN.js" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\locale\easyui-lang-zh_TW.js" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\plugins\jquery.accordion.js" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\plugins\jquery.calendar.js" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\plugins\jquery.combo.js" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\plugins\jquery.combobox.js" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\plugins\jquery.combogrid.js" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\plugins\jquery.combotree.js" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\plugins\jquery.datagrid.js" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\plugins\jquery.datalist.js" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\plugins\jquery.datebox.js" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\plugins\jquery.datetimebox.js" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\plugins\jquery.datetimespinner.js" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\plugins\jquery.dialog.js" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\plugins\jquery.draggable.js" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\plugins\jquery.droppable.js" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\plugins\jquery.filebox.js" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\plugins\jquery.form.js" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\plugins\jquery.layout.js" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\plugins\jquery.linkbutton.js" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\plugins\jquery.menu.js" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\plugins\jquery.menubutton.js" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\plugins\jquery.messager.js" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\plugins\jquery.mobile.js" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\plugins\jquery.numberbox.js" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\plugins\jquery.numberspinner.js" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\plugins\jquery.pagination.js" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\plugins\jquery.panel.js" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\plugins\jquery.parser.js" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\plugins\jquery.progressbar.js" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\plugins\jquery.propertygrid.js" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\plugins\jquery.resizable.js" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\plugins\jquery.searchbox.js" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\plugins\jquery.slider.js" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\plugins\jquery.spinner.js" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\plugins\jquery.splitbutton.js" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\plugins\jquery.switchbutton.js" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\plugins\jquery.tabs.js" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\plugins\jquery.textbox.js" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\plugins\jquery.timespinner.js" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\plugins\jquery.tooltip.js" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\plugins\jquery.tree.js" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\plugins\jquery.treegrid.js" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\plugins\jquery.validatebox.js" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\plugins\jquery.window.js" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\readme.txt" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\src\easyloader.js" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\src\jquery.accordion.js" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\src\jquery.calendar.js" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\src\jquery.combobox.js" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\src\jquery.datebox.js" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\src\jquery.draggable.js" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\src\jquery.droppable.js" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\src\jquery.form.js" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\src\jquery.linkbutton.js" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\src\jquery.menu.js" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\src\jquery.parser.js" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\src\jquery.progressbar.js" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\src\jquery.propertygrid.js" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\src\jquery.resizable.js" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\src\jquery.slider.js" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\src\jquery.tabs.js" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\src\jquery.window.js" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\themes\black\accordion.css" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\themes\black\calendar.css" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\themes\black\combo.css" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\themes\black\combobox.css" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\themes\black\datagrid.css" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\themes\black\datalist.css" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\themes\black\datebox.css" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\themes\black\dialog.css" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\themes\black\easyui.css" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\themes\black\filebox.css" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\themes\black\images\accordion_arrows.png" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\themes\black\images\blank.gif" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\themes\black\images\calendar_arrows.png" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\themes\black\images\combo_arrow.png" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\themes\black\images\datagrid_icons.png" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\themes\black\images\datebox_arrow.png" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\themes\black\images\layout_arrows.png" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\themes\black\images\linkbutton_bg.png" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\themes\black\images\loading.gif" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\themes\black\images\menu_arrows.png" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\themes\black\images\messager_icons.png" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\themes\black\images\pagination_icons.png" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\themes\black\images\panel_tools.png" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\themes\black\images\searchbox_button.png" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\themes\black\images\slider_handle.png" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\themes\black\images\spinner_arrows.png" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\themes\black\images\tabs_icons.png" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\themes\black\images\tree_icons.png" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\themes\black\images\validatebox_warning.png" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\themes\black\layout.css" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\themes\black\linkbutton.css" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\themes\black\menu.css" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\themes\black\menubutton.css" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\themes\black\messager.css" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\themes\black\numberbox.css" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\themes\black\pagination.css" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\themes\black\panel.css" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\themes\black\progressbar.css" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\themes\black\propertygrid.css" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\themes\black\searchbox.css" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\themes\black\slider.css" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\themes\black\spinner.css" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\themes\black\splitbutton.css" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\themes\black\switchbutton.css" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\themes\black\tabs.css" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\themes\black\textbox.css" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\themes\black\tooltip.css" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\themes\black\tree.css" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\themes\black\validatebox.css" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\themes\black\window.css" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\themes\bootstrap\accordion.css" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\themes\bootstrap\calendar.css" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\themes\bootstrap\combo.css" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\themes\bootstrap\combobox.css" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\themes\bootstrap\datagrid.css" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\themes\bootstrap\datalist.css" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\themes\bootstrap\datebox.css" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\themes\bootstrap\dialog.css" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\themes\bootstrap\easyui.css" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\themes\bootstrap\filebox.css" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\themes\bootstrap\images\accordion_arrows.png" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\themes\bootstrap\images\blank.gif" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\themes\bootstrap\images\calendar_arrows.png" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\themes\bootstrap\images\combo_arrow.png" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\themes\bootstrap\images\datagrid_icons.png" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\themes\bootstrap\images\datebox_arrow.png" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\themes\bootstrap\images\layout_arrows.png" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\themes\bootstrap\images\linkbutton_bg.png" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\themes\bootstrap\images\loading.gif" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\themes\bootstrap\images\menu_arrows.png" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\themes\bootstrap\images\messager_icons.png" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\themes\bootstrap\images\pagination_icons.png" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\themes\bootstrap\images\panel_tools.png" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\themes\bootstrap\images\searchbox_button.png" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\themes\bootstrap\images\slider_handle.png" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\themes\bootstrap\images\spinner_arrows.png" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\themes\bootstrap\images\tabs_icons.png" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\themes\bootstrap\images\tree_icons.png" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\themes\bootstrap\images\validatebox_warning.png" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\themes\bootstrap\layout.css" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\themes\bootstrap\linkbutton.css" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\themes\bootstrap\menu.css" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\themes\bootstrap\menubutton.css" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\themes\bootstrap\messager.css" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\themes\bootstrap\numberbox.css" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\themes\bootstrap\pagination.css" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\themes\bootstrap\panel.css" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\themes\bootstrap\progressbar.css" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\themes\bootstrap\propertygrid.css" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\themes\bootstrap\searchbox.css" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\themes\bootstrap\slider.css" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\themes\bootstrap\spinner.css" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\themes\bootstrap\splitbutton.css" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\themes\bootstrap\switchbutton.css" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\themes\bootstrap\tabs.css" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\themes\bootstrap\textbox.css" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\themes\bootstrap\tooltip.css" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\themes\bootstrap\tree.css" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\themes\bootstrap\validatebox.css" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\themes\bootstrap\window.css" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\themes\color.css" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\themes\default\accordion.css" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\themes\default\calendar.css" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\themes\default\combo.css" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\themes\default\combobox.css" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\themes\default\datagrid.css" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\themes\default\datalist.css" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\themes\default\datebox.css" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\themes\default\dialog.css" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\themes\default\easyui.css" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\themes\default\filebox.css" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\themes\default\images\accordion_arrows.png" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\themes\default\images\blank.gif" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\themes\default\images\calendar_arrows.png" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\themes\default\images\combo_arrow.png" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\themes\default\images\datagrid_icons.png" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\themes\default\images\datebox_arrow.png" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\themes\default\images\layout_arrows.png" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\themes\default\images\linkbutton_bg.png" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\themes\default\images\loading.gif" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\themes\default\images\menu_arrows.png" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\themes\default\images\messager_icons.png" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\themes\default\images\pagination_icons.png" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\themes\default\images\panel_tools.png" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\themes\default\images\searchbox_button.png" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\themes\default\images\slider_handle.png" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\themes\default\images\spinner_arrows.png" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\themes\default\images\tabs_icons.png" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\themes\default\images\tree_icons.png" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\themes\default\images\validatebox_warning.png" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\themes\default\layout.css" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\themes\default\linkbutton.css" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\themes\default\menu.css" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\themes\default\menubutton.css" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\themes\default\messager.css" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\themes\default\numberbox.css" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\themes\default\pagination.css" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\themes\default\panel.css" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\themes\default\progressbar.css" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\themes\default\propertygrid.css" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\themes\default\searchbox.css" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\themes\default\slider.css" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\themes\default\spinner.css" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\themes\default\splitbutton.css" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\themes\default\switchbutton.css" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\themes\default\tabs.css" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\themes\default\textbox.css" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\themes\default\tooltip.css" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\themes\default\tree.css" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\themes\default\validatebox.css" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\themes\default\window.css" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\themes\gray\accordion.css" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\themes\gray\calendar.css" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\themes\gray\combo.css" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\themes\gray\combobox.css" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\themes\gray\datagrid.css" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\themes\gray\datalist.css" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\themes\gray\datebox.css" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\themes\gray\dialog.css" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\themes\gray\easyui.css" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\themes\gray\filebox.css" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\themes\gray\images\accordion_arrows.png" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\themes\gray\images\blank.gif" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\themes\gray\images\calendar_arrows.png" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\themes\gray\images\combo_arrow.png" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\themes\gray\images\datagrid_icons.png" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\themes\gray\images\datebox_arrow.png" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\themes\gray\images\layout_arrows.png" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\themes\gray\images\linkbutton_bg.png" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\themes\gray\images\loading.gif" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\themes\gray\images\menu_arrows.png" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\themes\gray\images\messager_icons.png" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\themes\gray\images\pagination_icons.png" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\themes\gray\images\panel_tools.png" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\themes\gray\images\searchbox_button.png" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\themes\gray\images\slider_handle.png" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\themes\gray\images\spinner_arrows.png" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\themes\gray\images\tabs_icons.png" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\themes\gray\images\tree_icons.png" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\themes\gray\images\validatebox_warning.png" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\themes\gray\layout.css" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\themes\gray\linkbutton.css" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\themes\gray\menu.css" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\themes\gray\menubutton.css" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\themes\gray\messager.css" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\themes\gray\numberbox.css" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\themes\gray\pagination.css" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\themes\gray\panel.css" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\themes\gray\progressbar.css" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\themes\gray\propertygrid.css" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\themes\gray\searchbox.css" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\themes\gray\slider.css" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\themes\gray\spinner.css" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\themes\gray\splitbutton.css" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\themes\gray\switchbutton.css" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\themes\gray\tabs.css" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\themes\gray\textbox.css" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\themes\gray\tooltip.css" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\themes\gray\tree.css" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\themes\gray\validatebox.css" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\themes\gray\window.css" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\themes\icon.css" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\themes\icons\back.png" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\themes\icons\blank.gif" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\themes\icons\cancel.png" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\themes\icons\clear.png" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\themes\icons\cut.png" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\themes\icons\edit_add.png" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\themes\icons\edit_remove.png" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\themes\icons\filesave.png" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\themes\icons\filter.png" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\themes\icons\help.png" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\themes\icons\large_chart.png" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\themes\icons\large_clipart.png" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\themes\icons\large_picture.png" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\themes\icons\large_shapes.png" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\themes\icons\large_smartart.png" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\themes\icons\lock.png" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\themes\icons\man.png" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\themes\icons\mini_add.png" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\themes\icons\mini_edit.png" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\themes\icons\mini_refresh.png" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\themes\icons\more.png" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\themes\icons\no.png" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\themes\icons\ok.png" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\themes\icons\pencil.png" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\themes\icons\print.png" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\themes\icons\redo.png" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\themes\icons\reload.png" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\themes\icons\search.png" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\themes\icons\sum.png" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\themes\icons\tip.png" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\themes\icons\undo.png" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\themes\metro\accordion.css" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\themes\metro\calendar.css" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\themes\metro\combo.css" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\themes\metro\combobox.css" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\themes\metro\datagrid.css" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\themes\metro\datalist.css" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\themes\metro\datebox.css" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\themes\metro\dialog.css" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\themes\metro\easyui.css" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\themes\metro\filebox.css" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\themes\metro\images\accordion_arrows.png" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\themes\metro\images\blank.gif" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\themes\metro\images\calendar_arrows.png" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\themes\metro\images\combo_arrow.png" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\themes\metro\images\datagrid_icons.png" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\themes\metro\images\datebox_arrow.png" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\themes\metro\images\layout_arrows.png" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\themes\metro\images\linkbutton_bg.png" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\themes\metro\images\loading.gif" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\themes\metro\images\menu_arrows.png" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\themes\metro\images\messager_icons.png" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\themes\metro\images\pagination_icons.png" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\themes\metro\images\panel_tools.png" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\themes\metro\images\searchbox_button.png" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\themes\metro\images\slider_handle.png" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\themes\metro\images\spinner_arrows.png" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\themes\metro\images\tabs_icons.png" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\themes\metro\images\tree_icons.png" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\themes\metro\images\validatebox_warning.png" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\themes\metro\layout.css" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\themes\metro\linkbutton.css" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\themes\metro\menu.css" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\themes\metro\menubutton.css" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\themes\metro\messager.css" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\themes\metro\numberbox.css" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\themes\metro\pagination.css" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\themes\metro\panel.css" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\themes\metro\progressbar.css" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\themes\metro\propertygrid.css" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\themes\metro\searchbox.css" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\themes\metro\slider.css" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\themes\metro\spinner.css" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\themes\metro\splitbutton.css" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\themes\metro\switchbutton.css" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\themes\metro\tabs.css" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\themes\metro\textbox.css" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\themes\metro\tooltip.css" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\themes\metro\tree.css" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\themes\metro\validatebox.css" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\themes\metro\window.css" />
+    <Content Include="Scripts\jquery-easyui-1.4.4\themes\mobile.css" />
+    <Content Include="Scripts\jquery-ui-1.8.24.js" />
+    <Content Include="Scripts\jquery-ui-1.8.24.min.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.js" />
+    <Content Include="Scripts\jquery.unobtrusive-ajax.min.js" />
+    <Content Include="Scripts\jquery.validate.js" />
+    <Content Include="Scripts\jquery.validate.min.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
+    <Content Include="Scripts\knockout-2.2.0.debug.js" />
+    <Content Include="Scripts\knockout-2.2.0.js" />
+    <Content Include="Scripts\modernizr-2.6.2.js" />
+    <Content Include="Scripts\Project\validateboxrules.js" />
+    <Content Include="Scripts\_references.js" />
+    <Content Include="Web.config" />
+    <Content Include="Web.Debug.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Web.Release.config">
+      <DependentUpon>Web.config</DependentUpon>
+    </Content>
+    <Content Include="Views\Web.config" />
+    <Content Include="Views\_ViewStart.cshtml" />
+    <Content Include="Views\Shared\Error.cshtml" />
+    <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Home\Index.cshtml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="App_Data\" />
+    <Folder Include="Cache\" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Infrastructure\Infrastructure.csproj">
+      <Project>{aebea62b-0b83-4442-ab98-d46ba420539a}</Project>
+      <Name>Infrastructure</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <PropertyGroup>
+    <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
+    <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
+  </PropertyGroup>
+  <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
+  <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">
+    <AspNetCompiler VirtualPath="temp" PhysicalPath="$(WebProjectOutputDir)" />
+  </Target>
+  <ProjectExtensions>
+    <VisualStudio>
+      <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
+        <WebProjectProperties>
+          <UseIIS>True</UseIIS>
+          <AutoAssignPort>True</AutoAssignPort>
+          <DevelopmentServerPort>0</DevelopmentServerPort>
+          <DevelopmentServerVPath>/</DevelopmentServerVPath>
+          <IISUrl>http://localhost:5467/</IISUrl>
+          <NTLMAuthentication>False</NTLMAuthentication>
+          <UseCustomServer>False</UseCustomServer>
+          <CustomServerUrl>
+          </CustomServerUrl>
+          <SaveServerSettingsInUserFile>False</SaveServerSettingsInUserFile>
+        </WebProjectProperties>
+      </FlavorProperties>
+    </VisualStudio>
+  </ProjectExtensions>
+  <Import Project="..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets" Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" />
+  <Target Name="EnsureBclBuildImported" BeforeTargets="BeforeBuild" Condition="'$(BclBuildImported)' == ''">
+    <Error Condition="!Exists('..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" Text="This project references NuGet package(s) that are missing on this computer. Enable NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=317567." HelpKeyword="BCLBUILD2001" />
+    <Error Condition="Exists('..\packages\Microsoft.Bcl.Build.1.0.14\tools\Microsoft.Bcl.Build.targets')" Text="The build restored NuGet packages. Build the project again to include these packages in the build. For more information, see http://go.microsoft.com/fwlink/?LinkID=317568." HelpKeyword="BCLBUILD2002" />
+  </Target>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target> -->
+</Project>
