@@ -79,7 +79,7 @@ namespace Repository
 
         public IEnumerable<TEntity> GetFilter(Expression<Func<TEntity, bool>> predicate)
         {
-            return _unitOfWork.DbContext.Set<TEntity>().Where(predicate).AsEnumerable();
+            return _unitOfWork.DbContext.Set<TEntity>().Where(predicate).ToList();
         }
 
         public IEnumerable<TEntity> GetFilter(Expression<Func<TEntity, bool>> predicate, params String[] includes)
@@ -98,6 +98,13 @@ namespace Repository
         public IEnumerable<TEntity> GetPaged<Key>(Expression<Func<TEntity, bool>> predicate, Expression<Func<TEntity, Key>> keySelector, int pageIndex, int pageCount, bool IsAscending = true, params String[] Includes)
         {
             throw new NotImplementedException();
+        }
+
+        //是否可以用select来处理导航属性的问题 未验证
+        public IEnumerable<TEntity> Select<TResult>(Expression<Func<TEntity, bool>> predicate,Expression<Func<TEntity,int,TResult>> selector)
+        {
+            //var one = _unitOfWork.DbContext.Set<TEntity>().Where(predicate).Include(
+            return null;
         }
 
         ///// <summary>

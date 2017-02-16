@@ -134,7 +134,7 @@ $.extend($.fn.validatebox.defaults.rules, {
         },
         message: '请输入有效的msn账号(例：abc@hotnail(msn/live).com)'
     },
-    same: {
+    equalTo: {
         validator: function (value, param) {
             if ($("#" + param[0]).val() != "" && value != "") {
                 return $("#" + param[0]).val() == value;
@@ -142,7 +142,7 @@ $.extend($.fn.validatebox.defaults.rules, {
                 return true;
             }
         },
-        message: '两次输入的密码不一致！'
+        message: '两次输入不一致！'
     },
     remote: {
         validator: function (value, param) {

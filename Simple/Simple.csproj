@@ -172,27 +172,45 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Common\AutoMapperBootStrapper.cs" />
     <Compile Include="Common\Common.cs" />
+    <Compile Include="Common\EnumHelper.cs" />
     <Compile Include="Common\MapperHelper.cs" />
     <Compile Include="Common\UnityBootStrapper.cs" />
     <Compile Include="Common\UnityControllerFactory.cs" />
     <Compile Include="Common\UnityDependency.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\IRepository\IPostRepository.cs" />
+    <Compile Include="Models\IRepository\IReplyRepository.cs" />
+    <Compile Include="Models\IRepository\ISectionRepository.cs" />
     <Compile Include="Models\IRepository\IUserRepository.cs" />
+    <Compile Include="Models\Post.cs" />
+    <Compile Include="Models\Reply.cs" />
+    <Compile Include="Models\Section.CS" />
     <Compile Include="Models\User.cs" />
+    <Compile Include="Models\WebConfig.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repository\Configuration\PostConfiguration.cs" />
+    <Compile Include="Repository\Configuration\ReplyConfiguration.cs" />
+    <Compile Include="Repository\Configuration\SectionConfiguration.cs" />
     <Compile Include="Repository\Configuration\UserConfiguration.cs" />
+    <Compile Include="Repository\Configuration\WebConfigConfiguration.cs" />
     <Compile Include="Repository\DataContext.cs" />
     <Compile Include="Repository\DataContextFactory.cs" />
     <Compile Include="Repository\EFUnitOfWork.cs" />
     <Compile Include="Repository\IEFUnitOfWork.cs" />
+    <Compile Include="Repository\PostRepository.cs" />
+    <Compile Include="Repository\ReplyRepository.cs" />
     <Compile Include="Repository\Repository.cs" />
+    <Compile Include="Repository\SectionRepository.cs" />
     <Compile Include="Repository\UserRepository.cs" />
     <Compile Include="Services\Imp\UserService.cs" />
     <Compile Include="Services\Interface\IUserService.cs" />
+    <Compile Include="ViewModel\ComboboxDTO.cs" />
+    <Compile Include="ViewModel\MessageDTO.cs" />
     <Compile Include="ViewModel\UserDTO.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -1696,7 +1714,10 @@
     <Content Include="Views\_ViewStart.cshtml" />
     <Content Include="Views\Shared\Error.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
+    <Content Include="Views\Shared\Main.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
+    <Content Include="Views\User\Login.cshtml" />
+    <Content Include="Views\User\Register.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

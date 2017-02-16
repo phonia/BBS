@@ -25,9 +25,9 @@ namespace Simple
             BundleConfig.RegisterBundles(BundleTable.Bundles);
 
             //Ioc的两种方式 DefaultControllerFactory||(DenpendencyResolver&&DenpendencyScope)
-            //ControllerBuilder.Current.SetControllerFactory(new UnityControllerFactory());
+            ControllerBuilder.Current.SetControllerFactory(new UnityControllerFactory());
 
-            GlobalConfiguration.Configuration.DependencyResolver = new UnityDependency();
+            //GlobalConfiguration.Configuration.DependencyResolver = new UnityDependency();
             AutoMapperBootStrapper.Start();
         }
     }

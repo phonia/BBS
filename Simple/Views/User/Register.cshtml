@@ -1,0 +1,126 @@
+﻿<div class="easyui-panel">
+    <form id="RegisterForm" method="post">
+        <div class="fitem">
+            <label>账户：</label>
+            <input class="easyui-validatebox" required="required" name="account" id="account" data-options="validType:'username'" />
+        </div>
+        <div class="fitem">
+            <label>密码：</label>
+            <input class="easyui-validatebox" required="required" id="password" name="password" type="password" data-options="required:true,validType:'password'" />
+        </div>
+        <div class="fitem">
+            <label>密码确认：</label>
+            <input class="easyui-validatebox" required="required" type="password"validType="equalTo['password']" invalidMessage="两次输入密码不匹配" />
+        </div>
+        <div class="fitem">
+            <label>性别：</label>
+            <input id="Sex" name="sex">
+        </div>
+        <div class="fitem">
+            <label>年龄：</label>
+            <input class="easyui-validatebox" required="required" name="age" type="number" data-options="validType:'age'" />
+        </div>
+        <div class="fitem">
+            <label>电话：</label>
+            <input class="easyui-validatebox" required="required" type="tel" name="tel"  data-options="validType:'mobile'"/>
+        </div>
+        <div class="fitem">
+            <label>邮箱：</label>
+            <input class="easyui-validatebox" required="required" type="email" name="email" data-options="validType:'email'" />
+        </div>
+        <div class="fitem" style="float:none;text-align:center;padding:5px;margin-top:20px">
+            <a href="javascript:" class="easyui-linkbutton" onclick="RegisterButton()">注册</a>
+            <a href="javascript:" class="easyui-linkbutton" onclick="BackButton()">返回</a>
+        </div>
+    </form>
+</div>
+
+<style type="text/css">
+    .easyui-panel {
+        border:none
+    }
+    label {
+        display:inline-block;
+        width:80px;
+        text-align:right
+    }
+    .fitem {
+        margin:10px 5px 10px 5px
+    }
+</style>
+
+<script type="text/javascript">
+    $(function () {
+        $('#Sex').combobox({
+            url: '/User/LoadSexCombobox',
+            valueField: 'Id',
+            textField: 'Text',
+            editable: false,
+            panelHeight: 'auto'
+        });
+    });
+
+    function RegisterButton() {
+        var form = $('#RegisterForm');
+        if (!form.form('validate')) return false;
+        form.form('submit', {
+            url: '/User/Register',
+            success: function (data) {
+                //验证获取的数据是否是空值
+                if(!data)$.messager.alert("异常", "出错了", "info", function () { });
+                msg = eval('(' + data + ')');
+                if (msg.Success)
+                {
+                    //获取注册的用户信息
+                    var account = $('#account').val();
+
+                    //关闭注册窗口
+                    var loginDialog = $("#LoginDialog");
+                    loginDialog.empty();
+
+                    //不采用更新页面而是重新加载页面方式登录
+                    //UpdateMian(account);
+                    location.href = "/Home/Index";
+                }
+            }
+        });
+    }
+
+    function UpdateMian(account)
+    {
+        //var loginLinkDivDoc = document.getElementById("LoginLinkDiv");
+        //loginLinkDivDoc.innerHTML = "";
+        //loginLinkDivDoc.style.lineHeight = 0;
+        //var loginLinkDiv = parent.$('#LoginLinkDiv');
+        //$.ajax({
+        //    url: '/User/GetUserByAccount?account='+account,
+        //    type: 'GET',
+        //    dataType: 'json',
+        //    success: function (msg) {
+        //        //msg = eval('(' + msg + ')');
+        //        if (!msg) return;
+        //        if (msg.Success) {
+        //            loginLinkDiv.append("");
+        //        }
+        //    }
+        //});
+    }
+
+    function BackButton() {
+        var pp = parent.$('#LoginDialog');
+        pp.empty();
+        pp.dialog({
+            method: 'get',
+            title: '用户注册',
+            iconCls: "icon-edit",
+            collapsible: true,
+            minimizable: false,
+            maximizable: false,
+            resizable: true,
+            width: 300,
+            height: 200,
+            modal: true,
+            href: '/User/Login'
+        });
+    }
+</script>

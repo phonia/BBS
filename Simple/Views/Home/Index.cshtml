@@ -1,56 +1,6 @@
 ﻿@{
-    Layout = null;
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/Main.cshtml";
 }
 
-<!DOCTYPE html>
-
-<html>
-<head>
-    <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width" />
-    <title>Index</title>
-    @Styles.Render("~/Content/css")
-    <link href="~/Scripts/jquery-easyui-1.4.4/themes/default/easyui.css" rel="stylesheet" type="text/css" />
-    <link href="~/Scripts/jquery-easyui-1.4.4/themes/icon.css" rel="stylesheet" type="text/css" />
-    @*    自定义*@
-    <link href="~/Content/icon.css" rel="stylesheet" type="text/css" />
-    <link href="~/Content/default.css" rel="stylesheet" type="text/css" />
-    
-    @Scripts.Render("~/bundles/modernizr")
-    <script src="~/Scripts/jquery-easyui-1.4.4/jquery.min.js" type="text/javascript"></script>
-    <script src="~/Scripts/jquery-easyui-1.4.4/jquery.easyui.min.js" type="text/javascript"></script>
-    <script src="~/Scripts/jquery-easyui-1.4.4/locale/easyui-lang-zh_CN.js" type="text/javascript"></script>
-
-    <style type="text/css">
-        label 
-        {
-            display:inline-block;width:80px;text-align:right
-        }
-        .fitem {
-            margin:5px 5px 5px 5px;
-        }
-    </style>
-</head>
-
-
-<body class="easyui-layout" style="overflow: hidden;height:100%; padding:0px;margin:0px;border: medium none" scroll="no">
-@*    <div data-options="region:'north',title:'North Tilte',split:true,noheader:true" style="height:100px;">
-        <div class="easyui-panel" style="width:500px;height:auto;">
-            <form id="LoginForm" method="post" style="margin:0 auto;width:250px" >
-                <div class="fitem">
-                    <label>用户名：</label>
-                    <input  class="easyui-validatebox" name="Account" required="required" />
-                </div>
-                <div class="fitem">
-                    <label>密码：</label>
-                    <input  class="easyui-validatebox" name="Account" required="required" />
-                </div>
-            </form>
-        </div>
-    </div>*@
-    <div data-options="region:'south',title:'South Tilte',split:true,noheader:true" style="height:50px">
-    </div>
-    <div data-options="region:'center',title:'center title',noheader:true" style="padding:5px;background:#eee;">
-    </div>
-</body>
-</html>
+<h2>Index</h2>

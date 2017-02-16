@@ -8,7 +8,9 @@ namespace Repository
 {
     public class EFUnitOfWork:IEFUnitOfWork,IDisposable
     {
-        private DbContext _dbContext = DataContextFactory.GetInstance();
+        //private DbContext _dbContext = DataContextFactory.GetInstance();
+        //DbContext的注入暂时不做处理
+        private DbContext _dbContext = new DataContext();
 
         public DbContext DbContext
         {

@@ -24,9 +24,9 @@ namespace Simple.Models
             //验证其他的参数
         }
 
-        internal void Update(User user)
+        public void Update(User user)
         {
-            throw new NotImplementedException();
+
         }
     }
 }

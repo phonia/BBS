@@ -33,6 +33,7 @@ namespace Simple.Services
         public bool RegisterUser(UserDTO userDTO)
         {
             User userRegister = userDTO.MapperTo<UserDTO, User>();
+            userRegister.AcountType = AccountType.Register;
             if (this._userRepository.GetFilter(it => it.Account.Equals(userRegister.Account)).FirstOrDefault() != null) return false;
 
             _userRepository.Add(userRegister);

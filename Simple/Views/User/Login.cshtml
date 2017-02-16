@@ -1,0 +1,82 @@
+﻿<div class="easyui-panel">
+    <form id="LoginForm" method="post">
+        <div class="fitem" style="margin-left:20px">
+            <label style="display:inline-block;width:80px;text-align:right">账户：</label>
+            <input class="easyui-validatebox" required="required" name="account" id="account" value="Admin" />
+        </div>
+                <div class="fitem" style="margin-left:20px">
+            <label style="display:inline-block;width:80px;text-align:right">密码：</label>
+            <input class="easyui-validatebox" required="required" name="password" type="password" value="129921" />
+        </div>
+        <div class="fitem" style="float:none;text-align:center;padding:5px;margin-top:20px">
+            <a href="javascript:" class="easyui-linkbutton" onclick="RegisterButton()">注册</a>
+            <a href="javascript:" class="easyui-linkbutton" onclick="LoginButton()">登录</a>
+            <a href="javascript:" class="easyui-linkbutton" onclick="CancelButton()">取消</a>
+        </div>
+    </form>
+</div>
+<script type="text/ecmascript">
+    function LoginButton() {
+        var account = $('#account').val();
+        //var f = document.getElementById('imageInput').files[0];
+        $('#LoginForm').form('submit', {
+            url: '/User/Login',
+            //onSubmit: function (data) {
+            //    data["userPhoto"] = f;
+            //},
+            success: function (data) {
+                msg = eval('(' + data + ')');
+                if (msg.Success) {
+                    //alert(msg.Message);
+                    //$.messager.show({
+                    //    title: '用户登录',
+                    //    msg: '登录成功',
+                    //    timeout: 5000,
+                    //    showType: 'slide'
+                    //});
+                    //$.messager.alert('用户登录', '登录成功！', 'info');
+                    location.href = "/Home/Index";
+                }
+                else
+                {
+                    $.messager.alert('登录失败！', msg.Message, 'info');
+                }
+            }
+        });
+    }
+
+    function CancelButton()
+    {
+        var loginDialog = $("#LoginDialog");
+        loginDialog.empty();
+        loginDialog.dialog("close");
+    }
+
+    function RegisterButton()
+    {
+        var pp = parent.$('#LoginDialog');
+        pp.empty();
+        pp.dialog({
+            method:'get',
+            title: '用户注册',
+            iconCls: "icon-edit",
+            collapsible: true,
+            minimizable: false,
+            maximizable: false,
+            resizable: true,
+            width: 300,
+            height: 330,
+            modal: true,
+            href:'/User/Register'
+        });
+    }
+</script>
+
+<style type="text/css">
+    .fitem {
+        margin:5px 5px 5px 5px
+    }
+    .easyui-panel {
+        border:none
+    }
+</style>
