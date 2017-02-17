@@ -50,12 +50,37 @@ namespace Simple.Controllers
         [HttpPost]
         public JsonResult Register(String account,String password,String sex,String age,String tel,String email)
         {
-            return Json(new MessageDTO() { Success = true, Message = "前端方法测试" }, JsonRequestBehavior.AllowGet);
+            if (UserService.RegisterUser(new UserDTO()
+            {
+                Account = account,
+                Password = password,
+                Age = Convert.ToInt32(age),
+                Sex = (Sex)Convert.ToInt32(sex),
+                Tel = tel,
+                Email = email,
+                AccountType=AccountType.Register
+            }))
+            {
+                Session["User"] = UserService.GetByAccount(account);
+                return Json(new MessageDTO() { Success = true, Message = "注册成功" }, JsonRequestBehavior.AllowGet);
+            }
+            else
+            {
+                return Json(new MessageDTO() { Success = false, Message = "未知原因注册失败" }, JsonRequestBehavior.AllowGet);
+            }
         }
 
         public JsonResult GetUserByAccount(String account)
         {
-            return Json(new UserDTO() { Account = "baichuan", AccountType = AccountType.Register, Age = 28, Email = "baichuan@hot.com", Id = 1, Password = "129921", Sex = Sex.Male, Tel = "15975455335" }, JsonRequestBehavior.AllowGet);
+            UserDTO user = UserService.GetByAccount(account);
+            if (user == null)
+            {
+                return Json(new List<UserDTO>() { user }, JsonRequestBehavior.AllowGet);
+            }
+            else
+            {
+                return Json(new List<UserDTO>(), JsonRequestBehavior.AllowGet);
+            }
         }
         
 
@@ -63,9 +88,9 @@ namespace Simple.Controllers
         public JsonResult LoadSexCombobox()
         {
             List<ComboboxDTO> list = new List<ComboboxDTO>() { 
-                new ComboboxDTO(){Id="1",Text="男"},
-                new ComboboxDTO(){Id="2",Text="女"},
-                new ComboboxDTO(){Id="3",Text="未知"}
+                new ComboboxDTO(){Id="0",Text="男"},
+                new ComboboxDTO(){Id="1",Text="女"},
+                new ComboboxDTO(){Id="2",Text="未知"}
             };
             return Json(list, JsonRequestBehavior.AllowGet);
         }

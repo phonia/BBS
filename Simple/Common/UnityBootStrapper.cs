@@ -26,9 +26,13 @@ namespace Simple.Common
 
             //仓储接口
             UnityContainer.RegisterType<IUserRepository, UserRepository>();
+            UnityContainer.RegisterType<ISectionRepository, SectionRepository>();
+            UnityContainer.RegisterType<IPostRepository, PostRepository>();
 
             //服务接口
             UnityContainer.RegisterType<IUserService, UserService>();
+            UnityContainer.RegisterType<ISectionService, SectionService>();
+            UnityContainer.RegisterType<IPostService, PostService>();
         }
     }
 }

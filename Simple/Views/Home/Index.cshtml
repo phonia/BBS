@@ -3,4 +3,101 @@
     Layout = "~/Views/Shared/Main.cshtml";
 }
 
-<h2>Index</h2>
+<div class="easyui-panel" id="TopPanel" data-option="">
+    <div id="custom_column_43350751" class="panel">
+        <ul class="panel_body">
+        <embed type="application/x-shockwave-flash" src="http://cdn.abowman.com/widgets/hamster/hamster.swf" width="220" height="170" id="flashID" name="flashID" bgcolor="#FFFFFF" quality="high" flashvars="up_backgroundColor=FFFFFF" wmode="opaque" allowscriptaccess="always">
+        </ul>
+    </div>
+</div>
+<div class="easyui-panel" id="SectionPanel" data-option="" title="主题版块">
+    <table class="easyui-datagrid" id="SectionDataGrid" title="版块列表"
+        data-options="url:'/Section/LoadAllSections',fitColumns:true,
+        rownumber:true,striped:true,
+        onLoadSuccess:OnLoadSuccess,onLoadError:OnLoadError,onDblClickRow:OnDblClickRow"
+        >
+        <thead>
+            <tr>
+@*                <th data-options="field:'Id'">Id</th>
+                <th data-options="field:'Title'">Title</th>
+                <th data-options="field:'KeyWord'">KeyWord</th>
+                <th data-options="field:'Description'">Description</th>
+                <th data-options="field:'PostsAccount'">Account</th>*@
+                <th field="Id"></th>
+                <th field="Title"></th>
+                <th field="KeyWord"></th>
+                <th field="Description"></th>
+                <th field="PostsAccount"></th>
+            </tr>
+        </thead>
+    </table>
+</div>
+<div class="easyui-panel" id="LinkPanel" data-option="" title="友情链接">
+
+</div>
+
+<style type="text/css">
+    .easyui-panel {
+        margin:0px 0px 5px 0px;
+    }
+    #TopPanel {
+        height:180px;
+        width:auto;
+    }
+    #SectionPanel {
+        height:220px;
+        width:auto;
+    }
+    #LinkPanel {
+        height:80px;
+        width:auto;
+    }
+</style>
+
+<script type="text/javascript">
+    var cardview = $.extend({}, $.fn.datagrid.defaults.view, {
+        renderRow: function (target, fields, frozen, rowIndex, rowData) {
+            var cc = [];
+            cc.push('<td colspan=' + fields.length + ' style="padding:10px 5px;border:0;">');
+            cc.push('<div><a href="http://www.baidu.com">' + rowData["Title"] + '</a></div>');
+            cc.push('</td>');
+            return cc.join('');
+        }
+    }
+        );
+
+    $(function () {
+        //此处的singleSelect 如果放到data-options下则会失效 原因未知
+        $('#SectionPanel').datagrid({
+            view: cardview,
+            singleSelect: true
+        });
+        //$.ajax({
+        //    url: '/Section/LoadAllSections',
+        //    type:'GET',
+        //    dataType: 'json',
+        //    success: function (msg)
+        //    {
+        //        if (msg.length <= 0)
+        //        {
+        //            $.messager.alert('数据加载', "数据为空", 'info');
+        //        }
+        //        else
+        //        {
+        //            //alert(msg[0].Title);
+        //        }
+        //    }
+        //});
+    });
+
+    function OnLoadSuccess(data) { }
+
+    function OnLoadError() { }
+
+    function OnDblClickRow(rowindex, rowData)
+    {
+        //location.href = "/Post/";
+    }
+
+
+</script>

@@ -179,6 +179,8 @@
     <Compile Include="Common\UnityDependency.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\PostController.cs" />
+    <Compile Include="Controllers\SectionController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -207,10 +209,16 @@
     <Compile Include="Repository\Repository.cs" />
     <Compile Include="Repository\SectionRepository.cs" />
     <Compile Include="Repository\UserRepository.cs" />
+    <Compile Include="Services\Imp\PostService.cs" />
+    <Compile Include="Services\Imp\SectionService.cs" />
     <Compile Include="Services\Imp\UserService.cs" />
+    <Compile Include="Services\Interface\IPostService.cs" />
+    <Compile Include="Services\Interface\ISectionService.cs" />
     <Compile Include="Services\Interface\IUserService.cs" />
     <Compile Include="ViewModel\ComboboxDTO.cs" />
     <Compile Include="ViewModel\MessageDTO.cs" />
+    <Compile Include="ViewModel\PostDTO.cs" />
+    <Compile Include="ViewModel\SectionDTO.cs" />
     <Compile Include="ViewModel\UserDTO.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -1718,6 +1726,7 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\User\Login.cshtml" />
     <Content Include="Views\User\Register.cshtml" />
+    <Content Include="Views\Section\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -62,6 +62,15 @@ namespace Infrastructure
         IEnumerable<T> GetPaged<Key>(Expression<Func<T, bool>> predicate, Expression<Func<T, Key>> keySelector, int pageIndex, int pageCount, bool IsAscending = true, params String[] Includes);
 
         /// <summary>
+        /// 
+        /// </summary>
+        /// <typeparam name="TResult"></typeparam>
+        /// <param name="predicate"></param>
+        /// <param name="selector"></param>
+        /// <returns></returns>
+        IEnumerable<TResult> Select<TResult>(Expression<Func<T, bool>> predicate, Expression<Func<T, TResult>> selector);
+
+        /// <summary>
         /// 按主键获取实体
         /// </summary>
         /// <param name="key">主键值</param>

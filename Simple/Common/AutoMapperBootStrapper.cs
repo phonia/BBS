@@ -18,7 +18,8 @@ namespace Simple.Common
         {
             Mapper.CreateMap<User, UserDTO>();
             Mapper.CreateMap<UserDTO, User>();
-
+            Mapper.CreateMap<Post, PostDTO>();
+            Mapper.CreateMap<PostDTO, Post>();
         }
     }
 }

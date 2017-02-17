@@ -101,10 +101,9 @@ namespace Repository
         }
 
         //是否可以用select来处理导航属性的问题 未验证
-        public IEnumerable<TEntity> Select<TResult>(Expression<Func<TEntity, bool>> predicate,Expression<Func<TEntity,int,TResult>> selector)
+        public IEnumerable<TResult> Select<TResult>(Expression<Func<TEntity, bool>> predicate,Expression<Func<TEntity,TResult>> selector)
         {
-            //var one = _unitOfWork.DbContext.Set<TEntity>().Where(predicate).Include(
-            return null;
+            return _unitOfWork.DbContext.Set<TEntity>().Where(predicate).Select(selector).AsEnumerable();
         }
 
         ///// <summary>

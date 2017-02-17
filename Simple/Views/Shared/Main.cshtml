@@ -31,11 +31,15 @@
                 success: function (msg) {
                     if (msg.length <= 0)
                     {
-                        loginLinkDiv.append("<ul style='list-style:none'><li><div><a href='#' onclick='LoginLink()'>你好！请登录</a></div></li></ul>");
+                        //loginLinkDiv.append("<ul style='list-style:none'><li><div><a href='#' onclick='LoginLink()'>你好！请登录</a></div></li></ul>");
+                        $('#LoginLinkDiv2').css('display', 'none');
+                        $('#LoginLinkDiv1').css('display', 'block');
                     }
                     else
                     {
-                        loginLinkDiv.append("<ul style='list-style:none'><li><div><a href='#' onclick='AcountLink()'>"+msg[0].Account+"</a></div></li></ul>");
+                        $('#LoginAccount').text(msg[0].Account);
+                        $('#LoginLinkDiv2').css('display', 'block');
+                        $('#LoginLinkDiv1').css('display', 'none');
                     }
                 }
             });
@@ -65,13 +69,20 @@
 </head>
 <body class="easyui-layout" style="overflow:hidden;height:100%; padding:0px;margin:0px;border:none" scroll="no">
     <div data-options="region:'north',title:'North Tilte',split:true,noheader:true" style="height:50px;">
-        <div id="LoginLinkDiv">
-@*            <ul style="list-style:none">
+        <div id="LoginLinkDiv1">
+            <ul style="list-style:none">
                 <li>
                     <div><a href="#" onclick="LoginLink()">你好！请登录</a></div>
                 </li>
-            </ul>*@
-    </div>
+            </ul>
+        </div>
+	    <div class="easyui-panel" style="padding:5px;border:none" id="LoginLinkDiv2">
+		    <a href="#" class="easyui-menubutton" data-options="menu:'#mm3'" id="LoginAccount"></a>
+	    </div>
+	    <div id="mm3" class="menu-content" style="background:#f0f0f0;padding:10px;text-align:left">
+		    <img src="http://www.jeasyui.com/images/logo1.png" style="width:150px;height:50px">
+		    <p style="font-size:14px;color:#444;">Try jQuery EasyUI to build your modern, interactive, javascript applications.</p>
+	    </div>
     </div>
     <div data-options="region:'south',title:'South Tilte',split:true,noheader:true" style="height:50px"></div>
     <div data-options="region:'center',title:'center title',noheader:true" style="padding:5px;background:#eee;">
