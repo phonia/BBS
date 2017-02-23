@@ -10,8 +10,12 @@ namespace Infrastructure
     {
         private List<BusinessRule> _broken = new List<BusinessRule>();
 
+        /// <summary>
+        /// 新运行base.Validate
+        /// </summary>
         protected virtual void Validate()
-        {}
+        {
+        }
 
         protected void AddBrokenRule(BusinessRule rule)
         {
@@ -20,8 +24,10 @@ namespace Infrastructure
             _broken.Add(rule);
         }
 
-        protected IEnumerable<BusinessRule> GetBrokens()
+        public IEnumerable<BusinessRule> GetBrokens()
         {
+            _broken.Clear();
+            Validate();
             return _broken;
         }
 

@@ -14,6 +14,7 @@ namespace Repository
 
         public void Add(TEntity entity)
         {
+            
             if (entity == null) throw new ArgumentNullException();
             EntityState state = _unitOfWork.DbContext.Entry<TEntity>(entity).State;
             if (state == EntityState.Detached)

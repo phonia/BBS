@@ -1,0 +1,69 @@
+﻿@model BBS2._0.ViewModel.SectionDTO
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<script type="text/javascript">
+    function fixWidth(percent) {
+        return document.body.clientWidth * percent; //这里你可以自己做调整  
+    }
+
+    function AddPost()
+    {
+        parent.document.getElementById("mainFrame").src = '/Post/PostPost?sectionId=@Model.Id';
+    }
+
+    $(function () {
+        var obj = parent.document.getElementById("mainFrame");
+        obj.style.height = document.body.scrollHeight;
+    });
+    $(function () {
+        $('#postDataGrid').datagrid({
+            url: '/Post/GetSectionPosts?sectionId=@Model.Id',
+            fitColumns: true,
+            rownumber: true,
+            striped: true,
+            singleSelect: true,
+            scrollbarSize: 0,//去除表单右侧空白
+            columns: [[
+                { field: 'Id', width: fixWidth(0.03), title: '序号' },
+                { field: 'Title', width: fixWidth(0.27), title: '标题' },
+                { field: 'Keyword', width: fixWidth(0.2), title: '关键词' },
+                { field: 'PublicTime', width: fixWidth(0.2), title: '发布时间' },
+                { field: 'ScanAccount', width: fixWidth(0.2), title: '查看数' }
+            ]],
+            toolbar:[{
+                text:'Add',
+                iconCls:'icon-add',
+                handler: AddPost
+            }]
+        });
+    });
+</script>
+<style type="text/css">
+    .easyui-panel {
+        border:none
+    }
+</style>
+
+<div class="easyui-panel" style="background:inherit">
+    <div class="easyui-panel" style="background:inherit">
+        @Html.DisplayFor(it=>it.Title)
+    </div>
+    <div class="easyui-panel">
+        <table class="easyui-datagrid" id="postDataGrid" title="帖子列表"></table>
+@*        <table class="easyui-datagrid" id="postDataGrid" title="帖子列表"
+            data-options="fitColumns:true,
+            url:'/Post/GetSectionPosts?sectionId=@Model.Id',
+            rownumber:true,striped:true,singleSelect:true"
+            >
+            <thead>
+                <tr>
+                    <th data-options="field:'Id'">Id</th>
+                </tr>
+            </thead>
+        </table>*@
+    </div>
+</div>

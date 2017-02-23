@@ -1,0 +1,119 @@
+﻿@{
+    ViewBag.Title = "Portal";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<script type="text/javascript">
+    function qq(value,name){
+        alert(value+":"+name)
+    }
+    function OnLoadSuccess(data) { }
+
+    function OnLoadError() { }
+
+    function OnDblClickRow(rowindex, rowData) {
+        //location.href = "/Post/";
+        //parent.document.getElementById("mainFrame").src = "http://www.baidu.com";
+    }
+
+    var cardview = $.extend({}, $.fn.datagrid.defaults.view, {
+        renderRow: function (target, fields, frozen, rowIndex, rowData) {
+            var cc = [];
+            cc.push('<td colspan=' + fields.length + ' style="padding:10px 5px;border:0;">');
+            cc.push('<div><a href="/Section?sectionId=' + rowData["Id"] + '">' + rowData["Title"] + '</a></div>');
+            cc.push('</td>');
+            return cc.join('');
+        }
+    }
+    );
+
+    //百分比设置列宽度
+    function fixWidth(percent) {
+        return document.body.clientWidth * percent; //这里你可以自己做调整  
+    }
+
+    function formatTitle(value, row, index)
+    {
+        return ret = "<a href='/Section?sectionId=" + row.Id + "'>" + value + "</a>";
+    }
+    function formatPostAccount(value, row, index) {
+        return "<span>"+value+"</span>";
+    }
+    function formatAccount(value, row, index) {
+        return "<span>" + row.ScanAccount + "/" + row.ReplyAccount + "</span>";
+    }
+    function formatPost(value, row, index) {
+        if (!row.LastPost)
+        { }
+        else
+        {
+            return "<span>" + row.LastPost.Title + "</span>";
+        }
+    }
+    function formatReply(value, row, index) {
+        if (!row.LastPost || !row.LastPost.LastReply)
+        { }
+        else
+        {
+            return "<span>" + row.LastPost.LastReply.Content + "</span>";
+        }
+    }
+
+    $(function () {
+        $('#SectionDataGrid').datagrid({
+            url:'/Section/LoadAllSections',
+            fitColumns:true,
+            rownumber:true,
+            striped:true,
+            singleSelect:true,
+            onLoadSuccess:OnLoadSuccess,
+            onLoadError:OnLoadError,
+            onDblClickRow:OnDblClickRow,
+            scrollbarSize:0,//去除表单右侧空白
+            columns: [[//百分比设置列宽
+                { field: 'Id', width: fixWidth(0.03), title: '序号'},
+                { field: 'Title', width: fixWidth(0.37), title: '名称', formatter: formatTitle },
+                { field: 'PostsAccount', width: fixWidth(0.1), title: '帖子数', formatter: formatPostAccount },
+                { field: 'ScanAccount', width: fixWidth(0.1), title: '查看/回复数', formatter: formatAccount },
+                { field: 'LastPost', width: fixWidth(0.2), title: '最后活动帖子', formatter: formatPost },
+                { field: 'Default', width: fixWidth(0.2), title: '最后回复', formatter: formatReply }
+            ]]
+        });
+    });
+</script>
+<style type="text/css">
+    .easyui-panel {
+        border:none
+    }
+</style>
+<div class="easyui-panel" style="background:inherit">
+    <div class="easyui-panel" style="background:inherit">
+        <span>
+            <input id="ss" class="easyui-searchbox" style="width:300px"
+                data-options="searcher:qq,prompt:'Please Input Value',menu:'#mm'"></input>
+        </span>
+        <div id="mm" style="width:120px;display:none">
+            <div data-options="name:'all',iconCls:'icon-ok'">All News</div>
+            <div data-options="name:'sports'">Sports News</div>
+        </div>
+    </div>
+@*    <div class="easyui-panel" style="height:40px;background:inherit"></div>*@
+    <div class="easyui-panel">
+        <table id="SectionDataGrid" title="版块列表"></table>
+@*        <table class="easyui-datagrid" id="SectionDataGrid" title="版块列表"    改为jquery方式生成数据表格
+            data-options="url:'/Section/LoadAllSections',fitColumns:true,
+            rownumber:true,striped:true,singleSelect: true,
+            onLoadSuccess:OnLoadSuccess,onLoadError:OnLoadError,onDblClickRow:OnDblClickRow"
+            >
+            <thead>
+                <tr>
+                    <th data-options="field:'Id'">序号</th>
+                    <th data-options="field:'Title',formatter:formatTitle">名称</th>
+                    <th data-options="field:'PostsAccount',formatter:formatPostAccount">帖子/回复数</th>
+                    <th data-options="field:'ScanAccount',formatter:formatAccount">浏览/回复数</th>
+                    <th data-options="field:'LastPost',formatter:formatPost">最后活动帖子</th>
+                    <th data-options="field:'LastReply',formatter:formatReply">最后回复</th>
+                </tr>
+            </thead>
+        </table>*@
+    </div>
+</div>

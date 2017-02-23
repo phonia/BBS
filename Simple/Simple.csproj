@@ -216,6 +216,7 @@
     <Compile Include="Services\Interface\ISectionService.cs" />
     <Compile Include="Services\Interface\IUserService.cs" />
     <Compile Include="ViewModel\ComboboxDTO.cs" />
+    <Compile Include="ViewModel\DataGridDTO.cs" />
     <Compile Include="ViewModel\MessageDTO.cs" />
     <Compile Include="ViewModel\PostDTO.cs" />
     <Compile Include="ViewModel\SectionDTO.cs" />

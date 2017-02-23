@@ -1,6 +1,18 @@
-﻿@{
+﻿@model Simple.ViewModel.SectionDTO
+
+@{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/Main.cshtml";
 }
 
-<h2>Index</h2>
+<div>
+<span>@Html.LabelFor(it => it.Description):@Html.DisplayTextFor(it=>it.Description)</span>
+<span>@Html.LabelFor(it => it.Id):@Html.DisplayTextFor(it=>it.Id)</span>
+<span>@Html.LabelFor(it => it.KeyWord):@Html.DisplayTextFor(it=>it.KeyWord)</span>
+<span>@Html.LabelFor(it => it.PostsAccount):@Html.DisplayTextFor(it=>it.PostsAccount)</span>
+<span>@Html.LabelFor(it => it.Title):@Html.DisplayTextFor(it=>it.Title)</span>
+</div>
+
+<div class="easyui-panel">
+</div>
+
