@@ -44,7 +44,7 @@ namespace BBS2._0.Services
             account.AccountType = AccountType.Register;
             //验证数据是否正确
             if (_accountRepository.GetFilter(it => it.Name.Equals(accountDto.Name)).FirstOrDefault() != null)
-                throw new DomainException(Contant.ACCOUNT_NAME_REPEATED);
+                throw new DomainException(Constant.ACCOUNT_NAME_REPEATED);
             _accountRepository.Add(account);
             _unitOfWork.Commit();
             return _accountRepository.GetFilter(it => it.Name.Equals(accountDto.Name))
@@ -59,7 +59,9 @@ namespace BBS2._0.Services
 
         public ViewModel.AccountDTO GetByName(string name)
         {
-            throw new NotImplementedException();
+            Account account = _accountRepository.GetFilter(it => it.Name.Equals(name)).FirstOrDefault();
+            if (account == null) throw new DomainException(Constant.ACCOUNT_NAME_NOTFOUND);
+            return account.MapperTo<Account, AccountDTO>();
         }
 
         #endregion

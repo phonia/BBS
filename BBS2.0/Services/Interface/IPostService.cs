@@ -20,5 +20,7 @@ namespace BBS2._0.Services
         PostDTO ReplyPost();
         PostDTO DeleteReply();
         PostDTO UpdateReply();
+
+        List<ReplyDTO> GetPostReplies(Int32 postId);
     }
 }

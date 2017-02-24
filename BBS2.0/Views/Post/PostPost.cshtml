@@ -1,8 +1,58 @@
-﻿@model BBS2._0.ViewModel.SectionDTO
+﻿@model System.Int32
 
 @{
     ViewBag.Title = "PostPost";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
+<style type="text/css">
+    .fitem {
+        margin:5px 5px 5px 5px
+    }
+    .easyui-textbox {
+    }
+</style>
 
-<h2>PostPost</h2>
+<script type="text/ecmascript">
+    function PostButton()
+    {
+        $('#PostPostForm').form('submit', {
+            url: '/Post/PostPost',
+            success: function (data) {
+                if (!data) $.messager.alert("异常", "出错了", "info", function () { });
+                msg = eval('(' + data + ')');
+                if (msg.Success) {
+                    //转到帖子页面
+                    alert("Success");
+                }
+            }
+        });
+    }
+
+    function BackButton()
+    {
+        parent.document.getElementById("mainFrame").src = '/Section?sectionId=@Model';
+    }
+</script>
+
+<div class="easyui-panel" style="background:inherit">
+    <form id="PostPostForm" method="post" style="background:inherit">
+        <div class="fitem" style="fit:fill;background:inherit;display:none">
+            <label style="margin:0px 0px 0px 50px;vertical-align:top">版块：</label>
+            <input class="easyui-textbox"  name="sectionId" value="@Model"  style="width:90%"/>
+        </div>
+        <div class="fitem" style="fit:fill;background:inherit">
+            <label style="margin:0px 0px 0px 50px;vertical-align:top">标题：</label>
+            <input class="easyui-textbox"  name="title" value="title"  style="width:90%"/>
+        </div>
+        <div class="fitem" style="fit:fill;background:inherit">
+            <label style="margin:0px 0px 0px 50px;vertical-align:top">内容：</label>
+            <input class="easyui-textbox" data-options="multiline:true" name="content" value="This TextBox will allow the user to enter multiple lines of text." style="width:90%;height:100px;" />
+        </div>
+        <div class="fitem" style="float:none;text-align:right;padding:5px;margin-top:20px">
+            <a href="javascript:" class="easyui-linkbutton" onclick="PostButton()">发布</a>
+            <a href="javascript:" class="easyui-linkbutton" onclick="BackButton()">返回</a>
+        </div>
+    </form>
+</div>
+
+

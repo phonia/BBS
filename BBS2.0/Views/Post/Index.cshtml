@@ -1,0 +1,32 @@
+﻿@model System.Int32
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<script type="text/javascript">
+    function fixWidth(percent) {
+        return document.body.clientWidth * percent; //这里你可以自己做调整  
+    }
+
+    $(function () {
+        $('#replyDataGrid').datagrid({
+            url: '/Post/GetPostReplies?postId=@Model',
+            fitColumns: true,
+            rownumber: true,
+            striped: true,
+            singleSelect: true,
+            scrollbarSize: 0,
+            columns: [[
+                { field: 'Id', width: fixWidth(0.03), title: '序号' },
+                { field: 'Content', width: fixWidth(0.77), title: '内容' },
+                { field: 'Level', width: fixWidth(0.1), title: '层次' },
+                { field: 'ReplyTime', width: fixWidth(0.1), title: '回复时间' }
+            ]]
+        });
+    })
+</script>
+
+<div class="easyui-panel">
+    <table id="replyDataGrid"></table>
+</div>

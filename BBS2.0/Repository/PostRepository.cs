@@ -8,5 +8,6 @@ namespace BBS2._0.Repository
 {
     public class PostRepository:EFRepository<Post,Int32>,IPostRepository
     {
+
     }
 }

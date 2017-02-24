@@ -1733,6 +1733,7 @@
     <Content Include="Views\Account\Register.cshtml" />
     <Content Include="Views\Section\Index.cshtml" />
     <Content Include="Views\Post\PostPost.cshtml" />
+    <Content Include="Views\Post\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

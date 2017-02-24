@@ -71,6 +71,18 @@ namespace Infrastructure
         IEnumerable<TResult> Select<TResult>(Expression<Func<T, bool>> predicate, Expression<Func<T, TResult>> selector);
 
         /// <summary>
+        /// 
+        /// </summary>
+        /// <typeparam name="TResult"></typeparam>
+        /// <typeparam name="Key"></typeparam>
+        /// <param name="predicate"></param>
+        /// <param name="selector"></param>
+        /// <param name="keySelector"></param>
+        /// <param name="isAscending"></param>
+        /// <returns></returns>
+        IEnumerable<TResult> Select<TResult, Key>(Expression<Func<T, bool>> predicate, Expression<Func<T, TResult>> selector, Expression<Func<T, Key>> keySelector, bool isAscending = true);
+
+        /// <summary>
         /// 按主键获取实体
         /// </summary>
         /// <param name="key">主键值</param>

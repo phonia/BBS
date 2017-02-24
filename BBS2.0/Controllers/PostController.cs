@@ -15,10 +15,12 @@ namespace BBS2._0.Controllers
         // GET: /Post/
         [Dependency]
         public IPostService PostService { get; set; }
+        [Dependency]
+        public IAccountService AccountService { get; set; }
 
-        public ActionResult Index()
+        public ActionResult Index(Int32 postId)
         {
-            return View();
+            return View(postId);
         }
 
         public JsonResult GetSectionPosts(Int32 sectionId)
@@ -29,7 +31,25 @@ namespace BBS2._0.Controllers
 
         public ActionResult PostPost(Int32 sectionId)
         {
-            return View();
+            return View(sectionId);
+        }
+
+        [HttpPost]
+        public JsonResult PostPost(Int32 sectionId,String title, String content)
+        {
+            Int32 accountId = Session["AccountDTO"] != null
+                ? (Session["AccountDTO"] as AccountDTO).Id
+                : 0;
+            PostDTO postDTO = PostService.IssuePost(accountId, sectionId, title, "", content);
+            return Json(new JsonMessageDTO() { Success = true, Data = postDTO }, JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpPost]
+        public JsonResult GetPostReplies(Int32 postId)
+        {
+            //此处是否算是浏览帖子？
+            List<ReplyDTO> list = PostService.GetPostReplies(postId);
+            return Json(new DataGridDTO<ReplyDTO>() { total = list.Count, rows = list }, JsonRequestBehavior.AllowGet);
         }
 
     }
