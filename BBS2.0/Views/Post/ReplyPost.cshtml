@@ -1,0 +1,52 @@
+﻿@model System.Int32
+
+@{
+    ViewBag.Title = "ReplyPost";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style type="text/css">
+    .fitem {
+        margin:5px 5px 5px 5px;
+    }
+</style>
+<script type="text/javascript">
+    function ReplyButton()
+    {
+        $('#ReplyPostForm').form('submit', {
+            url: '/Post/ReplyPost',
+            success: function (data) {
+                if (!data) $.messager.alert("异常", "出错了", "info", function () { });
+                msg = eval('(' + data + ')');
+                if (msg.Success)
+                {
+                    alert("Success");
+                }
+                else
+                { }
+            }
+        });
+    }
+
+    function BackButton()
+    {
+        parent.document.getElementById("mainFrame").src = '/Post?postId=@Model';
+    }
+</script>
+
+<div class="easyui-panel" style="background:inherit">
+    <form id="ReplyPostForm" method="post" style="background:inherit">
+        <div class="fitem" style="fit:fill;background:inherit;visibility:hidden">
+            <label style="margin:0px 0px 0px 50px;vertical-align:top">回复：</label>
+            <input class="easyui-textbox" data-options="multiline:true" name="postId" value=@Model style="width:90%;height:100px" />
+        </div>
+        <div class="fitem" style="fit:fill;background:inherit">
+            <label style="margin:0px 0px 0px 50px;vertical-align:top">回复：</label>
+            <input class="easyui-textbox" data-options="multiline:true" name="content" value="reply the post" style="width:90%;height:100px" />
+        </div>
+        <div class="fitem" style="float:none;text-align:right;padding:5px;margin-top:20px">
+            <a href="javascript:" class="easyui-linkbutton" onclick="ReplyButton()">回复</a>
+            <a href="javascript:" class="easyui-linkbutton" onclick="BackButton()">返回</a>
+        </div>
+    </form>
+</div>

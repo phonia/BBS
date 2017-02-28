@@ -134,9 +134,30 @@ namespace BBS2._0.Services
             .ToList();
         }
 
-        public ViewModel.PostDTO ReplyPost()
+        public void ReplyPost(Int32 accountId,Int32 postId,String content)
         {
-            throw new NotImplementedException();
+            var post = _postRepository.GetFilter(it => it.Id == postId, "Replies").FirstOrDefault();
+            if (post == null) throw new DomainException("");
+
+            Account replyer = null;
+            if (accountId <= 0)
+            {
+                replyer = _accountRepository.GetFilter(it => it.Name.Equals(Constant.ACCOUNT_NAME_ANONYMOUS_EN)).FirstOrDefault();
+            }
+            else
+            {
+                replyer = _accountRepository.GetByKey(accountId);
+            }
+            if (replyer == null) throw new DomainException(Constant.ACCOUNT_NOTFOUND);
+
+
+            Reply reply = new Reply()
+            {
+                Content = content,
+                Level=post.Replies!=null&&post.Replies.Count>0?post.Replies.Count:0,
+                Post=post,
+                Replyer=replyer,ReplyTime=DateTime.Now
+            };
         }
 
         public ViewModel.PostDTO DeleteReply()

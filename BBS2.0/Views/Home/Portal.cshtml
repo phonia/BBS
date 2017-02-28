@@ -62,7 +62,7 @@
         $('#SectionDataGrid').datagrid({
             url:'/Section/LoadAllSections',
             fitColumns:true,
-            rownumber:true,
+            rownumbers: true,
             striped:true,
             singleSelect:true,
             onLoadSuccess:OnLoadSuccess,
@@ -70,7 +70,7 @@
             onDblClickRow:OnDblClickRow,
             scrollbarSize:0,//去除表单右侧空白
             columns: [[//百分比设置列宽
-                { field: 'Id', width: fixWidth(0.03), title: '序号'},
+                { field: 'Id',hidden:true, width: fixWidth(0.03), title: '序号'},
                 { field: 'Title', width: fixWidth(0.37), title: '名称', formatter: formatTitle },
                 { field: 'PostsAccount', width: fixWidth(0.1), title: '帖子数', formatter: formatPostAccount },
                 { field: 'ScanAccount', width: fixWidth(0.1), title: '查看/回复数', formatter: formatAccount },

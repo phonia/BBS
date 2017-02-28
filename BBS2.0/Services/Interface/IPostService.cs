@@ -17,7 +17,7 @@ namespace BBS2._0.Services
         List<PostDTO> GetBySecionId(Int32 sectionId);
 
         //是不是需要将对回复的处理放到帖子的服务方法里呢？因为帖子与回复的关系相当的紧密
-        PostDTO ReplyPost();
+        void ReplyPost(Int32 accountId, Int32 postId, String content);
         PostDTO DeleteReply();
         PostDTO UpdateReply();
 

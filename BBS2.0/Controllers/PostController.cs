@@ -52,5 +52,15 @@ namespace BBS2._0.Controllers
             return Json(new DataGridDTO<ReplyDTO>() { total = list.Count, rows = list }, JsonRequestBehavior.AllowGet);
         }
 
+        public ActionResult ReplyPost(Int32 postId)
+        {
+            return View(postId);
+        }
+
+        [HttpPost]
+        public JsonResult ReplyPost(Int32 postId, String content)
+        {
+            PostService.ReplyPost(postId, content);
+        }
     }
 }

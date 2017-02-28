@@ -27,15 +27,15 @@
         $('#postDataGrid').datagrid({
             url: '/Post/GetSectionPosts?sectionId=@Model.Id',
             fitColumns: true,
-            rownumber: true,
+            rownumbers: true,
             striped: true,
             singleSelect: true,
             scrollbarSize: 0,//去除表单右侧空白
             columns: [[
-                { field: 'Id', width: fixWidth(0.03), title: '序号' },
+                { field: 'Id', hidden: true, width: fixWidth(0.03), title: '序号' },
                 { field: 'Title', width: fixWidth(0.27), title: '标题',formatter:formatTitle },
                 { field: 'Keyword', width: fixWidth(0.2), title: '关键词' },
-                { field: 'PublicTime', width: fixWidth(0.2), title: '发布时间' },
+                { field: 'PublicTime', width: fixWidth(0.2), title: '发布时间', formatter: formatDateBoxFull },
                 { field: 'ScanAccount', width: fixWidth(0.2), title: '查看数' }
             ]],
             toolbar:[{
