@@ -48,6 +48,7 @@ namespace BBS2._0.Controllers
         public JsonResult GetPostReplies(Int32 postId)
         {
             //此处是否算是浏览帖子？
+            PostService.ScanPost(postId);
             List<ReplyDTO> list = PostService.GetPostReplies(postId);
             return Json(new DataGridDTO<ReplyDTO>() { total = list.Count, rows = list }, JsonRequestBehavior.AllowGet);
         }
@@ -60,7 +61,12 @@ namespace BBS2._0.Controllers
         [HttpPost]
         public JsonResult ReplyPost(Int32 postId, String content)
         {
-            PostService.ReplyPost(postId, content);
+            Int32 accountId = Session["AccountDTO"] != null
+                ? (Session["AccountDTO"] as AccountDTO).Id
+                : 0;
+            PostService.ReplyPost(accountId, postId, content);
+            PostDTO post=PostService.GetById(postId);
+            return Json(new JsonMessageDTO() { Success = true, Data = post }, JsonRequestBehavior.AllowGet);
         }
     }
 }

@@ -20,8 +20,8 @@ namespace BBS2._0.Repository
             Property(e => e.RowVersion).IsRowVersion();
             Property(e => e.Title).HasColumnName("Title").HasColumnType("nvarchar").IsRequired().HasMaxLength(50);
             Property(e => e.ScanAccount).HasColumnName("ScanAccount").HasColumnType("int").IsRequired();
-            HasRequired(e => e.Poster).WithMany().Map(e => e.MapKey("PosterId"));
-            HasRequired(e => e.Section).WithMany(e => e.Posts).Map(e => e.MapKey("SectionId"));
+            HasRequired(e => e.Poster).WithMany().HasForeignKey(e => e.PosterId);//.Map(e => e.MapKey("PosterId"));
+            HasRequired(e => e.Section).WithMany(e => e.Posts).HasForeignKey(e => e.SectionId);//.Map(e => e.MapKey("SectionId"));
         }
     }
 }

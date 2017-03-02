@@ -12,6 +12,8 @@ namespace BBS2._0.Models
         public String Content { get; set; }
         public DateTime ReplyTime { get; set; }
         public Int32 Level { get; set; }
+        public Int32 ReplyerId { get; set; }
+        public Int32 PostId { get; set; }
 
         public Account Replyer { get; set; }
         public Post Post { get; set; }

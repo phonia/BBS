@@ -22,7 +22,10 @@
                 msg = eval('(' + data + ')');
                 if (msg.Success) {
                     //转到帖子页面
-                    alert("Success");
+                    parent.document.getElementById("mainFrame").src = '/Post?postId=' + msg.Data.Id;
+                }
+                else {
+                    $.messager.alert("异常", "出错了", "info", function () { });
                 }
             }
         });

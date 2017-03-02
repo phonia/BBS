@@ -18,8 +18,8 @@ namespace BBS2._0.Repository
             Property(e => e.Level).HasColumnName("Level").HasColumnType("int").IsRequired();
             Property(e => e.ReplyTime).HasColumnName("ReplyTime").HasColumnType("DateTime").IsRequired();
             Property(e => e.Content).HasColumnName("Content").HasColumnType("nvarchar").IsRequired().HasMaxLength(250);
-            HasRequired(e => e.Post).WithMany(e => e.Replies).Map(e => e.MapKey("PostId"));
-            HasRequired(e => e.Replyer).WithMany().Map(e => e.MapKey("ReplyerId"));
+            HasRequired(e => e.Post).WithMany(e => e.Replies).HasForeignKey(e => e.PostId);//.Map(e => e.MapKey("PostId"));
+            HasRequired(e => e.Replyer).WithMany().HasForeignKey(e => e.ReplyerId);//.Map(e => e.MapKey("ReplyerId"));
         }
     }
 }

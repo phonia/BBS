@@ -20,10 +20,12 @@
                 msg = eval('(' + data + ')');
                 if (msg.Success)
                 {
-                    alert("Success");
+                    parent.document.getElementById("mainFrame").src = '/Post?postId=@Model';
                 }
                 else
-                { }
+                {
+                    $.messager.alert("异常", "出错了", "info", function () { });
+                }
             }
         });
     }

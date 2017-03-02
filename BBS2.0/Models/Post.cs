@@ -14,6 +14,8 @@ namespace BBS2._0.Models
         public DateTime PublicTime { get; set; }
         public byte[] RowVersion { get; set; }
         public Int32 ScanAccount { get; set; }
+        public Int32 PosterId { get; set; }
+        public Int32 SectionId { get; set; }
 
         public Account Poster { get; set; }
         public Section Section { get; set; }

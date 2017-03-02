@@ -37,43 +37,35 @@ namespace BBS2._0.Services
         public ViewModel.PostDTO IssuePost(int accountId, int sectionId, string title, string keyword, string content)
         {
             //account<=0 匿名用户
-            Account poster = null;
             if (accountId <= 0)
             {
-                poster = _accountRepository.GetFilter(it => it.Name.Equals(Constant.ACCOUNT_NAME_ANONYMOUS_EN)).FirstOrDefault();
+                //poster = _accountRepository.GetFilter(it => it.Name.Equals(Constant.ACCOUNT_NAME_ANONYMOUS_EN)).FirstOrDefault();
+                accountId= _accountRepository.GetFilter(it => it.Name.Equals(Constant.ACCOUNT_NAME_ANONYMOUS_EN)).FirstOrDefault().Id; 
             }
-            else
-            {
-                poster = _accountRepository.GetByKey(accountId);
-            }
-            if (poster == null) throw new DomainException(Constant.ACCOUNT_NOTFOUND);
-
-            Section section = _sectionRepository.GetByKey(sectionId);
-            if (section == null) throw new DomainException(Constant.SECTION_NOTFOUND);
 
             Reply reply = new Reply()
             {
                 Content = content,
                 Level=0,
-                Replyer=poster,
+                ReplyerId=accountId,
                 ReplyTime=DateTime.Now
             };
 
             Post post = new Post()
             {
                 Keyword = keyword,
-                Poster = poster,
+                PosterId=accountId,
                 PublicTime = DateTime.Now,
                 Replies = new List<Reply>(){reply},
                 ScanAccount=0,
-                Section=section,
+                SectionId=sectionId,
                 Title=title
             };
 
             _postRepository.Add(post);
             _unitOfWork.Commit();
 
-            PostDTO postDTO = _postRepository.Select(it => true, it => new PostDTO()
+            PostDTO postDTO = _postRepository.Select(it => it.PosterId==accountId, it => new PostDTO()
             {
                 Id = it.Id,
                 Keyword = it.Keyword,
@@ -118,7 +110,26 @@ namespace BBS2._0.Services
 
         public ViewModel.PostDTO GetById(int id)
         {
-            throw new NotImplementedException();
+            return _postRepository.Select(it => it.Id==id, it => new PostDTO()
+            {
+                Id = it.Id,
+                Keyword = it.Keyword,
+                PublicTime = it.PublicTime,
+                ScanAccount = it.ScanAccount,
+                Title = it.Title,
+                Poster = new AccountDTO()
+                {
+                    Id = it.Poster.Id,
+                    Age = it.Poster.Age,
+                    Email = it.Poster.Email,
+                    Name = it.Poster.Name,
+                    Password = it.Poster.Password,
+                    Sex = it.Poster.Sex,
+                    Tel = it.Poster.Tel
+                },
+                ReplyAccount = it.Replies.Count
+            })
+            .First();
         }
 
         public List<ViewModel.PostDTO> GetBySecionId(int sectionId)
@@ -136,28 +147,36 @@ namespace BBS2._0.Services
 
         public void ReplyPost(Int32 accountId,Int32 postId,String content)
         {
-            var post = _postRepository.GetFilter(it => it.Id == postId, "Replies").FirstOrDefault();
-            if (post == null) throw new DomainException("");
+            //var post = _postRepository.GetFilter(it => it.Id == postId, "Replies").FirstOrDefault();
+            //if (post == null) throw new DomainException("");
 
-            Account replyer = null;
+            //Account replyer = null;
+            //if (accountId <= 0)
+            //{
+            //    replyer = _accountRepository.GetFilter(it => it.Name.Equals(Constant.ACCOUNT_NAME_ANONYMOUS_EN)).FirstOrDefault();
+            //}
+            //else
+            //{
+            //    replyer = _accountRepository.GetByKey(accountId);
+            //}
+            //if (replyer == null) throw new DomainException(Constant.ACCOUNT_NOTFOUND);
             if (accountId <= 0)
             {
-                replyer = _accountRepository.GetFilter(it => it.Name.Equals(Constant.ACCOUNT_NAME_ANONYMOUS_EN)).FirstOrDefault();
+                accountId = _accountRepository.GetFilter(it => it.Name.Equals(Constant.ACCOUNT_NAME_ANONYMOUS_EN)).FirstOrDefault().Id;
             }
-            else
-            {
-                replyer = _accountRepository.GetByKey(accountId);
-            }
-            if (replyer == null) throw new DomainException(Constant.ACCOUNT_NOTFOUND);
 
+            Int32 count = _postRepository.Select(it => it.Id == postId, it => it.Replies.Count).FirstOrDefault();
 
             Reply reply = new Reply()
             {
                 Content = content,
-                Level=post.Replies!=null&&post.Replies.Count>0?post.Replies.Count:0,
-                Post=post,
-                Replyer=replyer,ReplyTime=DateTime.Now
+                Level=count+1,
+                PostId=postId,
+                ReplyerId=accountId,
+                ReplyTime=DateTime.Now
             };
+            _replyRepository.Add(reply);
+            _unitOfWork.Commit();
         }
 
         public ViewModel.PostDTO DeleteReply()
@@ -172,7 +191,30 @@ namespace BBS2._0.Services
 
         public PostDTO ScanPost(int id)
         {
-            throw new NotImplementedException();
+            //浏览帖子
+            Post post = _postRepository.GetByKey(id);
+            post.ScanAccount += 1;
+            _unitOfWork.Commit();
+            return _postRepository.Select(it => it.Id==id, it => new PostDTO()
+            {
+                Id = it.Id,
+                Keyword = it.Keyword,
+                PublicTime = it.PublicTime,
+                ScanAccount = it.ScanAccount,
+                Title = it.Title,
+                Poster = new AccountDTO()
+                {
+                    Id = it.Poster.Id,
+                    Age = it.Poster.Age,
+                    Email = it.Poster.Email,
+                    Name = it.Poster.Name,
+                    Password = it.Poster.Password,
+                    Sex = it.Poster.Sex,
+                    Tel = it.Poster.Tel
+                },
+                ReplyAccount = it.Replies.Count
+            })
+            .First();
         }
 
         public List<ReplyDTO> GetPostReplies(Int32 postId)
