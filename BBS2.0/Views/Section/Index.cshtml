@@ -6,10 +6,6 @@
 }
 
 <script type="text/javascript">
-    function fixWidth(percent) {
-        return document.body.clientWidth * percent; //这里你可以自己做调整  
-    }
-
     function AddPost()
     {
         parent.document.getElementById("mainFrame").src = '/Post/PostPost?sectionId=@Model.Id';
@@ -20,8 +16,8 @@
     }
 
     $(function () {
-        var obj = parent.document.getElementById("mainFrame");
-        obj.style.height = document.body.scrollHeight;
+        //var obj = parent.document.getElementById("mainFrame");
+        //obj.style.height = document.body.scrollHeight;
     });
     $(function () {
         $('#postDataGrid').datagrid({
@@ -44,17 +40,13 @@
                 handler: AddPost
             }]
         });
+        SetNavigateion(2, window.location.pathname+window.location.search, $('#title').html());
     });
 </script>
-<style type="text/css">
-    .easyui-panel {
-        border:none
-    }
-</style>
 
-<div class="easyui-panel" style="background:inherit">
-    <div class="easyui-panel" style="background:inherit">
+    <div class="easyui-panel">
         @Html.DisplayFor(it=>it.Title)
+        <label style="display:none" id="title">@Model.Title</label>
     </div>
     <div class="easyui-panel">
         <table class="easyui-datagrid" id="postDataGrid" title="帖子列表"></table>
@@ -70,4 +62,3 @@
             </thead>
         </table>*@
     </div>
-</div>

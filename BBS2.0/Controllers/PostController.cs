@@ -20,7 +20,7 @@ namespace BBS2._0.Controllers
 
         public ActionResult Index(Int32 postId)
         {
-            return View(postId);
+            return View(PostService.GetById(postId));
         }
 
         public JsonResult GetSectionPosts(Int32 sectionId)

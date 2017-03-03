@@ -34,9 +34,12 @@
     {
         parent.document.getElementById("mainFrame").src = '/Post?postId=@Model';
     }
+    $(function () {
+        SetNavigateion(4, window.location.pathname + window.location.search, "回复");
+    });
 </script>
 
-<div class="easyui-panel" style="background:inherit">
+<div class="easyui-panel" >
     <form id="ReplyPostForm" method="post" style="background:inherit">
         <div class="fitem" style="fit:fill;background:inherit;visibility:hidden">
             <label style="margin:0px 0px 0px 50px;vertical-align:top">回复：</label>

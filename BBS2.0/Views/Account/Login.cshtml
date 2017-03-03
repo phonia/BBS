@@ -1,11 +1,11 @@
 ﻿<div class="easyui-panel">
     <form id="LoginForm" method="post">
         <div class="fitem" style="margin-left:20px">
-            <label style="display:inline-block;width:80px;text-align:right">账户：</label>
+            <label>账户：</label>
             <input class="easyui-validatebox" required="required" name="name" id="name" value="Admin" />
         </div>
-                <div class="fitem" style="margin-left:20px">
-            <label style="display:inline-block;width:80px;text-align:right">密码：</label>
+        <div class="fitem" style="margin-left:20px">
+            <label>密码：</label>
             <input class="easyui-validatebox" required="required" name="password" type="password" value="Admin" />
         </div>
         <div class="fitem" style="float:none;text-align:center;padding:5px;margin-top:20px">
@@ -77,5 +77,10 @@
     }
     .easyui-panel {
         border:none
+    }
+        label {
+        display:inline-block;
+        width:80px;
+        text-align:right
     }
 </style>

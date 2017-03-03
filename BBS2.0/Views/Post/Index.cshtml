@@ -1,22 +1,18 @@
-﻿@model System.Int32
+﻿@model BBS2._0.ViewModel.PostDTO
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <script type="text/javascript">
-    function fixWidth(percent) {
-        return document.body.clientWidth * percent; //这里你可以自己做调整  
-    }
-
     function AddPost()
     {
-        parent.document.getElementById("mainFrame").src = '/Post/ReplyPost?postId=@Model';
+        parent.document.getElementById("mainFrame").src = '/Post/ReplyPost?postId=@Model.Id';
     }
 
     $(function () {
         $('#replyDataGrid').datagrid({
-            url: '/Post/GetPostReplies?postId=@Model',
+            url: '/Post/GetPostReplies?postId=@Model.Id',
             fitColumns: true,
             rownumbers: true,
             striped: true,
@@ -34,9 +30,13 @@
                 handler:AddPost
             }]
         });
+        SetNavigateion(3, window.location.pathname + window.location.search, $('#title').html());
     })
 </script>
 
 <div class="easyui-panel">
     <table id="replyDataGrid"></table>
+</div>
+<div>
+    <label id="title" style="display:none">@Model.Title</label>
 </div>
