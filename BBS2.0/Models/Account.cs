@@ -17,6 +17,10 @@ namespace BBS2._0.Models
         public Int32 Age { get; set; }
         public String Tel { get; set; }
         public String Email { get; set; }
+        public Int32 RoleId { get; set; }
+
+        public SysRole Role { get; set; }
+
 
         protected override void Validate()
         {

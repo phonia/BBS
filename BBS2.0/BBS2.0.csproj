@@ -173,6 +173,7 @@
     <Compile Include="Common\AccountType.cs" />
     <Compile Include="Common\AutoMapperBootStrapper.cs" />
     <Compile Include="Common\Contant.cs" />
+    <Compile Include="Common\DataState.cs" />
     <Compile Include="Common\EnumHelper.cs" />
     <Compile Include="Common\MapperHelper.cs" />
     <Compile Include="Common\Sex.cs" />
@@ -196,6 +197,12 @@
     <Compile Include="Models\Post.cs" />
     <Compile Include="Models\Reply.cs" />
     <Compile Include="Models\Section.cs" />
+    <Compile Include="Models\SysException.cs" />
+    <Compile Include="Models\SysFunctionRight.cs" />
+    <Compile Include="Models\SysLog.cs" />
+    <Compile Include="Models\SysModule.cs" />
+    <Compile Include="Models\SysModuleOperate.cs" />
+    <Compile Include="Models\SysRole.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Repository\AccountRepository.cs" />
     <Compile Include="Repository\Configurtion\AccountConfiguration.cs" />
@@ -207,6 +214,10 @@
     <Compile Include="Repository\Configurtion\PostConfiguration.cs" />
     <Compile Include="Repository\Configurtion\ReplyConfiguration.cs" />
     <Compile Include="Repository\Configurtion\SectionConfiguration.cs" />
+    <Compile Include="Repository\Configurtion\SysFunctionRightConfiguration.cs" />
+    <Compile Include="Repository\Configurtion\SysModuleConfiguration.cs" />
+    <Compile Include="Repository\Configurtion\SysModuleOperateConfiguration.cs" />
+    <Compile Include="Repository\Configurtion\SysRoleConfiguration.cs" />
     <Compile Include="Repository\PostRepository.cs" />
     <Compile Include="Repository\ReplyRepository.cs" />
     <Compile Include="Repository\SectionRepository.cs" />

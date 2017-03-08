@@ -22,6 +22,7 @@ namespace BBS2._0.Repository
             Property(e => e.Password).HasColumnName("Password").HasColumnType("nvarchar").HasMaxLength(50).IsRequired();
             Property(e => e.Sex).HasColumnName("Sex").HasColumnType("int").IsRequired();
             Property(e => e.Tel).HasColumnName("Tel").HasColumnType("nvarchar").HasMaxLength(50).IsRequired();
+            HasRequired(e => e.Role).WithMany(e => e.Accounts).HasForeignKey(e => e.RoleId);
         }
     }
 }
