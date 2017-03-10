@@ -33,6 +33,6 @@ namespace BBS2._0.Models
         /// 程序集
         /// </summary>
         public string Data { get; set; }
-        public DateTime? CreateTime { get; set; }
+        public DateTime CreateTime { get; set; }
     }
 }

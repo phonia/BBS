@@ -194,6 +194,12 @@
     <Compile Include="Models\IRepository\IPostRepository.cs" />
     <Compile Include="Models\IRepository\IReplyRepository.cs" />
     <Compile Include="Models\IRepository\ISectionRepository.cs" />
+    <Compile Include="Models\IRepository\ISysExceptionRepository.cs" />
+    <Compile Include="Models\IRepository\ISysFunctionRightRepository.cs" />
+    <Compile Include="Models\IRepository\ISysLogRepository.cs" />
+    <Compile Include="Models\IRepository\ISysModuleOperateRepository.cs" />
+    <Compile Include="Models\IRepository\ISysModuleRepository.cs" />
+    <Compile Include="Models\IRepository\ISysRoleRepository.cs" />
     <Compile Include="Models\Post.cs" />
     <Compile Include="Models\Reply.cs" />
     <Compile Include="Models\Section.cs" />
@@ -214,27 +220,47 @@
     <Compile Include="Repository\Configurtion\PostConfiguration.cs" />
     <Compile Include="Repository\Configurtion\ReplyConfiguration.cs" />
     <Compile Include="Repository\Configurtion\SectionConfiguration.cs" />
+    <Compile Include="Repository\Configurtion\SysExceptionConfiguration.cs" />
     <Compile Include="Repository\Configurtion\SysFunctionRightConfiguration.cs" />
+    <Compile Include="Repository\Configurtion\SysLogConfiguration.cs" />
     <Compile Include="Repository\Configurtion\SysModuleConfiguration.cs" />
     <Compile Include="Repository\Configurtion\SysModuleOperateConfiguration.cs" />
     <Compile Include="Repository\Configurtion\SysRoleConfiguration.cs" />
     <Compile Include="Repository\PostRepository.cs" />
     <Compile Include="Repository\ReplyRepository.cs" />
     <Compile Include="Repository\SectionRepository.cs" />
+    <Compile Include="Repository\SysExceptionRepository.cs" />
+    <Compile Include="Repository\SysFuntionRightRepository.cs" />
+    <Compile Include="Repository\SysLogRepository.cs" />
+    <Compile Include="Repository\SysModuleOperateRepository.cs" />
+    <Compile Include="Repository\SysModuleRepository.cs" />
+    <Compile Include="Repository\SysRoleRepository.cs" />
     <Compile Include="Services\Implentation\AccountService.cs" />
     <Compile Include="Services\Implentation\PostService.cs" />
     <Compile Include="Services\Implentation\ReplyService.cs" />
     <Compile Include="Services\Implentation\SectionService.cs" />
     <Compile Include="Services\Interface\IAccountService.cs" />
+    <Compile Include="Services\Interface\IExceptionService.cs" />
+    <Compile Include="Services\Interface\IFunctionRightService.cs" />
+    <Compile Include="Services\Interface\ILogService.cs" />
+    <Compile Include="Services\Interface\IModuleOperateService.cs" />
+    <Compile Include="Services\Interface\IModuleService.cs" />
     <Compile Include="Services\Interface\IPostService.cs" />
     <Compile Include="Services\Interface\IReplyService.cs" />
+    <Compile Include="Services\Interface\IRoleService.cs" />
     <Compile Include="Services\Interface\ISectionService.cs" />
     <Compile Include="ViewModel\AccountDTO.cs" />
     <Compile Include="ViewModel\ComboboxDTO.cs" />
     <Compile Include="ViewModel\DataGridDTO.cs" />
+    <Compile Include="ViewModel\ExceptionDTO.cs" />
+    <Compile Include="ViewModel\FunctionRightDTO.cs" />
     <Compile Include="ViewModel\JsonMessageDTO.cs" />
+    <Compile Include="ViewModel\LogDTO.cs" />
+    <Compile Include="ViewModel\ModuleDTO.cs" />
+    <Compile Include="ViewModel\ModuleOperateDTO.cs" />
     <Compile Include="ViewModel\PostDTO.cs" />
     <Compile Include="ViewModel\ReplyDTO.cs" />
+    <Compile Include="ViewModel\RoleDTO.cs" />
     <Compile Include="ViewModel\SectionDTO.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -1749,6 +1775,7 @@
     <Content Include="Views\Post\PostPost.cshtml" />
     <Content Include="Views\Post\Index.cshtml" />
     <Content Include="Views\Post\ReplyPost.cshtml" />
+    <Content Include="Views\Home\Management.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

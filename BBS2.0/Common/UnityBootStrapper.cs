@@ -31,6 +31,12 @@ namespace BBS2._0.Common
             UnityContainer.RegisterType<ISectionRepository, SectionRepository>();
             UnityContainer.RegisterType<IPostRepository, PostRepository>();
             UnityContainer.RegisterType<IReplyRepository, ReplyRepository>();
+            UnityContainer.RegisterType<ISysRoleRepository, SysRoleRepository>();
+            UnityContainer.RegisterType<ISysModuleRepository, SysModuleRepository>();
+            UnityContainer.RegisterType<ISysFunctionRightRepository, SysFuntionRightRepository>();
+            UnityContainer.RegisterType<ISysLogRepository, SysLogRepository>();
+            UnityContainer.RegisterType<ISysExceptionRepository, SysExceptionRepository>();
+            UnityContainer.RegisterType<ISysModuleOperateRepository, SysModuleOperateRepository>();
 
             //服务接口
             //UnityContainer.RegisterType<IUserService, UserService>();

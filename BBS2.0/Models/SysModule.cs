@@ -14,7 +14,7 @@ namespace BBS2._0.Models
         public String Description { get; set; }
         public bool IsLeaf { get; set; }
         public byte[] RowVersion { get; set; }
-        public Int32 ParentId { get; set; }
+        public Int32? ParentId { get; set; }
 
         public SysModule Parent { get; set; }
         public List<SysModule> Children { get; set; }

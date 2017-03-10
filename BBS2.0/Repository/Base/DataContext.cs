@@ -24,6 +24,12 @@ namespace BBS2._0.Repository
         public DbSet<Section> Sections { get; set; }
         public DbSet<Post> Posts { get; set; }
         public DbSet<Reply> Replies { get; set; }
+        public DbSet<SysRole> Roles { get; set; }
+        public DbSet<SysModule> Modules { get; set; }
+        public DbSet<SysModuleOperate> ModuleOperates { get; set; }
+        public DbSet<SysFunctionRight> FunctionRights { get; set; }
+        public DbSet<SysLog> Logs { get; set; }
+        public DbSet<SysException> Exceptions { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
@@ -33,6 +39,12 @@ namespace BBS2._0.Repository
                 modelBuilder.Configurations.Add(new SectionConfiguration());
                 modelBuilder.Configurations.Add(new PostConfiguration());
                 modelBuilder.Configurations.Add(new ReplyConfiguration());
+                modelBuilder.Configurations.Add(new SysRoleConfiguration());
+                modelBuilder.Configurations.Add(new SysFunctionRightConfiguration());
+                modelBuilder.Configurations.Add(new SysModuleConfiguration());
+                modelBuilder.Configurations.Add(new SysModuleOperateConfiguration());
+                modelBuilder.Configurations.Add(new SysLogConfiguration());
+                modelBuilder.Configurations.Add(new SysExceptionConfiguration());
 
                 //将一堆多的级联删除全部设置成不可用
                 modelBuilder.Conventions.Remove<OneToManyCascadeDeleteConvention>();
@@ -51,6 +63,18 @@ namespace BBS2._0.Repository
             {
                 if (data.Set<Account>().Where(it => it.Name.Equals("Admin")).FirstOrDefault() != null) return;
 
+                SysRole superRole = new SysRole()
+                {
+                    Description = "超级管理员",
+                    Name = "SuperRole"
+                };
+
+                SysRole anonymousRole = new SysRole()
+                {
+                    Description = "匿名账户",
+                    Name = "AnonymousRole"
+                };
+
                 Account account = new Account()
                 {
                     Name = "Admin",
@@ -59,7 +83,8 @@ namespace BBS2._0.Repository
                     Email = "baichuan@hotmail.com",
                     Password = "Admin",
                     Sex = Sex.Male,
-                    Tel = "15975455335"
+                    Tel = "15975455335",
+                    Role=superRole
                 };
 
                 Account anonymous = new Account()
@@ -70,7 +95,8 @@ namespace BBS2._0.Repository
                     Email = "baichuan@hotmail.com",
                     Password = "anonymous",
                     Sex = Sex.Male,
-                    Tel = "15975455335"
+                    Tel = "15975455335",
+                    Role=anonymousRole
                 };
 
                 Section animation = new Section()

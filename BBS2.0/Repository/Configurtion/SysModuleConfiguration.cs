@@ -20,7 +20,7 @@ namespace BBS2._0.Repository
             Property(e => e.Name).HasColumnName("Name").HasColumnType("nvarchar").HasMaxLength(50).IsRequired();
             Property(e => e.RowVersion).IsRowVersion();
             Property(e => e.Url).HasColumnName("Url").HasColumnType("nvarchar").HasMaxLength(50).IsRequired();
-            HasOptional(e => e.Parent).WithMany(e => e.Children).HasForeignKey(e => e.ParentId);
+            HasMany(e => e.Children).WithOptional(e => e.Parent).HasForeignKey(e => e.ParentId);
         }
     }
 }
