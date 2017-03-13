@@ -183,6 +183,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\BaseController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ModuleController.cs" />
     <Compile Include="Controllers\PostController.cs" />
     <Compile Include="Controllers\SectionController.cs" />
     <Compile Include="Exception\DomainException.cs" />
@@ -236,6 +237,7 @@
     <Compile Include="Repository\SysModuleRepository.cs" />
     <Compile Include="Repository\SysRoleRepository.cs" />
     <Compile Include="Services\Implentation\AccountService.cs" />
+    <Compile Include="Services\Implentation\ModuleService.cs" />
     <Compile Include="Services\Implentation\PostService.cs" />
     <Compile Include="Services\Implentation\ReplyService.cs" />
     <Compile Include="Services\Implentation\SectionService.cs" />
@@ -262,6 +264,7 @@
     <Compile Include="ViewModel\ReplyDTO.cs" />
     <Compile Include="ViewModel\RoleDTO.cs" />
     <Compile Include="ViewModel\SectionDTO.cs" />
+    <Compile Include="ViewModel\TreeDTO.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\Common.css" />
@@ -1776,6 +1779,8 @@
     <Content Include="Views\Post\Index.cshtml" />
     <Content Include="Views\Post\ReplyPost.cshtml" />
     <Content Include="Views\Home\Management.cshtml" />
+    <Content Include="Views\Module\Index.cshtml" />
+    <Content Include="Views\Shared\_MLayout.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -46,6 +46,7 @@ namespace BBS2._0.Common
             UnityContainer.RegisterType<ISectionService, SectionService>();
             UnityContainer.RegisterType<IPostService, PostService>();
             UnityContainer.RegisterType<IReplyService, ReplyService>();
+            UnityContainer.RegisterType<IModuleService, ModuleService>();
         }
     }
 }

@@ -3,10 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace BBS2._0.ViewModel
+namespace BBS2._0.Services
 {
-    public class ModuleDTO
+    public class ModuleService:IModuleService
     {
-        public Int32 Id { get; set; }
     }
 }

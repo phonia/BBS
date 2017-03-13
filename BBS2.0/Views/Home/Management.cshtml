@@ -18,9 +18,145 @@
     <link href="~/Content/icon.css" rel="stylesheet" type="text/css" />
     <link href="~/Scripts/jquery-easyui-1.4.4/themes/default/easyui.css" rel="stylesheet" type="text/css" />
     <link href="~/Scripts/jquery-easyui-1.4.4/themes/icon.css" rel="stylesheet" type="text/css" />
-    <script type="text/javascript"></script>
-</head>
-<body class="easyui-layout" style="background:#fff">
+    <link href="~/Content/icon.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript">
+    //加载次级目录
+    //$(function () {
+    //    $('#MainMenu').accordion({
+    //        onSelect: function (title, index) {
+    //            var tab = $(this).accordion('getPanel', index);
+    //            if (tab.find("ul").length <= 0) {
+    //                $.ajax({
+    //                    url: tab.attr("id"),
+    //                    type: 'GET',
+    //                    dataType: 'json',
+    //                    success: function (msg) {
+    //                        //msg = eval('(' + msg + ')');
+    //                        if (msg.Success) {
+    //                            var sc = '<ul>';
+    //                            for (var i = 0; i < msg.Data.length; i++) {
+    //                                sc += '<li><div><a href="#" rel="' + msg.Data[i].Url + '"><span class="icon icon-nav">&nbsp;</span><span class="nav">' + msg.Data[i].Title + '</span"></a></div></li>';
+    //                            }
+    //                            sc += '</ul>';
+    //                            tab.append(sc);
+    //                        }
+    //                        else {
+    //                            alert("获取数据失败！");
+    //                        }
+    //                    }
+    //                });
+    //            }
+    //        }
+    //    });
 
+    //    //加载主目录
+    //    $.ajax({
+    //        url: '/Home/GetMenu?id=0',
+    //        type: 'GET',
+    //        dataType: 'json',
+    //        /***
+    //        前后台消息交互数据结构msg:{success,data[]}
+    //        */
+    //        success: function (msg) {
+    //            //msg = eval('(' + msg + ')');//将获取的datatype:html的数据转化成就json格式，如果是dataType:json则不需要此处理
+    //            if (msg.Success) {
+    //                for (var i = 0; i < msg.Data.length; i++) {
+    //                    $('#MainMenu').accordion('add', {
+    //                        title: msg.Data[i].Title,
+    //                        selected: false,
+    //                        id: msg.Data[i].Url,
+    //                        iconCls: 'icon icon-mianmenu'
+    //                    });
+    //                }
+    //            }
+    //            else {
+    //                alert("提取数据失败!");
+    //            }
+    //        }
+    //    });
+
+    //    $('.easyui-accordion').on('click', 'a', function () {
+    //        var url = $(this).attr("rel");
+    //        var id = url.substring(url.lastIndexOf("\\") + 1);
+    //        if (!$('#Maintabs').tabs('exists', $(this).text())) {
+    //            $('#Maintabs').tabs('add', {
+    //                title: $(this).text(),
+    //                closable: true,
+    //                fit: true,
+    //                content: '<iframe Id="' + id + '"   scrolling="auto" frameborder="0"  src="' + url + '" style="width:100%;height:99.5%;overflow:hidden"></iframe>',
+    //            });
+    //        }
+    //        else {
+    //            //var selected = $('#Maintabs').tabs('getTab', $(this).text());
+    //            $('#Maintabs').tabs('select', $(this).text());
+    //        }
+    //    });
+        //});
+        $(function () {
+            $('#GM').tree({
+                url: '/Home/GetGMMenu',
+                checkbox: false,
+                lines: true,
+                onClick: function (node) {
+                    //alert(node.text);  // alert node text property when clicked
+                    if (!node.children || node.children.length <= 0)//判断叶子节点
+                    {
+                        //alert(node.text);
+                        if (!$('#Maintabs').tabs('exists', node.text)) {
+                            $('#Maintabs').tabs('add', {
+                                title: node.text,
+                                closable: true,
+                                fit: true,
+                                content: '<iframe Id="' + node.id + '"   scrolling="auto" frameborder="0"  src="' + node.attributes.url+ '" style="width:100%;height:99.7%;overflow:hidden"></iframe>',//为何此处的高度不能设置成100%？
+                            });
+                        }
+                        else {
+                            //var selected = $('#Maintabs').tabs('getTab', $(this).text());
+                            $('#Maintabs').tabs('select', node.text);
+                        }
+                    }
+                }
+            });
+            $('#GM').show();
+        });
+    </script>
+</head>
+<body class="easyui-layout" style="background:#fff;overflow:hidden;height:100%;margin:0px;border:none" onscroll="no">
+    <div data-options="region:'north',title:'North Tilte',split:true,noheader:true" style="height:50px;"></div>
+    <div data-options="region:'south',title:'South Tilte',split:true,noheader:true" style="height:50px"></div>
+    <div data-options="region:'west',title:'菜单',split:true" style="width:200px">
+        <div id="MainMenu" class="easyui-accordion" style="border:none">
+            <div title="管理模块" style="border:none">
+                <div id="GM"></div>
+            </div>
+            <div title="系统设置" style="border:none"></div>
+            <div title="其他功能" style="border:none"></div>
+        </div>
+    </div>
+    <div data-options="region:'center',title:'center title',noheader:true" style="padding:5px;background:#eee;overflow:hidden;">
+        <div id="Maintabs" class="easyui-tabs" data-options="fit:true" style="border:none; padding:0px;margin:0px;overflow:hidden">
+            <div id="welcome" title="主页" data-options="iconCls:'icon-house'">
+
+            </div>
+        </div>
+    </div>
 </body>
 </html>
+
+@*<body class="easyui-layout" style="overflow: hidden;height:100%; padding:0px;margin:0px;border: medium none" scroll="no">
+    <div data-options="region:'north',title:'North Tilte',split:true,noheader:true" style="height:50px;"></div>
+    <div data-options="region:'south',title:'South Tilte',split:true,noheader:true" style="height:50px"></div>
+    <div data-options="region:'west',title:'菜单',split:true" style="width:200px">
+        <div id="MainMenu" class="easyui-accordion"></div>
+    </div>
+    <div data-options="region:'center',title:'center title',noheader:true" style="padding:5px;background:#eee;">
+        <div id="Maintabs" class="easyui-tabs" data-options="fit:true" style="border:none; padding:0px;margin:0px;overflow:hidden">
+            <div id="welcome" title="主页" data-options="iconCls:'icon-house'">
+
+            </div>
+        </div>
+    </div>
+
+<div id="FloatWin" class="easyui-window" data-options="modal:true,closed:true,inline:false" style="width:550px">
+</div>
+</body>*@
