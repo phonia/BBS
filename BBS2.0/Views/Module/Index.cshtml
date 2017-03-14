@@ -3,157 +3,311 @@
     Layout = "~/Views/Shared/_MLayout.cshtml";
 }
 
-    <script type="text/javascript">
-        function add() {
-            //dlg_Edit_form.form('clear');
-            //dlg_Edit.dialog('open');
-            //dlg_Edit.dialog('setTitle', '添加产品类型');
+<script type="text/javascript">
+    var dlg_Edit_form;
+    var dlg_Edit;
 
-            //dlg_Edit_form.url = virpath + '/Admin/CreateProductType/';
-            ////Msgalert("提示", '成功调用', "info");    
-        }
+    function add() {
+        dlg_Edit_form.form('clear');
+        dlg_Edit.dialog('open');
+        dlg_Edit.dialog('setTitle', '模块注册');
 
-        function edit() {
-            //var rows = grid.datagrid('getSelections');
-            //var num = rows.length;
-            //if (num == 0) {
-            //    Msgshow('请选择一条记录进行操作!');
-            //    //$.messager.alert('提示', '请选择一条记录进行操作!', 'question');       
-            //    return;
-            //}
-            //else if (num > 1) {
-            //    Msgfade('您选择了多条记录,只能选择一条记录进行修改!'); //$.messager.alert('提示', '您选择了多条记录,只能选择一条记录进行修改!', 'info');
-            //    return;
-            //}
-            //else {
-            //    dlg_Edit_form.form('clear');
-            //    dlg_Edit.dialog('open');
-            //    dlg_Edit.dialog('setTitle', '您正在修改' + rows[0].ProductTypeName + '游戏');
-            //    dlg_Edit_form.form('load', rows[0]); //加载到表单的控件上       
+        //dlg_Edit_form.url = virpath + '/Admin/CreateProductType/';
+        //Msgalert("提示", '成功调用', "info");    
+    }
 
-            //    dlg_Edit_form.url = virpath + '/Admin/UpdateProductType?id=' + rows[0].ID;
-            //}
-        }
-
-        function del() {
-            //var arr = getSelectedArr();
-            ////alert(arr);
-            //if (arr.length > 0) {
-            //    $.messager.confirm('提示信息', '您确认要删除选中的所有记录吗?', function (data) {
-            //        if (data) {
-            //            $.ajax({
-            //                url: virpath + '/Admin/RemeProductTypes?ids=' + arr2str(arr),
-            //                type: 'post',
-            //                error: function () {
-            //                    Msgalert('错误', '删除失败!', 'error');
-            //                    grid.datagrid('clearSelections');
-            //                },
-            //                success: function (Result) {
-            //                    var data = eval('(' + Result + ')');
-            //                    if (data.success) {
-            //                        Msgfade(arr.length + "条记录" + data.msg); //提示消息
-            //                        grid.datagrid('reload');
-            //                        grid.datagrid('clearSelections');
-            //                    } else {
-            //                        Msgalert('错误', data.msg, 'error');
-            //                    }
-            //                }
-            //            });
-            //        }
-            //    });
-            //} else {
-            //    Msgshow('请先选择要删除的记录。');
-            //}
-        }
-
-        function saveData() {
-            ////alert(dlg_Edit_form.url);
-            //dlg_Edit_form.form('submit', {
-            //    url: dlg_Edit_form.url,
-            //    onSubmit: function () {
-            //        return $(this).form('validate');
-            //    },
-            //    success: successCallback   //~/Content/JqueryUI/MyEasyUIcommmon.js
-            //});
-        }
-
-        function showAll() {
-            //grid.datagrid({ url: virpath + '/Admin/LoadProductTypejson/' });
-        }
-
-        function OpensearchWin() {
-            //searchWin.window('open');
-            //searchForm.form('clear');
-        }
-
-        $(function () {
-            grid = $('#grid').datagrid({
-                title: '产品类型管理',
-                iconCls: 'icon-save',
-                methord: 'Get',
-                url: '/Module/GetAllModules',
-                sortName: 'Id',
-                sortOrder: 'desc',
-                idField: 'Id',
-                pageSize: 30,
-                striped: true,
-                scrollbarSize: 0,
-                frozenColumns: [[
-                            { field: 'ck', checkbox: true }
-
-                ]],
-                columns: [[
-                            { field: 'Id', title: '模块编号', width: 100, sortable: true },
-
-                ]],
-                fit: true,
-                pagination: true,
-                rownumbers: true,
-                fitColumns: true,
-                singleSelect: false,
-                toolbar: [{
-                    text: '新增',
-                    iconCls: 'icon-add',
-                    handler: add
-                }, '-', {
-                    text: '修改',
-                    iconCls: 'icon-edit',
-                    handler: edit
-                }, '-', {
-                    text: '删除',
-                    iconCls: 'icon-remove',
-                    handler: del
-                }, '-', {
-                    text: '查找',
-                    iconCls: 'icon-search',
-                    handler: OpensearchWin
-                }, '-', {
-                    text: '所有',
-                    iconCls: 'icon-search',
-                    handler: showAll
-                }], onDblClickRow: function (rowIndex, rowData) {  //双击事件
-                    //dlg_Edit.dialog('open');
-                    //dlg_Edit_form.form('clear');
-                    //dlg_Edit.dialog('setTitle', '您正在修改:' + rowData.ProductTypeName );
-                    //dlg_Edit_form.form('load', rowData); //加载到表单的控件上      
-
-                    //dlg_Edit_form.url = virpath + '/Admin/UpdateProductType?id=' + rowData.ID;
-
-                }, onHeaderContextMenu: function (e, field) {
-                    //e.preventDefault();
-                    //if (!$('#tmenu').length) {
-                    //    createColumnMenu();
-                    //}
-                    //$('#tmenu').menu('show', {
-                    //    left: e.pageX,
-                    //    top: e.pageY
-                    //});
-                }
-            });
+    function loadParentCombobox() {
+        $('#Parent').combobox({
+            url: '/Module/GetNotLeafModulsForCombobox',
+            valueField: 'Id',
+            textField: 'Text',
+            editable: false,
+            panelHeight: 'auto'
         });
-    </script>
+    }
 
-<div region="center" style="width: 500px; height: 300px; padding: 1px;overflow-y: hidden;border:none">
-  <div id="grid">
-  </div>
+    function edit() {
+        //var rows = grid.datagrid('getSelections');
+        //var num = rows.length;
+        //if (num == 0) {
+        //    Msgshow('请选择一条记录进行操作!');
+        //    //$.messager.alert('提示', '请选择一条记录进行操作!', 'question');       
+        //    return;
+        //}
+        //else if (num > 1) {
+        //    Msgfade('您选择了多条记录,只能选择一条记录进行修改!'); //$.messager.alert('提示', '您选择了多条记录,只能选择一条记录进行修改!', 'info');
+        //    return;
+        //}
+        //else {
+        //    dlg_Edit_form.form('clear');
+        //    dlg_Edit.dialog('open');
+        //    dlg_Edit.dialog('setTitle', '您正在修改' + rows[0].ProductTypeName + '游戏');
+        //    dlg_Edit_form.form('load', rows[0]); //加载到表单的控件上       
+
+        //    dlg_Edit_form.url = virpath + '/Admin/UpdateProductType?id=' + rows[0].ID;
+        //}
+    }
+
+    function del() {
+        //var arr = getSelectedArr();
+        ////alert(arr);
+        //if (arr.length > 0) {
+        //    $.messager.confirm('提示信息', '您确认要删除选中的所有记录吗?', function (data) {
+        //        if (data) {
+        //            $.ajax({
+        //                url: virpath + '/Admin/RemeProductTypes?ids=' + arr2str(arr),
+        //                type: 'post',
+        //                error: function () {
+        //                    Msgalert('错误', '删除失败!', 'error');
+        //                    grid.datagrid('clearSelections');
+        //                },
+        //                success: function (Result) {
+        //                    var data = eval('(' + Result + ')');
+        //                    if (data.success) {
+        //                        Msgfade(arr.length + "条记录" + data.msg); //提示消息
+        //                        grid.datagrid('reload');
+        //                        grid.datagrid('clearSelections');
+        //                    } else {
+        //                        Msgalert('错误', data.msg, 'error');
+        //                    }
+        //                }
+        //            });
+        //        }
+        //    });
+        //} else {
+        //    Msgshow('请先选择要删除的记录。');
+        //}
+    }
+
+    function saveData() {
+        ////alert(dlg_Edit_form.url);
+        //dlg_Edit_form.form('submit', {
+        //    url: dlg_Edit_form.url,
+        //    onSubmit: function () {
+        //        return $(this).form('validate');
+        //    },
+        //    success: successCallback   //~/Content/JqueryUI/MyEasyUIcommmon.js
+        //});
+    }
+
+    function showAll() {
+        //grid.datagrid({ url: virpath + '/Admin/LoadProductTypejson/' });
+    }
+
+    function OpensearchWin() {
+        //searchWin.window('open');
+        //searchForm.form('clear');
+    }
+
+    function SaveButton()
+    { }
+
+    function BackButton()
+    { }
+
+    $(function () {
+        grid = $('#grid').datagrid({
+            title: '模块设置',
+            iconCls: 'icon-save',
+            methord: 'Get',
+            url: '/Module/GetAllModules',
+            sortName: 'Id',
+            sortOrder: 'desc',
+            idField: 'Id',
+            pageSize: 30,
+            striped: true,
+            scrollbarSize: 0,
+            frozenColumns: [[
+                        { field: 'ck', checkbox: true }
+
+            ]],
+            columns: [[
+                        { field: 'Id', title: '模块编号', width: 100, sortable: true },
+
+            ]],
+            fit: true,
+            pagination: true,
+            rownumbers: true,
+            fitColumns: true,
+            singleSelect: false,
+            toolbar: [{
+                text: '新增',
+                iconCls: 'icon-add',
+                handler: add
+            }, '-', {
+                text: '修改',
+                iconCls: 'icon-edit',
+                handler: edit
+            }, '-', {
+                text: '删除',
+                iconCls: 'icon-remove',
+                handler: del
+            }, '-', {
+                text: '查找',
+                iconCls: 'icon-search',
+                handler: OpensearchWin
+            }, '-', {
+                text: '所有',
+                iconCls: 'icon-search',
+                handler: showAll
+            }], onDblClickRow: function (rowIndex, rowData) {  //双击事件
+                //dlg_Edit.dialog('open');
+                //dlg_Edit_form.form('clear');
+                //dlg_Edit.dialog('setTitle', '您正在修改:' + rowData.ProductTypeName );
+                //dlg_Edit_form.form('load', rowData); //加载到表单的控件上      
+
+                //dlg_Edit_form.url = virpath + '/Admin/UpdateProductType?id=' + rowData.ID;
+
+            }, onHeaderContextMenu: function (e, field) {
+                //e.preventDefault();
+                //if (!$('#tmenu').length) {
+                //    createColumnMenu();
+                //}
+                //$('#tmenu').menu('show', {
+                //    left: e.pageX,
+                //    top: e.pageY
+                //});
+            }
+        });
+
+        dlg_Edit = $('#Dlg-Edit').dialog({
+            closed: true,
+            modal: true,
+            toolbar: [{
+                text: '保存',
+                iconCls: 'icon-save',
+                handler: saveData
+            }, '-', {
+                text: '关闭',
+                iconCls: 'icon-no',
+                handler: function () {
+                    dlg_Edit.dialog('close');
+                }
+            }]
+
+        });
+        dlg_Edit_form = dlg_Edit.find('form');
+
+        loadParentCombobox();
+    });
+</script>
+
+<style type="text/css">
+    .easyui-panel {
+        border: none;
+    }
+
+    label {
+        display: inline-block;
+        width: 80px;
+        text-align: right;
+    }
+
+    .fitem {
+        margin: 10px 5px 10px 5px;
+    }
+</style>
+
+<div region="center" style="width: 500px; height: 300px; padding: 1px; overflow-y: hidden; border: none">
+    <div id="grid">
+    </div>
 </div>
+
+<div id="Dlg-Edit" title="模块注册" style="width: 500px; height: 300px">
+    <div class="easyui-panel">
+        <form method="post" id="moduleform">
+            <div class="fitem">
+                <label>模块名:</label>
+                <input class="easyui-validatebox" required="required" name="name" />
+            </div>
+            <div class="fitem">
+                <label>url:</label>
+                <input class="easyui-validatebox" required="required" name="url" />
+            </div>
+            <div class="fitem">
+                <label>模块描述:</label>
+                <input class="easyui-validatebox" required="required" name="description" />
+            </div>
+            <div class="fitem">
+                <label>是否有子模块:</label>
+                <input class="easyui-checkbox" name="isLeaf" />
+            </div>
+            <div class="fitem">
+                <label>上级模块:</label>
+                <input id="Parent" name="parent" />
+            </div>
+            @*        <div class="fitem" style="float:none;text-align:center;padding:5px;margin-top:20px">
+            <a href="javascript:" class="easyui-linkbutton" onclick="SaveButton()"></a>
+            <a href="javascript:" class="easyui-linkbutton" onclick="BackButton()"></a>
+        </div>*@
+        </form>
+    </div>
+</div>
+
+@*<div id="Dlg-Edi" title="窗口" style="width: 500px; height: 300px;" buttons="#buttons">
+        <div style="padding: 20px 20px 40px 40px;">
+            <form method="post" id="Form1">
+            <table>
+                <tr>
+                    <td style="text-align:right">
+                        产品类型：
+                    </td>
+                    <td>
+                        <select id="TypeId" class="easyui-combogrid" name="ProductTypeID" style="width:200px;"  class="easyui-validatebox" required="true">
+		
+	                    </select>
+
+                    </td>
+                </tr> 
+            
+                <tr>
+                    <td style="text-align:right">
+                        产品名称：
+                    </td>
+                    <td>
+                        <input type="text" name="ProductName" id="ProductName" class="easyui-validatebox" required="true" style="width: 200px;" maxlength=25 /> &nbsp;（限制：50个字节）
+                    </td>
+                </tr>
+                 <tr>
+                    <td style="text-align:right">
+                        产品图片：
+                    </td>
+                    <td>
+                        <input type="text" name="Image" id="Image" class="easyui-validatebox" required="true" style="width: 200px;" /> 
+                    </td>
+                </tr>
+                 <tr>
+                    <td style="text-align:right">
+                        市场价格：
+                    </td>
+                    <td>
+                        <input type="text" name="MarketPrice" id="MarketPrice" class="easyui-validatebox" required="true" onkeyup="value=value.replace(/[^\d]/g,'')" style="width: 200px;"  />
+                    &nbsp;（单位：元）</td>
+                </tr>
+                 <tr>
+                    <td style="text-align:right">
+                        本店价格：
+                    </td>
+                    <td>
+                        <input name="NewPrice" id="NewPrice" class="easyui-validatebox" required="true" style="width: 200px;" onkeyup="value=value.replace(/[^\d]/g,'')" />
+                    &nbsp;（单位：元）</td>
+                </tr>
+                
+                <tr>
+                    <td style="text-align:right">
+                        是否上架：
+                    </td>
+                    <td>
+                       
+                        <select id="Enable" class="easyui-combobox" name="Enable" style="width:200px;" class="easyui-validatebox" required="true" editable="false" panelHeight= "auto">
+		                     <option value="1">上架</option> 
+		                     <option value="0">下架</option>
+                        </select> &nbsp;（默认：上架）
+                    </td>
+                </tr>
+
+            </table>
+            </form>
+        </div>
+    </div>*@
+

@@ -3,12 +3,16 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using BBS2._0.Services;
 using BBS2._0.ViewModel;
+using Microsoft.Practices.Unity;
 
 namespace BBS2._0.Controllers
 {
     public class ModuleController : BaseController
     {
+        [Dependency]
+        public IModuleService ModuleService { get; set; }
         //
         // GET: /Module/
 
@@ -19,42 +23,37 @@ namespace BBS2._0.Controllers
 
         public JsonResult GetAllModules()
         {
+            List<ModuleDTO> list = ModuleService.GetAllModuels();
+
             DataGridDTO<ModuleDTO> dm = new DataGridDTO<ModuleDTO>()
             {
-                rows = new List<ModuleDTO>() {
-                    new ModuleDTO(){Id=1},
-                    new ModuleDTO(){Id=2},
-                    new ModuleDTO(){Id=3},
-                    new ModuleDTO(){Id=4},
-                    new ModuleDTO(){Id=5},
-                    new ModuleDTO(){Id=6},
-                    new ModuleDTO(){Id=7},
-                    new ModuleDTO(){Id=8},
-                    new ModuleDTO(){Id=9},
-                    new ModuleDTO(){Id=10},
-                    new ModuleDTO(){Id=11},
-                    new ModuleDTO(){Id=12},
-                    new ModuleDTO(){Id=13},
-                    new ModuleDTO(){Id=14},
-                    new ModuleDTO(){Id=15},
-                    new ModuleDTO(){Id=16},
-                    new ModuleDTO(){Id=17},
-                    new ModuleDTO(){Id=18},
-                    new ModuleDTO(){Id=19},
-                    new ModuleDTO(){Id=20},
-                    new ModuleDTO(){Id=21},
-                    new ModuleDTO(){Id=22},
-                    new ModuleDTO(){Id=23},
-                    new ModuleDTO(){Id=24},
-                    new ModuleDTO(){Id=25},
-                    new ModuleDTO(){Id=26},
-                    new ModuleDTO(){Id=27},
-                    new ModuleDTO(){Id=28},
-                    new ModuleDTO(){Id=29},
-                },
-                total=2
+                rows = list,
+                total=list.Count
             };
             return Json(dm, JsonRequestBehavior.AllowGet);
+        }
+
+        public JsonResult GetNotLeafModulsForCombobox()
+        {
+            //List<ComboboxDTO> list = ModuleService.GetAllModuels().Where(it=>it.IsLeaf==false)
+            //    .Select(it=>new ComboboxDTO(){Id=it.Id.ToString(),Text=it.Name}).ToList();
+            //list.Add(new ComboboxDTO(){Id="0",Text="没有数据"});
+            List<ComboboxDTO> list = new List<ComboboxDTO>() { 
+                new ComboboxDTO(){Id="0",Text="男"},
+                new ComboboxDTO(){Id="1",Text="女"},
+                new ComboboxDTO(){Id="2",Text="未知"}
+            };
+            return Json(list, JsonRequestBehavior.AllowGet);
+        }
+
+        public JsonResult RegisterModule()
+        {
+            return Json(new JsonMessageDTO() { Success = true }, JsonRequestBehavior.AllowGet);
+        }
+
+        public JsonResult DeleteModule()
+        {
+            return Json(new JsonMessageDTO() { Success = false }, JsonRequestBehavior.AllowGet);
         }
     }
 }

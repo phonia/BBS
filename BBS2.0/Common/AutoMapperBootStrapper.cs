@@ -28,6 +28,10 @@ namespace BBS2._0.Common
             Mapper.CreateMap<PostDTO, Post>();
             Mapper.CreateMap<Reply, ReplyDTO>();
             Mapper.CreateMap<ReplyDTO, Reply>();
+
+            //
+            Mapper.CreateMap<SysModule, ModuleDTO>();
+            Mapper.CreateMap<ModuleDTO, SysModule>();
         }
     }
 }
