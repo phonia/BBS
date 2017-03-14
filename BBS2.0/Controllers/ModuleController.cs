@@ -35,14 +35,14 @@ namespace BBS2._0.Controllers
 
         public JsonResult GetNotLeafModulsForCombobox()
         {
-            //List<ComboboxDTO> list = ModuleService.GetAllModuels().Where(it=>it.IsLeaf==false)
-            //    .Select(it=>new ComboboxDTO(){Id=it.Id.ToString(),Text=it.Name}).ToList();
-            //list.Add(new ComboboxDTO(){Id="0",Text="没有数据"});
-            List<ComboboxDTO> list = new List<ComboboxDTO>() { 
-                new ComboboxDTO(){Id="0",Text="男"},
-                new ComboboxDTO(){Id="1",Text="女"},
-                new ComboboxDTO(){Id="2",Text="未知"}
-            };
+            List<ComboboxDTO> list = ModuleService.GetAllModuels().Where(it => it.IsLeaf == false)
+                .Select(it => new ComboboxDTO() { Id = it.Id.ToString(), Text = it.Name }).ToList();
+            list.Add(new ComboboxDTO() { Id = "0", Text = "没有数据" });
+            //List<ComboboxDTO> list = new List<ComboboxDTO>() { 
+            //    new ComboboxDTO(){Id="0",Text="男"},
+            //    new ComboboxDTO(){Id="1",Text="女"},
+            //    new ComboboxDTO(){Id="2",Text="未知"}
+            //};
             return Json(list, JsonRequestBehavior.AllowGet);
         }
 
