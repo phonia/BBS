@@ -5,24 +5,30 @@ using System.Web;
 using BBS2._0.Models;
 using BBS2._0.ViewModel;
 using Infrastructure;
+using BBS2._0.Common;
 
 namespace BBS2._0.Services
 {
     public class ModuleService:IModuleService
     {
         private ISysModuleRepository _moduleRepository = null;
+        private ISysModuleOperateRepository _moduleOperateRepository = null;
         private IUnitOfWork _unitOfWork = null;
 
-        public ModuleService(ISysModuleRepository sysModuleRepository, IUnitOfWork unitOfWork)
+        public ModuleService(ISysModuleRepository sysModuleRepository,ISysModuleOperateRepository sysModuleOperateRepository,
+            IUnitOfWork unitOfWork)
         {
             this._moduleRepository = sysModuleRepository;
+            this._moduleOperateRepository = sysModuleOperateRepository;
+
             this._unitOfWork = unitOfWork;
             this._moduleRepository.UnitOfWork = unitOfWork;
+            this._moduleOperateRepository.UnitOfWork = unitOfWork;
         }
 
         #region IModuleService 成员
 
-        public bool RegisterModule(string name, string url, string description, bool isLeaf, Int32? parentId = null)
+        public bool RegisterModule(string name, string url, string description, bool isLeaf, String parentId)
         {
             SysModule module = new SysModule()
             {
@@ -30,8 +36,8 @@ namespace BBS2._0.Services
                 Url = url,
                 Description = description,
                 IsLeaf = isLeaf,
-                ParentId = parentId
             };
+            if (Convert.ToInt32(parentId) > 0) module.ParentId = Convert.ToInt32(parentId);
             this._moduleRepository.Add(module);
             this._unitOfWork.Commit();
             return true;
@@ -55,7 +61,8 @@ namespace BBS2._0.Services
                 Description=it.Description,
                 IsLeaf=it.IsLeaf,
                 Name=it.Name,
-                Url=it.Url
+                Url=it.Url,
+                ParentId=it.ParentId!=null?(Int32)it.ParentId:0
             }).ToList();
         }
 
@@ -67,10 +74,41 @@ namespace BBS2._0.Services
                 Description = it.Description,
                 IsLeaf = it.IsLeaf,
                 Name = it.Name,
-                Url = it.Url
+                Url = it.Url,
+                ParentId = it.ParentId != null ? (Int32)it.ParentId : 0
             }).FirstOrDefault();
             if (ret == null) throw new DomainException("");
             return ret;
+        }
+
+        public List<ModuleOperateDTO> GetModuleOperatesByModuleId(Int32 moduleId)
+        {
+            return _moduleOperateRepository.Select(it => it.ModuleId == moduleId, it => new ModuleOperateDTO()
+            {
+                Id = it.Id,
+                IsValid=it.IsValid,
+                KeyCode=it.KeyCode,
+                ModuleId=it.ModuleId,
+                Name=it.Name,
+                Url=it.Url,
+                ModuleName=it.Module.Name
+            }).ToList();
+        }
+
+        public bool RegisterModuleOperate(String name, String url, bool isValid, Int32 moduelId)
+        {
+            Int32 count = _moduleOperateRepository.GetFilter(it => it.ModuleId == moduelId).Count();
+            SysModuleOperate moduleOperate = new SysModuleOperate()
+            {
+                IsValid = isValid,
+                KeyCode=moduelId.ConvertDecimalToHex(4)+(count+1).ConvertDecimalToHex(4),
+                ModuleId=moduelId,
+                Name=name,                
+                Url=url//地址不能重复
+            };
+            _moduleOperateRepository.Add(moduleOperate);
+            _unitOfWork.Commit();
+            return true;
         }
 
         #endregion

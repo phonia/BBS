@@ -6,7 +6,7 @@ using Infrastructure;
 
 namespace BBS2._0.Models
 {
-    interface ISysModuleOperateRepository:IRepository<SysModuleOperate,Int32>
+    public interface ISysModuleOperateRepository:IRepository<SysModuleOperate,Int32>
     {
     }
 }

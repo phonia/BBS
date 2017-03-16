@@ -172,6 +172,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Common\AccountType.cs" />
     <Compile Include="Common\AutoMapperBootStrapper.cs" />
+    <Compile Include="Common\Common.cs" />
     <Compile Include="Common\Contant.cs" />
     <Compile Include="Common\DataState.cs" />
     <Compile Include="Common\EnumHelper.cs" />
@@ -1781,6 +1782,7 @@
     <Content Include="Views\Home\Management.cshtml" />
     <Content Include="Views\Module\Index.cshtml" />
     <Content Include="Views\Shared\_MLayout.cshtml" />
+    <Content Include="Views\Module\ModuleOperate.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

@@ -14,7 +14,7 @@
         </div>
         <div class="fitem">
             <label>性别：</label>
-            <input id="Sex" name="sex">
+            <input id="Sex" name="sex" required="required">
         </div>
         <div class="fitem">
             <label>年龄：</label>
@@ -58,6 +58,7 @@
             editable: false,
             panelHeight: 'auto'
         });
+        $('#Sex').combobox('select', '0');
     });
 
     function RegisterButton() {

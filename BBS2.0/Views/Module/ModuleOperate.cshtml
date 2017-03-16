@@ -1,0 +1,156 @@
+﻿@model System.Int32
+@{
+    ViewBag.Title = "ModuleOperate";
+    Layout = "~/Views/Shared/_MLayout.cshtml";
+}
+<script type="text/javascript">
+    var dlg_Edit;
+    var dlg_Edit_Form;
+
+    function add()
+    {
+        dlg_Edit_Form.form('clear');
+        dlg_Edit.dialog('open');
+        dlg_Edit.dialog('setTile', '操作注册');
+    }
+
+    function edit()
+    { }
+
+    function del()
+    { }
+
+    function opensearchWin()
+    { }
+
+    function showAll()
+    { }
+
+    function saveData()
+    {
+        if ($('#Id').val() == "0" || $('#Id').val() == "")
+        {
+            dlg_Edit_Form.form('submit', {
+                url: '/Module/RegisterModuleOperate?moduleId=@Model',
+                onSubmit: function () {
+                    return $(this).form('validate');//客户端 数据 验证？
+                },
+                success: function (data) {
+                    if (!data) $.messager.alert("异常", "出错了", "info", function () { });
+                    msg = eval('(' + data + ')');
+                    if (msg.Success) {
+                        $.message.show({
+                            title: '操作注册',
+                            msg: '注册成功',
+                            timeout: 5000,
+                            showType:'slide'
+                        });
+                        dlg_Edit.dialog('close');
+                        $('#grid').datagrid('reload');
+                    }
+                    else
+                    { }
+                }
+            });
+        }
+        else
+        { }
+    }
+
+    $(function () {
+        grid = $('#grid').datagrid({
+            title: '模块功能',
+            url: '/Module/GetModuleOperates?moduleId=@Model',
+            iconCls: 'icon-save',
+            method: 'GET',
+            sortName: 'Id',
+            sortOrder: 'desc',
+            idField: 'Id',
+            pageSize: 10,
+            striped: true,
+            frozenColumns: [[
+                { field: 'ck', checkbox: true }
+            ]],
+            columns: [[
+                { field: 'Id',          title: '操作序号',          width: 100, sortable: true },
+                { field: 'ModuleName',  title: '模块名称',          width: 300, sortable: true },
+                { field: 'Name',        title: '操作名称',          width: 300, sortable: true },
+                { field: 'Url',         title: '操作地址',          width: 300, sortable: true },
+                { field: 'KeyCode',     title: '操作编码',          width: 300, sortable: true },
+                { field: 'IsValid',     title: '操作是否要验证',    width: 100, sortable: true },
+                { field: 'ModuleId',    title: '操作所属模块',      width: 100, sortable: true,hidden:true }
+            ]],
+            fit: true,
+            pagination: true,
+            rownumbers: true,
+            fitColumns: true,
+            singleSelect: false,
+            toolbar: [
+                { text: '新增', iconCls: 'icon-add', handler: add },
+                '-', { text: '编辑', iconCls: 'icon-edit', handler:  edit},
+                '-', { text: '删除', iconCls: 'icon-remove', handler: del },
+                '-', { text: '查询', iconCls: 'icon-search', handler: opensearchWin },
+                '-', { text: '显示所有', iconCls: 'icon-search', handler: showAll },
+            ]
+        });
+
+        dlg_Edit = $('#Dlg-Edit').dialog({
+            closed: true,
+            modal: true,
+            toolbar: [
+                { text: '保存', iconCls: 'icon-save', handler: saveData },
+                '-', { text: '关闭', iconCls: 'icon-no', handler: function () { dlg_Edit.dialog('close');} }
+            ]
+        });
+
+        dlg_Edit_Form = dlg_Edit.find('form');
+    });
+</script>
+
+<style type="text/css">
+    .easyui-panel {
+        border: none;
+    }
+
+    label {
+        display: inline-block;
+        width: 80px;
+        text-align: right;
+    }
+
+    .fitem {
+        margin: 10px 5px 10px 5px;
+    }
+</style>
+
+<div region="center" style="padding:1px;overflow-y:hidden;border">
+    <div id="grid"></div>
+</div>
+
+
+<div id="Dlg-Edit" title="模块功能注册" style="width:300px;height:250px">
+    <div class="easyui-panel" style="vertical-align:central">
+        <form method="post" id="moduleOperateform">
+            <div class="fitem" style="display:none">
+                <label>操作Id:</label>
+                <input class="easyui-validate" required="required" name="id" value="0" id="Id" />
+            </div>
+            <div class="fitem">
+                <label>操作名称:</label>
+                <input class="easyui-validate" required="required" name="name" />
+            </div>
+            <div class="fitem">
+                <label>url:</label>
+                <input class="easyui-validate" required="required" name="url" />
+            </div>
+            <div class="fitem">
+                <label>是否需要验证:</label>
+                <input type="checkbox" name="isValid" checked="checked"  />
+            </div>
+@*            <div class="fitem" style="display:none">
+                <label>模块Id:</label>
+                <input class="easyui-validate" required="required" name="moduleId" value="@Model" />
+            </div>*@
+        </form>
+    </div>
+</div>

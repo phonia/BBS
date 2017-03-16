@@ -12,5 +12,6 @@ namespace BBS2._0.ViewModel
         public String Url { get; set; }
         public String Description { get; set; }
         public bool IsLeaf { get; set; }
+        public Int32 ParentId { get; set; }
     }
 }

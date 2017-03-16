@@ -21,13 +21,13 @@ namespace BBS2._0.Controllers
             return View();
         }
 
-        public JsonResult GetAllModules()
+        public JsonResult GetAllModules(Int32 page,Int32 rows,String sort,String order)
         {
             List<ModuleDTO> list = ModuleService.GetAllModuels();
 
             DataGridDTO<ModuleDTO> dm = new DataGridDTO<ModuleDTO>()
             {
-                rows = list,
+                rows = list.Skip((page - 1) * rows).Take(rows).ToList(),
                 total=list.Count
             };
             return Json(dm, JsonRequestBehavior.AllowGet);
@@ -37,23 +37,51 @@ namespace BBS2._0.Controllers
         {
             List<ComboboxDTO> list = ModuleService.GetAllModuels().Where(it => it.IsLeaf == false)
                 .Select(it => new ComboboxDTO() { Id = it.Id.ToString(), Text = it.Name }).ToList();
-            list.Add(new ComboboxDTO() { Id = "0", Text = "没有数据" });
-            //List<ComboboxDTO> list = new List<ComboboxDTO>() { 
-            //    new ComboboxDTO(){Id="0",Text="男"},
-            //    new ComboboxDTO(){Id="1",Text="女"},
-            //    new ComboboxDTO(){Id="2",Text="未知"}
-            //};
+            list.Add(new ComboboxDTO() { Id = "0", Text = "————无————" });
             return Json(list, JsonRequestBehavior.AllowGet);
         }
 
-        public JsonResult RegisterModule()
+        public JsonResult RegisterModule(String name,String url,String description,String isLeaf,String parent)
+        {
+            ModuleService.RegisterModule(name, url, description, isLeaf == null ? false : true, parent);
+            return Json(new JsonMessageDTO() { Success = true }, JsonRequestBehavior.AllowGet);
+        }
+
+        public JsonResult UpdateModuleBaseData(String id, String name, String url, String description, String isLeaf, String parent)
         {
             return Json(new JsonMessageDTO() { Success = true }, JsonRequestBehavior.AllowGet);
         }
 
-        public JsonResult DeleteModule()
+        public JsonResult DeleteModules(List<int> ids)
         {
             return Json(new JsonMessageDTO() { Success = false }, JsonRequestBehavior.AllowGet);
+        }
+
+        public ActionResult ModuleOperate(Int32 moduleId)
+        {
+            return View(moduleId);
+        }
+
+        public JsonResult GetModuleOperates(Int32 moduleId, Int32 page, Int32 rows, String sort, String order)
+        {
+            List<ModuleOperateDTO> list = ModuleService.GetModuleOperatesByModuleId(moduleId);
+            return Json(new DataGridDTO<ModuleOperateDTO>() { total = list.Count, rows = list.Skip((page-1)*rows).Take(rows).ToList() }, JsonRequestBehavior.AllowGet);
+        }
+
+        public JsonResult RegisterModuleOperate(String name,String url,String isValid,String moduleId)
+        {
+            ModuleService.RegisterModuleOperate(name, url, isValid == null ? false : true, Convert.ToInt32(moduleId));
+            return Json(new JsonMessageDTO() { Success = true }, JsonRequestBehavior.AllowGet); 
+        }
+
+        public JsonResult UpdateModuleOperates()
+        {
+            return Json(new JsonMessageDTO() { Success = true }, JsonRequestBehavior.AllowGet);
+        }
+
+        public JsonResult DeleteModuleOperates()
+        {
+            return Json(new JsonMessageDTO() { Success = true }, JsonRequestBehavior.AllowGet);
         }
     }
 }

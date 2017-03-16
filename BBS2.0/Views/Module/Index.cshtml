@@ -11,13 +11,14 @@
         dlg_Edit_form.form('clear');
         dlg_Edit.dialog('open');
         dlg_Edit.dialog('setTitle', '模块注册');
+        $('#Parentp').combobox('select', '0');//需要在对话框加载完成之后才能设置combobox的值吗？
 
         //dlg_Edit_form.url = virpath + '/Admin/CreateProductType/';
         //Msgalert("提示", '成功调用', "info");    
     }
 
     function loadParentCombobox() {
-        $('#Parent').combobox({
+        $('#Parentp').combobox({
             url: '/Module/GetNotLeafModulsForCombobox',
             valueField: 'Id',
             textField: 'Text',
@@ -27,67 +28,93 @@
     }
 
     function edit() {
-        //var rows = grid.datagrid('getSelections');
-        //var num = rows.length;
-        //if (num == 0) {
-        //    Msgshow('请选择一条记录进行操作!');
-        //    //$.messager.alert('提示', '请选择一条记录进行操作!', 'question');       
-        //    return;
-        //}
-        //else if (num > 1) {
-        //    Msgfade('您选择了多条记录,只能选择一条记录进行修改!'); //$.messager.alert('提示', '您选择了多条记录,只能选择一条记录进行修改!', 'info');
-        //    return;
-        //}
-        //else {
-        //    dlg_Edit_form.form('clear');
-        //    dlg_Edit.dialog('open');
-        //    dlg_Edit.dialog('setTitle', '您正在修改' + rows[0].ProductTypeName + '游戏');
-        //    dlg_Edit_form.form('load', rows[0]); //加载到表单的控件上       
+        var rows = grid.datagrid('getSelections');
+        var num = rows.length;
+        if (num == 0) {
+            $.messager.alert('提示', '请选择一条记录进行操作!', 'question');       
+            return;
+        }
+        else if (num > 1) {
+            $.messager.alert('提示', '您选择了多条记录,只能选择一条记录进行修改!', 'info');
+            return;
+        }
+        else {
+            dlg_Edit_form.form('clear');
+            dlg_Edit.dialog('open');
+            dlg_Edit.dialog('setTitle', '您正在修改' + rows[0].Name + '模块');
+            //dlg_Edit_form.form('load', rows[0]); //加载到表单的控件上       
+            //填充表单数据
+            dlg_Edit_form.form('load', {
+                id:rows[0].Id,
+                name: rows[0].Name,
+                description: rows[0].Description,
+                url: rows[0].Url,
+                isLeaf: rows[0].IsLeaf?"on":null,
+                parent:rows[0].ParentId
+            });
+            //dlg_Edit_form.url = virpath + '/Admin/UpdateProductType?id=' + rows[0].ID;
 
-        //    dlg_Edit_form.url = virpath + '/Admin/UpdateProductType?id=' + rows[0].ID;
-        //}
+        }
     }
 
     function del() {
-        //var arr = getSelectedArr();
-        ////alert(arr);
-        //if (arr.length > 0) {
-        //    $.messager.confirm('提示信息', '您确认要删除选中的所有记录吗?', function (data) {
-        //        if (data) {
-        //            $.ajax({
-        //                url: virpath + '/Admin/RemeProductTypes?ids=' + arr2str(arr),
-        //                type: 'post',
-        //                error: function () {
-        //                    Msgalert('错误', '删除失败!', 'error');
-        //                    grid.datagrid('clearSelections');
-        //                },
-        //                success: function (Result) {
-        //                    var data = eval('(' + Result + ')');
-        //                    if (data.success) {
-        //                        Msgfade(arr.length + "条记录" + data.msg); //提示消息
-        //                        grid.datagrid('reload');
-        //                        grid.datagrid('clearSelections');
-        //                    } else {
-        //                        Msgalert('错误', data.msg, 'error');
-        //                    }
-        //                }
-        //            });
-        //        }
-        //    });
-        //} else {
-        //    Msgshow('请先选择要删除的记录。');
-        //}
+        var arr = $('#grid').datagrid('getSelections');
+        if (arr.length <= 0)
+            $.messager.alert('提示', '请选择一条记录进行操作!', 'question');
+        else
+        {
+            $.messager.confirm('提示信息', '您确认要删除选中的所有记录吗?', function (data) {
+                var _list = [];
+                for (var i = 0; i < arr.length; i++)
+                {
+                    _list[i] = arr[i].Id;
+                }
+                $.ajax({
+                    url: '/Module/DeleteModules',
+                    data: { "ids": _list },
+                    //data: _list,  
+                    dataType: "json",
+                    type: "POST",
+                    traditional: true,
+                    success: function (data) {
+                        // your logic  
+                        if (data.Success)
+                        {
+                            alert("成功");
+                        }
+                    }
+                });
+            });
+        }
     }
 
     function saveData() {
-        ////alert(dlg_Edit_form.url);
-        //dlg_Edit_form.form('submit', {
-        //    url: dlg_Edit_form.url,
-        //    onSubmit: function () {
-        //        return $(this).form('validate');
-        //    },
-        //    success: successCallback   //~/Content/JqueryUI/MyEasyUIcommmon.js
-        //});
+        if ($('#Id').val() == "0" || $('#Id').val() == "") {
+            dlg_Edit_form.form('submit', {
+                url: '/Module/RegisterModule',
+                onSubmit: function () {
+                    return $(this).form('validate');
+                },
+                success: function (data) {
+                    if (!data) $.messager.alert("异常", "出错了", "info", function () { });
+                    msg = eval('(' + data + ')');
+                    if (msg.Success) {
+                        $.messager.show({
+                            title: '模块注册',
+                            msg: '注册成功',
+                            timeout: 5000,
+                            showType: 'slide'
+                        });
+                        dlg_Edit.dialog('close');
+                        $('#grid').datagrid('reload');
+                    }
+                }
+            });
+        }
+        else {
+            //验证数据是否改动过
+            //上传数据
+        }
     }
 
     function showAll() {
@@ -99,11 +126,32 @@
         //searchForm.form('clear');
     }
 
-    function SaveButton()
-    { }
 
-    function BackButton()
-    { }
+
+    function formatOper(val, row, index) {
+        //return "<a href=''>查看模块功能</a>";
+        //return '<a href="#" onclick="ModuleOperate()">修改</a>';
+        //<a onclick="ModuleOperate(" 2','测试模块')'="" href="#">查看模块功能</a>
+        //<a href="#" onclick="ModuleOperate(" 1","用户管理")"="">修改</a>
+        //未能解决同时传递两个参数的问题，暂时只能传递一个参数
+        return '<a href="#" onclick="ModuleOperate('+row.Id+')">修改</a>';
+    }
+
+    function ModuleOperate(id)
+    {
+        if (!parent.$('#Maintabs').tabs('exists', "模块功能设置"+id)) {
+            parent.$('#Maintabs').tabs('add', {
+                title: "模块功能设置" + id,
+                closable: true,
+                fit: true,
+                content: '<iframe scrolling="auto" frameborder="0"  src="/Module/ModuleOperate?moduleId=' + id + '" style="width:100%;height:99.7%;overflow:hidden"></iframe>',//为何此处的高度不能设置成100%？
+            });
+        }
+        else {
+            //var selected = $('#Maintabs').tabs('getTab', $(this).text());
+            $('#Maintabs').tabs('select', "模块功能设置" + id);
+        }
+    }
 
     $(function () {
         grid = $('#grid').datagrid({
@@ -114,7 +162,7 @@
             sortName: 'Id',
             sortOrder: 'desc',
             idField: 'Id',
-            pageSize: 30,
+            pageSize: 10,
             striped: true,
             scrollbarSize: 0,
             frozenColumns: [[
@@ -123,7 +171,12 @@
             ]],
             columns: [[
                         { field: 'Id', title: '模块编号', width: 100, sortable: true },
-
+                        { field: 'Name', title: '模块名称', width: 100, sortable: true },
+                        { field: 'Url', title: '模块地址', width: 100, sortable: true },
+                        { field: 'Description', title: '模块说明', width: 100, sortable: true },
+                        { field: 'IsLeaf', title: '是否有子模块', width: 100, sortable: true },
+                        { field: 'ParentId', title: '父级Id', width: 100, hidden: true },
+                        { field: '_link', title: '查看模块功能', width: 100, formatter: formatOper }
             ]],
             fit: true,
             pagination: true,
@@ -170,6 +223,8 @@
             }
         });
 
+        loadParentCombobox();//加载数据必须放在对话框初始化之前？
+
         dlg_Edit = $('#Dlg-Edit').dialog({
             closed: true,
             modal: true,
@@ -187,8 +242,6 @@
 
         });
         dlg_Edit_form = dlg_Edit.find('form');
-
-        loadParentCombobox();
     });
 </script>
 
@@ -213,9 +266,13 @@
     </div>
 </div>
 
-<div id="Dlg-Edit" title="模块注册" style="width: 500px; height: 300px">
-    <div class="easyui-panel">
+<div id="Dlg-Edit" title="模块注册" style="width: 300px; height: 250px">
+    <div class="easyui-panel" style="vertical-align:central">
         <form method="post" id="moduleform">
+            <div class="fitem" style="display:none">
+                <label>模块Id:</label>
+                <input class="easyui-validate" required="required" name="id" value="0" id="Id" />
+            </div>
             <div class="fitem">
                 <label>模块名:</label>
                 <input class="easyui-validatebox" required="required" name="name" />
@@ -230,84 +287,13 @@
             </div>
             <div class="fitem">
                 <label>是否有子模块:</label>
-                <input class="easyui-checkbox" name="isLeaf" />
+                <input type="checkbox" name="isLeaf" />
             </div>
             <div class="fitem">
                 <label>上级模块:</label>
-                <input id="Parent" name="parent" />
+                <input id="Parentp" name="parent" />
             </div>
-            @*        <div class="fitem" style="float:none;text-align:center;padding:5px;margin-top:20px">
-            <a href="javascript:" class="easyui-linkbutton" onclick="SaveButton()"></a>
-            <a href="javascript:" class="easyui-linkbutton" onclick="BackButton()"></a>
-        </div>*@
         </form>
     </div>
 </div>
-
-@*<div id="Dlg-Edi" title="窗口" style="width: 500px; height: 300px;" buttons="#buttons">
-        <div style="padding: 20px 20px 40px 40px;">
-            <form method="post" id="Form1">
-            <table>
-                <tr>
-                    <td style="text-align:right">
-                        产品类型：
-                    </td>
-                    <td>
-                        <select id="TypeId" class="easyui-combogrid" name="ProductTypeID" style="width:200px;"  class="easyui-validatebox" required="true">
-		
-	                    </select>
-
-                    </td>
-                </tr> 
-            
-                <tr>
-                    <td style="text-align:right">
-                        产品名称：
-                    </td>
-                    <td>
-                        <input type="text" name="ProductName" id="ProductName" class="easyui-validatebox" required="true" style="width: 200px;" maxlength=25 /> &nbsp;（限制：50个字节）
-                    </td>
-                </tr>
-                 <tr>
-                    <td style="text-align:right">
-                        产品图片：
-                    </td>
-                    <td>
-                        <input type="text" name="Image" id="Image" class="easyui-validatebox" required="true" style="width: 200px;" /> 
-                    </td>
-                </tr>
-                 <tr>
-                    <td style="text-align:right">
-                        市场价格：
-                    </td>
-                    <td>
-                        <input type="text" name="MarketPrice" id="MarketPrice" class="easyui-validatebox" required="true" onkeyup="value=value.replace(/[^\d]/g,'')" style="width: 200px;"  />
-                    &nbsp;（单位：元）</td>
-                </tr>
-                 <tr>
-                    <td style="text-align:right">
-                        本店价格：
-                    </td>
-                    <td>
-                        <input name="NewPrice" id="NewPrice" class="easyui-validatebox" required="true" style="width: 200px;" onkeyup="value=value.replace(/[^\d]/g,'')" />
-                    &nbsp;（单位：元）</td>
-                </tr>
-                
-                <tr>
-                    <td style="text-align:right">
-                        是否上架：
-                    </td>
-                    <td>
-                       
-                        <select id="Enable" class="easyui-combobox" name="Enable" style="width:200px;" class="easyui-validatebox" required="true" editable="false" panelHeight= "auto">
-		                     <option value="1">上架</option> 
-		                     <option value="0">下架</option>
-                        </select> &nbsp;（默认：上架）
-                    </td>
-                </tr>
-
-            </table>
-            </form>
-        </div>
-    </div>*@
 

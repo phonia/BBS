@@ -170,9 +170,31 @@ namespace BBS2._0.Repository
                     Description = "Game"
                 };
 
+
                 data.Set<Section>().Add(animation);
                 data.Set<Section>().Add(comic);
                 data.Set<Section>().Add(game);
+
+
+                //模块、模块操作
+                SysModule m1 = new SysModule()
+                {
+                    Description = "用户管理",
+                    IsLeaf = false,
+                    Name = "用户管理",
+                    Url = "/AccountSevices",
+                    ModuleOperates = new List<SysModuleOperate>() 
+                    { 
+                        new SysModuleOperate()
+                        {
+                            IsValid=false,
+                            KeyCode="",
+                            Name="",
+                            Url=""
+                        }
+                    }
+                };
+                
 
                 data.SaveChanges();
             }
