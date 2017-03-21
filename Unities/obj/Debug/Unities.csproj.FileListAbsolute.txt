@@ -1,0 +1,5 @@
+E:\Code\BBS\Unities\bin\Debug\Unities.dll
+E:\Code\BBS\Unities\bin\Debug\Unities.pdb
+E:\Code\BBS\Unities\obj\Debug\Unities.csprojResolveAssemblyReference.cache
+E:\Code\BBS\Unities\obj\Debug\Unities.dll
+E:\Code\BBS\Unities\obj\Debug\Unities.pdb

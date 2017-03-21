@@ -31,7 +31,7 @@
         var rows = grid.datagrid('getSelections');
         var num = rows.length;
         if (num == 0) {
-            $.messager.alert('提示', '请选择一条记录进行操作!', 'question');       
+            $.messager.alert('提示', '请选择一条记录进行操作!', 'question');
             return;
         }
         else if (num > 1) {
@@ -45,12 +45,12 @@
             //dlg_Edit_form.form('load', rows[0]); //加载到表单的控件上       
             //填充表单数据
             dlg_Edit_form.form('load', {
-                id:rows[0].Id,
+                id: rows[0].Id,
                 name: rows[0].Name,
                 description: rows[0].Description,
                 url: rows[0].Url,
-                isLeaf: rows[0].IsLeaf?"on":null,
-                parent:rows[0].ParentId
+                isLeaf: rows[0].IsLeaf ? "on" : null,
+                parent: rows[0].ParentId
             });
             //dlg_Edit_form.url = virpath + '/Admin/UpdateProductType?id=' + rows[0].ID;
 
@@ -61,12 +61,10 @@
         var arr = $('#grid').datagrid('getSelections');
         if (arr.length <= 0)
             $.messager.alert('提示', '请选择一条记录进行操作!', 'question');
-        else
-        {
+        else {
             $.messager.confirm('提示信息', '您确认要删除选中的所有记录吗?', function (data) {
                 var _list = [];
-                for (var i = 0; i < arr.length; i++)
-                {
+                for (var i = 0; i < arr.length; i++) {
                     _list[i] = arr[i].Id;
                 }
                 $.ajax({
@@ -78,8 +76,7 @@
                     traditional: true,
                     success: function (data) {
                         // your logic  
-                        if (data.Success)
-                        {
+                        if (data.Success) {
                             alert("成功");
                         }
                     }
@@ -134,12 +131,11 @@
         //<a onclick="ModuleOperate(" 2','测试模块')'="" href="#">查看模块功能</a>
         //<a href="#" onclick="ModuleOperate(" 1","用户管理")"="">修改</a>
         //未能解决同时传递两个参数的问题，暂时只能传递一个参数
-        return '<a href="#" onclick="ModuleOperate('+row.Id+')">修改</a>';
+        return '<a href="#" onclick="ModuleOperate(' + row.Id + ')">修改</a>';
     }
 
-    function ModuleOperate(id)
-    {
-        if (!parent.$('#Maintabs').tabs('exists', "模块功能设置"+id)) {
+    function ModuleOperate(id) {
+        if (!parent.$('#Maintabs').tabs('exists', "模块功能设置" + id)) {
             parent.$('#Maintabs').tabs('add', {
                 title: "模块功能设置" + id,
                 closable: true,
@@ -172,11 +168,11 @@
             columns: [[
                         { field: 'Id', title: '模块编号', width: 100, sortable: true },
                         { field: 'Name', title: '模块名称', width: 100, sortable: true },
-                        { field: 'Url', title: '模块地址', width: 100, sortable: true },
+                        { field: 'ModuleCode', title: '模块编码', width: 100, sortable: true },
                         { field: 'Description', title: '模块说明', width: 100, sortable: true },
-                        { field: 'IsLeaf', title: '是否有子模块', width: 100, sortable: true },
-                        { field: 'ParentId', title: '父级Id', width: 100, hidden: true },
-                        { field: '_link', title: '查看模块功能', width: 100, formatter: formatOper }
+                        { field: 'IsLeaf', title: '叶子模块', width: 100, sortable: true },
+                        { field: 'ParentId', title: '父级Id', width: 100, hidden: true }
+                        //{ field: '_link', title: '查看模块功能', width: 100, formatter: formatOper }
             ]],
             fit: true,
             pagination: true,
@@ -220,6 +216,15 @@
                 //    left: e.pageX,
                 //    top: e.pageY
                 //});
+            },
+            onClickRow: function (rowIndex, rowData)
+            {
+                //child.
+                //selectModuleId = rowData.Id;
+                //alert(selectModuleId);
+                child.datagrid('reload', {
+                    moduleId:rowData.Id
+                });
             }
         });
 
@@ -242,6 +247,41 @@
 
         });
         dlg_Edit_form = dlg_Edit.find('form');
+
+        child = $('#child').datagrid({
+            title: '模块功能',
+            url: '/Module/GetModuleOperates',
+            iconCls: 'icon-save',
+            method: 'GET',
+            sortName: 'Id',
+            sortOrder: 'desc',
+            idField: 'Id',
+            pageSize: 10,
+            striped: true,
+            scrollbarSize: 0,
+            queryParams:{moduleId:'-1'},
+            frozenColumns: [[
+                { field: 'ck', checkbox: true }
+            ]],
+            columns: [[
+                { field: 'Id', title: '序号', width: 1, sortable: true },
+                { field: 'OperateName', title: '名称', width: 3 },
+                { field: 'OperateCode', title: '操作编码', width: 3  },
+                { field: 'KeyCode', title: '操作编码', width: 0, hidden:true },
+                { field: 'IsValid', title: '验证', width: 2  },
+                { field: 'ModuleId', title: '操作所属模块', width: 0,  hidden: true }
+            ]],
+            fit: true,
+            pagination: false,
+            rownumbers: true,
+            fitColumns: true,
+            singleSelect: false,
+            toolbar: [
+                { text: '新增', iconCls: 'icon-add', handler: add },
+                '-', { text: '编辑', iconCls: 'icon-edit', handler: edit },
+                '-', { text: '删除', iconCls: 'icon-remove', handler: del }
+            ]
+                });
     });
 </script>
 
@@ -262,14 +302,19 @@
 </style>
 
 <div region="center" style="width: 500px; height: 300px; padding: 1px; overflow-y: hidden; border: none">
-    <div id="grid">
+    <div style="width:60%;height:100%;float:left">
+        <div id="grid" >
+        </div>
+    </div>
+    <div style="width: 39%;height:100%; float: left;margin-left:5px">
+        <div id="child"></div>
     </div>
 </div>
 
 <div id="Dlg-Edit" title="模块注册" style="width: 300px; height: 250px">
-    <div class="easyui-panel" style="vertical-align:central">
+    <div class="easyui-panel" style="vertical-align: central">
         <form method="post" id="moduleform">
-            <div class="fitem" style="display:none">
+            <div class="fitem" style="display: none">
                 <label>模块Id:</label>
                 <input class="easyui-validate" required="required" name="id" value="0" id="Id" />
             </div>
@@ -278,15 +323,15 @@
                 <input class="easyui-validatebox" required="required" name="name" />
             </div>
             <div class="fitem">
-                <label>url:</label>
-                <input class="easyui-validatebox" required="required" name="url" />
+                <label>模块编码:</label>
+                <input class="easyui-validatebox" required="required" name="moduleCode" />
             </div>
             <div class="fitem">
                 <label>模块描述:</label>
                 <input class="easyui-validatebox" required="required" name="description" />
             </div>
             <div class="fitem">
-                <label>是否有子模块:</label>
+                <label>叶子模块:</label>
                 <input type="checkbox" name="isLeaf" />
             </div>
             <div class="fitem">

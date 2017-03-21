@@ -177,6 +177,7 @@
     <Compile Include="Common\DataState.cs" />
     <Compile Include="Common\EnumHelper.cs" />
     <Compile Include="Common\MapperHelper.cs" />
+    <Compile Include="Common\ModuleOperateCode.cs" />
     <Compile Include="Common\Sex.cs" />
     <Compile Include="Common\UnityBootStrapper.cs" />
     <Compile Include="Common\UnityControllerFactory.cs" />
@@ -1794,6 +1795,10 @@
     <ProjectReference Include="..\Infrastructure\Infrastructure.csproj">
       <Project>{aebea62b-0b83-4442-ab98-d46ba420539a}</Project>
       <Name>Infrastructure</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Unities\Unities.csproj">
+      <Project>{0a76c006-04d3-4bbf-82da-2eebd302a0b7}</Project>
+      <Name>Unities</Name>
     </ProjectReference>
   </ItemGroup>
   <PropertyGroup>

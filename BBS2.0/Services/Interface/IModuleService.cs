@@ -8,7 +8,7 @@ namespace BBS2._0.Services
 {
     public interface IModuleService
     {
-        bool RegisterModule(String name,String url,String description,bool isLeaf,String parentId);
+        bool RegisterModule(String name, String moduleCode, String description, bool isLeaf, String parentId);
         //bool SaveModule(Int32 Id);
         bool RemoveModule(Int32 Id);
         bool RemoveModules(List<Int32> ids);

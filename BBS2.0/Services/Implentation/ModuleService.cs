@@ -6,6 +6,7 @@ using BBS2._0.Models;
 using BBS2._0.ViewModel;
 using Infrastructure;
 using BBS2._0.Common;
+using Unities;
 
 namespace BBS2._0.Services
 {
@@ -28,12 +29,13 @@ namespace BBS2._0.Services
 
         #region IModuleService 成员
 
-        public bool RegisterModule(string name, string url, string description, bool isLeaf, String parentId)
+        public bool RegisterModule(string name, string moduleCode, string description, bool isLeaf, String parentId)
         {
             SysModule module = new SysModule()
             {
                 Name = name,
-                Url = url,
+                //Url = url,
+                ModuleCode=moduleCode,
                 Description = description,
                 IsLeaf = isLeaf,
             };
@@ -61,7 +63,7 @@ namespace BBS2._0.Services
                 Description=it.Description,
                 IsLeaf=it.IsLeaf,
                 Name=it.Name,
-                Url=it.Url,
+                ModuleCode=it.ModuleCode,
                 ParentId=it.ParentId!=null?(Int32)it.ParentId:0
             }).ToList();
         }
@@ -74,7 +76,7 @@ namespace BBS2._0.Services
                 Description = it.Description,
                 IsLeaf = it.IsLeaf,
                 Name = it.Name,
-                Url = it.Url,
+                ModuleCode=it.ModuleCode,
                 ParentId = it.ParentId != null ? (Int32)it.ParentId : 0
             }).FirstOrDefault();
             if (ret == null) throw new DomainException("");
@@ -83,34 +85,48 @@ namespace BBS2._0.Services
 
         public List<ModuleOperateDTO> GetModuleOperatesByModuleId(Int32 moduleId)
         {
-            return _moduleOperateRepository.Select(it => it.ModuleId == moduleId, it => new ModuleOperateDTO()
+            var ret= _moduleOperateRepository.Select(it => it.ModuleId == moduleId, it => new
             {
                 Id = it.Id,
                 IsValid=it.IsValid,
                 KeyCode=it.KeyCode,
                 ModuleId=it.ModuleId,
-                Name=it.Name,
-                Url=it.Url,
+                OperateCode=it.OperateCode,
                 ModuleName=it.Module.Name
             }).ToList();
+
+            List<ModuleOperateDTO> list=new List<ModuleOperateDTO>();
+            foreach (var item in ret)
+            {
+                ModuleOperateDTO mod = new ModuleOperateDTO()
+                {
+                    Id = item.Id,
+                    IsValid = item.IsValid,
+                    KeyCode = item.KeyCode,
+                    ModuleId = item.ModuleId,
+                    OperateCode=((ModuleOperateCode)item.OperateCode).ToString(),
+                    OperateName = ((ModuleOperateCode)item.OperateCode).GetDescriptionOrNull()
+                };
+                list.Add(mod);
+            }
+            return list;
         }
 
         public bool RegisterModuleOperate(String name, String url, bool isValid, Int32 moduelId)
         {
-            Int32 count = _moduleOperateRepository.GetFilter(it => it.ModuleId == moduelId).Count();
-            SysModuleOperate moduleOperate = new SysModuleOperate()
-            {
-                IsValid = isValid,
-                KeyCode=moduelId.ConvertDecimalToHex(4)+(count+1).ConvertDecimalToHex(4),
-                ModuleId=moduelId,
-                Name=name,                
-                Url=url//地址不能重复
-            };
-            _moduleOperateRepository.Add(moduleOperate);
-            _unitOfWork.Commit();
+            //Int32 count = _moduleOperateRepository.GetFilter(it => it.ModuleId == moduelId).Count();
+            //SysModuleOperate moduleOperate = new SysModuleOperate()
+            //{
+            //    IsValid = isValid,
+            //    KeyCode=moduelId.ConvertDecimalToHex(4)+(count+1).ConvertDecimalToHex(4),
+            //    ModuleId=moduelId,
+            //    Name=name,                
+            //    Url=url//地址不能重复
+            //};
+            //_moduleOperateRepository.Add(moduleOperate);
+            //_unitOfWork.Commit();
             return true;
         }
-
         #endregion
     }
 }

@@ -10,7 +10,7 @@ namespace BBS2._0.Models
     {
         public Int32 Id { get; set; }
         public String Name { get; set; }
-        public String Url { get; set; }
+        public String ModuleCode { get; set; }
         public String Description { get; set; }
         public bool IsLeaf { get; set; }
         public byte[] RowVersion { get; set; }

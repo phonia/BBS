@@ -41,9 +41,9 @@ namespace BBS2._0.Controllers
             return Json(list, JsonRequestBehavior.AllowGet);
         }
 
-        public JsonResult RegisterModule(String name,String url,String description,String isLeaf,String parent)
+        public JsonResult RegisterModule(String name, String moduleCode, String description, String isLeaf, String parent)
         {
-            ModuleService.RegisterModule(name, url, description, isLeaf == null ? false : true, parent);
+            ModuleService.RegisterModule(name, moduleCode, description, isLeaf == null ? false : true, parent);
             return Json(new JsonMessageDTO() { Success = true }, JsonRequestBehavior.AllowGet);
         }
 
@@ -62,10 +62,10 @@ namespace BBS2._0.Controllers
             return View(moduleId);
         }
 
-        public JsonResult GetModuleOperates(Int32 moduleId, Int32 page, Int32 rows, String sort, String order)
+        public JsonResult GetModuleOperates(Int32 moduleId)
         {
             List<ModuleOperateDTO> list = ModuleService.GetModuleOperatesByModuleId(moduleId);
-            return Json(new DataGridDTO<ModuleOperateDTO>() { total = list.Count, rows = list.Skip((page-1)*rows).Take(rows).ToList() }, JsonRequestBehavior.AllowGet);
+            return Json(new DataGridDTO<ModuleOperateDTO>() { total = list.Count, rows = list }, JsonRequestBehavior.AllowGet);
         }
 
         public JsonResult RegisterModuleOperate(String name,String url,String isValid,String moduleId)
