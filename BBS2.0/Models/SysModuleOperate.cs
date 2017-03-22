@@ -10,7 +10,7 @@ namespace BBS2._0.Models
     public class SysModuleOperate : EntityBase, IAggregateRoot
     {
         public Int32 Id { get; set; }
-        //public String Name { get; set; }
+        public String Name { get; set; }
         public ModuleOperateCode OperateCode { get; set; }
         public String KeyCode { get; set; }
         public bool IsValid { get; set; }

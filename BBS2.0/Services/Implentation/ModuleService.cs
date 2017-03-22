@@ -85,31 +85,32 @@ namespace BBS2._0.Services
 
         public List<ModuleOperateDTO> GetModuleOperatesByModuleId(Int32 moduleId)
         {
-            var ret= _moduleOperateRepository.Select(it => it.ModuleId == moduleId, it => new
+             return _moduleOperateRepository.Select(it => it.ModuleId == moduleId, it => new ModuleOperateDTO()
             {
                 Id = it.Id,
                 IsValid=it.IsValid,
                 KeyCode=it.KeyCode,
                 ModuleId=it.ModuleId,
-                OperateCode=it.OperateCode,
+                OperateCode=((ModuleOperateCode)it.OperateCode).ToString(),
+                OperateName=it.Name,
                 ModuleName=it.Module.Name
             }).ToList();
 
-            List<ModuleOperateDTO> list=new List<ModuleOperateDTO>();
-            foreach (var item in ret)
-            {
-                ModuleOperateDTO mod = new ModuleOperateDTO()
-                {
-                    Id = item.Id,
-                    IsValid = item.IsValid,
-                    KeyCode = item.KeyCode,
-                    ModuleId = item.ModuleId,
-                    OperateCode=((ModuleOperateCode)item.OperateCode).ToString(),
-                    OperateName = ((ModuleOperateCode)item.OperateCode).GetDescriptionOrNull()
-                };
-                list.Add(mod);
-            }
-            return list;
+            //List<ModuleOperateDTO> list=new List<ModuleOperateDTO>();
+            //foreach (var item in ret)
+            //{
+            //    ModuleOperateDTO mod = new ModuleOperateDTO()
+            //    {
+            //        Id = item.Id,
+            //        IsValid = item.IsValid,
+            //        KeyCode = item.KeyCode,
+            //        ModuleId = item.ModuleId,
+            //        OperateCode=((ModuleOperateCode)item.OperateCode).ToString(),
+            //        OperateName = ((ModuleOperateCode)item.OperateCode).GetDescriptionOrNull()
+            //    };
+            //    list.Add(mod);
+            //}
+            //return list;
         }
 
         public bool RegisterModuleOperate(String name, String url, bool isValid, Int32 moduelId)

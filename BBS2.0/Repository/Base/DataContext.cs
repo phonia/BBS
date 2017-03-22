@@ -179,36 +179,109 @@ namespace BBS2._0.Repository
                 //模块、模块操作
                 SysModule m1 = new SysModule()
                 {
-                    Description = "功能权限",
-                    IsLeaf = true,
-                    ModuleCode = "ControlPermisson",
-                    Name = "功能权限",
-                    ModuleOperates = new List<SysModuleOperate>() { 
-                        new SysModuleOperate(){
-                            IsValid=true,
-                            KeyCode="00010001",
-                            OperateCode=ModuleOperateCode.Add1
+                    Description = "论坛管理",
+                    IsLeaf = false,
+                    ModuleCode = "BBSManagement",
+                    Name = "论坛管理",
+                    Children = new List<SysModule>() { 
+                        new SysModule()
+                        {
+                            Description="版块管理",
+                            IsLeaf=true,
+                            ModuleCode="SectionManagement",
+                            Name="版块管理",
+                            ModuleOperates=new List<SysModuleOperate>(){
+                                new SysModuleOperate(){
+                                    IsValid=true,
+                                    KeyCode="00010001",
+                                    Name="版块注册",
+                                    OperateCode=ModuleOperateCode.Register
+                                },
+                                new SysModuleOperate(){
+                                    IsValid=true,
+                                    KeyCode="00010002",
+                                    Name="版块修改",
+                                    OperateCode=ModuleOperateCode.Update
+                                },
+                                new SysModuleOperate(){
+                                    IsValid=true,
+                                    KeyCode="00010003",
+                                    Name="版块删除",
+                                    OperateCode=ModuleOperateCode.Del
+                                },
+                                new SysModuleOperate(){
+                                    IsValid=true,
+                                    KeyCode="00010004",
+                                    Name="版块详情",
+                                    OperateCode=ModuleOperateCode.Detail
+                                },
+                                new SysModuleOperate(){
+                                    IsValid=true,
+                                    KeyCode="00010005",
+                                    Name="版块查询",
+                                    OperateCode=ModuleOperateCode.Query
+                                }
+                            }
                         },
-                        new SysModuleOperate(){
-                            IsValid=true,
-                            KeyCode="00010002",
-                            OperateCode=ModuleOperateCode.Delete1
-                        },
-                        new SysModuleOperate(){
-                            IsValid=true,
-                            KeyCode="00010003",
-                            OperateCode=ModuleOperateCode.Detail1
-                        },
-                        new SysModuleOperate(){
-                            IsValid=true,
-                            KeyCode="00010004",
-                            OperateCode=ModuleOperateCode.Eidt1
-                        },
-                        new SysModuleOperate(){
-                            IsValid=true,
-                            KeyCode="00010005",
-                            OperateCode=ModuleOperateCode.Search1
-                        },
+                        new SysModule()
+                        {
+                            Description="帖子管理",
+                            IsLeaf=true,
+                            ModuleCode="PostManagement",
+                            Name="帖子管理",
+                            ModuleOperates=new List<SysModuleOperate>(){
+                                new SysModuleOperate(){
+                                    IsValid=true,
+                                    KeyCode="00020001",
+                                    Name="帖子注册",
+                                    OperateCode=ModuleOperateCode.Register
+                                },
+                                new SysModuleOperate(){
+                                    IsValid=true,
+                                    KeyCode="00020002",
+                                    Name="帖子修改",
+                                    OperateCode=ModuleOperateCode.Update
+                                },
+                                new SysModuleOperate(){
+                                    IsValid=true,
+                                    KeyCode="00020003",
+                                    Name="帖子删除",
+                                    OperateCode=ModuleOperateCode.Del
+                                },
+                                new SysModuleOperate(){
+                                    IsValid=true,
+                                    KeyCode="00020004",
+                                    Name="帖子详情",
+                                    OperateCode=ModuleOperateCode.Detail
+                                },
+                                new SysModuleOperate(){
+                                    IsValid=true,
+                                    KeyCode="00020005",
+                                    Name="帖子查询",
+                                    OperateCode=ModuleOperateCode.Query
+                                }
+                            }
+                        },new SysModule()
+                        {
+                            Description="回复管理",
+                            IsLeaf=true,
+                            ModuleCode="ReplyManagement",
+                            Name="回复管理",
+                            ModuleOperates=new List<SysModuleOperate>(){
+                                new SysModuleOperate(){
+                                    IsValid=true,
+                                    KeyCode="00030001",
+                                    Name="回复帖子",
+                                    OperateCode=ModuleOperateCode.Add
+                                },
+                                new SysModuleOperate(){
+                                    IsValid=true,
+                                    KeyCode="00030002",
+                                    Name="删除回复",
+                                    OperateCode=ModuleOperateCode.Del
+                                }
+                            }
+                        }
                     }
                 };
 
@@ -216,104 +289,128 @@ namespace BBS2._0.Repository
                 {
                     Description = "用户管理",
                     IsLeaf = true,
-                    ModuleCode = "UserManagement",
+                    ModuleCode = "AccountManagement",
                     Name = "用户管理",
                     ModuleOperates = new List<SysModuleOperate>() { 
                         new SysModuleOperate(){
                             IsValid=true,
-                            KeyCode="00020001",
-                            OperateCode=ModuleOperateCode.Add1
-                        },
-                        new SysModuleOperate(){
-                            IsValid=true,
-                            KeyCode="00020002",
-                            OperateCode=ModuleOperateCode.Delete1
-                        },
-                        new SysModuleOperate(){
-                            IsValid=true,
-                            KeyCode="00020003",
-                            OperateCode=ModuleOperateCode.Detail1
-                        },
-                        new SysModuleOperate(){
-                            IsValid=true,
-                            KeyCode="00020004",
-                            OperateCode=ModuleOperateCode.Eidt1
-                        },
-                        new SysModuleOperate(){
-                            IsValid=true,
-                            KeyCode="00020005",
-                            OperateCode=ModuleOperateCode.Search1
-                        },
-                    }
-                };
-                SysModule m3 = new SysModule()
-                {
-                    Description = "系统管理",
-                    IsLeaf = true,
-                    ModuleCode = "SysManagement",
-                    Name = "系统管理",
-                    ModuleOperates = new List<SysModuleOperate>() { 
-                        new SysModuleOperate(){
-                            IsValid=true,
-                            KeyCode="00030001",
-                            OperateCode=ModuleOperateCode.Add1
-                        },
-                        new SysModuleOperate(){
-                            IsValid=true,
-                            KeyCode="00030002",
-                            OperateCode=ModuleOperateCode.Delete1
-                        },
-                        new SysModuleOperate(){
-                            IsValid=true,
-                            KeyCode="00030003",
-                            OperateCode=ModuleOperateCode.Detail1
-                        },
-                        new SysModuleOperate(){
-                            IsValid=true,
-                            KeyCode="00030004",
-                            OperateCode=ModuleOperateCode.Eidt1
-                        },
-                        new SysModuleOperate(){
-                            IsValid=true,
-                            KeyCode="00030005",
-                            OperateCode=ModuleOperateCode.Search1
-                        },
-                    }
-                };
-                SysModule m4 = new SysModule()
-                {
-                    Description = "论坛管理",
-                    IsLeaf = true,
-                    ModuleCode = "BBSManagement",
-                    Name = "论坛管理",
-                    ModuleOperates = new List<SysModuleOperate>() { 
-                        new SysModuleOperate(){
-                            IsValid=true,
                             KeyCode="00040001",
-                            OperateCode=ModuleOperateCode.Add1
+                            Name="用户注册",
+                            OperateCode=ModuleOperateCode.Register
                         },
                         new SysModuleOperate(){
-                            IsValid=true,
+                            IsValid=false,
                             KeyCode="00040002",
-                            OperateCode=ModuleOperateCode.Delete1
+                            Name="用户登录",
+                            OperateCode=ModuleOperateCode.Login
                         },
                         new SysModuleOperate(){
-                            IsValid=true,
+                            IsValid=false,
                             KeyCode="00040003",
-                            OperateCode=ModuleOperateCode.Detail1
+                            Name="用户注销",
+                            OperateCode=ModuleOperateCode.Logout
                         },
                         new SysModuleOperate(){
                             IsValid=true,
                             KeyCode="00040004",
-                            OperateCode=ModuleOperateCode.Eidt1
+                            Name="用户查询",
+                            OperateCode=ModuleOperateCode.Query
                         },
                         new SysModuleOperate(){
                             IsValid=true,
                             KeyCode="00040005",
-                            OperateCode=ModuleOperateCode.Search1
+                            Name="用户详情",
+                            OperateCode=ModuleOperateCode.Detail
                         },
+                        new SysModuleOperate(){
+                            IsValid=true,
+                            KeyCode="00040006",
+                            Name="用户角色设置",
+                            OperateCode=ModuleOperateCode.Setting
+                        },
+                        new SysModuleOperate(){
+                            IsValid=true,
+                            KeyCode="00040007",
+                            Name="用户修改",
+                            OperateCode=ModuleOperateCode.Update
+                        }
                     }
                 };
+
+                SysModule m3 = new SysModule()
+                {
+                    Description = "权限管理",
+                    IsLeaf = false,
+                    ModuleCode = "PermissionManagement",
+                    Name = "权限管理",
+                    ModuleOperates = new List<SysModuleOperate>() {
+                        new SysModuleOperate(){
+                            IsValid=true,
+                            KeyCode="00050001",
+                            Name="模块查询",
+                            OperateCode=ModuleOperateCode.Query
+                        },
+                        new SysModuleOperate(){
+                            IsValid=true,
+                            KeyCode="00050002",
+                            Name="模块功能查询",
+                            OperateCode=ModuleOperateCode.Search
+                        }
+                    }
+                };
+
+                SysModule m4 = new SysModule()
+                {
+                    Description = "系统管理",
+                    IsLeaf = false,
+                    ModuleCode = "SystemManagement",
+                    Name = "系统管理",
+                    Children = new List<SysModule>() { 
+                        new SysModule()
+                        {
+                            Description="日志管理",
+                            IsLeaf=true,
+                            ModuleCode="LogManagement",
+                            Name="日志管理",
+                            ModuleOperates=new List<SysModuleOperate>(){
+                                new SysModuleOperate(){
+                                    IsValid=true,
+                                    KeyCode="00060001",
+                                    Name="日志查询",
+                                    OperateCode=ModuleOperateCode.Query
+                                },
+                                new SysModuleOperate(){
+                                    IsValid=true,
+                                    KeyCode="00060002",
+                                    Name="日志详情",
+                                    OperateCode=ModuleOperateCode.Detail
+                                }
+                            }
+                        },
+                        new SysModule()
+                        {
+                            Description="异常和错误",
+                            IsLeaf=true,
+                            ModuleCode="ExceptionManagement",
+                            Name="异常和错误",
+                            ModuleOperates=new List<SysModuleOperate>(){
+                                new SysModuleOperate(){
+                                    IsValid=true,
+                                    KeyCode="00070001",
+                                    Name="异常查询",
+                                    OperateCode=ModuleOperateCode.Query
+                                },
+                                new SysModuleOperate(){
+                                    IsValid=true,
+                                    KeyCode="00070002",
+                                    Name="异常详情",
+                                    OperateCode=ModuleOperateCode.Detail
+                                }
+                            }
+                        }
+                    }
+                };
+
                 data.Set<SysModule>().Add(m1);
                 data.Set<SysModule>().Add(m2);
                 data.Set<SysModule>().Add(m3);
