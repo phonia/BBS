@@ -5,7 +5,7 @@ using System.Text;
 
 namespace BBS2._0.Services
 {
-    interface IRoleService
+    public interface IRoleService
     {
     }
 }

@@ -187,6 +187,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ModuleController.cs" />
     <Compile Include="Controllers\PostController.cs" />
+    <Compile Include="Controllers\RoleController.cs" />
     <Compile Include="Controllers\SectionController.cs" />
     <Compile Include="Exception\DomainException.cs" />
     <Compile Include="Global.asax.cs">
@@ -242,6 +243,7 @@
     <Compile Include="Services\Implentation\ModuleService.cs" />
     <Compile Include="Services\Implentation\PostService.cs" />
     <Compile Include="Services\Implentation\ReplyService.cs" />
+    <Compile Include="Services\Implentation\RoleService.cs" />
     <Compile Include="Services\Implentation\SectionService.cs" />
     <Compile Include="Services\Interface\IAccountService.cs" />
     <Compile Include="Services\Interface\IExceptionService.cs" />
@@ -1784,6 +1786,7 @@
     <Content Include="Views\Module\Index.cshtml" />
     <Content Include="Views\Shared\_MLayout.cshtml" />
     <Content Include="Views\Module\ModuleOperate.cshtml" />
+    <Content Include="Views\Role\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

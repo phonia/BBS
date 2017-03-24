@@ -195,30 +195,35 @@ namespace BBS2._0.Repository
                                     IsValid=true,
                                     KeyCode="00010001",
                                     Name="版块注册",
+                                    Url="",
                                     OperateCode=ModuleOperateCode.Register
                                 },
                                 new SysModuleOperate(){
                                     IsValid=true,
                                     KeyCode="00010002",
                                     Name="版块修改",
+                                    Url="",
                                     OperateCode=ModuleOperateCode.Update
                                 },
                                 new SysModuleOperate(){
                                     IsValid=true,
                                     KeyCode="00010003",
                                     Name="版块删除",
+                                    Url="",
                                     OperateCode=ModuleOperateCode.Del
                                 },
                                 new SysModuleOperate(){
                                     IsValid=true,
                                     KeyCode="00010004",
                                     Name="版块详情",
+                                    Url="/Section/Index",
                                     OperateCode=ModuleOperateCode.Detail
                                 },
                                 new SysModuleOperate(){
                                     IsValid=true,
                                     KeyCode="00010005",
                                     Name="版块查询",
+                                    Url="",
                                     OperateCode=ModuleOperateCode.Query
                                 }
                             }
@@ -234,30 +239,35 @@ namespace BBS2._0.Repository
                                     IsValid=true,
                                     KeyCode="00020001",
                                     Name="帖子注册",
+                                    Url="/Post/PostPost",
                                     OperateCode=ModuleOperateCode.Register
                                 },
                                 new SysModuleOperate(){
                                     IsValid=true,
                                     KeyCode="00020002",
                                     Name="帖子修改",
+                                    Url="",
                                     OperateCode=ModuleOperateCode.Update
                                 },
                                 new SysModuleOperate(){
                                     IsValid=true,
                                     KeyCode="00020003",
                                     Name="帖子删除",
+                                    Url="",
                                     OperateCode=ModuleOperateCode.Del
                                 },
                                 new SysModuleOperate(){
                                     IsValid=true,
                                     KeyCode="00020004",
                                     Name="帖子详情",
+                                    Url="/Post/Index",
                                     OperateCode=ModuleOperateCode.Detail
                                 },
                                 new SysModuleOperate(){
                                     IsValid=true,
                                     KeyCode="00020005",
                                     Name="帖子查询",
+                                    Url="",
                                     OperateCode=ModuleOperateCode.Query
                                 }
                             }
@@ -272,12 +282,14 @@ namespace BBS2._0.Repository
                                     IsValid=true,
                                     KeyCode="00030001",
                                     Name="回复帖子",
+                                    Url="/Post/ReplyPost",
                                     OperateCode=ModuleOperateCode.Add
                                 },
                                 new SysModuleOperate(){
                                     IsValid=true,
                                     KeyCode="00030002",
                                     Name="删除回复",
+                                    Url="",
                                     OperateCode=ModuleOperateCode.Del
                                 }
                             }
@@ -296,42 +308,49 @@ namespace BBS2._0.Repository
                             IsValid=true,
                             KeyCode="00040001",
                             Name="用户注册",
+                            Url="/Account/Register",
                             OperateCode=ModuleOperateCode.Register
                         },
                         new SysModuleOperate(){
                             IsValid=false,
                             KeyCode="00040002",
                             Name="用户登录",
+                            Url="/Account/Login",
                             OperateCode=ModuleOperateCode.Login
                         },
                         new SysModuleOperate(){
                             IsValid=false,
                             KeyCode="00040003",
                             Name="用户注销",
+                            Url="",
                             OperateCode=ModuleOperateCode.Logout
                         },
                         new SysModuleOperate(){
                             IsValid=true,
                             KeyCode="00040004",
                             Name="用户查询",
+                            Url="",
                             OperateCode=ModuleOperateCode.Query
                         },
                         new SysModuleOperate(){
                             IsValid=true,
                             KeyCode="00040005",
                             Name="用户详情",
+                            Url="",
                             OperateCode=ModuleOperateCode.Detail
                         },
                         new SysModuleOperate(){
                             IsValid=true,
                             KeyCode="00040006",
                             Name="用户角色设置",
+                            Url="",
                             OperateCode=ModuleOperateCode.Setting
                         },
                         new SysModuleOperate(){
                             IsValid=true,
                             KeyCode="00040007",
                             Name="用户修改",
+                            Url="",
                             OperateCode=ModuleOperateCode.Update
                         }
                     }
@@ -348,12 +367,14 @@ namespace BBS2._0.Repository
                             IsValid=true,
                             KeyCode="00050001",
                             Name="模块查询",
+                            Url="",
                             OperateCode=ModuleOperateCode.Query
                         },
                         new SysModuleOperate(){
                             IsValid=true,
                             KeyCode="00050002",
                             Name="模块功能查询",
+                            Url="",
                             OperateCode=ModuleOperateCode.Search
                         }
                     }
@@ -377,12 +398,14 @@ namespace BBS2._0.Repository
                                     IsValid=true,
                                     KeyCode="00060001",
                                     Name="日志查询",
+                                    Url="",
                                     OperateCode=ModuleOperateCode.Query
                                 },
                                 new SysModuleOperate(){
                                     IsValid=true,
                                     KeyCode="00060002",
                                     Name="日志详情",
+                                    Url="",
                                     OperateCode=ModuleOperateCode.Detail
                                 }
                             }
@@ -398,12 +421,14 @@ namespace BBS2._0.Repository
                                     IsValid=true,
                                     KeyCode="00070001",
                                     Name="异常查询",
+                                    Url="",
                                     OperateCode=ModuleOperateCode.Query
                                 },
                                 new SysModuleOperate(){
                                     IsValid=true,
                                     KeyCode="00070002",
                                     Name="异常详情",
+                                    Url="",
                                     OperateCode=ModuleOperateCode.Detail
                                 }
                             }

@@ -64,7 +64,7 @@ namespace BBS2._0.Services
                 IsLeaf=it.IsLeaf,
                 Name=it.Name,
                 ModuleCode=it.ModuleCode,
-                ParentId=it.ParentId!=null?(Int32)it.ParentId:0
+                ParentId=it.ParentId!=null?(Int32)it.ParentId:-1
             }).ToList();
         }
 
@@ -77,7 +77,7 @@ namespace BBS2._0.Services
                 IsLeaf = it.IsLeaf,
                 Name = it.Name,
                 ModuleCode=it.ModuleCode,
-                ParentId = it.ParentId != null ? (Int32)it.ParentId : 0
+                ParentId = it.ParentId != null ? (Int32)it.ParentId : -1
             }).FirstOrDefault();
             if (ret == null) throw new DomainException("");
             return ret;
@@ -93,7 +93,8 @@ namespace BBS2._0.Services
                 ModuleId=it.ModuleId,
                 OperateCode=((ModuleOperateCode)it.OperateCode).ToString(),
                 OperateName=it.Name,
-                ModuleName=it.Module.Name
+                ModuleName=it.Module.Name,
+                Url=it.Url
             }).ToList();
 
             //List<ModuleOperateDTO> list=new List<ModuleOperateDTO>();

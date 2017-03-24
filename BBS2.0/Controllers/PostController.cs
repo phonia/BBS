@@ -39,7 +39,7 @@ namespace BBS2._0.Controllers
         {
             Int32 accountId = Session["AccountDTO"] != null
                 ? (Session["AccountDTO"] as AccountDTO).Id
-                : 0;
+                : -1;
             PostDTO postDTO = PostService.IssuePost(accountId, sectionId, title, "", content);
             return Json(new JsonMessageDTO() { Success = true, Data = postDTO }, JsonRequestBehavior.AllowGet);
         }
@@ -63,7 +63,7 @@ namespace BBS2._0.Controllers
         {
             Int32 accountId = Session["AccountDTO"] != null
                 ? (Session["AccountDTO"] as AccountDTO).Id
-                : 0;
+                : -1;
             PostService.ReplyPost(accountId, postId, content);
             PostDTO post=PostService.GetById(postId);
             return Json(new JsonMessageDTO() { Success = true, Data = post }, JsonRequestBehavior.AllowGet);

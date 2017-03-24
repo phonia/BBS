@@ -37,7 +37,7 @@ namespace BBS2._0.Controllers
         {
             List<ComboboxDTO> list = ModuleService.GetAllModuels().Where(it => it.IsLeaf == false)
                 .Select(it => new ComboboxDTO() { Id = it.Id.ToString(), Text = it.Name }).ToList();
-            list.Add(new ComboboxDTO() { Id = "0", Text = "————无————" });
+            list.Add(new ComboboxDTO() { Id = "-1", Text = "————无————" });
             return Json(list, JsonRequestBehavior.AllowGet);
         }
 

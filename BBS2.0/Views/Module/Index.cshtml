@@ -153,7 +153,7 @@
         grid = $('#grid').datagrid({
             title: '模块设置',
             iconCls: 'icon-save',
-            methord: 'Get',
+            method: 'Get',
             url: '/Module/GetAllModules',
             sortName: 'Id',
             sortOrder: 'desc',
@@ -267,7 +267,8 @@
                 { field: 'Id', title: '序号', width: 1, sortable: true },
                 { field: 'OperateName', title: '名称', width: 3 },
                 { field: 'OperateCode', title: '操作编码', width: 3  },
-                { field: 'KeyCode', title: '操作编码', width: 0, hidden:true },
+                { field: 'KeyCode', title: '操作编码', width: 0, hidden: true },
+                {field:'Url',title:'页面地址',width:2},
                 { field: 'IsValid', title: '验证', width: 2  },
                 { field: 'ModuleId', title: '操作所属模块', width: 0,  hidden: true }
             ]],
