@@ -17,5 +17,6 @@ namespace BBS2._0.Services
 
         bool RegisterModuleOperate(String name, String url, bool isValid, Int32 moduelId);
         List<ModuleOperateDTO> GetModuleOperatesByModuleId(Int32 moduleId);
+        List<ModuleOperateDTO> GetAllModuleOperate();
     }
 }

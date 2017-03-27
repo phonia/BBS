@@ -68,6 +68,13 @@ namespace BBS2._0.Controllers
             return Json(new DataGridDTO<ModuleOperateDTO>() { total = list.Count, rows = list }, JsonRequestBehavior.AllowGet);
         }
 
+        public JsonResult GetModuelOperatesForRole()
+        {
+            List<ModuleOperateDTO> list = ModuleService.GetAllModuleOperate();
+            return Json(new DataGridDTO<ModuleOperateDTO>() { total = list.Count, rows = list }, JsonRequestBehavior.AllowGet);
+
+        }
+
         public JsonResult RegisterModuleOperate(String name,String url,String isValid,String moduleId)
         {
             ModuleService.RegisterModuleOperate(name, url, isValid == null ? false : true, Convert.ToInt32(moduleId));

@@ -96,22 +96,21 @@ namespace BBS2._0.Services
                 ModuleName=it.Module.Name,
                 Url=it.Url
             }).ToList();
+        }
 
-            //List<ModuleOperateDTO> list=new List<ModuleOperateDTO>();
-            //foreach (var item in ret)
-            //{
-            //    ModuleOperateDTO mod = new ModuleOperateDTO()
-            //    {
-            //        Id = item.Id,
-            //        IsValid = item.IsValid,
-            //        KeyCode = item.KeyCode,
-            //        ModuleId = item.ModuleId,
-            //        OperateCode=((ModuleOperateCode)item.OperateCode).ToString(),
-            //        OperateName = ((ModuleOperateCode)item.OperateCode).GetDescriptionOrNull()
-            //    };
-            //    list.Add(mod);
-            //}
-            //return list;
+        public List<ModuleOperateDTO> GetAllModuleOperate()
+        {
+            return _moduleOperateRepository.Select(it => true, it => new ModuleOperateDTO()
+            {
+                Id = it.Id,
+                IsValid = it.IsValid,
+                KeyCode = it.KeyCode,
+                ModuleId = it.ModuleId,
+                OperateCode = ((ModuleOperateCode)it.OperateCode).ToString(),
+                OperateName = it.Name,
+                ModuleName = it.Module.Name,
+                Url = it.Url
+            }).ToList();
         }
 
         public bool RegisterModuleOperate(String name, String url, bool isValid, Int32 moduelId)
