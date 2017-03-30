@@ -267,6 +267,7 @@
     <Compile Include="ViewModel\PostDTO.cs" />
     <Compile Include="ViewModel\ReplyDTO.cs" />
     <Compile Include="ViewModel\RoleDTO.cs" />
+    <Compile Include="ViewModel\RolePermissonDTO.cs" />
     <Compile Include="ViewModel\SectionDTO.cs" />
     <Compile Include="ViewModel\TreeDTO.cs" />
   </ItemGroup>

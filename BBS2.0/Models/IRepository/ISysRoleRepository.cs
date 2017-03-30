@@ -6,7 +6,7 @@ using Infrastructure;
 
 namespace BBS2._0.Models
 {
-    interface ISysRoleRepository:IRepository<SysRole,Int32>
+    public interface ISysRoleRepository:IRepository<SysRole,Int32>
     {
     }
 }

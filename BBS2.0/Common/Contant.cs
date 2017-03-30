@@ -14,5 +14,7 @@ namespace BBS2._0.Common
         public const String ACCOUNT_NOTFOUND = "不存在的用户";
 
         public const String SECTION_NOTFOUND = "不存在的版块";
+
+        public const String ROLE_REPEATED = "重复的角色名";
     }
 }

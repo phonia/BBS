@@ -105,6 +105,9 @@
                         dlg_Edit.dialog('close');
                         $('#grid').datagrid('reload');
                     }
+                    else {
+                        $.messager.alert("异常", msg.Message, "info", function () { });
+                    }
                 }
             });
         }

@@ -1,0 +1,307 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_MLayout.cshtml";
+}
+
+<script type="text/javascript">
+    var grid;
+    var dlg_edit;
+    var rolePermisson;
+    var updaterow = new Array();
+
+    function add() {
+        dlg_edit.dialog('open');
+    }
+
+    function del()
+    { }
+
+    function formatLink(val, row, index) {
+        return '<a href="#">角色权限</a>';
+    }
+
+    function saveData()
+    {
+        $('#roleForm').form('submit', {
+            url: '/Role/Register',
+            success: function (data)
+            {
+                if (!data) $.messager.alert("异常", "出错了", "info", function () { });
+                msg = eval('(' + data + ')');
+                if (msg.Success)
+                {
+                    //刷新表格
+                    $.messager.show({
+                        title: '角色注册',
+                        msg: '注册成功',
+                        timeout: 5000,
+                        showType:'slide'
+                    });
+                    dlg_edit.dialog('close');
+                    grid.datagrid('reload');
+                }
+                else
+                {
+                    $.messager.alert("异常", msg.Message, "info", function () { });
+                }
+            }
+        });
+    }
+
+    function Check(id) {
+        var child = rolePermisson.treegrid('getChildren', id);
+        var mark = rolePermisson.treegrid('find', id).IsOwned;//获取的该Id下所有级数的节点
+        //alert(mark);
+        rolePermisson.treegrid('find', id).IsOwned = !mark;
+        if (updaterow.indexOf(id) < 0) {
+            updaterow.push(id);
+        }
+        else {
+            updaterow.splice(updaterow.indexOf(id), 1);
+        }
+        SetRowMark(child, !mark);
+        rolePermisson.treegrid('refresh', id);
+    }
+
+    function SetRowMark(list, mark) {
+        if (!list) return;
+        for (i = 0; i < list.length; i++) {
+            if (list[i].IsOwned != mark) {
+                list[i].IsOwned = mark;
+                rolePermisson.treegrid('refresh', list[i].Id);
+                if (updaterow.indexOf(list[i].Id) < 0) {
+                    updaterow.push(list[i].Id);
+                }
+                else {
+                    updaterow.splice(updaterow.indexOf(list[i].Id), 1);
+                }
+            }
+        }
+    }
+
+    function SaveRolePermisson()
+    {
+        //var rows = rolePermisson.treegrid('getChildren', 0).length
+        //var count = 0;
+        //for (i = 0; i < rows; i++)
+        //{
+        //    var setFlag = $("td[field='IsOwned'] input").eq(i).prop('checked');
+        //    var current = rolePermisson.treegrid('find', i + 1);
+        //    if (current.IsOwned != setFlag) count++;
+        //}
+        //alert(count);
+        if (updaterow.length <= 0) {
+            $.messager.show({
+                title: '保存角色权限',
+                msg: '没有被修改的项！',
+                timeout: 5000,
+                showType:'slide'
+            });
+        }
+        
+        var list = "";
+        for (i = 0; i < updaterow.length; i++)
+        {
+            //data.push(rolePermisson.treegrid('find', updaterow[i]).KeyCode);
+            var code = rolePermisson.treegrid('find', updaterow[i]).KeyCode;
+            if (code != null) {
+                list += rolePermisson.treegrid('find', updaterow[i]).KeyCode;
+                list += ",";
+            }
+        }
+        if (list.length > 0) {
+            list = list.substring(0, list.length - 1);
+            var roleId = grid.datagrid('getSelected').Id;
+            $.ajax({
+                url: '/Role/SaveRolePermisson',
+                type: 'POST',
+                data: { 'keycodes': list,'roleId':roleId },
+                dataType: 'json',
+                success: function (msg) {
+                    if (!msg) {
+                        $.messager.alert("异常", "没有返回值", "info", function () { });
+                    }
+                    if (msg.Success) {
+                        $.messager.show({
+                            title: '保存角色权限',
+                            msg: '保存成功',
+                            timeout: 5000,
+                            showType: 'slide'
+                        });
+                        updaterow.splice(0, updaterow.length);
+                    }
+                    else {
+                        $.messager.alert("异常", msg.Message, "info", function () { });
+                    }
+                }
+            });
+        }
+    }
+
+    var IsCollapsed = false;//折叠标识
+
+    function Collopse()
+    {
+        if (!IsCollapsed) {
+            $('#rolePermisson').treegrid('collapseAll');//expandAll
+            IsCollapsed = true;
+        }
+        else {
+            $('#rolePermisson').treegrid('expandAll');//
+            IsCollapsed = false;
+        }
+    }
+
+    $(function () {
+        grid = $('#grid').datagrid({
+            title: '角色设置',
+            iconCls: 'icon-save',
+            method: 'Get',
+            url: '/Role/LoadRoles',
+            sortName: 'Id',
+            sortOrder: 'desc',
+            idField: 'Id',
+            pageSize: 10,
+            striped: true,
+            scrollbarSize: 0,
+            frozenColumns: [[
+                { field: 'ck', checkbox: true, }
+            ]],
+            columns: [[
+                { field: 'Id', title: '角色Id', width: '10%', sortable: true },
+                { field: 'Name', title: '名称', width: '40%' },
+                { field: 'Description', title: '角色描述', width: '45%' }
+                //{ field: '_rights', title: '查看角色权限', width: fixWidth(0.25), formatter: formatLink }
+            ]],
+            fit: true,
+            pagination: true,
+            rownumber: true,
+            singleSelect: true,
+            toolbar: [
+                { text: '新增', iconCls: 'icon-add', handler: add },
+                //'-', { text: '编辑', iconCls: 'icon-edit', handler: edit },
+                '-', { text: '删除', iconCls: 'icon-remove', handler: del }
+            ],
+            onSelect: function (rowIndex, rowData) {
+                //alert(rowIndex);
+                //alert(rowData["Id"]);
+                rolePermisson.treegrid('load', { roleId: rowData["Id"] });
+                updaterow.splice(0, updaterow.length);
+            }
+        });
+
+        //$('#GM').tree({
+        //    url: '/Role/LoadModuleTree',
+        //    checkbox: false,
+        //    lines: true,
+        //    onClick: function (node) {
+        //        //alert(node.text);  // alert node text property when clicked
+        //        if (!node.children || node.children.length <= 0)//判断叶子节点
+        //        {
+        //            //alert(node.text);
+        //        }
+        //        else {
+        //        }
+        //    }
+        //});
+
+        dlg_edit = $('#dlg-edit').dialog({
+            closed: true,
+            modal: true,
+            toolbar: [{
+                text: '保存',
+                iconCls: 'icon-save',
+                handler: saveData
+            }, '-', {
+                text: '关闭',
+                iconCls: 'icon-no',
+                handler: function () {
+                    dlg_Edit.dialog('close');
+                }
+            }]
+        });
+
+        rolePermisson = $('#rolePermisson').treegrid({
+            title: '角色权限',
+            url: '/Role/LoadRolePermisson',
+            iconCls: 'icon-save',
+            method: 'GET',
+            sortName: 'Id',
+            pageSize: 10,
+            striped: true,
+            scrollbarSize: 0,
+            queryParams: { roleId: '-1' },
+            idField: 'Id',
+            treeField:'ModuleName',
+            columns: [[
+                { field: 'Id', title: '序号', width: 0, hidden:true },
+                { field: 'ModuleName', title: '模块名', width: "30%" },
+                { field: 'OperateName', title: '操作名', width: "23%"},
+                { field: 'KeyCode', title: '操作编码', width: "20%" },
+                {
+                    field: 'IsOwned', title: '是否拥有该权限', width: "20%", formatter: function (value,row,index) {
+                        if (value) {
+                            return "<input type='checkbox' checked='checked' onclick='Check(" + row.Id + ")' value=" + value + "/>";
+                        }
+                        else {
+                            return "<input type='checkbox'  onclick='Check("+row.Id+")' value=" + value + "/>";
+                        }
+                    }
+                },
+                { field: 'IsModule', title: '是否是模块', width: 0, hidden:true },
+                { field: 'ParentId', title: '父级Id', width: 0, hidden: true },
+                { field: 'ModuleId', title: '模块Id', width: 0, hidden: true },
+                { field: 'OperateId', title: '操作Id', width: 0, hidden: true }
+
+            ]],
+            fit: true,
+            pagination: false,
+            rownumbers: true,
+            fitColumns: true,
+            toolbar: [
+                { text: '保存', iconCls: 'icon-save', handler: SaveRolePermisson },
+                '-', { text: '展开/折叠', iconCls: 'icon-more', handler: Collopse }
+            ]
+        });
+    });
+</script>
+
+<style>
+    /*.easyui-panel {
+        border: none;
+    }*/
+
+    label {
+        display: inline-block;
+        width: 80px;
+        text-align: right;
+    }
+
+    .fitem {
+        margin: 10px 5px 10px 5px;
+    }
+</style>
+
+<div region="center" style="width: 500px; height: 300px; padding: 1px; overflow-y: hidden; border: none;">
+    <div style="width:49.5%;height:100%;float:left">
+        <div id="grid"></div>
+    </div>
+    <div style="width:49.5%;height:100%;float:left;padding-left:1%">
+        <div id="rolePermisson"></div>
+    </div>
+</div>
+
+<div id="dlg-edit" title="添加角色" style="width: 300px; height: 250px">
+    <div class="easyui-panel" style="vertical-align:central">
+        <form method="post" id="roleForm">
+            <div class="fitem">
+                <label>名称：</label>
+                <input class="easyui-validate" required="required" name="name" value="角色名" />
+            </div>
+            <div class="fitem">
+                <label>角色描述：</label>
+                <input class="easyui-validate" required="required" name="description" value="角色描述" />
+            </div>
+        </form>
+    </div>
+</div>

@@ -107,7 +107,22 @@ namespace BBS2._0.Repository
 
         public virtual IEnumerable<TEntity> GetFilter(Expression<Func<TEntity, bool>> predicate, params String[] includes)
         {
-            throw new NotImplementedException();
+                if (includes == null)
+                    return _unitOfWork.DbContext.Set<TEntity>().Where(predicate).AsEnumerable();
+                switch (includes.Count())
+                {
+                    case 0: return _unitOfWork.DbContext.Set<TEntity>().Where(predicate).AsEnumerable();
+                    case 1: return _unitOfWork.DbContext.Set<TEntity>().Where(predicate).Include(includes[0]).AsEnumerable();
+                    case 2: return _unitOfWork.DbContext.Set<TEntity>().Where(predicate).Include(includes[0]).Include(includes[1]).AsEnumerable();
+                    case 3: return _unitOfWork.DbContext.Set<TEntity>().Where(predicate).Include(includes[0]).Include(includes[1]).Include(includes[2]).AsEnumerable();
+                    case 4: return _unitOfWork.DbContext.Set<TEntity>().Where(predicate).Include(includes[0]).Include(includes[1]).Include(includes[2]).Include(includes[3]).AsEnumerable();
+                    case 5: return _unitOfWork.DbContext.Set<TEntity>().Where(predicate).Include(includes[0]).Include(includes[1]).Include(includes[2]).Include(includes[3]).Include(includes[4]).AsEnumerable();
+                    case 6: return _unitOfWork.DbContext.Set<TEntity>().Where(predicate).Include(includes[0]).Include(includes[1]).Include(includes[2]).Include(includes[3]).Include(includes[4]).Include(includes[5]).AsEnumerable();
+                    case 7: return _unitOfWork.DbContext.Set<TEntity>().Where(predicate).Include(includes[0]).Include(includes[1]).Include(includes[2]).Include(includes[3]).Include(includes[4]).Include(includes[5]).Include(includes[6]).AsEnumerable();
+                    case 8: return _unitOfWork.DbContext.Set<TEntity>().Where(predicate).Include(includes[0]).Include(includes[1]).Include(includes[2]).Include(includes[3]).Include(includes[4]).Include(includes[5]).Include(includes[6]).Include(includes[7]).AsEnumerable();
+                    case 9: return _unitOfWork.DbContext.Set<TEntity>().Where(predicate).Include(includes[0]).Include(includes[1]).Include(includes[2]).Include(includes[3]).Include(includes[4]).Include(includes[5]).Include(includes[6]).Include(includes[7]).Include(includes[8]).AsEnumerable();
+                    default: throw new Exception("too much navigational property!");
+                }
         }
 
         public virtual IEnumerable<TEntity> GetPaged<Key>(Expression<Func<TEntity, bool>> predicate, Expression<Func<TEntity, Key>> keySelector, Int32 pageIndex, Int32 pageCount, bool isAscending = true)
