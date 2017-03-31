@@ -13,5 +13,6 @@ namespace BBS2._0.Services
         AccountDTO RegisterAccount(AccountDTO accountDto);
         AccountDTO GetById(Int32 Id);
         AccountDTO GetByName(String name);
+        List<AccountDTO> GetAllAccount();
     }
 }

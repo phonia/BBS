@@ -16,5 +16,12 @@ namespace BBS2._0.Common
         public const String SECTION_NOTFOUND = "不存在的版块";
 
         public const String ROLE_REPEATED = "重复的角色名";
+        public const String ROLE_ACCOUNT_USED = "角色被用户使用";
+        public const String ROLE_NOTFOUND = "不存在的角色";
+        public const String ROLE_BUILTIN = "不允许删除内置角色";
+        public const String ROLE_MANAGER_EN = "SuperRole";
+        public const String ROLE_MANAGER_CH = "超级管理";
+        public const String ROLE_ANONYMOUS_EN = "Anonymous";
+        public const String ROLE_ANONYMOUS_CN = "匿名角色";
     }
 }

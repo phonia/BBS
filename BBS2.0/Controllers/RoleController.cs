@@ -54,12 +54,21 @@ namespace BBS2._0.Controllers
         public JsonResult SaveRolePermisson(String keycodes,Int32 roleId)
         {
             if (String.IsNullOrWhiteSpace(keycodes))
-            { }
+            {
+                return Json(new JsonMessageDTO() { Success = false, Message = "参数不能为空" },JsonRequestBehavior.AllowGet);
+            }
             else
             {
                 List<String> keyCode = keycodes.Split(',').ToList();
+                if (RoleService.SaveRolePermission(roleId, keyCode))
+                {
+                    return Json(new JsonMessageDTO() { Success = true, Message = "success" }, JsonRequestBehavior.AllowGet);
+                }
+                else
+                {
+                    return Json(new JsonMessageDTO() { Success = false, Message = "Not Mentioned!" }, JsonRequestBehavior.AllowGet);
+                }
             }
-            return null;
         }
 
         public JsonResult LoadModuleTree()
@@ -67,6 +76,18 @@ namespace BBS2._0.Controllers
             List<ModuleDTO> list = ModuleService.GetAllModuels();//.Select(it => new TreeDTO() { id = 1, text = "权限管理", state = "closed", iconCls = "", attributes = new TreeAttributeDTO() { } }).ToList();
 
             return Json(GenerateTree(list), JsonRequestBehavior.AllowGet);
+        }
+
+        public JsonResult DeleteRole(Int32 roleId)
+        {
+            if (RoleService.DeleteRole(roleId))
+            {
+                return Json(new JsonMessageDTO() { Success = true, Message = "success" },JsonRequestBehavior.AllowGet);
+            }
+            else
+            {
+                return Json(new JsonMessageDTO() { Success = false, Message = "Not Mentioned!" }, JsonRequestBehavior.AllowGet);
+            }
         }
 
         public List<TreeDTO> GenerateTree(List<ModuleDTO> list)

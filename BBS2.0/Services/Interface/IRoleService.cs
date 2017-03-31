@@ -12,5 +12,6 @@ namespace BBS2._0.Services
         List<RolePermissonDTO> GetRolePermisson(Int32 RoleId);
         bool Register(String name, String description);
         bool SaveRolePermission(Int32 roleId, List<String> keyCodes);
+        bool DeleteRole(Int32 roleId);
     }
 }

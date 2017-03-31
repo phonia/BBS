@@ -70,5 +70,11 @@ namespace BBS2._0.Controllers
             };
             return Json(list, JsonRequestBehavior.AllowGet);
         }
+
+        public JsonResult GetAllAccount()
+        {
+            List<AccountDTO> list = AccountService.GetAllAccount();
+            return Json(new DataGridDTO<AccountDTO>() { total = list.Count, rows = list }, JsonRequestBehavior.AllowGet);
+        }
     }
 }

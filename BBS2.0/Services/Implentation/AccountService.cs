@@ -11,14 +11,18 @@ namespace BBS2._0.Services
 {
     public class AccountService:IAccountService
     {
+        private ISysRoleRepository _roleRepository = null;
         private IAccountRepository _accountRepository = null;
         private IUnitOfWork _unitOfWork = null;
 
-        public AccountService(IUnitOfWork unitOfWork, IAccountRepository accountRepository)
+        public AccountService(IUnitOfWork unitOfWork, 
+            IAccountRepository accountRepository,ISysRoleRepository roleRepository)
         {
             this._unitOfWork = unitOfWork;
             this._accountRepository = accountRepository;
+            this._roleRepository = roleRepository;
 
+            this._roleRepository.UnitOfWork = unitOfWork;
             this._accountRepository.UnitOfWork = unitOfWork;
         }
 
@@ -42,14 +46,25 @@ namespace BBS2._0.Services
         {
             Account account = accountDto.MapperTo<AccountDTO, Account>();
             account.AccountType = AccountType.Register;
+            account.Role = _roleRepository.GetFilter(it => it.Name == Constant.ROLE_ANONYMOUS_EN).FirstOrDefault();//刚注册的用户设置为匿名角色
             //验证数据是否正确
             if (_accountRepository.GetFilter(it => it.Name.Equals(accountDto.Name)).FirstOrDefault() != null)
                 throw new DomainException(Constant.ACCOUNT_NAME_REPEATED);
             _accountRepository.Add(account);
             _unitOfWork.Commit();
-            return _accountRepository.GetFilter(it => it.Name.Equals(accountDto.Name))
-                .First()
-                .MapperTo<Account, AccountDTO>();
+
+            return _accountRepository.Select(it => it.Name.Equals(accountDto.Name), it => new AccountDTO()
+            {
+                Id = it.Id,
+                Age=it.Age,
+                Email=it.Email,
+                Name=it.Name,
+                Password=it.Password,
+                Sex=it.Sex,
+                Tel=it.Tel,
+                RoleId=it.Role.Id,
+                RoleName=it.Role.Name
+            }).First();
         }
 
         public AccountDTO GetById(int Id)
@@ -59,9 +74,37 @@ namespace BBS2._0.Services
 
         public ViewModel.AccountDTO GetByName(string name)
         {
-            Account account = _accountRepository.GetFilter(it => it.Name.Equals(name)).FirstOrDefault();
+            AccountDTO account = _accountRepository.Select(it => it.Name.Equals(name), it => new AccountDTO()
+            {
+                Id = it.Id,
+                Age = it.Age,
+                Email = it.Email,
+                Name = it.Name,
+                Password = it.Password,
+                Sex = it.Sex,
+                Tel = it.Tel,
+                RoleId = it.Role.Id,
+                RoleName = it.Role.Name
+            }).FirstOrDefault();
             if (account == null) throw new DomainException(Constant.ACCOUNT_NAME_NOTFOUND);
-            return account.MapperTo<Account, AccountDTO>();
+            return account;
+        }
+
+        public List<AccountDTO> GetAllAccount()
+        {
+            //System.Linq.Expressions.Expression<Func<Account,AccountDTO>> s=it=>null;
+            return _accountRepository.Select(it => true, it => new AccountDTO()
+            {
+                Id = it.Id,
+                Age=it.Age,
+                Email=it.Email,
+                Name=it.Name,
+                Password=it.Password,
+                RoleId=it.Role.Id,
+                RoleName=it.Role.Name,
+                Sex=it.Sex,
+                Tel=it.Tel
+            }).ToList();
         }
 
         #endregion

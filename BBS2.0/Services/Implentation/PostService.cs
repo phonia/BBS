@@ -40,7 +40,7 @@ namespace BBS2._0.Services
             if (accountId <= 0)
             {
                 //poster = _accountRepository.GetFilter(it => it.Name.Equals(Constant.ACCOUNT_NAME_ANONYMOUS_EN)).FirstOrDefault();
-                accountId= _accountRepository.GetFilter(it => it.Name.Equals(Constant.ACCOUNT_NAME_ANONYMOUS_EN)).FirstOrDefault().Id; 
+                accountId= _accountRepository.GetFilter(it => it.Name.Equals(Constant.ACCOUNT_NAME_ANONYMOUS_EN)).First().Id; 
             }
 
             Reply reply = new Reply()
@@ -80,7 +80,9 @@ namespace BBS2._0.Services
                     Name = it.Poster.Name,
                     Password = it.Poster.Password,
                     Sex = it.Poster.Sex,
-                    Tel = it.Poster.Tel
+                    Tel = it.Poster.Tel,
+                    RoleId=it.Poster.Role.Id,//需要测试是否可用
+                    RoleName=it.Poster.Role.Name
                 },
                 //不需要返回此属性的值
                 //LastReply = it.Replies.OrderByDescending(e => e.Id).FirstOrDefault() == null ? null : new ReplyDTO()
@@ -108,9 +110,9 @@ namespace BBS2._0.Services
             throw new NotImplementedException();
         }
 
-        public ViewModel.PostDTO GetById(int id)
+        public PostDTO GetById(Int32 id)
         {
-            return _postRepository.Select(it => it.Id==id, it => new PostDTO()
+            PostDTO post = _postRepository.Select(it => it.Id == id, it => new PostDTO()
             {
                 Id = it.Id,
                 Keyword = it.Keyword,
@@ -125,11 +127,14 @@ namespace BBS2._0.Services
                     Name = it.Poster.Name,
                     Password = it.Poster.Password,
                     Sex = it.Poster.Sex,
-                    Tel = it.Poster.Tel
+                    Tel = it.Poster.Tel,
+                    RoleId=it.Poster.Role.Id,//需要测试是否可用
+                    RoleName=it.Poster.Role.Name
                 },
-                ReplyAccount = it.Replies.Count
-            })
-            .First();
+                ReplyAccount=it.Replies.Count
+            }).FirstOrDefault();
+            if (post == null) throw new DomainException("");
+            return post;
         }
 
         public List<ViewModel.PostDTO> GetBySecionId(int sectionId)
@@ -162,10 +167,10 @@ namespace BBS2._0.Services
             //if (replyer == null) throw new DomainException(Constant.ACCOUNT_NOTFOUND);
             if (accountId <= 0)
             {
-                accountId = _accountRepository.GetFilter(it => it.Name.Equals(Constant.ACCOUNT_NAME_ANONYMOUS_EN)).FirstOrDefault().Id;
+                accountId = _accountRepository.GetFilter(it => it.Name.Equals(Constant.ACCOUNT_NAME_ANONYMOUS_EN)).First().Id;
             }
 
-            Int32 count = _postRepository.Select(it => it.Id == postId, it => it.Replies.Count).FirstOrDefault();
+            Int32 count = _postRepository.Select(it => it.Id == postId, it => it.Replies.Count).First();
 
             Reply reply = new Reply()
             {
@@ -210,7 +215,9 @@ namespace BBS2._0.Services
                     Name = it.Poster.Name,
                     Password = it.Poster.Password,
                     Sex = it.Poster.Sex,
-                    Tel = it.Poster.Tel
+                    Tel = it.Poster.Tel,
+                    RoleId = it.Poster.Role.Id,//需要测试是否可用
+                    RoleName = it.Poster.Role.Name
                 },
                 ReplyAccount = it.Replies.Count
             })
@@ -233,7 +240,9 @@ namespace BBS2._0.Services
                     Sex=it.Replyer.Sex,
                     Name=it.Replyer.Name,
                     Password=it.Replyer.Password,
-                    Tel=it.Replyer.Tel
+                    Tel=it.Replyer.Tel,
+                    RoleId = it.Replyer.Role.Id,//需要测试是否可用
+                    RoleName = it.Replyer.Role.Name
                 }
             })
             .ToList();

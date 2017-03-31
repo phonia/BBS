@@ -1,0 +1,65 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_MLayout.cshtml";
+}
+
+<script type="text/javascript">
+    var grid;
+
+    function save() { }
+
+    function remove() { }
+
+    $(function () {
+        grid = $('#grid').datagrid({
+            title: '用户管理',
+            iconCls: 'icon-save',
+            method: 'GET',
+            url: '/Account/GetAllAccount',
+            sortName: 'Id',
+            sortOrder: 'desc',
+            idField: 'Id',
+            pageSize: 10,
+            stried: true,
+            scrollbarSize: 0,
+            fit: true,
+            pagination: true,
+            rownumber: true,
+            singleSelect: true,
+            columns: [[
+                { field: 'Id', title: '序号', width: "10%", sortable: true },
+                { field: 'Name', title: '账号', width: '10%' },
+                { field: 'Password', title: '密码', width: '10%' },
+                { field: 'Sex', title: '性别', width: '10%' },
+                { field: 'Age', title: '年龄', width: '10%' },
+                { field: 'Tel', title: '电话号码', width: '10%' },
+                { field: 'Email', title: '邮箱地址', width: '10%' },
+                {
+                    field: 'RoleId', title: '角色', width: '10%',
+                    formatter: function (value, row) { return row.RoleName },
+                    editor: {
+                        type: 'combobox',
+                        options: {
+                            valueField: 'productid',
+                            textField: 'productname',
+                            method: 'get',
+                            url: 'products.json',
+                            required: true
+                        }
+                    }
+                },
+                { field: 'RoleName', title: '角色', width: '10%',hidden:true }
+            ]],
+            toolbar: [
+                { text: '保存', iconCls: 'icon-save', handler: save },
+                '-', { text: '删除', iconCls: 'icon-remove', handler: remove }
+            ]
+        });
+    });
+</script>
+
+<style type="text/css"></style>
+
+<div region="center" style="width:500px;height:300px;padding:1px;overflow-y:hidden;border:none">
+    <div id="grid"></div>
+</div>

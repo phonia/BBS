@@ -62,7 +62,9 @@ namespace BBS2._0.Services
                         Name = it.Posts.OrderByDescending(e => e.Id).FirstOrDefault().Poster.Name,
                         Sex = it.Posts.OrderByDescending(e => e.Id).FirstOrDefault().Poster.Sex,
                         Password = it.Posts.OrderByDescending(e => e.Id).FirstOrDefault().Poster.Password,
-                        Tel = it.Posts.OrderByDescending(e => e.Id).FirstOrDefault().Poster.Tel
+                        Tel = it.Posts.OrderByDescending(e => e.Id).FirstOrDefault().Poster.Tel,
+                        RoleId=it.Posts.OrderByDescending(e=>e.Id).FirstOrDefault().Poster.Role.Id,//需要测试
+                        RoleName=it.Posts.OrderByDescending(e=>e.Id).FirstOrDefault().Poster.Role.Name
                     },
                     LastReply = (it.Posts.OrderByDescending(e => e.Id).FirstOrDefault() == null || it.Posts.OrderByDescending(e => e.Id).FirstOrDefault().Replies.OrderByDescending(e => e.Id).FirstOrDefault() == null) ? null :
                     new ReplyDTO()
@@ -113,7 +115,9 @@ namespace BBS2._0.Services
                         Name = it.Posts.OrderByDescending(e => e.Id).FirstOrDefault().Poster.Name,
                         Sex = it.Posts.OrderByDescending(e => e.Id).FirstOrDefault().Poster.Sex,
                         Password = it.Posts.OrderByDescending(e => e.Id).FirstOrDefault().Poster.Password,
-                        Tel = it.Posts.OrderByDescending(e => e.Id).FirstOrDefault().Poster.Tel
+                        Tel = it.Posts.OrderByDescending(e => e.Id).FirstOrDefault().Poster.Tel,
+                        RoleId=it.Posts.OrderByDescending(e=>e.Id).FirstOrDefault().Poster.Role.Id,
+                        RoleName=it.Posts.OrderByDescending(e=>e.Id).FirstOrDefault().Poster.Role.Name
                     },
                     LastReply = (it.Posts.OrderByDescending(e => e.Id).FirstOrDefault() == null || it.Posts.OrderByDescending(e => e.Id).FirstOrDefault().Replies.OrderByDescending(e => e.Id).FirstOrDefault() == null) ? null :
                     new ReplyDTO()

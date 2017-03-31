@@ -15,5 +15,8 @@ namespace BBS2._0.ViewModel
         public Int32 Age { get; set; }
         public String Tel { get; set; }
         public String Email { get; set; }
+
+        public Int32 RoleId { get; set; }
+        public String RoleName { get; set; }
     }
 }

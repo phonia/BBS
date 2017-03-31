@@ -6,7 +6,7 @@ using Infrastructure;
 
 namespace BBS2._0.Models
 {
-    interface ISysFunctionRightRepository:IRepository<SysFunctionRight,Int32>
+    public interface ISysFunctionRightRepository:IRepository<SysFunctionRight,Int32>
     {
     }
 }

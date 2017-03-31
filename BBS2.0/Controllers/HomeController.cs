@@ -37,7 +37,8 @@ namespace BBS2._0.Controllers
             List<TreeDTO> td = new List<TreeDTO>() { 
                 new TreeDTO(){id=1,text="权限管理",state="closed",iconCls="",attributes=new TreeAttributeDTO(){},children=new List<TreeDTO>(){
                     new TreeDTO(){id=11,text="模块设置",state="opend",iconCls="icon-nav",attributes=new TreeAttributeDTO(){url="/Module"}},
-                    new TreeDTO(){id=12,text="角色设置",state="opend",iconCls="icon-nav",attributes=new TreeAttributeDTO(){url="/Role"}}
+                    new TreeDTO(){id=12,text="角色设置",state="opend",iconCls="icon-nav",attributes=new TreeAttributeDTO(){url="/Role"}},
+                    new TreeDTO(){id=12,text="用户设置",state="opend",iconCls="icon-nav",attributes=new TreeAttributeDTO(){url="/Account"}}
                 }}
             };
             return Json(td, JsonRequestBehavior.AllowGet);

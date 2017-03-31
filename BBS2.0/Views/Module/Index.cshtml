@@ -28,93 +28,93 @@
     }
 
     function edit() {
-        var rows = grid.datagrid('getSelections');
-        var num = rows.length;
-        if (num == 0) {
-            $.messager.alert('提示', '请选择一条记录进行操作!', 'question');
-            return;
-        }
-        else if (num > 1) {
-            $.messager.alert('提示', '您选择了多条记录,只能选择一条记录进行修改!', 'info');
-            return;
-        }
-        else {
-            dlg_Edit_form.form('clear');
-            dlg_Edit.dialog('open');
-            dlg_Edit.dialog('setTitle', '您正在修改' + rows[0].Name + '模块');
-            //dlg_Edit_form.form('load', rows[0]); //加载到表单的控件上       
-            //填充表单数据
-            dlg_Edit_form.form('load', {
-                id: rows[0].Id,
-                name: rows[0].Name,
-                description: rows[0].Description,
-                url: rows[0].Url,
-                isLeaf: rows[0].IsLeaf ? "on" : null,
-                parent: rows[0].ParentId
-            });
-            //dlg_Edit_form.url = virpath + '/Admin/UpdateProductType?id=' + rows[0].ID;
+        //var rows = grid.datagrid('getSelections');
+        //var num = rows.length;
+        //if (num == 0) {
+        //    $.messager.alert('提示', '请选择一条记录进行操作!', 'question');
+        //    return;
+        //}
+        //else if (num > 1) {
+        //    $.messager.alert('提示', '您选择了多条记录,只能选择一条记录进行修改!', 'info');
+        //    return;
+        //}
+        //else {
+        //    dlg_Edit_form.form('clear');
+        //    dlg_Edit.dialog('open');
+        //    dlg_Edit.dialog('setTitle', '您正在修改' + rows[0].Name + '模块');
+        //    //dlg_Edit_form.form('load', rows[0]); //加载到表单的控件上       
+        //    //填充表单数据
+        //    dlg_Edit_form.form('load', {
+        //        id: rows[0].Id,
+        //        name: rows[0].Name,
+        //        description: rows[0].Description,
+        //        url: rows[0].Url,
+        //        isLeaf: rows[0].IsLeaf ? "on" : null,
+        //        parent: rows[0].ParentId
+        //    });
+        //    //dlg_Edit_form.url = virpath + '/Admin/UpdateProductType?id=' + rows[0].ID;
 
-        }
+        //}
     }
 
     function del() {
-        var arr = $('#grid').datagrid('getSelections');
-        if (arr.length <= 0)
-            $.messager.alert('提示', '请选择一条记录进行操作!', 'question');
-        else {
-            $.messager.confirm('提示信息', '您确认要删除选中的所有记录吗?', function (data) {
-                var _list = [];
-                for (var i = 0; i < arr.length; i++) {
-                    _list[i] = arr[i].Id;
-                }
-                $.ajax({
-                    url: '/Module/DeleteModules',
-                    data: { "ids": _list },
-                    //data: _list,  
-                    dataType: "json",
-                    type: "POST",
-                    traditional: true,
-                    success: function (data) {
-                        // your logic  
-                        if (data.Success) {
-                            alert("成功");
-                        }
-                    }
-                });
-            });
-        }
+        //var arr = $('#grid').datagrid('getSelections');
+        //if (arr.length <= 0)
+        //    $.messager.alert('提示', '请选择一条记录进行操作!', 'question');
+        //else {
+        //    $.messager.confirm('提示信息', '您确认要删除选中的所有记录吗?', function (data) {
+        //        var _list = [];
+        //        for (var i = 0; i < arr.length; i++) {
+        //            _list[i] = arr[i].Id;
+        //        }
+        //        $.ajax({
+        //            url: '/Module/DeleteModules',
+        //            data: { "ids": _list },
+        //            //data: _list,  
+        //            dataType: "json",
+        //            type: "POST",
+        //            traditional: true,
+        //            success: function (data) {
+        //                // your logic  
+        //                if (data.Success) {
+        //                    alert("成功");
+        //                }
+        //            }
+        //        });
+        //    });
+        //}
     }
 
     function saveData() {
-        if ($('#Id').val() == "0" || $('#Id').val() == "") {
-            dlg_Edit_form.form('submit', {
-                url: '/Module/RegisterModule',
-                onSubmit: function () {
-                    return $(this).form('validate');
-                },
-                success: function (data) {
-                    if (!data) $.messager.alert("异常", "出错了", "info", function () { });
-                    msg = eval('(' + data + ')');
-                    if (msg.Success) {
-                        $.messager.show({
-                            title: '模块注册',
-                            msg: '注册成功',
-                            timeout: 5000,
-                            showType: 'slide'
-                        });
-                        dlg_Edit.dialog('close');
-                        $('#grid').datagrid('reload');
-                    }
-                    else {
-                        $.messager.alert("异常", msg.Message, "info", function () { });
-                    }
-                }
-            });
-        }
-        else {
-            //验证数据是否改动过
-            //上传数据
-        }
+        //if ($('#Id').val() == "0" || $('#Id').val() == "") {
+        //    dlg_Edit_form.form('submit', {
+        //        url: '/Module/RegisterModule',
+        //        onSubmit: function () {
+        //            return $(this).form('validate');
+        //        },
+        //        success: function (data) {
+        //            if (!data) $.messager.alert("异常", "出错了", "info", function () { });
+        //            msg = eval('(' + data + ')');
+        //            if (msg.Success) {
+        //                $.messager.show({
+        //                    title: '模块注册',
+        //                    msg: '注册成功',
+        //                    timeout: 5000,
+        //                    showType: 'slide'
+        //                });
+        //                dlg_Edit.dialog('close');
+        //                $('#grid').datagrid('reload');
+        //            }
+        //            else {
+        //                $.messager.alert("异常", msg.Message, "info", function () { });
+        //            }
+        //        }
+        //    });
+        //}
+        //else {
+        //    //验证数据是否改动过
+        //    //上传数据
+        //}
     }
 
     function showAll() {
@@ -181,7 +181,7 @@
             pagination: true,
             rownumbers: true,
             fitColumns: true,
-            singleSelect: false,
+            singleSelect: true,
             toolbar: [{
                 text: '新增',
                 iconCls: 'icon-add',
@@ -279,7 +279,7 @@
             pagination: false,
             rownumbers: true,
             fitColumns: true,
-            singleSelect: false,
+            singleSelect: true,
             toolbar: [
                 { text: '新增', iconCls: 'icon-add', handler: add },
                 '-', { text: '编辑', iconCls: 'icon-edit', handler: edit },

@@ -14,7 +14,43 @@
     }
 
     function del()
-    { }
+    {
+        var role = grid.datagrid('getSelected');
+        if (!role) {
+            $.messager.show({
+                title: '角色删除',
+                msg: '未选中行',
+                timeout: 5000,
+                showType: 'slide'
+            });
+        }
+        else{
+            var roleId = role.Id;
+            $.messager.confirm('提示信息', '您确认要删除选中的所有记录吗?', function (data) {
+                $.ajax({
+                    url: '/Role/DeleteRole',
+                    type: 'POST',
+                    data: { 'roleId': roleId },
+                    dataType: 'json',
+                    success: function (msg) {
+                        if (!msg) { $.messager.alert("异常", "出错了", "info", function () { }); }
+                        if (msg.Success) {
+                            $.messager.show({
+                                title: '角色删除',
+                                msg: '删除成功',
+                                timeout: 5000,
+                                showType: 'slide'
+                            });
+                            grid.datagrid('reload');
+                        }
+                        else {
+                            $.messager.alert("异常", msg.Message, "info", function () { });
+                        }
+                    }
+                });
+            });
+        }
+    }
 
     function formatLink(val, row, index) {
         return '<a href="#">角色权限</a>';
@@ -39,6 +75,8 @@
                     });
                     dlg_edit.dialog('close');
                     grid.datagrid('reload');
+                    rolePermisson.treegrid('load', { roleId: -1 });
+                    updaterow.splice(0, updaterow.length);
                 }
                 else
                 {
@@ -118,7 +156,8 @@
                 data: { 'keycodes': list,'roleId':roleId },
                 dataType: 'json',
                 success: function (msg) {
-                    if (!msg) {
+                    //alert(msg);
+                    if (msg!=null) {
                         $.messager.alert("异常", "没有返回值", "info", function () { });
                     }
                     if (msg.Success) {

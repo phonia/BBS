@@ -1788,6 +1788,7 @@
     <Content Include="Views\Shared\_MLayout.cshtml" />
     <Content Include="Views\Module\ModuleOperate.cshtml" />
     <Content Include="Views\Role\Index.cshtml" />
+    <Content Include="Views\Account\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

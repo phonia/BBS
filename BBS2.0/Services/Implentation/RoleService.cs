@@ -14,19 +14,23 @@ namespace BBS2._0.Services
         private ISysRoleRepository _roleRepository = null;
         private ISysModuleOperateRepository _moduleOperateRepository = null;
         private ISysModuleRepository _moduleRepository = null;
+        private ISysFunctionRightRepository _functionRightRepository = null;
         private IUnitOfWork _unitOfWork = null;
 
         public RoleService(ISysRoleRepository roleRepository,ISysModuleRepository moduleRepository,ISysModuleOperateRepository moduleOperateRepository,
+            ISysFunctionRightRepository functionRightRepository,
             IUnitOfWork unitOfWork)
         {
             this._unitOfWork = unitOfWork;
             this._roleRepository = roleRepository;
             this._moduleOperateRepository = moduleOperateRepository;
             this._moduleRepository = moduleRepository;
+            this._functionRightRepository = functionRightRepository;
 
             this._roleRepository.UnitOfWork = unitOfWork;
             this._moduleRepository.UnitOfWork = unitOfWork;
             this._moduleOperateRepository.UnitOfWork = unitOfWork;
+            this._functionRightRepository.UnitOfWork = unitOfWork;
         }
 
         #region IRoleService 成员
@@ -85,7 +89,7 @@ namespace BBS2._0.Services
                 it.children.AddRange(rolePermissionList.FindAll(rpl => rpl.ParentId == it.ModuleId && rpl.IsModule));
             });
 
-            return rolePermissionList.Where(it => it.ParentId == null&&it.IsModule).ToList();
+            return rolePermissionList.Where(it => it.ParentId == null && it.IsModule).Select(it => it.Extension()).ToList();
             //return rolePermissionList;
         }
 
@@ -106,6 +110,41 @@ namespace BBS2._0.Services
 
         public bool SaveRolePermission(Int32 roleId, List<String> keyCodes)
         {
+            //获取角色所有的权限
+            //核对并且修改
+            //保存数据
+
+            List<SysFunctionRight> primary = _functionRightRepository.GetFilter(it => it.RoleId == roleId).ToList();
+            keyCodes.ForEach(it => {
+                var selected = primary.Where(s => s.KeyCode == it).FirstOrDefault();
+                if (selected == null)
+                {
+                    _functionRightRepository.Add(new SysFunctionRight() { KeyCode = it, RoleId = roleId });
+                }
+                else
+                {
+                    _functionRightRepository.RemoveNonCascaded(selected);
+                }
+            });
+            _unitOfWork.Commit();
+            return true;
+        }
+
+        public bool DeleteRole(Int32 roleId)
+        {
+            SysRole seletedRole = _roleRepository.GetFilter(it => it.Id == roleId, "Accounts", "FunctionRights").FirstOrDefault();
+            if (seletedRole == null) throw new DomainException(Constant.ROLE_NOTFOUND);
+            if (seletedRole.Name.Equals(Constant.ROLE_MANAGER_EN) || seletedRole.Name.Equals(Constant.ROLE_ANONYMOUS_EN)) throw new DomainException(Constant.ROLE_BUILTIN);
+            if (seletedRole.Accounts != null && seletedRole.Accounts.Count > 0) throw new DomainException(Constant.ROLE_ACCOUNT_USED);
+            if (seletedRole.FunctionRights != null && seletedRole.FunctionRights.Count > 0)
+            {
+                for (int i = seletedRole.FunctionRights.Count - 1; i >= 0; i--)
+                {
+                    _functionRightRepository.RemoveNonCascaded(seletedRole.FunctionRights[i]);
+                }
+            }
+            _roleRepository.RemoveNonCascaded(seletedRole);
+            _unitOfWork.Commit();
             return true;
         }
 
