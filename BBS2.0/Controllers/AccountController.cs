@@ -76,5 +76,19 @@ namespace BBS2._0.Controllers
             List<AccountDTO> list = AccountService.GetAllAccount();
             return Json(new DataGridDTO<AccountDTO>() { total = list.Count, rows = list }, JsonRequestBehavior.AllowGet);
         }
+
+        public JsonResult SetAccountRole(String accountIds, String roleIds)
+        {
+            if (accountIds.Length < 0 || roleIds.Length < 0 || !accountIds.Contains(',') || !roleIds.Contains(','))
+            {
+                return Json(new JsonMessageDTO() { Success = false, Message = "参数不能为空" }, JsonRequestBehavior.AllowGet);
+            }
+            else
+            {
+                List<Int32> accountId = accountIds.Split(',').Select(it => Convert.ToInt32(it)).ToList();
+                List<Int32> roleId = roleIds.Split(',').Select(it => Convert.ToInt32(it)).ToList();
+            }
+            return null;
+        }
     }
 }
