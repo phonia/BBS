@@ -3,15 +3,115 @@
     Layout = "~/Views/Shared/_MLayout.cshtml";
 }
 
+<script type="text/javascript" src="http://www.jeasyui.com/easyui/datagrid-detailview.js"></script>//应用外部网络的js代码 detailview
 <script type="text/javascript">
     var grid;
 
-    function save() { }
+    function save() {
+        var rows = grid.datagrid('getChanges');
+        if (rows.length <= 0) {
+            $.messager.show({
+                title: '保存用户设置',
+                msg: '没有被修改的数据',
+                timeout: 5000,
+                showType: 'slide'
+            });
+        }
+        else {
+            var accountIds = "";
+            var RoleIds = "";
+            for (i = 0; i < rows.length; i++) {
+                accountIds += rows[i].Id;
+                accountIds += ",";
+                RoleIds += rows[i].RoleId;
+                RoleIds += ",";
+            }
+            if (accountIds.length <= 0 || RoleIds.length <= 0) {
+                $.messager.alert({
+                    title: '保存用户设置',
+                    msg: '获取修改数据失败!',
+                    timeout: 5000,
+                    showType: 'slide'
+                });
+            }
+            else {
+                accountIds = accountIds.substring(0, accountIds.length - 1);
+                RoleIds = RoleIds.substring(0, RoleIds.length - 1);
+                $.ajax({
+                    url: '/Account/SetAccountRole',
+                    type: 'POST',
+                    data: {'accountIds':accountIds,'roleIds':RoleIds},
+                    dataType: 'json',
+                    success: function (msg)
+                    {
+                        if (!msg) {
+                            $.messager.alert("异常", "没有返回值", "info", function () { });
+                        }
+                        else {
+                            if (msg.Success) {
+                                $.messager.show({
+                                    title: '保存用户设置',
+                                    msg: '用户设置成功',
+                                    timeout: 5000,
+                                    showType:'slide'
+                                });
+                                grid.datagrid('reload');
+                            }
+                            else
+                            {
+                                $.messager.alert("异常", msg.Message, "info", function () { });
+                            }
+                        }
+                    }
+                });
+            }
+        }
+    }
 
-    function remove() { }
+    function remove() {
+        $.messager.alert("用户删除", "功能未实现！", "info", function () { });
+    }
+
+    var editIndex = undefined;
+
+    function endEditing() {
+        if (editIndex == undefined) { return true }
+        if ($('#grid').datagrid('validateRow', editIndex)) {
+            $('#grid').datagrid('endEdit', editIndex);
+            editIndex = undefined;
+            return true;
+        } else {
+            return false;
+        }
+    }
+    function onClickCell(index, field) {
+        if (editIndex != index) {
+            if (endEditing()) {
+                $('#grid').datagrid('selectRow', index)
+                        .datagrid('beginEdit', index);
+                var ed = $('#grid').datagrid('getEditor', { index: index, field: field });
+                if (ed) {
+                    ($(ed.target).data('textbox') ? $(ed.target).textbox('textbox') : $(ed.target)).focus();
+                }
+                editIndex = index;
+            } else {
+                setTimeout(function () {
+                    $('#grid').datagrid('selectRow', editIndex);
+                }, 0);
+            }
+        }
+    }
+    function onEndEdit(index, row) {
+        var ed = $(this).datagrid('getEditor', {
+            index: index,
+            field: 'RoleId'
+        });
+        row.RoleName = $(ed.target).combobox('getText');
+    }
 
     $(function () {
         grid = $('#grid').datagrid({
+            view: detailview,
             title: '用户管理',
             iconCls: 'icon-save',
             method: 'GET',
@@ -27,33 +127,53 @@
             rownumber: true,
             singleSelect: true,
             columns: [[
-                { field: 'Id', title: '序号', width: "10%", sortable: true },
+                { field: 'Id', title: '序号', width: "7%", sortable: true },
                 { field: 'Name', title: '账号', width: '10%' },
                 { field: 'Password', title: '密码', width: '10%' },
-                { field: 'Sex', title: '性别', width: '10%' },
-                { field: 'Age', title: '年龄', width: '10%' },
-                { field: 'Tel', title: '电话号码', width: '10%' },
-                { field: 'Email', title: '邮箱地址', width: '10%' },
                 {
                     field: 'RoleId', title: '角色', width: '10%',
                     formatter: function (value, row) { return row.RoleName },
                     editor: {
                         type: 'combobox',
                         options: {
-                            valueField: 'productid',
-                            textField: 'productname',
+                            valueField: 'RoleId',
+                            textField: 'RoleName',
                             method: 'get',
-                            url: 'products.json',
-                            required: true
+                            url: '/Role/LoadAllRoleForCombobox',
+                            required: true,
+                            editable: false,
+                            panelHeight: 'auto'
                         }
                     }
-                },
-                { field: 'RoleName', title: '角色', width: '10%',hidden:true }
+                },  
+                { field: 'Sex', title: '性别', width: '10%' },
+                { field: 'Age', title: '年龄', width: '10%' },
+                { field: 'Tel', title: '电话号码', width: '20%' },
+                { field: 'Email', title: '邮箱地址', width: '20%' },
+                //{ field: 'RoleName', title: '角色', width: '10%',hidden:true }
             ]],
             toolbar: [
                 { text: '保存', iconCls: 'icon-save', handler: save },
                 '-', { text: '删除', iconCls: 'icon-remove', handler: remove }
-            ]
+            ],
+            onClickCell: onClickCell,//用于编辑事件
+            onEndEdit: onEndEdit,    //用于编辑事件
+            detailFormatter: function (index, row) {
+                return '<div class="ddv" style="padding:5px 0"></div>';
+            },
+            onExpandRow: function (index, row) {
+                var ddv = $(this).datagrid('getRowDetail', index).find('div.ddv');
+                ddv.panel({
+                    height: 80,
+                    border: false,
+                    cache: false,
+                    //xzhref: "",//'datagrid21_getdetail.php?itemid=' + row.itemid,
+                    onLoad: function () {
+                        $('#grid').datagrid('fixDetailRowHeight', index);
+                    }
+                });
+                $('#grid').datagrid('fixDetailRowHeight', index);
+            }
         });
     });
 </script>

@@ -78,6 +78,13 @@ namespace BBS2._0.Controllers
             return Json(GenerateTree(list), JsonRequestBehavior.AllowGet);
         }
 
+        public JsonResult LoadAllRoleForCombobox()
+        {
+            List<RoleDTO> roles = RoleService.GetAllRoles();
+            var list = roles.Select(it => new  { RoleId = it.Id, RoleName = it.Name }).ToList();
+            return Json(list, JsonRequestBehavior.AllowGet);
+        }
+
         public JsonResult DeleteRole(Int32 roleId)
         {
             if (RoleService.DeleteRole(roleId))
