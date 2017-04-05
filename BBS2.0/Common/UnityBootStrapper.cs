@@ -8,6 +8,7 @@ using Infrastructure;
 using BBS2._0.Repository;
 using BBS2._0.Models;
 using BBS2._0.Services;
+using BBS2._0.Permission;
 
 namespace BBS2._0.Common
 {
@@ -43,7 +44,10 @@ namespace BBS2._0.Common
             //UnityContainer.RegisterType<ISectionService, SectionService>();
             //UnityContainer.RegisterType<IPostService, PostService>();
             UnityContainer.RegisterType<IAccountService, AccountService>();
-            UnityContainer.RegisterType<ISectionService, SectionService>();
+            UnityContainer.RegisterType<ISectionService, SectionService>(
+                new Interceptor<InterfaceInterceptor>(),
+                new InterceptionBehavior<PermissonValidateInterceptor>()
+                );
             UnityContainer.RegisterType<IPostService, PostService>();
             UnityContainer.RegisterType<IReplyService, ReplyService>();
             UnityContainer.RegisterType<IModuleService, ModuleService>();

@@ -23,5 +23,7 @@ namespace BBS2._0.Common
         public const String ROLE_MANAGER_CH = "超级管理";
         public const String ROLE_ANONYMOUS_EN = "Anonymous";
         public const String ROLE_ANONYMOUS_CN = "匿名角色";
+
+        public const String DATALENGTH_NOTEQUAL = "数据长度不一致";
     }
 }

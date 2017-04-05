@@ -14,5 +14,6 @@ namespace BBS2._0.Services
         AccountDTO GetById(Int32 Id);
         AccountDTO GetByName(String name);
         List<AccountDTO> GetAllAccount();
+        bool SetAccountRole(List<Int32> accountId, List<Int32> roleId);
     }
 }

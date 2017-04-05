@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using BBS2._0.Models;
+using BBS2._0.Permission;
 using BBS2._0.ViewModel;
 using Infrastructure;
 

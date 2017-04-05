@@ -157,9 +157,9 @@
                 dataType: 'json',
                 success: function (msg) {
                     //alert(msg);
-                    if (msg!=null) {
+                    if (msg==null) {
                         $.messager.alert("异常", "没有返回值", "info", function () { });
-                    }
+                    }//有错误？
                     if (msg.Success) {
                         $.messager.show({
                             title: '保存角色权限',

@@ -107,6 +107,27 @@ namespace BBS2._0.Services
             }).ToList();
         }
 
+        public bool SetAccountRole(List<Int32> accountId, List<Int32> roleId)
+        {
+            if (accountId == null || roleId == null || accountId.Count != roleId.Count)
+                throw new DomainException(Constant.DATALENGTH_NOTEQUAL);
+            else
+            {
+                List<Account> account = _accountRepository.GetAll().ToList();
+                foreach (var item in account)
+                {
+                    if (accountId.Contains(item.Id))
+                    {
+                        Int32 index = accountId.IndexOf(item.Id);
+                        item.RoleId = roleId[index];
+                        _accountRepository.Save(item);
+                    }
+                }
+                _unitOfWork.Commit();
+                return true;
+            }
+        }
+
         #endregion
     }
 }

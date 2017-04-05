@@ -79,7 +79,7 @@ namespace BBS2._0.Controllers
 
         public JsonResult SetAccountRole(String accountIds, String roleIds)
         {
-            if (accountIds.Length < 0 || roleIds.Length < 0 || !accountIds.Contains(',') || !roleIds.Contains(','))
+            if (accountIds.Length < 0 || roleIds.Length < 0 )
             {
                 return Json(new JsonMessageDTO() { Success = false, Message = "参数不能为空" }, JsonRequestBehavior.AllowGet);
             }
@@ -87,8 +87,15 @@ namespace BBS2._0.Controllers
             {
                 List<Int32> accountId = accountIds.Split(',').Select(it => Convert.ToInt32(it)).ToList();
                 List<Int32> roleId = roleIds.Split(',').Select(it => Convert.ToInt32(it)).ToList();
+                if (AccountService.SetAccountRole(accountId, roleId))
+                {
+                    return Json(new JsonMessageDTO() { Success = true, Message = "success" }, JsonRequestBehavior.AllowGet);
+                }
+                else
+                {
+                    return Json(new JsonMessageDTO() { Success = false, Message = "NOT MENTIONED!" }, JsonRequestBehavior.AllowGet);
+                }
             }
-            return null;
         }
     }
 }

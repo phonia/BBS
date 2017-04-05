@@ -66,13 +66,13 @@ namespace BBS2._0.Repository
                 SysRole superRole = new SysRole()
                 {
                     Description = "超级管理员",
-                    Name = "SuperRole"
+                    Name = Constant.ROLE_MANAGER_EN
                 };
 
                 SysRole anonymousRole = new SysRole()
                 {
                     Description = "匿名账户",
-                    Name = "AnonymousRole"
+                    Name = Constant.ROLE_ANONYMOUS_EN
                 };
 
                 Account account = new Account()
