@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
+using System.Net.Http;
 using System.Text;
 using System.Web;
 using System.Web.Mvc;
@@ -15,13 +17,24 @@ namespace BBS2._0.Controllers
         protected override void OnException(ExceptionContext filterContext)
         {
             var excepton = filterContext.Exception;
-            if (excepton is DomainException)
+            if (this.GetType().GetMethod(RouteData.Route.GetRouteData(this.HttpContext).Values["action"].ToString()).ReturnType==typeof(JsonResult))
             {
                 ModelState.AddModelError("DomainError", excepton.Message);
                 filterContext.ExceptionHandled = true;
                 ActionInvoker.InvokeAction(filterContext.Controller.ControllerContext, "DomainError");
             }
+
+            if (this.GetType().GetMethod(RouteData.Route.GetRouteData(this.HttpContext).Values["action"].ToString()).ReturnType != typeof(JsonResult))
+            {
+                // 标记异常已处理
+                filterContext.ExceptionHandled = true;
+                // 跳转到错误页
+                filterContext.Result = new RedirectResult(Url.Action("Error", "Shared"));
+                filterContext.HttpContext.Response.Redirect("/Shared/Error");
+            }
         }
+
+
 
         public JsonResult DomainError()
         {
@@ -35,14 +48,6 @@ namespace BBS2._0.Controllers
                 Success = false,
                 Message = sb.ToString(),
             }, JsonRequestBehavior.AllowGet);
-            //return Content(
-            //    _json.Serialize(
-            //    new { 
-            //        Success=false,
-            //        Message=sb.ToString()
-            //    }
-            //    )
-            //    , "text/html;charset=UTF-8");
         }
 
     }

@@ -12,6 +12,10 @@ namespace BBS2._0.Common
         public const String ACCOUNT_NAME_ANONYMOUS_EN = "anonymous";
         public const String ACCOUNT_NAME_ANONYMOUS_CH = "匿名用户";
         public const String ACCOUNT_NOTFOUND = "不存在的用户";
+        public const String ACCOUNT_LOGINFAILD = "用户登录失败";
+        public const String ACCOUNT_SESSION = "ACCOUNT";
+        public const String ACCOUNT_NOTLOGIN = "用户未登录";
+        public const String ACCOUNT_NOTPERMISSION = "没有权限";
 
         public const String SECTION_NOTFOUND = "不存在的版块";
 

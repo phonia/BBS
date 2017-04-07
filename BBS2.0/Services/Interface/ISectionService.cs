@@ -10,19 +10,19 @@ namespace BBS2._0.Services
 {
     public interface ISectionService
     {
-        [ControlPermission("SectionManagement",ModuleOperateCode.Register.ToString())]
+        [ControlPermission("SectionManagement",ModuleOperateCode.Register)]
         bool RegisterSecion(String title, String description);
 
-        [ControlPermission("SectionManagement", ModuleOperateCode.Update.ToString())]
+        [ControlPermission("SectionManagement", ModuleOperateCode.Update)]
         bool UpdateSection(Int32 id, String title, String description);
 
-        [ControlPermission("SectionManagement", ModuleOperateCode.Del.ToString())]
+        [ControlPermission("SectionManagement", ModuleOperateCode.Del)]
         bool UnRegisterSection(Int32 id);
 
-        [ControlPermission("SectionManagement", ModuleOperateCode.Detail.ToString())]
+        [ControlPermission("SectionManagement", ModuleOperateCode.Detail)]
         SectionDTO GetById(Int32 id);
 
-        [ControlPermission("SectionManagement", ModuleOperateCode.Query.ToString())]
+        //[ControlPermission("SectionManagement", ModuleOperateCode.Query)]
         List<SectionDTO> GetAll();
     }
 }

@@ -25,7 +25,8 @@ namespace BBS2._0.Repository
                 {
                     sb.Append(rule.Property + "<>" + rule.Rule+" ");
                 }
-                throw new DomainException(sb.ToString());
+                //throw new DomainException(sb.ToString());
+                throw new DomainBusinessException(sb.ToString());
             }
             EntityState state = _unitOfWork.DbContext.Entry<TEntity>(entity).State;
             if (state == EntityState.Detached)
@@ -70,7 +71,8 @@ namespace BBS2._0.Repository
                 {
                     sb.Append(rule.Property + "<>" + rule.Rule+" ");
                 }
-                throw new DomainException(sb.ToString());
+                //throw new DomainException(sb.ToString());
+                throw new DomainBusinessException(sb.ToString());
             }
             _unitOfWork.DbContext.Entry<TEntity>(entity).State = EntityState.Modified;
         }

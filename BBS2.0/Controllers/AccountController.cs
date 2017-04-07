@@ -31,6 +31,8 @@ namespace BBS2._0.Controllers
         public JsonResult Login(String name,String password)
         {
             AccountDTO accountDto = AccountService.Login(name, password);
+            //throw new DomainException("异常测试");
+            Session[Constant.ACCOUNT_SESSION] = accountDto;
             return Json(new JsonMessageDTO()
             {
                 Success = true,

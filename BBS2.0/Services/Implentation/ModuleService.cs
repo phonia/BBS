@@ -79,7 +79,11 @@ namespace BBS2._0.Services
                 ModuleCode=it.ModuleCode,
                 ParentId = it.ParentId != null ? (Int32)it.ParentId : -1
             }).FirstOrDefault();
-            if (ret == null) throw new DomainException("");
+            if (ret == null)
+            {
+                //throw new DomainException("");
+                throw new DomainDataException("");
+            }
             return ret;
         }
 

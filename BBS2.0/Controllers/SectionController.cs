@@ -24,6 +24,7 @@ namespace BBS2._0.Controllers
 
         public JsonResult LoadAllSections()
         {
+            //throw new DomainException("");
             List<SectionDTO> list=SectionService.GetAll();
             return Json(new DataGridDTO<SectionDTO>() { total = list.Count, rows = list }, JsonRequestBehavior.AllowGet);
         }

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using BBS2._0.Common;
 
 namespace BBS2._0.Permission
 {
@@ -13,15 +14,12 @@ namespace BBS2._0.Permission
     public class ControlPermissionAttribute :Attribute,Permission
     {
         public String ModuleCode { get; private set; }
-        public String OPerateCode { get; private set; }
+        public ModuleOperateCode OPerateCode { get; private set; }
 
-        public ControlPermissionAttribute(String moduleCode, String operateCode)
+        public ControlPermissionAttribute(String moduleCode, ModuleOperateCode operateCode)
         {
             this.OPerateCode = operateCode;
             this.ModuleCode = moduleCode;
         }
     }
-
-    public class DataPermissiom : Attribute, Permission
-    { }
 }

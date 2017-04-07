@@ -20,6 +20,9 @@ namespace BBS2._0.Services
             this._unitOfWork = unitOfWork;
 
             this._sectionRepository.UnitOfWork = unitOfWork;
+
+            //测试代码
+            //throw new Exception("");
         }
 
         #region ISectionService 成员

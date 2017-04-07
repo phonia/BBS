@@ -96,7 +96,11 @@ namespace BBS2._0.Services
             },
             it => it.RowVersion, false)
             .FirstOrDefault();
-            if (postDTO == null) throw new DomainException("未知错误");
+            if (postDTO == null)
+            {
+                //throw new DomainException("未知错误");
+                throw new DomainBusinessException("");
+            }
             return postDTO;
         }
 
@@ -133,7 +137,11 @@ namespace BBS2._0.Services
                 },
                 ReplyAccount=it.Replies.Count
             }).FirstOrDefault();
-            if (post == null) throw new DomainException("");
+            if (post == null)
+            {
+                //throw new DomainException("");
+                throw new DomainDataException("");
+            }
             return post;
         }
 

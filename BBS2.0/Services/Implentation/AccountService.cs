@@ -30,11 +30,25 @@ namespace BBS2._0.Services
 
         public AccountDTO Login(string name, string password)
         {
-            Account account = _accountRepository.GetFilter(it => it.Name.Equals(name) && it.Password.Equals(password)).FirstOrDefault();
+            AccountDTO account = _accountRepository.Select(it => it.Name.Equals(name) && it.Password.Equals(password), it => new AccountDTO()
+            {
+                Id = it.Id,
+                Age = it.Age,
+                Email = it.Email,
+                Name = it.Name,
+                Password = it.Password,
+                Sex = it.Sex,
+                Tel = it.Tel,
+                RoleId = it.Role.Id,
+                RoleName = it.Role.Name
+            }).FirstOrDefault();
             if (account != null)
-                return account.MapperTo<Account, AccountDTO>();
+                return account;
             else
-                throw new DomainException("登录失败");
+            {
+                //throw new DomainException("登录失败");
+                throw new DomainBusinessException(Constant.ACCOUNT_LOGINFAILD);
+            }
         }
 
         public bool Logout(int id)
@@ -49,7 +63,10 @@ namespace BBS2._0.Services
             account.Role = _roleRepository.GetFilter(it => it.Name == Constant.ROLE_ANONYMOUS_EN).FirstOrDefault();//刚注册的用户设置为匿名角色
             //验证数据是否正确
             if (_accountRepository.GetFilter(it => it.Name.Equals(accountDto.Name)).FirstOrDefault() != null)
-                throw new DomainException(Constant.ACCOUNT_NAME_REPEATED);
+            {
+                //throw new DomainException(Constant.ACCOUNT_NAME_REPEATED);
+                throw new DomainBusinessException(Constant.ACCOUNT_NAME_REPEATED);
+            }
             _accountRepository.Add(account);
             _unitOfWork.Commit();
 
@@ -86,7 +103,11 @@ namespace BBS2._0.Services
                 RoleId = it.Role.Id,
                 RoleName = it.Role.Name
             }).FirstOrDefault();
-            if (account == null) throw new DomainException(Constant.ACCOUNT_NAME_NOTFOUND);
+            if (account == null)
+            {
+                //throw new DomainException(Constant.ACCOUNT_NAME_NOTFOUND);
+                throw new DomainDataException(Constant.ACCOUNT_NOTFOUND);
+            }
             return account;
         }
 
@@ -110,7 +131,10 @@ namespace BBS2._0.Services
         public bool SetAccountRole(List<Int32> accountId, List<Int32> roleId)
         {
             if (accountId == null || roleId == null || accountId.Count != roleId.Count)
-                throw new DomainException(Constant.DATALENGTH_NOTEQUAL);
+            {
+                //throw new DomainException(Constant.DATALENGTH_NOTEQUAL);
+                throw new DomainBusinessException(Constant.DATALENGTH_NOTEQUAL);
+            }
             else
             {
                 List<Account> account = _accountRepository.GetAll().ToList();

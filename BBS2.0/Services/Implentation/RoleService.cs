@@ -97,7 +97,8 @@ namespace BBS2._0.Services
         {
             if (_roleRepository.GetFilter(it => it.Name.Equals(name)).FirstOrDefault() != null)
             {
-                throw new DomainException(Constant.ROLE_REPEATED);
+                //throw new DomainException(Constant.ROLE_REPEATED);
+                throw new DomainBusinessException(Constant.ROLE_REPEATED);
             }
             else
             {
@@ -133,9 +134,21 @@ namespace BBS2._0.Services
         public bool DeleteRole(Int32 roleId)
         {
             SysRole seletedRole = _roleRepository.GetFilter(it => it.Id == roleId, "Accounts", "FunctionRights").FirstOrDefault();
-            if (seletedRole == null) throw new DomainException(Constant.ROLE_NOTFOUND);
-            if (seletedRole.Name.Equals(Constant.ROLE_MANAGER_EN) || seletedRole.Name.Equals(Constant.ROLE_ANONYMOUS_EN)) throw new DomainException(Constant.ROLE_BUILTIN);
-            if (seletedRole.Accounts != null && seletedRole.Accounts.Count > 0) throw new DomainException(Constant.ROLE_ACCOUNT_USED);
+            if (seletedRole == null)
+            {
+                //throw new DomainException(Constant.ROLE_NOTFOUND);
+                throw new DomainBusinessException(Constant.ROLE_NOTFOUND);
+            }
+            if (seletedRole.Name.Equals(Constant.ROLE_MANAGER_EN) || seletedRole.Name.Equals(Constant.ROLE_ANONYMOUS_EN))
+            {
+                //throw new DomainException(Constant.ROLE_BUILTIN);
+                throw new DomainBusinessException(Constant.ROLE_BUILTIN);
+            }
+            if (seletedRole.Accounts != null && seletedRole.Accounts.Count > 0)
+            {
+                //throw new DomainException(Constant.ROLE_ACCOUNT_USED);
+                throw new DomainBusinessException(Constant.ROLE_ACCOUNT_USED);
+            }
             if (seletedRole.FunctionRights != null && seletedRole.FunctionRights.Count > 0)
             {
                 for (int i = seletedRole.FunctionRights.Count - 1; i >= 0; i--)

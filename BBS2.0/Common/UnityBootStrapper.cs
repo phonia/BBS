@@ -43,15 +43,30 @@ namespace BBS2._0.Common
             //UnityContainer.RegisterType<IUserService, UserService>();
             //UnityContainer.RegisterType<ISectionService, SectionService>();
             //UnityContainer.RegisterType<IPostService, PostService>();
-            UnityContainer.RegisterType<IAccountService, AccountService>();
-            UnityContainer.RegisterType<ISectionService, SectionService>(
-                new Interceptor<InterfaceInterceptor>(),
+            UnityContainer.RegisterType<IAccountService, AccountService>(
+                                new Interceptor<InterfaceInterceptor>(),
                 new InterceptionBehavior<PermissonValidateInterceptor>()
                 );
-            UnityContainer.RegisterType<IPostService, PostService>();
-            UnityContainer.RegisterType<IReplyService, ReplyService>();
-            UnityContainer.RegisterType<IModuleService, ModuleService>();
-            UnityContainer.RegisterType<IRoleService, RoleService>();
+            UnityContainer.RegisterType<ISectionService, SectionService>(
+                                new Interceptor<InterfaceInterceptor>(),
+                new InterceptionBehavior<PermissonValidateInterceptor>()
+                );
+            UnityContainer.RegisterType<IPostService, PostService>(
+                                new Interceptor<InterfaceInterceptor>(),
+                new InterceptionBehavior<PermissonValidateInterceptor>()
+                );
+            UnityContainer.RegisterType<IReplyService, ReplyService>(
+                                new Interceptor<InterfaceInterceptor>(),
+                new InterceptionBehavior<PermissonValidateInterceptor>()
+                );
+            UnityContainer.RegisterType<IModuleService, ModuleService>(
+                                new Interceptor<InterfaceInterceptor>(),
+                new InterceptionBehavior<PermissonValidateInterceptor>()
+                );
+            UnityContainer.RegisterType<IRoleService, RoleService>(
+                                new Interceptor<InterfaceInterceptor>(),
+                new InterceptionBehavior<PermissonValidateInterceptor>()
+                );
         }
     }
 }

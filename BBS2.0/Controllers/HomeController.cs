@@ -23,6 +23,7 @@ namespace BBS2._0.Controllers
 
         public ActionResult Portal()
         {
+            //throw new DomainException("");
             return View();
         }
 
