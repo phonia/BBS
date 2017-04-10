@@ -50,7 +50,7 @@ namespace BBS2._0.Controllers
             //此处是否算是浏览帖子？
             PostService.ScanPost(postId);
             List<ReplyDTO> list = PostService.GetPostReplies(postId);
-            return Json(new DataGridDTO<ReplyDTO>() { total = list.Count, rows = list }, JsonRequestBehavior.AllowGet);
+            return Json(new DataGridDTO<ReplyDTO>() { total = list.Count>10?10:list.Count, rows = list.Take(10).ToList() }, JsonRequestBehavior.AllowGet);
         }
 
         public ActionResult ReplyPost(Int32 postId)

@@ -9,6 +9,7 @@ using BBS2._0.Repository;
 using BBS2._0.Models;
 using BBS2._0.Services;
 using BBS2._0.Permission;
+using BBS2._0.Cache;
 
 namespace BBS2._0.Common
 {
@@ -45,27 +46,33 @@ namespace BBS2._0.Common
             //UnityContainer.RegisterType<IPostService, PostService>();
             UnityContainer.RegisterType<IAccountService, AccountService>(
                                 new Interceptor<InterfaceInterceptor>(),
-                new InterceptionBehavior<PermissonValidateInterceptor>()
+                new InterceptionBehavior<PermissonValidateInterceptor>(),
+                new InterceptionBehavior<CacheInterceptor>()
                 );
             UnityContainer.RegisterType<ISectionService, SectionService>(
                                 new Interceptor<InterfaceInterceptor>(),
-                new InterceptionBehavior<PermissonValidateInterceptor>()
+                new InterceptionBehavior<PermissonValidateInterceptor>(),
+                new InterceptionBehavior<CacheInterceptor>()
                 );
             UnityContainer.RegisterType<IPostService, PostService>(
                                 new Interceptor<InterfaceInterceptor>(),
-                new InterceptionBehavior<PermissonValidateInterceptor>()
+                new InterceptionBehavior<PermissonValidateInterceptor>(),
+                new InterceptionBehavior<CacheInterceptor>()
                 );
             UnityContainer.RegisterType<IReplyService, ReplyService>(
                                 new Interceptor<InterfaceInterceptor>(),
-                new InterceptionBehavior<PermissonValidateInterceptor>()
+                new InterceptionBehavior<PermissonValidateInterceptor>(),
+                new InterceptionBehavior<CacheInterceptor>()
                 );
             UnityContainer.RegisterType<IModuleService, ModuleService>(
                                 new Interceptor<InterfaceInterceptor>(),
-                new InterceptionBehavior<PermissonValidateInterceptor>()
+                new InterceptionBehavior<PermissonValidateInterceptor>(),
+                new InterceptionBehavior<CacheInterceptor>()
                 );
             UnityContainer.RegisterType<IRoleService, RoleService>(
                                 new Interceptor<InterfaceInterceptor>(),
-                new InterceptionBehavior<PermissonValidateInterceptor>()
+                new InterceptionBehavior<PermissonValidateInterceptor>(),
+                new InterceptionBehavior<CacheInterceptor>()
                 );
         }
     }

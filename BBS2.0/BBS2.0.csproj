@@ -172,6 +172,7 @@
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Cache\CacheAttribute.cs" />
     <Compile Include="Cache\CacheData.cs" />
+    <Compile Include="Cache\CacheInterceptor.cs" />
     <Compile Include="Common\AccountType.cs" />
     <Compile Include="Common\AutoMapperBootStrapper.cs" />
     <Compile Include="Common\Common.cs" />
@@ -193,6 +194,7 @@
     <Compile Include="Controllers\SectionController.cs" />
     <Compile Include="Controllers\SharedController.cs" />
     <Compile Include="Exception\DomainBusinessException.cs" />
+    <Compile Include="Exception\DomainCacheException.cs" />
     <Compile Include="Exception\DomainDataException.cs" />
     <Compile Include="Exception\DomainException.cs" />
     <Compile Include="Exception\DomainRepositoryException.cs" />

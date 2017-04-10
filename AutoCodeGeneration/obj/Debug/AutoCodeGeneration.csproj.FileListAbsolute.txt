@@ -1,5 +1,0 @@
-E:\Code\BBS\AutoCodeGeneration\bin\Debug\AutoCodeGeneration.exe
-E:\Code\BBS\AutoCodeGeneration\bin\Debug\AutoCodeGeneration.pdb
-E:\Code\BBS\AutoCodeGeneration\obj\Debug\AutoCodeGeneration.csprojResolveAssemblyReference.cache
-E:\Code\BBS\AutoCodeGeneration\obj\Debug\AutoCodeGeneration.exe
-E:\Code\BBS\AutoCodeGeneration\obj\Debug\AutoCodeGeneration.pdb

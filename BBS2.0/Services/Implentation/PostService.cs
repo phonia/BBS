@@ -147,15 +147,15 @@ namespace BBS2._0.Services
 
         public List<ViewModel.PostDTO> GetBySecionId(int sectionId)
         {
-            return _postRepository.Select(it => it.Section.Id == sectionId, it => new PostDTO()
+            var ret = _postRepository.Select(it => it.Section.Id == sectionId, it => new PostDTO()
             {
                 Id = it.Id,
-                Keyword=it.Keyword,
-                PublicTime=it.PublicTime,
-                Title=it.Title,
-                ScanAccount=it.ScanAccount
-            })
-            .ToList();
+                Keyword = it.Keyword,
+                PublicTime = it.PublicTime,
+                Title = it.Title,
+                ScanAccount = it.ScanAccount
+            });
+            return ret.ToList();
         }
 
         public void ReplyPost(Int32 accountId,Int32 postId,String content)
