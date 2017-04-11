@@ -27,12 +27,12 @@ namespace Model
         /// <summary>
         /// 账户
         /// </summary>
-        public String Account { get; set; }
+        public String AccountName { get; set; }
 
         /// <summary>
         /// 密码
         /// </summary>
-        public String Password { get; set; }
+        public String AccountPassword { get; set; }
 
         /// <summary>
         /// 个人信息
@@ -40,42 +40,27 @@ namespace Model
         public PersonalInfo PersonalInfo { get; set; }
 
         /// <summary>
-        /// 积分
+        /// 账户信息
         /// </summary>
-        public Int32 Score { get; set; }
+        public AccountInfo AccountInfo { get; set; }
 
         /// <summary>
-        /// 在线信息
+        /// 所属角色
         /// </summary>
-        public OnLineInfo OnLineInfo { get; set; }
+        public Int32 RoleId { get; set; }
 
         /// <summary>
-        /// 登录次数
+        /// 导航属性
         /// </summary>
-        public Int32 LoginTimes { get; set; }
-
-        /// <summary>
-        /// 注册IP
-        /// </summary>
-        public String RegisterIP { get; set; }
-
-        /// <summary>
-        /// 注册时间
-        /// </summary>
-        public DateTime RegisterTime { get; set; }
-
-        /// <summary>
-        /// 最后登录IP
-        /// </summary>
-        public String LastIP { get; set; }
-
-        /// <summary>
-        /// 最后登录时间
-        /// </summary>
-        public DateTime LastTime { get; set; }
+        public Role Role { get; set; }
 
         /// <summary>
         /// 所属用户组
+        /// </summary>
+        public Int32 UserGroupId { get; set; }
+
+        /// <summary>
+        /// 导航属性
         /// </summary>
         public UserGroup UserGroup { get; set; }
 
@@ -87,25 +72,13 @@ namespace Model
 
         public DateTime? UpdateDateTime { get; set; }
 
+        public byte[] RowVersion { get; set; }
+
+        public bool IsDeleted { get; set; }
+
         /// <summary>
-        /// 
+        /// Log
         /// </summary>
-        public IList<Post> Posts { get; set; }
-        /// <summary>
-        /// 
-        /// </summary>
-        public IList<Reply> Replies { get; set; }
-        /// <summary>
-        /// 
-        /// </summary>
-        public IList<DailySignature> DaliySignatures { get; set; }
-        /// <summary>
-        /// 
-        /// </summary>
-        public IList<UserLog> UserLogs { get; set; }
-        /// <summary>
-        /// 
-        /// </summary>
-        public IList<SMS> SMSS { get; set; }
+        public IList<Log> Logs { get; set; }
     }
 }

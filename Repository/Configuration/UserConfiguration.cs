@@ -20,17 +20,12 @@ namespace Repository
     {
         public UserConfiguration()
         {
-            ToTable("User");
+            ToTable("Sys_User");
             HasKey(e=>e.Id);
             Property(e =>e.Id).HasColumnName("Id").HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity).HasColumnType("int").IsRequired();
-            Property(e =>e.Account).HasColumnName("Account").HasColumnType("nvarchar(50)").IsRequired();
-            Property(e =>e.Password).HasColumnName("Password").HasColumnType("nvarchar(50)").IsRequired();
-            Property(e =>e.Score).HasColumnName("Score").HasColumnType("int").IsRequired();
-            Property(e =>e.LoginTimes).HasColumnName("LoginTimes").HasColumnType("int").IsRequired();
-            Property(e =>e.RegisterIP).HasColumnName("RegisterIP").HasColumnType("nvarchar(50)").IsOptional();
-            Property(e =>e.RegisterTime).HasColumnName("RegisterTime").HasColumnType("DateTime").IsRequired();
-            Property(e =>e.LastIP).HasColumnName("LastIP").HasColumnType("nvarchar(50)").IsOptional();
-            Property(e =>e.LastTime).HasColumnName("LastTime").HasColumnType("DateTime").IsRequired();
+            Property(e =>e.AccountName).HasColumnName("AccountName").HasColumnType("nvarchar").HasMaxLength(50).IsRequired();
+            Property(e =>e.AccountPassword).HasColumnName("AccountPassword").HasColumnType("nvarchar").HasMaxLength(50).IsRequired();
+            HasRequired(e=>e.Role).WithMany(e=>e.Users).Map(e=>e.MapKey("RoleId"));
             HasRequired(e=>e.UserGroup).WithMany(e=>e.Users).Map(e=>e.MapKey("UserGroupId"));
         }
     }

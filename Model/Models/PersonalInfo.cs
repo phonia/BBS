@@ -18,9 +18,9 @@ namespace Model
     public partial class PersonalInfo
     {
         /// <summary>
-        /// 用户名
+        /// 姓名
         /// </summary>
-        public Int32 Name { get; set; }
+        public String Name { get; set; }
 
         /// <summary>
         /// 性别
@@ -28,48 +28,28 @@ namespace Model
         public Sex Sex { get; set; }
 
         /// <summary>
-        /// 头像
+        /// 年龄
         /// </summary>
-        public Byte[] Avatar { get; set; }
-
-        /// <summary>
-        /// 籍贯
-        /// </summary>
-        public String NativePlace { get; set; }
-
-        /// <summary>
-        /// 通讯地址
-        /// </summary>
-        public String Address { get; set; }
-
-        /// <summary>
-        /// 邮编
-        /// </summary>
-        public String PostCodes { get; set; }
+        public Int32 Age { get; set; }
 
         /// <summary>
         /// 邮箱
         /// </summary>
-        public String MailBox { get; set; }
+        public String Email { get; set; }
 
         /// <summary>
-        /// 固定电话
+        /// 固话
         /// </summary>
-        public String Telephone { get; set; }
+        public String Tel { get; set; }
 
         /// <summary>
-        /// 移动电话
+        /// 移话
         /// </summary>
-        public String Mobliephone { get; set; }
+        public String Phone { get; set; }
 
         /// <summary>
-        /// 个人主页
+        /// 传真
         /// </summary>
-        public String Page { get; set; }
-
-        /// <summary>
-        /// 签名
-        /// </summary>
-        public String Signature { get; set; }
+        public String Fax { get; set; }
     }
 }

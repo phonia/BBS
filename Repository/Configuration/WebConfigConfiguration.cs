@@ -20,13 +20,9 @@ namespace Repository
     {
         public WebConfigConfiguration()
         {
-            ToTable("WebConfig");
+            ToTable("Sys_WebConfig");
             HasKey(e=>e.Id);
             Property(e =>e.Id).HasColumnName("Id").HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity).HasColumnType("int").IsRequired();
-            Property(e =>e.WebName).HasColumnName("WebName").HasColumnType("nvarchar(50)").IsRequired();
-            Property(e =>e.WebDomain).HasColumnName("WebDomain").HasColumnType("nvarchar(50)").IsRequired();
-            Property(e =>e.LoginLogReserveTime).HasColumnName("LoginLogReserveTime").HasColumnType("int").IsRequired();
-            Property(e =>e.UseLogReserveTime).HasColumnName("UseLogReserveTime").HasColumnType("int").IsRequired();
         }
     }
 }

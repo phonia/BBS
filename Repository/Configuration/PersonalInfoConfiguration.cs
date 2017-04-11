@@ -20,17 +20,13 @@ namespace Repository
     {
         public PersonalInfoConfiguration()
         {
-            Property(e =>e.Name).HasColumnName("Name").HasColumnType("nvarchar(50)").IsRequired();
+            Property(e =>e.Name).HasColumnName("Name").HasColumnType("nvarchar").HasMaxLength(50).IsRequired();
             Property(e =>e.Sex).HasColumnName("Sex").HasColumnType("int").IsRequired();
-            Property(e =>e.Avatar).HasColumnName("Avatar").HasColumnType("varbinary(Max)").IsRequired();
-            Property(e =>e.NativePlace).HasColumnName("NativePlace").HasColumnType("nvarchar(50)").IsOptional();
-            Property(e =>e.Address).HasColumnName("Address").HasColumnType("nvarchar(50)").IsOptional();
-            Property(e =>e.PostCodes).HasColumnName("PostCodes").HasColumnType("nvarchar(50)").IsOptional();
-            Property(e =>e.MailBox).HasColumnName("MailBox").HasColumnType("nvarchar(50)").IsOptional();
-            Property(e =>e.Telephone).HasColumnName("Telephone").HasColumnType("nvarchar(50)").IsOptional();
-            Property(e =>e.Mobliephone).HasColumnName("Mobliephone").HasColumnType("nvarchar(50)").IsOptional();
-            Property(e =>e.Page).HasColumnName("Page").HasColumnType("nvarchar(50)").IsOptional();
-            Property(e =>e.Signature).HasColumnName("Signature").HasColumnType("nvarchar(250)").IsOptional();
+            Property(e =>e.Age).HasColumnName("Age").HasColumnType("int").IsRequired();
+            Property(e =>e.Email).HasColumnName("Email").HasColumnType("nvarchar").HasMaxLength(50).IsOptional();
+            Property(e =>e.Tel).HasColumnName("Tel").HasColumnType("nvarchar").HasMaxLength(50).IsOptional();
+            Property(e =>e.Phone).HasColumnName("Phone").HasColumnType("nvarchar").HasMaxLength(50).IsOptional();
+            Property(e =>e.Fax).HasColumnName("Fax").HasColumnType("nvarchar").HasMaxLength(50).IsOptional();
         }
     }
 }

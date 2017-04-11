@@ -1,0 +1,14 @@
+E:\Code\BBS\Repository\obj\Debug\Repository.csprojResolveAssemblyReference.cache
+E:\Code\BBS\Repository\bin\Debug\Repository.dll.config
+E:\Code\BBS\Repository\bin\Debug\Repository.dll
+E:\Code\BBS\Repository\bin\Debug\Repository.pdb
+E:\Code\BBS\Repository\bin\Debug\EntityFramework.dll
+E:\Code\BBS\Repository\bin\Debug\EntityFramework.SqlServer.dll
+E:\Code\BBS\Repository\bin\Debug\Infrastructure.dll
+E:\Code\BBS\Repository\bin\Debug\Model.dll
+E:\Code\BBS\Repository\bin\Debug\Infrastructure.pdb
+E:\Code\BBS\Repository\bin\Debug\Model.pdb
+E:\Code\BBS\Repository\bin\Debug\EntityFramework.xml
+E:\Code\BBS\Repository\bin\Debug\EntityFramework.SqlServer.xml
+E:\Code\BBS\Repository\obj\Debug\Repository.dll
+E:\Code\BBS\Repository\obj\Debug\Repository.pdb

@@ -20,14 +20,10 @@ namespace Repository
     {
         public UserGroupConfiguration()
         {
-            ToTable("UserGroup");
+            ToTable("Sys_UserGroup");
             HasKey(e=>e.Id);
             Property(e =>e.Id).HasColumnName("Id").HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity).HasColumnType("int").IsRequired();
-            Property(e =>e.Name).HasColumnName("Name").HasColumnType("nvarchar(50)").IsRequired();
-            Property(e =>e.UserGroupType).HasColumnName("UserGroupType").HasColumnType("int").IsRequired();
-            Property(e =>e.ReadPermission).HasColumnName("ReadPermission").HasColumnType("int").IsRequired();
-            Property(e =>e.UserGroupDegree).HasColumnName("UserGroupDegree").HasColumnType("int").IsRequired();
-            Property(e =>e.UserPemission).HasColumnName("UserPemission").HasColumnType("nvarchar(250)").IsOptional();
+            Property(e =>e.Name).HasColumnName("Name").HasColumnType("nvarchar").HasMaxLength(50).IsRequired();
         }
     }
 }

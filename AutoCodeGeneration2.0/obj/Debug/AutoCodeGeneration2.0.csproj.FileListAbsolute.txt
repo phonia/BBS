@@ -1,0 +1,5 @@
+E:\Code\BBS\AutoCodeGeneration2.0\bin\Debug\AutoCodeGeneration2.0.exe
+E:\Code\BBS\AutoCodeGeneration2.0\bin\Debug\AutoCodeGeneration2.0.pdb
+E:\Code\BBS\AutoCodeGeneration2.0\obj\Debug\AutoCodeGeneration2.0.exe
+E:\Code\BBS\AutoCodeGeneration2.0\obj\Debug\AutoCodeGeneration2.0.pdb
+E:\Code\BBS\AutoCodeGeneration2.0\obj\Debug\AutoCodeGeneration2.0.csprojResolveAssemblyReference.cache

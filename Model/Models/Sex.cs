@@ -13,27 +13,27 @@ using Infrastructure;
 namespace Model
 {
     /// <summary>
-    ///  枚举类
+    /// 性别 枚举类
     /// </summary>
     public enum Sex
     {
 
         /// <summary>
-        ///  男
+        /// 性别 男
         /// </summary>
         [Description("男")]
         Male,
 
         /// <summary>
-        ///  女
+        /// 性别 女
         /// </summary>
         [Description("女")]
         Female,
 
         /// <summary>
-        ///  未知
+        /// 性别 未知
         /// </summary>
         [Description("未知")]
-        Unknown
+        UnKnown
     }
 }

@@ -39,49 +39,42 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="IRepository\IActionPermissionRepository.cs" />
-    <Compile Include="IRepository\IActionSignRepository.cs" />
-    <Compile Include="IRepository\IAttachmentRepository.cs" />
-    <Compile Include="IRepository\IBlockRepository.cs" />
-    <Compile Include="IRepository\IDailySignatureRepository.cs" />
-    <Compile Include="IRepository\IErrorLogRepository.cs" />
-    <Compile Include="IRepository\INavagationRepository.cs" />
-    <Compile Include="IRepository\IPostRepository.cs" />
-    <Compile Include="IRepository\IReplyRepository.cs" />
-    <Compile Include="IRepository\ISectionRepository.cs" />
-    <Compile Include="IRepository\ISMSRepository.cs" />
-    <Compile Include="IRepository\IUserGroupRepository.cs" />
-    <Compile Include="IRepository\IUserLogRepository.cs" />
-    <Compile Include="IRepository\IUserRepository.cs" />
-    <Compile Include="IRepository\IVoteItemRepository.cs" />
-    <Compile Include="IRepository\IVoteRecordRepository.cs" />
-    <Compile Include="IRepository\IWebConfigRepository.cs" />
-    <Compile Include="Models\ActionPermission.cs" />
-    <Compile Include="Models\ActionSign.cs" />
-    <Compile Include="Models\Attachment.cs" />
-    <Compile Include="Models\AttachmentType.cs" />
-    <Compile Include="Models\Block.cs" />
-    <Compile Include="Models\DailySignature.cs" />
-    <Compile Include="Models\ErrorLog.cs" />
-    <Compile Include="Models\ErrorLogType.cs" />
-    <Compile Include="Models\MessageType.cs" />
-    <Compile Include="Models\Navagation.cs" />
-    <Compile Include="Models\OnLineInfo.cs" />
+    <Compile Include="IRepository\IErrorRepository.cs" />
+    <Compile Include="IRepository\ILogRepository.cs" />
+    <Compile Include="IRepository\IModuleMenuRepository.cs" />
+    <Compile Include="IRepository\IModuleOperateRepository.cs" />
+    <Compile Include="IRepository\IModuleRepository.cs" />
+    <Compile Include="IRepository\IModuleServiceRepository.cs" />
+    <Compile Include="IRepository\IRolePermissionRepository.cs" />
+    <Compile Include="IRepository\IRoleRepository.cs" />
+    <Compile Include="IRepository\IServiceMethodRepository.cs" />
+    <Compile Include="IRepository\IServiceRepository.cs" />
+    <Compile Include="IRepository\IUserGroupRepository.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="IRepository\IUserRepository.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="IRepository\IWebConfigRepository.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Models\AccountInfo.cs" />
+    <Compile Include="Models\Error.cs" />
+    <Compile Include="Models\ErrorType.cs" />
+    <Compile Include="Models\Log.cs" />
+    <Compile Include="Models\Module.cs" />
+    <Compile Include="Models\ModuleMenu.cs" />
+    <Compile Include="Models\ModuleOperate.cs" />
+    <Compile Include="Models\ModuleService.cs" />
     <Compile Include="Models\PersonalInfo.cs" />
-    <Compile Include="Models\Post.cs" />
-    <Compile Include="Models\PostState.cs" />
-    <Compile Include="Models\PostType.cs" />
-    <Compile Include="Models\Reply.cs" />
-    <Compile Include="Models\ReplyState.cs" />
-    <Compile Include="Models\Section.cs" />
+    <Compile Include="Models\Role.cs" />
+    <Compile Include="Models\RolePermission.cs" />
+    <Compile Include="Models\RoleType.cs" />
+    <Compile Include="Models\Service.cs" />
+    <Compile Include="Models\ServiceMethod.cs" />
     <Compile Include="Models\Sex.cs" />
-    <Compile Include="Models\SMS.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Models\UserGroup.cs" />
-    <Compile Include="Models\UserGroupType.cs" />
-    <Compile Include="Models\UserLog.cs" />
-    <Compile Include="Models\VoteItem.cs" />
-    <Compile Include="Models\VoteRecord.cs" />
     <Compile Include="Models\WebConfig.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
