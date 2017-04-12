@@ -21,8 +21,12 @@ namespace AutoCodeGeneration2._0
                 {
                     if (item.CanPersist())
                     {
-                        if (File.Exists(destination + "\\" + item.ClassName + "Repository.cs")) continue;
-                        FileStream fs = new FileStream(destination + "\\" + item.ClassName + "Repository.cs", FileMode.CreateNew);
+                        if (!Directory.Exists(destination + "\\" + item.DomainName))//如果不存在就创建file文件夹
+                        {
+                            Directory.CreateDirectory(destination + "\\" + item.DomainName);
+                        }
+                        if (File.Exists(destination + "\\" + item.DomainName + "\\" + item.ClassName + "Repository.cs")) continue;
+                        FileStream fs = new FileStream(destination + "\\" + item.DomainName + "\\" + item.ClassName + "Repository.cs", FileMode.CreateNew);
                         using (var sw = new StreamWriter(fs))
                         {
                             sw.WriteLine("/*=============================================================");

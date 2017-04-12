@@ -39,43 +39,37 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="IRepository\IErrorRepository.cs" />
-    <Compile Include="IRepository\ILogRepository.cs" />
-    <Compile Include="IRepository\IModuleMenuRepository.cs" />
-    <Compile Include="IRepository\IModuleOperateRepository.cs" />
-    <Compile Include="IRepository\IModuleRepository.cs" />
-    <Compile Include="IRepository\IModuleServiceRepository.cs" />
-    <Compile Include="IRepository\IRolePermissionRepository.cs" />
-    <Compile Include="IRepository\IRoleRepository.cs" />
-    <Compile Include="IRepository\IServiceMethodRepository.cs" />
-    <Compile Include="IRepository\IServiceRepository.cs" />
-    <Compile Include="IRepository\IUserGroupRepository.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="IRepository\IUserRepository.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="IRepository\IWebConfigRepository.cs">
-      <SubType>Code</SubType>
-    </Compile>
-    <Compile Include="Models\AccountInfo.cs" />
-    <Compile Include="Models\Error.cs" />
-    <Compile Include="Models\ErrorType.cs" />
-    <Compile Include="Models\Log.cs" />
-    <Compile Include="Models\Module.cs" />
-    <Compile Include="Models\ModuleMenu.cs" />
-    <Compile Include="Models\ModuleOperate.cs" />
-    <Compile Include="Models\ModuleService.cs" />
-    <Compile Include="Models\PersonalInfo.cs" />
-    <Compile Include="Models\Role.cs" />
-    <Compile Include="Models\RolePermission.cs" />
-    <Compile Include="Models\RoleType.cs" />
-    <Compile Include="Models\Service.cs" />
-    <Compile Include="Models\ServiceMethod.cs" />
-    <Compile Include="Models\Sex.cs" />
-    <Compile Include="Models\User.cs" />
-    <Compile Include="Models\UserGroup.cs" />
-    <Compile Include="Models\WebConfig.cs" />
+    <Compile Include="IRepository\Sys\IErrorRepository.cs" />
+    <Compile Include="IRepository\Sys\ILogRepository.cs" />
+    <Compile Include="IRepository\Sys\IModuleMenuRepository.cs" />
+    <Compile Include="IRepository\Sys\IModuleOperateRepository.cs" />
+    <Compile Include="IRepository\Sys\IModuleRepository.cs" />
+    <Compile Include="IRepository\Sys\IModuleServiceRepository.cs" />
+    <Compile Include="IRepository\Sys\IRolePermissionRepository.cs" />
+    <Compile Include="IRepository\Sys\IRoleRepository.cs" />
+    <Compile Include="IRepository\Sys\IServiceMethodRepository.cs" />
+    <Compile Include="IRepository\Sys\IServiceRepository.cs" />
+    <Compile Include="IRepository\Sys\IUserGroupRepository.cs" />
+    <Compile Include="IRepository\Sys\IUserRepository.cs" />
+    <Compile Include="IRepository\Sys\IWebConfigRepository.cs" />
+    <Compile Include="Models\Sys\AccountInfo.cs" />
+    <Compile Include="Models\Sys\Error.cs" />
+    <Compile Include="Models\Sys\ErrorType.cs" />
+    <Compile Include="Models\Sys\Log.cs" />
+    <Compile Include="Models\Sys\Module.cs" />
+    <Compile Include="Models\Sys\ModuleMenu.cs" />
+    <Compile Include="Models\Sys\ModuleOperate.cs" />
+    <Compile Include="Models\Sys\ModuleService.cs" />
+    <Compile Include="Models\Sys\PersonalInfo.cs" />
+    <Compile Include="Models\Sys\Role.cs" />
+    <Compile Include="Models\Sys\RolePermission.cs" />
+    <Compile Include="Models\Sys\RoleType.cs" />
+    <Compile Include="Models\Sys\Service.cs" />
+    <Compile Include="Models\Sys\ServiceMethod.cs" />
+    <Compile Include="Models\Sys\Sex.cs" />
+    <Compile Include="Models\Sys\User.cs" />
+    <Compile Include="Models\Sys\UserGroup.cs" />
+    <Compile Include="Models\Sys\WebConfig.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -23,6 +23,7 @@ namespace Repository
             ToTable("Sys_WebConfig");
             HasKey(e=>e.Id);
             Property(e =>e.Id).HasColumnName("Id").HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity).HasColumnType("int").IsRequired();
+            Property(e =>e.IsInitialed).HasColumnName("IsInitialed").HasColumnType("bit").IsRequired();
         }
     }
 }

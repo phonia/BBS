@@ -8,7 +8,8 @@ namespace Repository
 {
     public class EFUnitOfWork:IEFUnitOfWork,IDisposable
     {
-        private DbContext _dbContext = DataContextFactory.GetInstance();
+        //private DbContext _dbContext = DataContextFactory.GetInstance();
+        private DbContext _dbContext = new DataContext();
 
         public DbContext DbContext
         {

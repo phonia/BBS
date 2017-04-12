@@ -24,6 +24,11 @@ namespace Model
         /// </summary>
         public Int32 Id { get; set; }
 
+        /// <summary>
+        /// 是否已初始化
+        /// </summary>
+        public bool IsInitialed { get; set; }
+
         public Int32? CreateUserId { get; set; }
 
         public Int32? UpdateUserId { get; set; }

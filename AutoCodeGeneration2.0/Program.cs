@@ -9,7 +9,7 @@ namespace AutoCodeGeneration2._0
     {
         static void Main(string[] args)
         {
-            List<DataRecord> list = DataDictionary.GetDataDictionary(@"E:\Code\BBS\数据字典(修订版).xls");
+            List<DataRecord> list = DataDictionary.GetDataDictionary(@"E:\Code\BBS\数据字典II.xls");
             EntityGeneration entityGeneration = new EntityGeneration();
             entityGeneration.GenerateCode(list, @"E:\Code\BBS\Model\Models");
 
