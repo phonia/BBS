@@ -9,7 +9,6 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using Infrastructure;
-
 namespace Model
 {
     /// <summary>
@@ -21,35 +20,41 @@ namespace Model
         /// 姓名
         /// </summary>
         public String Name { get; set; }
-
         /// <summary>
         /// 性别
         /// </summary>
         public Sex Sex { get; set; }
-
         /// <summary>
         /// 年龄
         /// </summary>
         public Int32 Age { get; set; }
-
         /// <summary>
         /// 邮箱
         /// </summary>
         public String Email { get; set; }
-
         /// <summary>
         /// 固话
         /// </summary>
         public String Tel { get; set; }
-
         /// <summary>
         /// 移话
         /// </summary>
         public String Phone { get; set; }
-
         /// <summary>
         /// 传真
         /// </summary>
         public String Fax { get; set; }
+
+        public Int32? CreateUserId { get; set; }
+
+        public Int32? UpdateUserId { get; set; }
+
+        public DateTime? CreateDateTime { get; set; }
+
+        public DateTime? UpdateDateTime { get; set; }
+
+        public byte[] RowVersion { get; set; }
+
+        public bool IsDeleted { get; set; }
     }
 }

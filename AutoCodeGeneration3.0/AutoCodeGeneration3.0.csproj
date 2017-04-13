@@ -81,6 +81,9 @@
     <EmbeddedResource Include="UControl\DataDictionaryUControl.resx">
       <DependentUpon>DataDictionaryUControl.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UControl\EntityUControl.resx">
+      <DependentUpon>EntityUControl.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>

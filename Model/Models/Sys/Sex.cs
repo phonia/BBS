@@ -9,7 +9,6 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using Infrastructure;
-
 namespace Model
 {
     /// <summary>
@@ -19,19 +18,19 @@ namespace Model
     {
 
         /// <summary>
-        /// 性别 男
+        /// 男
         /// </summary>
         [Description("男")]
         Male,
 
         /// <summary>
-        /// 性别 女
+        /// 女
         /// </summary>
         [Description("女")]
         Female,
 
         /// <summary>
-        /// 性别 未知
+        /// 未知
         /// </summary>
         [Description("未知")]
         UnKnown

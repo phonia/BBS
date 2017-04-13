@@ -9,7 +9,6 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using Infrastructure;
-
 namespace Model
 {
     /// <summary>
@@ -19,11 +18,9 @@ namespace Model
     {
         /// <summary>
         /// 主键Id
-        /// 主键
         /// 自增
         /// </summary>
         public Int32 Id { get; set; }
-
         /// <summary>
         /// 是否已初始化
         /// </summary>

@@ -142,7 +142,7 @@ namespace AutoCodeGeneration3._0
                             DataRecord dataRecord = new DataRecord();
                             dataRecord.DomainName = item.ToString();
                             dataRecord.ClassName = records.Rows[i]["数据表"] is DBNull ? String.Empty : records.Rows[i]["数据表"].ToString();
-                            dataRecord.DataTableName = item.ToString() + "_" + (records.Rows[i]["数据表"] is DBNull ? String.Empty : records.Rows[i]["数据表"].ToString());
+                            dataRecord.TableName = (records.Rows[i]["数据表"] is DBNull ? String.Empty : records.Rows[i]["数据表"].ToString());
                             dataRecord.PropertyName = records.Rows[i]["字段名称"] is DBNull ? String.Empty : records.Rows[i]["字段名称"].ToString();
                             dataRecord.FieldName = records.Rows[i]["字段名称"] is DBNull ? String.Empty : records.Rows[i]["字段名称"].ToString();
                             dataRecord.FieldType = records.Rows[i]["字段类型/映射基类"] is DBNull ? String.Empty : records.Rows[i]["字段类型/映射基类"].ToString();
@@ -152,8 +152,8 @@ namespace AutoCodeGeneration3._0
                             dataRecord.IsNUll = records.Rows[i]["允许空值"] is DBNull ? false : true;
                             dataRecord.DefaultValues = records.Rows[i]["默认值"] is DBNull ? String.Empty : records.Rows[i]["默认值"].ToString();
                             dataRecord.FieldDescription = records.Rows[i]["字段说明"] is DBNull ? String.Empty : records.Rows[i]["字段说明"].ToString();
-                            dataRecord.ReferenceDataTable = records.Rows[i]["参考表"] is DBNull ? String.Empty : records.Rows[i]["参考表"].ToString();
-                            //dataRecord.referenceProperty = records.Rows[i]["参考字段"] is DBNull ? String.Empty : records.Rows[i]["参考字段"].ToString();
+                            dataRecord.ReferenceTable = records.Rows[i]["参考表"] is DBNull ? String.Empty : records.Rows[i]["参考表"].ToString();
+                            dataRecord.ReferenceField = records.Rows[i]["参考字段"] is DBNull ? String.Empty : records.Rows[i]["参考字段"].ToString();
                             dataRecord.MaxLength = records.Rows[i]["长度"] is DBNull ? 0 : Convert.ToInt32(records.Rows[i]["长度"]);
                             list.Add(dataRecord);
                         }
@@ -173,7 +173,7 @@ namespace AutoCodeGeneration3._0
         /// <summary>
         /// 数据表名
         /// </summary>
-        public String DataTableName { get; set; }
+        public String TableName { get; set; }
         /// <summary>
         /// 类名
         /// </summary>
@@ -217,11 +217,11 @@ namespace AutoCodeGeneration3._0
         /// <summary>
         /// 参考表
         /// </summary>
-        public String ReferenceDataTable { get; set; }
+        public String ReferenceTable { get; set; }
         /// <summary>
         /// 参考字段
         /// </summary>
-        public String referenceProperty { get; set; }
+        public String ReferenceField { get; set; }
         /// <summary>
         /// 最大长度
         /// </summary>
@@ -263,7 +263,7 @@ namespace AutoCodeGeneration3._0
 
         internal bool isReferenceRecord(string className)
         {
-            if (ReferenceDataTable.Equals(className) && !String.IsNullOrWhiteSpace(referenceProperty)) return true;
+            if (ReferenceTable.Equals(className) && !String.IsNullOrWhiteSpace(ReferenceField)) return true;
             return false;
         }
 

@@ -32,8 +32,6 @@
             this.flowLayoutPanel1 = new System.Windows.Forms.FlowLayoutPanel();
             this.filebtn = new System.Windows.Forms.Button();
             this.EntityBtn = new System.Windows.Forms.Button();
-            this.DataBaseBtn = new System.Windows.Forms.Button();
-            this.RepositoryBtn = new System.Windows.Forms.Button();
             this.ViewModelBtn = new System.Windows.Forms.Button();
             this.BusinessBtn = new System.Windows.Forms.Button();
             this.button7 = new System.Windows.Forms.Button();
@@ -46,6 +44,7 @@
             this.textBox1 = new System.Windows.Forms.TextBox();
             this.textBox2 = new System.Windows.Forms.TextBox();
             this.SaveBtn = new System.Windows.Forms.Button();
+            this.LoadBtn = new System.Windows.Forms.Button();
             this.flowLayoutPanel1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -63,8 +62,6 @@
             | System.Windows.Forms.AnchorStyles.Right)));
             this.flowLayoutPanel1.Controls.Add(this.filebtn);
             this.flowLayoutPanel1.Controls.Add(this.EntityBtn);
-            this.flowLayoutPanel1.Controls.Add(this.DataBaseBtn);
-            this.flowLayoutPanel1.Controls.Add(this.RepositoryBtn);
             this.flowLayoutPanel1.Controls.Add(this.ViewModelBtn);
             this.flowLayoutPanel1.Controls.Add(this.BusinessBtn);
             this.flowLayoutPanel1.Controls.Add(this.button7);
@@ -97,29 +94,9 @@
             this.EntityBtn.UseVisualStyleBackColor = true;
             this.EntityBtn.Click += new System.EventHandler(this.EntityBtn_Click);
             // 
-            // DataBaseBtn
-            // 
-            this.DataBaseBtn.Location = new System.Drawing.Point(3, 89);
-            this.DataBaseBtn.Name = "DataBaseBtn";
-            this.DataBaseBtn.Size = new System.Drawing.Size(148, 37);
-            this.DataBaseBtn.TabIndex = 0;
-            this.DataBaseBtn.Text = "数据库映射";
-            this.DataBaseBtn.UseVisualStyleBackColor = true;
-            this.DataBaseBtn.Click += new System.EventHandler(this.DataBaseBtn_Click);
-            // 
-            // RepositoryBtn
-            // 
-            this.RepositoryBtn.Location = new System.Drawing.Point(3, 132);
-            this.RepositoryBtn.Name = "RepositoryBtn";
-            this.RepositoryBtn.Size = new System.Drawing.Size(148, 37);
-            this.RepositoryBtn.TabIndex = 0;
-            this.RepositoryBtn.Text = "仓储模型";
-            this.RepositoryBtn.UseVisualStyleBackColor = true;
-            this.RepositoryBtn.Click += new System.EventHandler(this.RepositoryBtn_Click);
-            // 
             // ViewModelBtn
             // 
-            this.ViewModelBtn.Location = new System.Drawing.Point(3, 175);
+            this.ViewModelBtn.Location = new System.Drawing.Point(3, 89);
             this.ViewModelBtn.Name = "ViewModelBtn";
             this.ViewModelBtn.Size = new System.Drawing.Size(148, 37);
             this.ViewModelBtn.TabIndex = 0;
@@ -129,7 +106,7 @@
             // 
             // BusinessBtn
             // 
-            this.BusinessBtn.Location = new System.Drawing.Point(3, 218);
+            this.BusinessBtn.Location = new System.Drawing.Point(3, 132);
             this.BusinessBtn.Name = "BusinessBtn";
             this.BusinessBtn.Size = new System.Drawing.Size(148, 37);
             this.BusinessBtn.TabIndex = 0;
@@ -139,7 +116,7 @@
             // 
             // button7
             // 
-            this.button7.Location = new System.Drawing.Point(3, 261);
+            this.button7.Location = new System.Drawing.Point(3, 175);
             this.button7.Name = "button7";
             this.button7.Size = new System.Drawing.Size(148, 37);
             this.button7.TabIndex = 0;
@@ -148,7 +125,7 @@
             // 
             // button8
             // 
-            this.button8.Location = new System.Drawing.Point(3, 304);
+            this.button8.Location = new System.Drawing.Point(3, 218);
             this.button8.Name = "button8";
             this.button8.Size = new System.Drawing.Size(148, 37);
             this.button8.TabIndex = 0;
@@ -157,7 +134,7 @@
             // 
             // button9
             // 
-            this.button9.Location = new System.Drawing.Point(3, 347);
+            this.button9.Location = new System.Drawing.Point(3, 261);
             this.button9.Name = "button9";
             this.button9.Size = new System.Drawing.Size(148, 37);
             this.button9.TabIndex = 0;
@@ -166,7 +143,7 @@
             // 
             // button10
             // 
-            this.button10.Location = new System.Drawing.Point(3, 390);
+            this.button10.Location = new System.Drawing.Point(3, 304);
             this.button10.Name = "button10";
             this.button10.Size = new System.Drawing.Size(148, 37);
             this.button10.TabIndex = 0;
@@ -175,7 +152,7 @@
             // 
             // button11
             // 
-            this.button11.Location = new System.Drawing.Point(3, 433);
+            this.button11.Location = new System.Drawing.Point(3, 347);
             this.button11.Name = "button11";
             this.button11.Size = new System.Drawing.Size(148, 37);
             this.button11.TabIndex = 0;
@@ -194,7 +171,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(562, 15);
+            this.label2.Location = new System.Drawing.Point(530, 15);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(89, 12);
             this.label2.TabIndex = 3;
@@ -204,19 +181,19 @@
             // 
             this.textBox1.Location = new System.Drawing.Point(286, 12);
             this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(270, 21);
+            this.textBox1.Size = new System.Drawing.Size(238, 21);
             this.textBox1.TabIndex = 4;
             // 
             // textBox2
             // 
-            this.textBox2.Location = new System.Drawing.Point(647, 12);
+            this.textBox2.Location = new System.Drawing.Point(625, 12);
             this.textBox2.Name = "textBox2";
-            this.textBox2.Size = new System.Drawing.Size(270, 21);
+            this.textBox2.Size = new System.Drawing.Size(242, 21);
             this.textBox2.TabIndex = 4;
             // 
             // SaveBtn
             // 
-            this.SaveBtn.Location = new System.Drawing.Point(941, 10);
+            this.SaveBtn.Location = new System.Drawing.Point(957, 10);
             this.SaveBtn.Name = "SaveBtn";
             this.SaveBtn.Size = new System.Drawing.Size(75, 23);
             this.SaveBtn.TabIndex = 5;
@@ -224,11 +201,22 @@
             this.SaveBtn.UseVisualStyleBackColor = true;
             this.SaveBtn.Click += new System.EventHandler(this.SaveBtn_Click);
             // 
+            // LoadBtn
+            // 
+            this.LoadBtn.Location = new System.Drawing.Point(876, 10);
+            this.LoadBtn.Name = "LoadBtn";
+            this.LoadBtn.Size = new System.Drawing.Size(75, 23);
+            this.LoadBtn.TabIndex = 6;
+            this.LoadBtn.Text = "加载";
+            this.LoadBtn.UseVisualStyleBackColor = true;
+            this.LoadBtn.Click += new System.EventHandler(this.LoadBtn_Click);
+            // 
             // MainWin
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1044, 498);
+            this.Controls.Add(this.LoadBtn);
             this.Controls.Add(this.SaveBtn);
             this.Controls.Add(this.textBox2);
             this.Controls.Add(this.textBox1);
@@ -250,8 +238,6 @@
         private System.Windows.Forms.FlowLayoutPanel flowLayoutPanel1;
         private System.Windows.Forms.Button filebtn;
         private System.Windows.Forms.Button EntityBtn;
-        private System.Windows.Forms.Button DataBaseBtn;
-        private System.Windows.Forms.Button RepositoryBtn;
         private System.Windows.Forms.Button ViewModelBtn;
         private System.Windows.Forms.Button BusinessBtn;
         private System.Windows.Forms.Button button7;
@@ -264,6 +250,7 @@
         private System.Windows.Forms.TextBox textBox1;
         private System.Windows.Forms.TextBox textBox2;
         private System.Windows.Forms.Button SaveBtn;
+        private System.Windows.Forms.Button LoadBtn;
 
     }
 }

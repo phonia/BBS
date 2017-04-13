@@ -9,7 +9,6 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using Infrastructure;
-
 namespace Model
 {
     /// <summary>
@@ -19,50 +18,42 @@ namespace Model
     {
         /// <summary>
         /// 主键Id
-        /// 主键
         /// 自增
         /// </summary>
         public Int32 Id { get; set; }
-
         /// <summary>
         /// 模块名称
         /// </summary>
         public String ModuleName { get; set; }
-
         /// <summary>
         /// 操作名称
         /// </summary>
         public String OperateName { get; set; }
-
         /// <summary>
         /// 操作数据
         /// </summary>
         public String Content { get; set; }
-
         /// <summary>
         /// 操作结果
         /// </summary>
         public String Result { get; set; }
-
         /// <summary>
         /// 记录事件
         /// </summary>
         public DateTime RecordTime { get; set; }
-
         /// <summary>
         /// 备注
         /// </summary>
         public String Note { get; set; }
 
         /// <summary>
+        /// 导航属性操作员
+        /// </summary>
+        public User User { get; set; }
+        /// <summary>
         /// 操作员
         /// </summary>
         public Int32 UserId { get; set; }
-
-        /// <summary>
-        /// 导航属性
-        /// </summary>
-        public User User { get; set; }
 
         public Int32? CreateUserId { get; set; }
 

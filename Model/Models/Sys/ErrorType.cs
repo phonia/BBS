@@ -9,7 +9,6 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using Infrastructure;
-
 namespace Model
 {
     /// <summary>
@@ -19,13 +18,13 @@ namespace Model
     {
 
         /// <summary>
-        /// 异常类型 前端
+        /// 前端
         /// </summary>
         [Description("前端")]
         FrontPage,
 
         /// <summary>
-        /// 异常类型 后端
+        /// 后端
         /// </summary>
         [Description("后端")]
         BackStage

@@ -9,7 +9,6 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using Infrastructure;
-
 namespace Model
 {
     /// <summary>
@@ -19,13 +18,13 @@ namespace Model
     {
 
         /// <summary>
-        /// 角色类型 用户定义
+        /// 用户定义
         /// </summary>
         [Description("用户定义")]
         UserDefine,
 
         /// <summary>
-        /// 角色类型 系统定义
+        /// 系统定义
         /// </summary>
         [Description("系统定义")]
         SysBuiltIn

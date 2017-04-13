@@ -9,7 +9,6 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using Infrastructure;
-
 namespace Model
 {
     /// <summary>
@@ -19,20 +18,27 @@ namespace Model
     {
         /// <summary>
         /// 主键Id
-        /// 主键
         /// 自增
         /// </summary>
         public Int32 Id { get; set; }
-
         /// <summary>
         /// 角色名
         /// </summary>
         public String Name { get; set; }
-
         /// <summary>
         /// 角色类型
         /// </summary>
         public RoleType RoleType { get; set; }
+
+        /// <summary>
+        /// 导航属性角色
+        /// </summary>
+        public IList<RolePermission> Permission { get; set; }
+
+        /// <summary>
+        /// 导航属性角色
+        /// </summary>
+        public IList<User> Users { get; set; }
 
         public Int32? CreateUserId { get; set; }
 
@@ -45,15 +51,5 @@ namespace Model
         public byte[] RowVersion { get; set; }
 
         public bool IsDeleted { get; set; }
-
-        /// <summary>
-        /// RolePermission
-        /// </summary>
-        public IList<RolePermission> Permission { get; set; }
-
-        /// <summary>
-        /// User
-        /// </summary>
-        public IList<User> Users { get; set; }
     }
 }

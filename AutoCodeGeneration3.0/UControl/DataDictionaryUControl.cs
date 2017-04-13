@@ -50,7 +50,7 @@ namespace AutoCodeGeneration3._0.Win
                 }
                 else if (this.comboBox1.Text.Equals("数据表"))
                 {
-                    this.dataGridView1.DataSource = this.DataRecords.Where(it => it.DataTableName.Equals(this.textBox1.Text)).ToList();
+                    this.dataGridView1.DataSource = this.DataRecords.Where(it => it.TableName.Equals(this.textBox1.Text)).ToList();
                 }
                 else
                 { }

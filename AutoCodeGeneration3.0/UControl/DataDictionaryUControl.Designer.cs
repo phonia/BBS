@@ -29,8 +29,11 @@
         private void InitializeComponent()
         {
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
+            this.textBox1 = new System.Windows.Forms.TextBox();
+            this.SelectBtn = new System.Windows.Forms.Button();
             this.DomainName = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.DataTableName = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TableName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.ClassName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.FieldName = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.PropertyName = new System.Windows.Forms.DataGridViewTextBoxColumn();
@@ -41,11 +44,8 @@
             this.IsNULL = new System.Windows.Forms.DataGridViewCheckBoxColumn();
             this.DefaultValues = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.FieldDescription = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.ReferenceDataTable = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.ReferenceTable = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.MaxLength = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.textBox1 = new System.Windows.Forms.TextBox();
-            this.SelectBtn = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
@@ -57,7 +57,7 @@
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
             this.DomainName,
-            this.DataTableName,
+            this.TableName,
             this.ClassName,
             this.FieldName,
             this.PropertyName,
@@ -68,7 +68,7 @@
             this.IsNULL,
             this.DefaultValues,
             this.FieldDescription,
-            this.ReferenceDataTable,
+            this.ReferenceTable,
             this.MaxLength});
             this.dataGridView1.Location = new System.Drawing.Point(3, 43);
             this.dataGridView1.Name = "dataGridView1";
@@ -77,6 +77,31 @@
             this.dataGridView1.Size = new System.Drawing.Size(639, 333);
             this.dataGridView1.TabIndex = 0;
             // 
+            // comboBox1
+            // 
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Location = new System.Drawing.Point(26, 17);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(121, 20);
+            this.comboBox1.TabIndex = 1;
+            // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(163, 17);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(100, 21);
+            this.textBox1.TabIndex = 2;
+            // 
+            // SelectBtn
+            // 
+            this.SelectBtn.Location = new System.Drawing.Point(289, 17);
+            this.SelectBtn.Name = "SelectBtn";
+            this.SelectBtn.Size = new System.Drawing.Size(75, 23);
+            this.SelectBtn.TabIndex = 3;
+            this.SelectBtn.Text = "筛选";
+            this.SelectBtn.UseVisualStyleBackColor = true;
+            this.SelectBtn.Click += new System.EventHandler(this.SelectBtn_Click);
+            // 
             // DomainName
             // 
             this.DomainName.DataPropertyName = "DomainName";
@@ -84,12 +109,12 @@
             this.DomainName.Name = "DomainName";
             this.DomainName.ReadOnly = true;
             // 
-            // DataTableName
+            // TableName
             // 
-            this.DataTableName.DataPropertyName = "DataTableName";
-            this.DataTableName.HeaderText = "数据表名";
-            this.DataTableName.Name = "DataTableName";
-            this.DataTableName.ReadOnly = true;
+            this.TableName.DataPropertyName = "TableName";
+            this.TableName.HeaderText = "数据表名";
+            this.TableName.Name = "TableName";
+            this.TableName.ReadOnly = true;
             // 
             // ClassName
             // 
@@ -166,12 +191,12 @@
             this.FieldDescription.Name = "FieldDescription";
             this.FieldDescription.ReadOnly = true;
             // 
-            // ReferenceDataTable
+            // ReferenceTable
             // 
-            this.ReferenceDataTable.DataPropertyName = "ReferenceDataTable";
-            this.ReferenceDataTable.HeaderText = "参考表";
-            this.ReferenceDataTable.Name = "ReferenceDataTable";
-            this.ReferenceDataTable.ReadOnly = true;
+            this.ReferenceTable.DataPropertyName = "ReferenceTable";
+            this.ReferenceTable.HeaderText = "参考表";
+            this.ReferenceTable.Name = "ReferenceTable";
+            this.ReferenceTable.ReadOnly = true;
             // 
             // MaxLength
             // 
@@ -179,31 +204,6 @@
             this.MaxLength.HeaderText = "最大长度";
             this.MaxLength.Name = "MaxLength";
             this.MaxLength.ReadOnly = true;
-            // 
-            // comboBox1
-            // 
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Location = new System.Drawing.Point(26, 17);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(121, 20);
-            this.comboBox1.TabIndex = 1;
-            // 
-            // textBox1
-            // 
-            this.textBox1.Location = new System.Drawing.Point(163, 17);
-            this.textBox1.Name = "textBox1";
-            this.textBox1.Size = new System.Drawing.Size(100, 21);
-            this.textBox1.TabIndex = 2;
-            // 
-            // SelectBtn
-            // 
-            this.SelectBtn.Location = new System.Drawing.Point(289, 17);
-            this.SelectBtn.Name = "SelectBtn";
-            this.SelectBtn.Size = new System.Drawing.Size(75, 23);
-            this.SelectBtn.TabIndex = 3;
-            this.SelectBtn.Text = "筛选";
-            this.SelectBtn.UseVisualStyleBackColor = true;
-            this.SelectBtn.Click += new System.EventHandler(this.SelectBtn_Click);
             // 
             // DataDictionaryUControl
             // 
@@ -224,8 +224,11 @@
         #endregion
 
         private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.TextBox textBox1;
+        private System.Windows.Forms.Button SelectBtn;
         private System.Windows.Forms.DataGridViewTextBoxColumn DomainName;
-        private System.Windows.Forms.DataGridViewTextBoxColumn DataTableName;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TableName;
         private System.Windows.Forms.DataGridViewTextBoxColumn ClassName;
         private System.Windows.Forms.DataGridViewTextBoxColumn FieldName;
         private System.Windows.Forms.DataGridViewTextBoxColumn PropertyName;
@@ -236,11 +239,8 @@
         private System.Windows.Forms.DataGridViewCheckBoxColumn IsNULL;
         private System.Windows.Forms.DataGridViewTextBoxColumn DefaultValues;
         private System.Windows.Forms.DataGridViewTextBoxColumn FieldDescription;
-        private System.Windows.Forms.DataGridViewTextBoxColumn ReferenceDataTable;
+        private System.Windows.Forms.DataGridViewTextBoxColumn ReferenceTable;
         private System.Windows.Forms.DataGridViewTextBoxColumn MaxLength;
-        private System.Windows.Forms.ComboBox comboBox1;
-        private System.Windows.Forms.TextBox textBox1;
-        private System.Windows.Forms.Button SelectBtn;
 
     }
 }
