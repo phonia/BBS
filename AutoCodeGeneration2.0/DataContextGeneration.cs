@@ -60,6 +60,9 @@ namespace AutoCodeGeneration2._0
 
                         sw.WriteLine("            modelBuilder.Configurations.Add(new " + item.ClassName + "Configuration());");
                     }
+                    sw.WriteLine("            //将一堆多的级联删除全部设置成不可用");
+                    sw.WriteLine("            modelBuilder.Conventions.Remove<OneToManyCascadeDeleteConvention>();");
+                    sw.WriteLine("");
                     sw.WriteLine("            Database.SetInitializer(new DropCreateDatabaseIfModelChanges<DataContext>());");
                     sw.WriteLine("        }");
                     sw.WriteLine("");

@@ -16,13 +16,14 @@ namespace Repository
     /// <summary>
     /// Role 配置类
     /// </summary>
-    class RoleConfiguration:EntityTypeConfiguration<Role>
+    public class RoleConfiguration:EntityTypeConfiguration<Role>
     {
         public RoleConfiguration()
         {
             ToTable("Sys_Role");
             HasKey(e=>e.Id);
-            Property(e =>e.Id).HasColumnName("Id").HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity).HasColumnType("int").IsRequired();
+            Property(e => e.RowVersion).IsRowVersion();
+            Property(e =>e.Id).HasColumnName("Id").HasColumnType("int").HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity).IsRequired();
             Property(e =>e.Name).HasColumnName("Name").HasColumnType("nvarchar").HasMaxLength(50).IsRequired();
             Property(e =>e.RoleType).HasColumnName("RoleType").HasColumnType("int").IsRequired();
         }

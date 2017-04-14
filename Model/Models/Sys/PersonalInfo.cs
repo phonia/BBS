@@ -9,6 +9,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using Infrastructure;
+
 namespace Model
 {
     /// <summary>
@@ -44,17 +45,5 @@ namespace Model
         /// 传真
         /// </summary>
         public String Fax { get; set; }
-
-        public Int32? CreateUserId { get; set; }
-
-        public Int32? UpdateUserId { get; set; }
-
-        public DateTime? CreateDateTime { get; set; }
-
-        public DateTime? UpdateDateTime { get; set; }
-
-        public byte[] RowVersion { get; set; }
-
-        public bool IsDeleted { get; set; }
     }
 }

@@ -9,6 +9,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using Infrastructure;
+
 namespace Model
 {
     /// <summary>
@@ -37,7 +38,7 @@ namespace Model
         /// <summary>
         /// 父级
         /// </summary>
-        public Int32 ParentId { get; set; }
+        public Int32? ParentId { get; set; }
 
         /// <summary>
         /// 导航属性模块
@@ -53,11 +54,6 @@ namespace Model
         /// 导航属性模块
         /// </summary>
         public IList<ModuleMenu> Menus { get; set; }
-
-        /// <summary>
-        /// 导航属性模块
-        /// </summary>
-        public IList<ModuleService> ModuleServices { get; set; }
 
         public Int32? CreateUserId { get; set; }
 

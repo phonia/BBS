@@ -8,3 +8,8 @@ E:\Code\BBS\AutoCodeGeneration3.0\obj\Debug\AutoCodeGeneration3.0.exe
 E:\Code\BBS\AutoCodeGeneration3.0\obj\Debug\AutoCodeGeneration3.0.pdb
 E:\Code\BBS\AutoCodeGeneration3.0\obj\Debug\AutoCodeGeneration3._0.Win.DataDictionaryUControl.resources
 E:\Code\BBS\AutoCodeGeneration3.0\obj\Debug\AutoCodeGeneration3._0.UControl.EntityUControl.resources
+E:\Code\BBS\AutoCodeGeneration3.0\obj\Debug\AutoCodeGeneration3._0.Win.EntityQFrm.resources
+E:\Code\BBS\AutoCodeGeneration3.0\obj\Debug\AutoCodeGeneration3._0.Win.ConfigurationQFrm.resources
+E:\Code\BBS\AutoCodeGeneration3.0\obj\Debug\AutoCodeGeneration3._0.Win.DataContextQFrm.resources
+E:\Code\BBS\AutoCodeGeneration3.0\obj\Debug\AutoCodeGeneration3._0.Win.IRepositoryQFrm.resources
+E:\Code\BBS\AutoCodeGeneration3.0\obj\Debug\AutoCodeGeneration3._0.Win.RepositoryQFrm.resources

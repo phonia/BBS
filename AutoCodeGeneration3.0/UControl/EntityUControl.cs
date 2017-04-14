@@ -8,6 +8,7 @@ using System.Text;
 using System.Windows.Forms;
 using AutoCodeGeneration3._0.Code;
 using System.IO;
+using AutoCodeGeneration3._0.Win;
 
 namespace AutoCodeGeneration3._0.UControl
 {
@@ -133,7 +134,7 @@ namespace AutoCodeGeneration3._0.UControl
             if (EntityModels != null && EntityModels.Count > 0)
             {
 
-                this.textBoxConfigruationSpace.Text = EntityModels.First().DataContextNamespace;
+                this.textBoxConfigruationSpace.Text = EntityModels.First().ConfigurationNamespace;
                 this.textBoxConfigurationPath.Text = EntityModels.First().ConfigurationPath;
                 this.textBoxDataContextPath.Text = EntityModels.First().DataContextPath;
                 this.textBoxDataContextSapce.Text = EntityModels.First().DataContextNamespace;
@@ -157,6 +158,8 @@ namespace AutoCodeGeneration3._0.UControl
                         Directory.CreateDirectory(it.EntityPath + "\\" + it.DomainName);
                     }
 
+                    if (this.checkBoxEnitiy.Checked == false && File.Exists(it.EntityPath + "\\" + it.DomainName + "\\" + it.ClassName + ".cs")) return;
+
                     FileStream fs = new FileStream(it.EntityPath + "\\" + it.DomainName + "\\" + it.ClassName + ".cs", FileMode.Create);
                     using (var sw = new StreamWriter(fs))
                     {
@@ -170,11 +173,12 @@ namespace AutoCodeGeneration3._0.UControl
                         sw.WriteLine("using System.ComponentModel;");
                         sw.WriteLine("using System.Linq;");
                         sw.WriteLine("using System.Text;");
-                        sw.WriteLine("using Infrastructure;");//测试后请注释
-                        if (it.EntityAssemblies != null && it.EntityAssemblies.Count > 0)
+                        //sw.WriteLine("using Infrastructure;");//测试后请注释
+                        if (it.EntityQuoteNamespaces != null && it.EntityQuoteNamespaces.Count > 0)
                         {
-                            it.EntityAssemblies.ForEach(ea => sw.WriteLine(ea));
+                            it.EntityQuoteNamespaces.ForEach(ea => sw.WriteLine(ea));
                         }
+                        sw.WriteLine("");
                         sw.WriteLine("namespace " + it.EntityNamespace);
                         sw.WriteLine("{");
                         if (it.IsEntityType || it.IsComplexyType)
@@ -241,18 +245,22 @@ namespace AutoCodeGeneration3._0.UControl
                                         }
                                     }
                                 });
-                                sw.WriteLine("");
-                                sw.WriteLine("        public Int32? CreateUserId { get; set; }");
-                                sw.WriteLine("");
-                                sw.WriteLine("        public Int32? UpdateUserId { get; set; }");
-                                sw.WriteLine("");
-                                sw.WriteLine("        public DateTime? CreateDateTime { get; set; }");
-                                sw.WriteLine("");
-                                sw.WriteLine("        public DateTime? UpdateDateTime { get; set; }");
-                                sw.WriteLine("");
-                                sw.WriteLine("        public byte[] RowVersion { get; set; }");
-                                sw.WriteLine("");
-                                sw.WriteLine("        public bool IsDeleted { get; set; }");
+
+                                if (it.IsEntityType)
+                                {
+                                    sw.WriteLine("");
+                                    sw.WriteLine("        public Int32? CreateUserId { get; set; }");
+                                    sw.WriteLine("");
+                                    sw.WriteLine("        public Int32? UpdateUserId { get; set; }");
+                                    sw.WriteLine("");
+                                    sw.WriteLine("        public DateTime? CreateDateTime { get; set; }");
+                                    sw.WriteLine("");
+                                    sw.WriteLine("        public DateTime? UpdateDateTime { get; set; }");
+                                    sw.WriteLine("");
+                                    sw.WriteLine("        public byte[] RowVersion { get; set; }");
+                                    sw.WriteLine("");
+                                    sw.WriteLine("        public bool IsDeleted { get; set; }");
+                                }
                             }
                             sw.WriteLine("    }");
                         }
@@ -300,22 +308,334 @@ namespace AutoCodeGeneration3._0.UControl
 
         private void buttonIRepositoryC_Click(object sender, EventArgs e)
         {
-
+            if (EntityModels != null && EntityModels.Count > 0)
+            {
+                EntityModels.ForEach(it => {
+                    if (it.IsEntityType)
+                    {
+                        if (!Directory.Exists(it.IRepositoryPath + "\\" + it.DomainName))
+                        {
+                            Directory.CreateDirectory(it.IRepositoryPath + "\\" + it.DomainName);
+                        }
+                        if (this.checkBoxIRepository.Checked == false && File.Exists(it.IRepositoryPath + "\\" + it.DomainName + "\\I" + it.ClassName+"Repository.cs")) return;
+                        FileStream fs = new FileStream(it.IRepositoryPath + "\\" + it.DomainName +"\\I"+it.ClassName+ "Repository.cs", FileMode.Create);
+                        using (var sw = new StreamWriter(fs))
+                        {
+                            sw.WriteLine("/*=============================================================");
+                            sw.WriteLine(" * ===============auto-generated code           ===============");
+                            sw.WriteLine(" * ===============Should Be Marked if modified=================");
+                            sw.WriteLine(" * ==========================================================*/");
+                            sw.WriteLine("");
+                            sw.WriteLine("using System;");
+                            sw.WriteLine("using System.Collections.Generic;");
+                            sw.WriteLine("using System.Linq;");
+                            sw.WriteLine("using System.Text;");
+                            if (it.IRepositoryQuoteNamespaces != null && it.IRepositoryQuoteNamespaces.Count > 0)
+                            {
+                                it.IRepositoryQuoteNamespaces.ForEach(n => sw.WriteLine(n));
+                            }
+                            sw.WriteLine("");
+                            sw.WriteLine("namespace "+it.IRepositoryNamespace);
+                            sw.WriteLine("{");
+                            sw.WriteLine("    /// <summary>");
+                            sw.WriteLine("    /// " + it.ClassName + " 仓储接口");
+                            sw.WriteLine("    /// </summary>");
+                            sw.WriteLine("    public interface I" + it.ClassName + "Repository : IRepository<" + it.ClassName + ","+it.PKPropertyType+">");//默认的主键Id是类型是Int32型
+                            sw.WriteLine("    {");
+                            sw.WriteLine("    }");
+                            sw.WriteLine("}");
+                        }
+                        fs.Close();
+                        fs.Dispose();
+                    }
+                });
+            }
+            else
+            {
+                MessageBox.Show("模型数据");
+            }
         }
 
         private void buttonRepositoryC_Click(object sender, EventArgs e)
         {
+            if (EntityModels != null && EntityModels.Count > 0)
+            {
+                EntityModels.ForEach(it => {
+                    if (it.IsEntityType)
+                    {
+                        if (!Directory.Exists(it.RepositoryPath + "\\" + it.DomainName))
+                        {
+                            Directory.CreateDirectory(it.RepositoryPath + "\\" + it.DomainName);
+                        }
+                        if (this.checkBoxRepository.Checked == false && File.Exists(it.RepositoryPath + "\\" + it.DomainName + "\\" + it.ClassName + "Repository.cs")) return;
 
+                        FileStream fs = new FileStream(it.RepositoryPath + "\\" + it.DomainName + "\\" + it.ClassName + "Repository.cs", FileMode.Create);
+                        using (var sw = new StreamWriter(fs))
+                        {
+                            sw.WriteLine("/*=============================================================");
+                            sw.WriteLine(" * ===============auto-generated code           ===============");
+                            sw.WriteLine(" * ===============Should Be Marked if modified=================");
+                            sw.WriteLine(" * ==========================================================*/");
+                            sw.WriteLine("");
+                            sw.WriteLine("using System;");
+                            sw.WriteLine("using System.Collections.Generic;");
+                            sw.WriteLine("using System.Linq;");
+                            sw.WriteLine("using System.Text;");
+                            //sw.WriteLine("using Infrastructure;");
+                            //sw.WriteLine("using Model;");
+                            if (it.RepositoryQuoteNamespaces != null && it.RepositoryQuoteNamespaces.Count > 0)
+                            {
+                                it.RepositoryQuoteNamespaces.ForEach(en => sw.WriteLine(en));
+                            }
+                            sw.WriteLine("");
+                            sw.WriteLine("namespace "+it.RepositoryNamespace);
+                            sw.WriteLine("{");
+                            sw.WriteLine("    /// <summary>");
+                            sw.WriteLine("    /// " + it.ClassName + " 仓储实现");
+                            sw.WriteLine("    /// </summary>");
+                            sw.WriteLine("    public class " + it.ClassName + "Repository : EFRepository<" + it.ClassName + ","+it.PKPropertyType+">,I" + it.ClassName + "Repository");//默认的主键Id是类型是Int32型
+                            sw.WriteLine("    {");
+                            sw.WriteLine("    }");
+                            sw.WriteLine("}");
+                        }
+                        fs.Close();
+                        fs.Dispose();
+                    }
+                });
+            }
         }
 
         private void buttonConfigurationC_Click(object sender, EventArgs e)
         {
-
+            if (EntityModels != null && EntityModels.Count > 0)
+            {
+                EntityModels.ForEach(it => {
+                    if (it.IsEntityType||it.IsComplexyType)
+                    {
+                        if (!Directory.Exists(it.ConfigurationPath + "\\" + it.DomainName))
+                        {
+                            Directory.CreateDirectory(it.ConfigurationPath + "\\" + it.DomainName);
+                        }
+                        if (this.checkBoxConfiguration.Checked == false && File.Exists(it.ConfigurationPath + "\\" + it.DomainName + "\\" + it.ClassName + "Configuration.cs")) return;
+                        FileStream fs = new FileStream(it.ConfigurationPath + "\\" + it.DomainName + "\\" + it.ClassName + "Configuration.cs", FileMode.Create);
+                        using (var sw = new StreamWriter(fs))
+                        {
+                            sw.WriteLine("/*==================================================");
+                            sw.WriteLine("//============auto-generated code===================");
+                            sw.WriteLine("//============not modified please===================");
+                            sw.WriteLine("//================================================*/");
+                            sw.WriteLine("");
+                            sw.WriteLine("using System;");
+                            sw.WriteLine("using System.Collections.Generic;");
+                            sw.WriteLine("using System.ComponentModel.DataAnnotations.Schema;");
+                            sw.WriteLine("using System.Data.Entity.ModelConfiguration;");
+                            sw.WriteLine("using System.Linq;");
+                            sw.WriteLine("using System.Text;");
+                            if (it.ConfigurationQuoteNamespaces != null && it.ConfigurationQuoteNamespaces.Count > 0)
+                            {
+                                it.ConfigurationQuoteNamespaces.ForEach(en => sw.WriteLine(en));
+                            }
+                            sw.WriteLine("");
+                            sw.WriteLine("namespace "+it.ConfigurationNamespace);
+                            sw.WriteLine("{");
+                            sw.WriteLine("    /// <summary>");
+                            sw.WriteLine("    /// " + it.ClassName + " 配置类");
+                            sw.WriteLine("    /// </summary>");
+                            if (it.IsEntityType)
+                            {
+                                sw.WriteLine("    public class " + it.ClassName + "Configuration:EntityTypeConfiguration<" + it.ClassName + ">");
+                            }
+                            if (it.IsComplexyType)
+                            {
+                                sw.WriteLine("    public class " + it.ClassName + "Configuration:ComplexTypeConfiguration<" + it.ClassName + ">");
+                            }
+                            sw.WriteLine("    {");
+                            sw.WriteLine("        public " + it.ClassName + "Configuration()");
+                            sw.WriteLine("        {");
+                            if (it.IsEntityType)
+                            {
+                                sw.WriteLine("            ToTable(\"" + it.DomainName + "_" + it.TableName + "\");");
+                                sw.WriteLine("            HasKey(e=>e." + it.PKPropertyName + ");");
+                                sw.WriteLine("            Property(e => e.RowVersion).IsRowVersion();");
+                            }
+                            if (it.EntityProperties != null && it.EntityProperties.Count > 0)
+                            {
+                                //sw.Write("            Property(e =>e." + node.PropertyName + ")");
+                                it.EntityProperties.ForEach(ep => {
+                                    if (ep.IsCustomProperty&&ep.IsForeignKey==false) {
+                                        sw.Write("            Property(e =>e." + ep.PropertyName + ")");
+                                        sw.Write(".HasColumnName(\"" +ep.FieldName + "\")");
+                                        sw.Write(".HasColumnType(\"" + ep.FieldType + "\")");
+                                        if(ep.IsIdentity)
+                                            sw.Write(".HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity)");
+                                        if(ep.MaxLength>0)
+                                            sw.Write(".HasMaxLength(" + ep.MaxLength + ")");
+                                        if(ep.IsNull)
+                                            sw.WriteLine(".IsOptional();");
+                                        else
+                                            sw.WriteLine(".IsRequired();");
+                                    }
+                                    if (ep.IsComplexyType) { }
+                                    if (ep.IsNavigationProperty&&ep.IsGeneric==false) {
+                                        if (ep.IsNull)
+                                        {
+                                            sw.Write("            HasOptional(e=>e." + ep.NavigationName + ")");
+                                        }
+                                        else
+                                        {
+                                            sw.Write("            HasRequired(e=>e." + ep.NavigationName + ")");
+                                        }
+                                        if (!String.IsNullOrWhiteSpace(ep.ReferenceField))
+                                        {
+                                            sw.Write(".WithMany(e=>e." + ep.ReferenceField + ")");
+                                        }
+                                        else
+                                        {
+                                            sw.Write(".WithMany()");
+                                        }
+                                        //sw.WriteLine(".Map(e=>e.MapKey(\"" + ep.PropertyName + "\"));");
+                                        sw.WriteLine(".HasForeignKey(e=>e."+ep.PropertyName+");");
+                                    }
+                                });
+                            }
+                            sw.WriteLine("        }");
+                            sw.WriteLine("    }");
+                            sw.WriteLine("}");
+                        }
+                        fs.Close();
+                        fs.Dispose();
+                    }
+                });
+            }
         }
 
         private void buttonDataContextC_Click(object sender, EventArgs e)
         {
+            if (EntityModels != null && EntityModels.Count > 0)
+            {
+                if (this.checkBoxDataContext.Checked == false && File.Exists(EntityModels.First().DataContextPath + "\\DataContext.cs")) return;
+                FileStream fs = new FileStream(EntityModels.First().DataContextPath + "\\DataContext.cs", FileMode.Create);
+                using (var sw = new StreamWriter(fs))
+                {
+                    sw.WriteLine("/*==================================================");
+                    sw.WriteLine("//============auto-generated code===================");
+                    sw.WriteLine("//============not modified please===================");
+                    sw.WriteLine("//================================================*/");
+                    sw.WriteLine("");
+                    sw.WriteLine("using System;");
+                    sw.WriteLine("using System.Collections.Generic;");
+                    sw.WriteLine("using System.Data.Entity.ModelConfiguration.Conventions;");
+                    sw.WriteLine("using System.Data.Entity;");
+                    sw.WriteLine("using System.Linq;");
+                    sw.WriteLine("using System.Text;");
+                    if (EntityModels.First().DataContextQuoteNamespaces != null && EntityModels.First().DataContextQuoteNamespaces.Count > 0)
+                    {
+                        EntityModels.First().DataContextQuoteNamespaces.ForEach(ep => sw.WriteLine(ep));
+                    }
+                    sw.WriteLine("");
+                    sw.WriteLine("namespace " + EntityModels.First().DataContextNamespace);
+                    sw.WriteLine("{");
+                    sw.WriteLine("    public class DataContext:DbContext,IDisposable");
+                    sw.WriteLine("    {");
+                    sw.WriteLine("");
+                    sw.WriteLine("        public DataContext() : base(\"DataContext\") { ");
+                    sw.WriteLine("			base.Configuration.LazyLoadingEnabled = false;");
+                    sw.WriteLine("		}");
+                    sw.WriteLine("");
+                    sw.WriteLine("        public DataContext(String connectionStrings) : base(connectionStrings) { }");
+                    sw.WriteLine("");
+                    EntityModels.ForEach(it => {
+                        if (it.IsEntityType)
+                        {
+                            sw.WriteLine("        /// <summary>");
+                            sw.WriteLine("        /// " + it.ClassName + " 集合");
+                            sw.WriteLine("        /// </summary>");
+                            sw.WriteLine("        public DbSet<" + it.ClassName + "> " + it.ClassName + "s { get; set; }");
+                            sw.WriteLine("");
+                        }
+                    });
 
+                    sw.WriteLine("        protected override void OnModelCreating(DbModelBuilder modelBuilder)");
+                    sw.WriteLine("        {");
+                    EntityModels.ForEach(it => {
+                        if (it.IsEntityType)
+                        {
+                            sw.WriteLine("            modelBuilder.Configurations.Add(new " + it.ClassName + "Configuration());");
+                        }
+                    });
+                    sw.WriteLine("            //将一堆多的级联删除全部设置成不可用");
+                    sw.WriteLine("            modelBuilder.Conventions.Remove<OneToManyCascadeDeleteConvention>();");
+                    sw.WriteLine("");
+                    sw.WriteLine("            Database.SetInitializer(new DropCreateDatabaseIfModelChanges<DataContext>());");
+                    sw.WriteLine("        }");
+                    sw.WriteLine("");
+                    sw.WriteLine("        public static void InitDataBase()");
+                    sw.WriteLine("        {");
+                    sw.WriteLine("            Database.SetInitializer(new DropCreateDatabaseIfModelChanges<DataContext>());");
+                    sw.WriteLine("        }");
+                    sw.WriteLine("    }");
+                    sw.WriteLine("}");
+                }
+                fs.Close();
+                fs.Dispose();
+            }
+        }
+
+        private void buttonEntity_Click(object sender, EventArgs e)
+        {
+            EntityQFrm eqf = new EntityQFrm();
+            eqf.Init(EntityModels != null && EntityModels.Count > 0 ? EntityModels.First().EntityQuoteNamespaces : null);
+            if (eqf.ShowDialog() == DialogResult.Cancel)
+            {
+                if(EntityModels!=null)
+                    EntityModels.ForEach(it => it.EntityQuoteNamespaces = eqf.EntityQuoteNamespace);
+            }
+        }
+
+        private void buttonIRepository_Click(object sender, EventArgs e)
+        {
+            IRepositoryQFrm irqf = new IRepositoryQFrm();
+            irqf.Init(EntityModels != null && EntityModels.Count > 0 ? EntityModels.First().IRepositoryQuoteNamespaces : null);
+            if (irqf.ShowDialog() == DialogResult.Cancel)
+            {
+                if (EntityModels != null)
+                    EntityModels.ForEach(it => it.IRepositoryQuoteNamespaces = irqf.IRepositroyQuoteNamespace);
+            }
+        }
+
+        private void buttonRepository_Click(object sender, EventArgs e)
+        {
+            RepositoryQFrm rqf = new RepositoryQFrm();
+            rqf.Init(EntityModels != null && EntityModels.Count > 0 ? EntityModels.First().RepositoryQuoteNamespaces : null);
+            if (rqf.ShowDialog() == DialogResult.Cancel)
+            {
+                if (EntityModels != null)
+                    EntityModels.ForEach(it => it.RepositoryQuoteNamespaces = rqf.ReposiotryQuoteNamespace);
+            }
+        }
+
+        private void buttonConfiguration_Click(object sender, EventArgs e)
+        {
+            ConfigurationQFrm cqf = new ConfigurationQFrm();
+            cqf.Init(EntityModels != null && EntityModels.Count > 0 ? EntityModels.First().ConfigurationQuoteNamespaces : null);
+            if (cqf.ShowDialog() == DialogResult.Cancel)
+            {
+                if (EntityModels != null)
+                    EntityModels.ForEach(it => it.ConfigurationQuoteNamespaces = cqf.ConfigurationQuoteNamesapce);
+            }
+        }
+
+        private void buttonDataContext_Click(object sender, EventArgs e)
+        {
+            DataContextQFrm dqf = new DataContextQFrm();
+            dqf.Init(EntityModels != null && EntityModels.Count > 0 ? EntityModels.First().DataContextQuoteNamespaces : null);
+            if (dqf.ShowDialog() == DialogResult.Cancel)
+            {
+                if (EntityModels != null)
+                {
+                    EntityModels.ForEach(it => it.DataContextQuoteNamespaces = dqf.DataContextQuoteNamespace);
+                }
+            }
         }
     }
 }

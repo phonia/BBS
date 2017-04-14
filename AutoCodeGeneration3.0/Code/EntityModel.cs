@@ -18,11 +18,14 @@ namespace AutoCodeGeneration3._0.Code
         public String TableName { get; set; }
         public String PKName { get; set; }
         public String PKType { get; set; }
+        public String PKPropertyType { get; set; }
+        public String PKPropertyName { get; set; }
 
-        public List<String> EntityAssemblies { get; set; }
-        public List<String> IRepositoryAssemblies { get; set; }
-        public List<String> RepositoryAssemblies { get; set; }
-        public List<String> ConfigurationAssemblies { get; set; }
+        public List<String> EntityQuoteNamespaces { get; set; }
+        public List<String> IRepositoryQuoteNamespaces { get; set; }
+        public List<String> RepositoryQuoteNamespaces { get; set; }
+        public List<String> ConfigurationQuoteNamespaces { get; set; }
+        public List<String> DataContextQuoteNamespaces { get; set; }
 
         public String EntityNamespace { get; set; }
         public String IRepositoryNamespace { get; set; }
@@ -53,7 +56,9 @@ namespace AutoCodeGeneration3._0.Code
                         Description = it.FieldDescription,
                         DomainName = it.DomainName,
                         PKName = pk != null ? pk.FieldName : String.Empty,
+                        PKPropertyName = pk != null ? pk.PropertyName : String.Empty,
                         PKType = pk != null ? pk.FieldType : String.Empty,
+                        PKPropertyType = pk != null ? pk.PropertyType : String.Empty,
                         TableName = it.TableName,
                         IsComplexyType = it.IsComplexyType(),
                         IsEntityType = it.isEntityType(),
@@ -83,15 +88,19 @@ namespace AutoCodeGeneration3._0.Code
                                 it.EntityProperties.Add(new EntityProperty()
                                 {
                                     IsNavigationProperty = true,
-                                    IsGeneric=false,
-                                    Description=dr.FieldDescription,
-                                    NavigationName=dr.FieldName.Substring(0,dr.FieldName.Length-2),
-                                    NavigationType=dr.ReferenceTable
+                                    IsGeneric = false,
+                                    Description = dr.FieldDescription,
+                                    NavigationName = dr.FieldName.Substring(0, dr.FieldName.Length - 2),
+                                    NavigationType = dr.ReferenceTable,
+                                    PropertyName = dr.FieldName,
+                                    ReferenceTable = dr.ReferenceTable,
+                                    ReferenceField = dr.ReferenceField,
+                                    IsNull=dr.IsNUll
                                 });
                             }
                             it.EntityProperties.Add(new EntityProperty()
                             {
-                                IsCustomProperty = true,
+                                IsCustomProperty = String.IsNullOrWhiteSpace(dr.FieldType)?false:true,
                                 DefaultValue=dr.DefaultValues,
                                 Description=dr.FieldDescription,
                                 FieldName=dr.FieldName,
@@ -111,7 +120,7 @@ namespace AutoCodeGeneration3._0.Code
                         }
                     }
 
-                    if (dr.ReferenceTable.Equals(it.TableName))
+                    if (dr.ReferenceTable.Equals(it.TableName)&&!String.IsNullOrWhiteSpace(dr.ReferenceField))
                     {
                         if (it.EntityProperties == null) it.EntityProperties = new List<EntityProperty>();
                         it.EntityProperties.Add(new EntityProperty()

@@ -16,17 +16,18 @@ namespace Repository
     /// <summary>
     /// User 配置类
     /// </summary>
-    class UserConfiguration:EntityTypeConfiguration<User>
+    public class UserConfiguration:EntityTypeConfiguration<User>
     {
         public UserConfiguration()
         {
             ToTable("Sys_User");
             HasKey(e=>e.Id);
-            Property(e =>e.Id).HasColumnName("Id").HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity).HasColumnType("int").IsRequired();
+            Property(e => e.RowVersion).IsRowVersion();
+            Property(e =>e.Id).HasColumnName("Id").HasColumnType("int").HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity).IsRequired();
             Property(e =>e.AccountName).HasColumnName("AccountName").HasColumnType("nvarchar").HasMaxLength(50).IsRequired();
             Property(e =>e.AccountPassword).HasColumnName("AccountPassword").HasColumnType("nvarchar").HasMaxLength(50).IsRequired();
-            HasRequired(e=>e.Role).WithMany(e=>e.Users).Map(e=>e.MapKey("RoleId"));
-            HasRequired(e=>e.UserGroup).WithMany(e=>e.Users).Map(e=>e.MapKey("UserGroupId"));
+            HasRequired(e=>e.Role).WithMany(e=>e.Users).HasForeignKey(e=>e.RoleId);
+            HasRequired(e=>e.UserGroup).WithMany(e=>e.Users).HasForeignKey(e=>e.UserGroupId);
         }
     }
 }

@@ -244,6 +244,7 @@
             this.buttonIRepository.TabIndex = 3;
             this.buttonIRepository.Text = "引用空间";
             this.buttonIRepository.UseVisualStyleBackColor = true;
+            this.buttonIRepository.Click += new System.EventHandler(this.buttonIRepository_Click);
             // 
             // buttonIRepositoryC
             // 
@@ -263,6 +264,7 @@
             this.buttonConfiguration.TabIndex = 3;
             this.buttonConfiguration.Text = "引用空间";
             this.buttonConfiguration.UseVisualStyleBackColor = true;
+            this.buttonConfiguration.Click += new System.EventHandler(this.buttonConfiguration_Click);
             // 
             // buttonConfigurationC
             // 
@@ -282,6 +284,7 @@
             this.buttonDataContext.TabIndex = 3;
             this.buttonDataContext.Text = "引用空间";
             this.buttonDataContext.UseVisualStyleBackColor = true;
+            this.buttonDataContext.Click += new System.EventHandler(this.buttonDataContext_Click);
             // 
             // buttonDataContextC
             // 
@@ -301,6 +304,7 @@
             this.buttonRepository.TabIndex = 3;
             this.buttonRepository.Text = "引用空间";
             this.buttonRepository.UseVisualStyleBackColor = true;
+            this.buttonRepository.Click += new System.EventHandler(this.buttonRepository_Click);
             // 
             // buttonRepositoryC
             // 
@@ -320,6 +324,7 @@
             this.buttonEntity.TabIndex = 3;
             this.buttonEntity.Text = "引用空间";
             this.buttonEntity.UseVisualStyleBackColor = true;
+            this.buttonEntity.Click += new System.EventHandler(this.buttonEntity_Click);
             // 
             // buttonEntityC
             // 

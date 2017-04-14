@@ -16,7 +16,7 @@ namespace Repository
     /// <summary>
     /// AccountInfo 配置类
     /// </summary>
-    class AccountInfoConfiguration:ComplexTypeConfiguration<AccountInfo>
+    public class AccountInfoConfiguration:ComplexTypeConfiguration<AccountInfo>
     {
         public AccountInfoConfiguration()
         {

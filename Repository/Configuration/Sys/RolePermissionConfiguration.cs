@@ -16,15 +16,16 @@ namespace Repository
     /// <summary>
     /// RolePermission 配置类
     /// </summary>
-    class RolePermissionConfiguration:EntityTypeConfiguration<RolePermission>
+    public class RolePermissionConfiguration:EntityTypeConfiguration<RolePermission>
     {
         public RolePermissionConfiguration()
         {
             ToTable("Sys_RolePermission");
             HasKey(e=>e.Id);
-            Property(e =>e.Id).HasColumnName("Id").HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity).HasColumnType("int").IsRequired();
+            Property(e => e.RowVersion).IsRowVersion();
+            Property(e =>e.Id).HasColumnName("Id").HasColumnType("int").HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity).IsRequired();
             Property(e =>e.PermissionCode).HasColumnName("PermissionCode").HasColumnType("nvarchar").HasMaxLength(50).IsRequired();
-            HasRequired(e=>e.Role).WithMany(e=>e.Permission).Map(e=>e.MapKey("RoleId"));
+            HasRequired(e=>e.Role).WithMany(e=>e.Permission).HasForeignKey(e=>e.RoleId);
         }
     }
 }

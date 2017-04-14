@@ -66,6 +66,36 @@
     <Compile Include="UControl\EntityUControl.Designer.cs">
       <DependentUpon>EntityUControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="Win\ConfigurationQFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Win\ConfigurationQFrm.Designer.cs">
+      <DependentUpon>ConfigurationQFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Win\DataContextQFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Win\DataContextQFrm.Designer.cs">
+      <DependentUpon>DataContextQFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Win\EntityQFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Win\EntityQFrm.Designer.cs">
+      <DependentUpon>EntityQFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Win\IRepositoryQFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Win\IRepositoryQFrm.Designer.cs">
+      <DependentUpon>IRepositoryQFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Win\RepositoryQFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Win\RepositoryQFrm.Designer.cs">
+      <DependentUpon>RepositoryQFrm.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="MainWin.resx">
       <DependentUpon>MainWin.cs</DependentUpon>
     </EmbeddedResource>
@@ -83,6 +113,21 @@
     </EmbeddedResource>
     <EmbeddedResource Include="UControl\EntityUControl.resx">
       <DependentUpon>EntityUControl.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Win\ConfigurationQFrm.resx">
+      <DependentUpon>ConfigurationQFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Win\DataContextQFrm.resx">
+      <DependentUpon>DataContextQFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Win\EntityQFrm.resx">
+      <DependentUpon>EntityQFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Win\IRepositoryQFrm.resx">
+      <DependentUpon>IRepositoryQFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Win\RepositoryQFrm.resx">
+      <DependentUpon>RepositoryQFrm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

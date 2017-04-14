@@ -26,6 +26,16 @@ namespace AutoCodeGeneration3._0
             this.textBox1.Text = @"E:\Code\BBS\数据字典III.xls";
             this.textBox2.Text = Directory.GetCurrentDirectory().ToString();
             this.textBox2.ReadOnly = true;
+            this.FormClosing += MainWin_FormClosing;
+        }
+
+        void MainWin_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            var fs = new FileStream(this.textBox2.Text + "\\Sav.txt", FileMode.OpenOrCreate);
+            BinaryFormatter bf = new BinaryFormatter();
+
+            bf.Serialize(fs, EntityModels);
+            fs.Close();
         }
 
         /// <summary>
@@ -64,10 +74,10 @@ namespace AutoCodeGeneration3._0
                     var temp = bck.Where(b => b.ClassName == it.ClassName && b.DomainName == it.DomainName).FirstOrDefault();
                     if (temp != null)
                     {
-                        it.ConfigurationAssemblies = temp.ConfigurationAssemblies;
-                        it.EntityAssemblies = temp.EntityAssemblies;
-                        it.IRepositoryAssemblies = temp.IRepositoryAssemblies;
-                        it.RepositoryAssemblies = temp.RepositoryAssemblies;
+                        it.ConfigurationQuoteNamespaces = temp.ConfigurationQuoteNamespaces;
+                        it.EntityQuoteNamespaces = temp.EntityQuoteNamespaces;
+                        it.IRepositoryQuoteNamespaces = temp.IRepositoryQuoteNamespaces;
+                        it.RepositoryQuoteNamespaces = temp.RepositoryQuoteNamespaces;
                         it.EntityPath = temp.EntityPath;
                         it.EntityNamespace = temp.EntityNamespace;
                         it.IRepositoryNamespace = temp.IRepositoryNamespace;
@@ -78,6 +88,7 @@ namespace AutoCodeGeneration3._0
                         it.ConfigurationPath = temp.ConfigurationPath;
                         it.DataContextNamespace = temp.DataContextNamespace;
                         it.DataContextPath = temp.DataContextPath;
+                        it.DataContextQuoteNamespaces = temp.DataContextQuoteNamespaces;
                     }
                 });
             }

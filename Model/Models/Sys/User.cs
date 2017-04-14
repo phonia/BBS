@@ -9,6 +9,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using Infrastructure;
+
 namespace Model
 {
     /// <summary>
@@ -34,14 +35,6 @@ namespace Model
         /// 密码
         /// </summary>
         public String AccountPassword { get; set; }
-        /// <summary>
-        /// 个人信息
-        /// </summary>
-        public PersonalInfo PersonalInfo { get; set; }
-        /// <summary>
-        /// 账户信息
-        /// </summary>
-        public AccountInfo AccountInfo { get; set; }
 
         /// <summary>
         /// 导航属性所属角色

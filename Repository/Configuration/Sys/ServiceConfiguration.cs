@@ -16,13 +16,14 @@ namespace Repository
     /// <summary>
     /// Service 配置类
     /// </summary>
-    class ServiceConfiguration:EntityTypeConfiguration<Service>
+    public class ServiceConfiguration:EntityTypeConfiguration<Service>
     {
         public ServiceConfiguration()
         {
             ToTable("Sys_Service");
             HasKey(e=>e.Id);
-            Property(e =>e.Id).HasColumnName("Id").HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity).HasColumnType("int").IsRequired();
+            Property(e => e.RowVersion).IsRowVersion();
+            Property(e =>e.Id).HasColumnName("Id").HasColumnType("int").HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity).IsRequired();
             Property(e =>e.FullName).HasColumnName("FullName").HasColumnType("nvarchar").HasMaxLength(50).IsRequired();
             Property(e =>e.Assembly).HasColumnName("Assembly").HasColumnType("nvarchar").HasMaxLength(50).IsRequired();
         }

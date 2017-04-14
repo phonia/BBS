@@ -16,13 +16,14 @@ namespace Repository
     /// <summary>
     /// UserGroup 配置类
     /// </summary>
-    class UserGroupConfiguration:EntityTypeConfiguration<UserGroup>
+    public class UserGroupConfiguration:EntityTypeConfiguration<UserGroup>
     {
         public UserGroupConfiguration()
         {
             ToTable("Sys_UserGroup");
             HasKey(e=>e.Id);
-            Property(e =>e.Id).HasColumnName("Id").HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity).HasColumnType("int").IsRequired();
+            Property(e => e.RowVersion).IsRowVersion();
+            Property(e =>e.Id).HasColumnName("Id").HasColumnType("int").HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity).IsRequired();
             Property(e =>e.Name).HasColumnName("Name").HasColumnType("nvarchar").HasMaxLength(50).IsRequired();
         }
     }

@@ -9,6 +9,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using Infrastructure;
+
 namespace Model
 {
     /// <summary>
@@ -25,7 +26,7 @@ namespace Model
         /// <summary>
         /// 导航属性所属操作
         /// </summary>
-        public Module ModuleOperate { get; set; }
+        public ModuleOperate ModuleOperate { get; set; }
         /// <summary>
         /// 所属操作
         /// </summary>
@@ -34,7 +35,7 @@ namespace Model
         /// <summary>
         /// 导航属性所属服务方法
         /// </summary>
-        public Service ServiceMethod { get; set; }
+        public ServiceMethod ServiceMethod { get; set; }
         /// <summary>
         /// 所属服务方法
         /// </summary>

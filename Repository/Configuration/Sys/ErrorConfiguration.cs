@@ -16,13 +16,14 @@ namespace Repository
     /// <summary>
     /// Error 配置类
     /// </summary>
-    class ErrorConfiguration:EntityTypeConfiguration<Error>
+    public class ErrorConfiguration:EntityTypeConfiguration<Error>
     {
         public ErrorConfiguration()
         {
             ToTable("Sys_Error");
             HasKey(e=>e.Id);
-            Property(e =>e.Id).HasColumnName("Id").HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity).HasColumnType("int").IsRequired();
+            Property(e => e.RowVersion).IsRowVersion();
+            Property(e =>e.Id).HasColumnName("Id").HasColumnType("int").HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity).IsRequired();
             Property(e =>e.ErrType).HasColumnName("ErrType").HasColumnType("int").IsRequired();
             Property(e =>e.ErrTime).HasColumnName("ErrTime").HasColumnType("datetime").IsRequired();
             Property(e =>e.BrowersVersion).HasColumnName("BrowersVersion").HasColumnType("nvarchar").HasMaxLength(50).IsOptional();

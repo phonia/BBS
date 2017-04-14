@@ -16,7 +16,7 @@ namespace Repository
     /// <summary>
     /// PersonalInfo 配置类
     /// </summary>
-    class PersonalInfoConfiguration:ComplexTypeConfiguration<PersonalInfo>
+    public class PersonalInfoConfiguration:ComplexTypeConfiguration<PersonalInfo>
     {
         public PersonalInfoConfiguration()
         {

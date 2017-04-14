@@ -9,6 +9,7 @@ using System.ComponentModel;
 using System.Linq;
 using System.Text;
 using Infrastructure;
+
 namespace Model
 {
     /// <summary>
@@ -34,11 +35,6 @@ namespace Model
         /// 导航属性领域服务
         /// </summary>
         public IList<ServiceMethod> Methods { get; set; }
-
-        /// <summary>
-        /// 导航属性领域服务
-        /// </summary>
-        public IList<ModuleService> ModuleServices { get; set; }
 
         public Int32? CreateUserId { get; set; }
 
