@@ -1,6 +1,5 @@
 E:\Code\BBS\AutoCodeGeneration3.0\bin\Debug\AutoCodeGeneration3.0.exe
 E:\Code\BBS\AutoCodeGeneration3.0\bin\Debug\AutoCodeGeneration3.0.pdb
-E:\Code\BBS\AutoCodeGeneration3.0\obj\Debug\AutoCodeGeneration3.0.csprojResolveAssemblyReference.cache
 E:\Code\BBS\AutoCodeGeneration3.0\obj\Debug\AutoCodeGeneration3._0.MainWin.resources
 E:\Code\BBS\AutoCodeGeneration3.0\obj\Debug\AutoCodeGeneration3._0.Properties.Resources.resources
 E:\Code\BBS\AutoCodeGeneration3.0\obj\Debug\AutoCodeGeneration3.0.csproj.GenerateResource.Cache
@@ -13,3 +12,7 @@ E:\Code\BBS\AutoCodeGeneration3.0\obj\Debug\AutoCodeGeneration3._0.Win.Configura
 E:\Code\BBS\AutoCodeGeneration3.0\obj\Debug\AutoCodeGeneration3._0.Win.DataContextQFrm.resources
 E:\Code\BBS\AutoCodeGeneration3.0\obj\Debug\AutoCodeGeneration3._0.Win.IRepositoryQFrm.resources
 E:\Code\BBS\AutoCodeGeneration3.0\obj\Debug\AutoCodeGeneration3._0.Win.RepositoryQFrm.resources
+E:\Code\BBS\AutoCodeGeneration3.0\obj\Debug\AutoCodeGeneration3._0.UControl.ViewModelUControl.resources
+E:\Code\BBS\AutoCodeGeneration3.0\obj\Debug\AutoCodeGeneration3.0.csprojResolveAssemblyReference.cache
+E:\Code\BBS\AutoCodeGeneration3.0\obj\Debug\AutoCodeGeneration3._0.Win.ViewModelFrm.resources
+E:\Code\BBS\AutoCodeGeneration3.0\obj\Debug\AutoCodeGeneration3._0.Win.ViewModelQFrm.resources

@@ -1,0 +1,16 @@
+E:\Code\BBS\DataBaseRepositoryTest\bin\Debug\DataBaseRepositoryTest.exe.config
+E:\Code\BBS\DataBaseRepositoryTest\bin\Debug\DataBaseRepositoryTest.exe
+E:\Code\BBS\DataBaseRepositoryTest\bin\Debug\DataBaseRepositoryTest.pdb
+E:\Code\BBS\DataBaseRepositoryTest\bin\Debug\Infrastructure.dll
+E:\Code\BBS\DataBaseRepositoryTest\bin\Debug\Model.dll
+E:\Code\BBS\DataBaseRepositoryTest\bin\Debug\Repository.dll
+E:\Code\BBS\DataBaseRepositoryTest\bin\Debug\EntityFramework.dll
+E:\Code\BBS\DataBaseRepositoryTest\bin\Debug\Infrastructure.pdb
+E:\Code\BBS\DataBaseRepositoryTest\bin\Debug\Model.pdb
+E:\Code\BBS\DataBaseRepositoryTest\bin\Debug\Repository.pdb
+E:\Code\BBS\DataBaseRepositoryTest\bin\Debug\EntityFramework.xml
+E:\Code\BBS\DataBaseRepositoryTest\obj\Debug\DataBaseRepositoryTest.csprojResolveAssemblyReference.cache
+E:\Code\BBS\DataBaseRepositoryTest\obj\Debug\DataBaseRepositoryTest.exe
+E:\Code\BBS\DataBaseRepositoryTest\obj\Debug\DataBaseRepositoryTest.pdb
+E:\Code\BBS\DataBaseRepositoryTest\bin\Debug\EntityFramework.SqlServer.dll
+E:\Code\BBS\DataBaseRepositoryTest\bin\Debug\EntityFramework.SqlServer.xml

@@ -66,6 +66,12 @@
     <Compile Include="UControl\EntityUControl.Designer.cs">
       <DependentUpon>EntityUControl.cs</DependentUpon>
     </Compile>
+    <Compile Include="UControl\ViewModelUControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UControl\ViewModelUControl.Designer.cs">
+      <DependentUpon>ViewModelUControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="Win\ConfigurationQFrm.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -96,6 +102,24 @@
     <Compile Include="Win\RepositoryQFrm.Designer.cs">
       <DependentUpon>RepositoryQFrm.cs</DependentUpon>
     </Compile>
+    <Compile Include="Win\ViewModelFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Win\ViewModelFrm.Designer.cs">
+      <DependentUpon>ViewModelFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Win\ViewModelQFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Win\ViewModelQFrm.Designer.cs">
+      <DependentUpon>ViewModelQFrm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Win\ViewPropertyFrm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Win\ViewPropertyFrm.Designer.cs">
+      <DependentUpon>ViewPropertyFrm.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="MainWin.resx">
       <DependentUpon>MainWin.cs</DependentUpon>
     </EmbeddedResource>
@@ -114,6 +138,9 @@
     <EmbeddedResource Include="UControl\EntityUControl.resx">
       <DependentUpon>EntityUControl.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="UControl\ViewModelUControl.resx">
+      <DependentUpon>ViewModelUControl.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Win\ConfigurationQFrm.resx">
       <DependentUpon>ConfigurationQFrm.cs</DependentUpon>
     </EmbeddedResource>
@@ -128,6 +155,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Win\RepositoryQFrm.resx">
       <DependentUpon>RepositoryQFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Win\ViewModelFrm.resx">
+      <DependentUpon>ViewModelFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Win\ViewModelQFrm.resx">
+      <DependentUpon>ViewModelQFrm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

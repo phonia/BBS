@@ -18,15 +18,16 @@ namespace AutoCodeGeneration3._0
     {
         public List<DataRecord> DataRecords { get; set; }
 
-        public List<EntityModel> EntityModels { get; set; }
+        public SaveBack SaveBack { get; set; }
 
         public MainWin()
         {
             InitializeComponent();
             this.textBox1.Text = @"E:\Code\BBS\数据字典III.xls";
-            this.textBox2.Text = Directory.GetCurrentDirectory().ToString();
+            this.textBox2.Text = @"E:\Code\BBS";
             this.textBox2.ReadOnly = true;
             this.FormClosing += MainWin_FormClosing;
+            //SaveBack = new SaveBack();
         }
 
         void MainWin_FormClosing(object sender, FormClosingEventArgs e)
@@ -34,7 +35,11 @@ namespace AutoCodeGeneration3._0
             var fs = new FileStream(this.textBox2.Text + "\\Sav.txt", FileMode.OpenOrCreate);
             BinaryFormatter bf = new BinaryFormatter();
 
-            bf.Serialize(fs, EntityModels);
+            if (SaveBack == null) SaveBack = new SaveBack();
+            if (SaveBack.EntityModels == null) SaveBack.EntityModels = new List<EntityModel>();
+            if (SaveBack.ViewModels == null) SaveBack.ViewModels = new List<ViewModel>();
+
+            bf.Serialize(fs, SaveBack);
             fs.Close();
         }
 
@@ -52,8 +57,8 @@ namespace AutoCodeGeneration3._0
                     var fs = new FileStream(this.textBox2.Text + "\\Sav.txt", FileMode.Open);
                     BinaryFormatter bf = new BinaryFormatter();
                     //People p = bf.Deserialize(fs) as People;
-                    var fromBck = bf.Deserialize(fs) as List<EntityModel>;
-                    Reset(fromExcel, fromBck);
+                    this.SaveBack = bf.Deserialize(fs) as SaveBack;
+                    Reset(fromExcel, SaveBack.EntityModels);
                 }
                 else
                 {
@@ -92,7 +97,8 @@ namespace AutoCodeGeneration3._0
                     }
                 });
             }
-            this.EntityModels = excel;
+            //this.EntityModels = excel;
+            this.SaveBack.EntityModels = excel;
         }
 
         /// <summary>
@@ -145,24 +151,21 @@ namespace AutoCodeGeneration3._0
             if (tp != null)
             {
                 EntityUControl euc = new EntityUControl();
-                euc.Init(EntityModels, tp.Height, tp.Width);
+                euc.Init(SaveBack.EntityModels, tp.Height, tp.Width);
                 tp.Controls.Add(euc);
             }
         }
 
-        private void DataBaseBtn_Click(object sender, EventArgs e)
-        {
-
-        }
-
-        private void RepositoryBtn_Click(object sender, EventArgs e)
-        {
-
-        }
-
         private void ViewModelBtn_Click(object sender, EventArgs e)
         {
-
+            if (DataRecords == null) Init();
+            TabPage tp = GetTabPage("视图模型");
+            if (tp != null)
+            {
+                ViewModelUControl vmuc = new ViewModelUControl();
+                vmuc.Init(SaveBack,tp.Height,tp.Width);
+                tp.Controls.Add(vmuc);
+            }
         }
 
         private void BusinessBtn_Click(object sender, EventArgs e)
@@ -175,7 +178,11 @@ namespace AutoCodeGeneration3._0
             var fs = new FileStream(this.textBox2.Text + "\\Sav.txt", FileMode.OpenOrCreate);
             BinaryFormatter bf = new BinaryFormatter();
 
-            bf.Serialize(fs, EntityModels);
+            if (SaveBack == null) SaveBack = new SaveBack();
+            if (SaveBack.EntityModels == null) SaveBack.EntityModels = new List<EntityModel>();
+            if (SaveBack.ViewModels == null) SaveBack.ViewModels = new List<ViewModel>();
+
+            bf.Serialize(fs, SaveBack);
             fs.Close();
         }
 

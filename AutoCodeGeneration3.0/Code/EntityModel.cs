@@ -6,6 +6,13 @@ using System.Text;
 namespace AutoCodeGeneration3._0.Code
 {
     [Serializable]
+    public class SaveBack
+    {
+        public List<EntityModel> EntityModels { get; set; }
+        public List<ViewModel> ViewModels{get;set;}
+    }
+
+    [Serializable]
     public class EntityModel
     {
         public String DomainName { get; set; }
@@ -172,5 +179,116 @@ namespace AutoCodeGeneration3._0.Code
 
         //复杂属性
         public bool IsComplexyType { get; set; }
+    }
+
+    [Serializable]
+    public class ViewModel
+    {
+        public String DomainName { get; set; }
+        public String ClassName { get; set; }
+        public String MappingEntityName { get; set; }
+        public bool IsClass { get; set; }
+        public bool IsEnum { get; set; }
+        public String Namespace { get; set; }
+        public String Path { get; set; }
+        public List<ViewProperty> ViewProperties { get; set; }
+        public List<String> QuoteNamespace { get; set; }
+
+        public static List<ViewModel> ConvertEntityToViewModel(List<EntityModel> entitymodels)
+        {
+            List<ViewModel> viewModels = new List<ViewModel>();
+            if (entitymodels != null && entitymodels.Count > 0)
+            {
+                entitymodels.ForEach(it => {
+                    ViewModel temp = null;
+                    if (it.IsEnum)
+                    {
+                        temp = new ViewModel();
+                        temp.IsEnum = true;
+                        temp.ClassName = it.ClassName+"DTO";
+                        temp.MappingEntityName = it.ClassName;
+                        temp.DomainName = it.DomainName;
+                        if (it.EntityProperties != null && it.EntityProperties.Count > 0)
+                        {
+                            it.EntityProperties.ForEach(ep => {
+                                if (ep.IsEnumItem)
+                                {
+                                    if (temp.ViewProperties == null) temp.ViewProperties = new List<ViewProperty>();
+                                    temp.ViewProperties.Add(new ViewProperty()
+                                    {
+                                        IsGeneric = false,
+                                        IsMappingGeneric=false,
+                                        PropertyName=ep.ItemName,
+                                        PropertyType=string.Empty,
+                                        MappingPropertyName=ep.ItemName,
+                                        MappingPropertyType=string.Empty
+                                    });
+                                }
+                            });
+                        }
+                        viewModels.Add(temp);
+                    }
+                    ///
+                    if (it.IsEntityType) {
+                        temp = new ViewModel()
+                        {
+                            ClassName = it.ClassName+"DTO",
+                            IsClass=true,
+                            IsEnum=false,
+                            MappingEntityName=it.ClassName,
+                            DomainName=it.DomainName
+                        };
+                        if (it.EntityProperties != null && it.EntityProperties.Count > 0)
+                        {
+                            it.EntityProperties.ForEach(ep => {
+                                if (temp.ViewProperties == null) temp.ViewProperties = new List<ViewProperty>();
+                                if (ep.IsCustomProperty)
+                                {
+                                    temp.ViewProperties.Add(new ViewProperty()
+                                    {
+                                        IsGeneric = false,
+                                        IsMappingGeneric = false,
+                                        PropertyName = ep.PropertyName,
+                                        PropertyType = ep.PropertyType,
+                                        MappingPropertyName = ep.PropertyName,
+                                        MappingPropertyType = ep.PropertyType
+                                    });
+                                }
+
+                                if (ep.IsNavigationProperty)
+                                {
+                                    if (ep.IsGeneric)
+                                    { }
+                                    else
+                                    { }
+                                }
+
+                                if (ep.IsComplexyType)
+                                { }
+                            });
+                        }
+                        viewModels.Add(temp);
+                    }
+
+                    if (it.IsComplexyType) { }
+                    //if (it.EntityProperties != null && it.EntityProperties.Count > 0)
+                    //{
+                    //    it.EntityProperties.ForEach(ep => { });
+                    //}
+                });
+            }
+            return viewModels;
+        }
+    }
+
+    [Serializable]
+    public class ViewProperty
+    {
+        public String PropertyName { get; set; }
+        public String PropertyType { get; set; }
+        public String MappingPropertyName { get; set; }
+        public String MappingPropertyType { get; set; }
+        public bool IsGeneric { get; set; }
+        public bool IsMappingGeneric { get; set; }
     }
 }
