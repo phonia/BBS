@@ -3,10 +3,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 
-namespace Services.Interface
+namespace Services
 {
-    public interface ISysService:IDomainService
+    public interface IDomainService
     {
-        void InitDataBase();
     }
 }

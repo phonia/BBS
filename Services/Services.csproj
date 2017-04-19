@@ -39,6 +39,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="IDomainService.cs" />
     <Compile Include="Implementation\SysService.cs" />
     <Compile Include="Interface\ISysService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

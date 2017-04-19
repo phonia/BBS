@@ -16,6 +16,8 @@ namespace AutoCodeGeneration3._0
 {
     public partial class MainWin : Form
     {
+        private static object _lockObject = new object();
+
         public List<DataRecord> DataRecords { get; set; }
 
         public SaveBack SaveBack { get; set; }
@@ -27,20 +29,44 @@ namespace AutoCodeGeneration3._0
             this.textBox2.Text = @"E:\Code\BBS";
             this.textBox2.ReadOnly = true;
             this.FormClosing += MainWin_FormClosing;
+            this.MaximizeBox = false;
             //SaveBack = new SaveBack();
         }
 
         void MainWin_FormClosing(object sender, FormClosingEventArgs e)
         {
-            var fs = new FileStream(this.textBox2.Text + "\\Sav.txt", FileMode.OpenOrCreate);
-            BinaryFormatter bf = new BinaryFormatter();
+            try
+            {
+                lock (_lockObject)
+                {
+                    var fs = new FileStream(this.textBox2.Text + "\\Sav.txt", FileMode.OpenOrCreate);
+                    BinaryFormatter bf = new BinaryFormatter();
 
-            if (SaveBack == null) SaveBack = new SaveBack();
-            if (SaveBack.EntityModels == null) SaveBack.EntityModels = new List<EntityModel>();
-            if (SaveBack.ViewModels == null) SaveBack.ViewModels = new List<ViewModel>();
+                    //if (SaveBack == null) SaveBack = new SaveBack();
+                    if (SaveBack.EntityModels == null) SaveBack.EntityModels = new List<EntityModel>();
+                    if (SaveBack.ViewModels == null) SaveBack.ViewModels = new List<ViewModel>();
 
-            bf.Serialize(fs, SaveBack);
-            fs.Close();
+                    bf.Serialize(fs, SaveBack);
+                    fs.Close();
+                    fs.Dispose();
+                }
+            }
+            catch (Exception ex)
+            {
+                lock (_lockObject)
+                {
+                    var fs = new FileStream(this.textBox2.Text + "\\Sav.txt", FileMode.OpenOrCreate);
+                    BinaryFormatter bf = new BinaryFormatter();
+
+                    //if (SaveBack == null) SaveBack = new SaveBack();
+                    if (SaveBack.EntityModels == null) SaveBack.EntityModels = new List<EntityModel>();
+                    if (SaveBack.ViewModels == null) SaveBack.ViewModels = new List<ViewModel>();
+
+                    bf.Serialize(fs, SaveBack);
+                    fs.Close();
+                    fs.Dispose();
+                }
+            }
         }
 
         /// <summary>
@@ -54,11 +80,16 @@ namespace AutoCodeGeneration3._0
                 var fromExcel = EntityModel.ConvertToEntityModel(this.DataRecords);
                 if (File.Exists(this.textBox2.Text + "\\Sav.txt"))
                 {
-                    var fs = new FileStream(this.textBox2.Text + "\\Sav.txt", FileMode.Open);
-                    BinaryFormatter bf = new BinaryFormatter();
-                    //People p = bf.Deserialize(fs) as People;
-                    this.SaveBack = bf.Deserialize(fs) as SaveBack;
-                    Reset(fromExcel, SaveBack.EntityModels);
+                    lock (_lockObject)
+                    {
+                        var fs = new FileStream(this.textBox2.Text + "\\Sav.txt", FileMode.Open);
+                        BinaryFormatter bf = new BinaryFormatter();
+                        //People p = bf.Deserialize(fs) as People;
+                        this.SaveBack = bf.Deserialize(fs) as SaveBack;
+                        Reset(fromExcel, SaveBack.EntityModels);
+                        fs.Close();
+                        fs.Dispose();
+                    }
                 }
                 else
                 {
@@ -69,6 +100,7 @@ namespace AutoCodeGeneration3._0
             {
                 throw ex;
             }
+            if (this.tabControl1.Controls.Count > 0) this.tabControl1.Controls.Clear();
         }
 
         void Reset(List<EntityModel> excel, List<EntityModel> bck)
@@ -98,7 +130,20 @@ namespace AutoCodeGeneration3._0
                 });
             }
             //this.EntityModels = excel;
+            if (this.SaveBack == null) this.SaveBack = new SaveBack();
             this.SaveBack.EntityModels = excel;
+        }
+
+        void ReadBak()
+        {
+            lock (_lockObject)
+            { }
+        }
+
+        void WriteBak()
+        {
+            lock (_lockObject)
+            { }
         }
 
         /// <summary>
@@ -151,7 +196,8 @@ namespace AutoCodeGeneration3._0
             if (tp != null)
             {
                 EntityUControl euc = new EntityUControl();
-                euc.Init(SaveBack.EntityModels, tp.Height, tp.Width);
+                euc.SaveBack = this.SaveBack;
+                euc.Init(tp.Height, tp.Width);
                 tp.Controls.Add(euc);
             }
         }
@@ -163,7 +209,8 @@ namespace AutoCodeGeneration3._0
             if (tp != null)
             {
                 ViewModelUControl vmuc = new ViewModelUControl();
-                vmuc.Init(SaveBack,tp.Height,tp.Width);
+                vmuc.SaveBack = this.SaveBack;
+                vmuc.Init(tp.Height,tp.Width);
                 tp.Controls.Add(vmuc);
             }
         }
@@ -175,15 +222,19 @@ namespace AutoCodeGeneration3._0
 
         private void SaveBtn_Click(object sender, EventArgs e)
         {
-            var fs = new FileStream(this.textBox2.Text + "\\Sav.txt", FileMode.OpenOrCreate);
-            BinaryFormatter bf = new BinaryFormatter();
+            lock (_lockObject)
+            {
+                var fs = new FileStream(this.textBox2.Text + "\\Sav.txt", FileMode.OpenOrCreate);
+                BinaryFormatter bf = new BinaryFormatter();
 
-            if (SaveBack == null) SaveBack = new SaveBack();
-            if (SaveBack.EntityModels == null) SaveBack.EntityModels = new List<EntityModel>();
-            if (SaveBack.ViewModels == null) SaveBack.ViewModels = new List<ViewModel>();
+                //if (SaveBack == null) SaveBack = new SaveBack();
+                if (SaveBack.EntityModels == null) SaveBack.EntityModels = new List<EntityModel>();
+                if (SaveBack.ViewModels == null) SaveBack.ViewModels = new List<ViewModel>();
 
-            bf.Serialize(fs, SaveBack);
-            fs.Close();
+                bf.Serialize(fs, SaveBack);
+                fs.Close();
+                fs.Dispose();
+            }
         }
 
         private void LoadBtn_Click(object sender, EventArgs e)

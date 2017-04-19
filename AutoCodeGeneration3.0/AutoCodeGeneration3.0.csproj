@@ -54,6 +54,12 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UControl\BusinessUControl.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="UControl\BusinessUControl.Designer.cs">
+      <DependentUpon>BusinessUControl.cs</DependentUpon>
+    </Compile>
     <Compile Include="UControl\DataDictionaryUControl.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -132,6 +138,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="UControl\BusinessUControl.resx">
+      <DependentUpon>BusinessUControl.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="UControl\DataDictionaryUControl.resx">
       <DependentUpon>DataDictionaryUControl.cs</DependentUpon>
     </EmbeddedResource>
@@ -161,6 +170,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Win\ViewModelQFrm.resx">
       <DependentUpon>ViewModelQFrm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Win\ViewPropertyFrm.resx">
+      <DependentUpon>ViewPropertyFrm.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

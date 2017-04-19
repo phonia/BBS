@@ -14,7 +14,9 @@ namespace AutoCodeGeneration3._0.UControl
 {
     public partial class EntityUControl : UserControl
     {
-        public List<EntityModel> EntityModels { get; set; }
+        //public List<EntityModel> EntityModels { get; set; }
+
+        public SaveBack SaveBack { get; set; }
 
         public EntityUControl()
         {
@@ -34,14 +36,15 @@ namespace AutoCodeGeneration3._0.UControl
 
         void textBoxRepositorySpace_LostFocus(object sender, EventArgs e)
         {
-            EntityModels.ForEach(it => {
+            SaveBack.EntityModels.ForEach(it =>
+            {
                 it.RepositoryNamespace = this.textBoxRepositorySpace.Text.Trim();
             });
         }
 
         void textBoxRepositoryPath_LostFocus(object sender, EventArgs e)
         {
-            EntityModels.ForEach(it =>
+            SaveBack.EntityModels.ForEach(it =>
             {
                 it.RepositoryPath = this.textBoxRepositoryPath.Text.Trim();
             });
@@ -49,7 +52,7 @@ namespace AutoCodeGeneration3._0.UControl
 
         void textBoxIRepositorySpace_LostFocus(object sender, EventArgs e)
         {
-            EntityModels.ForEach(it =>
+            SaveBack.EntityModels.ForEach(it =>
             {
                 it.IRepositoryNamespace = this.textBoxIRepositorySpace.Text.Trim();
             });
@@ -57,7 +60,7 @@ namespace AutoCodeGeneration3._0.UControl
 
         void textBoxIRepositoryPath_LostFocus(object sender, EventArgs e)
         {
-            EntityModels.ForEach(it =>
+            SaveBack.EntityModels.ForEach(it =>
             {
                 it.IRepositoryPath = this.textBoxIRepositoryPath.Text.Trim();
             });
@@ -65,7 +68,7 @@ namespace AutoCodeGeneration3._0.UControl
 
         void textBoxEntitySapce_LostFocus(object sender, EventArgs e)
         {
-            EntityModels.ForEach(it =>
+            SaveBack.EntityModels.ForEach(it =>
             {
                 it.EntityNamespace = this.textBoxEntitySapce.Text.Trim();
             });
@@ -73,7 +76,7 @@ namespace AutoCodeGeneration3._0.UControl
 
         void textboxEntityPath_LostFocus(object sender, EventArgs e)
         {
-            EntityModels.ForEach(it =>
+            SaveBack.EntityModels.ForEach(it =>
             {
                 it.EntityPath = this.textboxEntityPath.Text.Trim();
             });
@@ -81,7 +84,7 @@ namespace AutoCodeGeneration3._0.UControl
 
         void textBoxDataContextSapce_LostFocus(object sender, EventArgs e)
         {
-            EntityModels.ForEach(it =>
+            SaveBack.EntityModels.ForEach(it =>
             {
                 it.DataContextNamespace = this.textBoxDataContextSapce.Text.Trim();
             });
@@ -89,7 +92,7 @@ namespace AutoCodeGeneration3._0.UControl
 
         void textBoxDataContextPath_LostFocus(object sender, EventArgs e)
         {
-            EntityModels.ForEach(it =>
+            SaveBack.EntityModels.ForEach(it =>
             {
                 it.DataContextPath = this.textBoxDataContextPath.Text.Trim();
             });
@@ -97,7 +100,7 @@ namespace AutoCodeGeneration3._0.UControl
 
         void textBoxConfigurationPath_LostFocus(object sender, EventArgs e)
         {
-            EntityModels.ForEach(it =>
+            SaveBack.EntityModels.ForEach(it =>
             {
                 it.ConfigurationPath = this.textBoxConfigurationPath.Text.Trim();
             });
@@ -105,7 +108,7 @@ namespace AutoCodeGeneration3._0.UControl
 
         void textBoxConfigruationSpace_LostFocus(object sender, EventArgs e)
         {
-            EntityModels.ForEach(it =>
+            SaveBack.EntityModels.ForEach(it =>
             {
                 it.ConfigurationNamespace = this.textBoxConfigruationSpace.Text.Trim();
             });
@@ -116,42 +119,42 @@ namespace AutoCodeGeneration3._0.UControl
 
         }
 
-        public void Init(List<EntityModel> entityModels,int heigth,int width)
+        public void Init(int heigth,int width)
         {
             //this.EntityModels = EntityModel.ConvertToEntityModel(dataRecords);
             this.Height = heigth;
             this.Width = width;
             this.dataGridView1.Width = width;
             this.dataGridView1.Height = heigth - 140;
-            this.EntityModels = entityModels;
+            //this.SaveBack.EntityModels = entityModels;
             DataBind();
         }
 
         void DataBind()
         {
             this.dataGridView1.MultiSelect = false;
-            this.dataGridView1.DataSource = EntityModels;
-            if (EntityModels != null && EntityModels.Count > 0)
+            this.dataGridView1.DataSource = SaveBack.EntityModels;
+            if (SaveBack.EntityModels != null && SaveBack.EntityModels.Count > 0)
             {
 
-                this.textBoxConfigruationSpace.Text = EntityModels.First().ConfigurationNamespace;
-                this.textBoxConfigurationPath.Text = EntityModels.First().ConfigurationPath;
-                this.textBoxDataContextPath.Text = EntityModels.First().DataContextPath;
-                this.textBoxDataContextSapce.Text = EntityModels.First().DataContextNamespace;
-                this.textboxEntityPath.Text = EntityModels.First().EntityPath;
-                this.textBoxEntitySapce.Text = EntityModels.First().EntityNamespace;
-                this.textBoxIRepositoryPath.Text = EntityModels.First().IRepositoryPath;
-                this.textBoxIRepositorySpace.Text = EntityModels.First().IRepositoryNamespace;
-                this.textBoxRepositoryPath.Text = EntityModels.First().RepositoryPath;
-                this.textBoxRepositorySpace.Text = EntityModels.First().RepositoryNamespace;
+                this.textBoxConfigruationSpace.Text = SaveBack.EntityModels.First().ConfigurationNamespace;
+                this.textBoxConfigurationPath.Text = SaveBack.EntityModels.First().ConfigurationPath;
+                this.textBoxDataContextPath.Text = SaveBack.EntityModels.First().DataContextPath;
+                this.textBoxDataContextSapce.Text = SaveBack.EntityModels.First().DataContextNamespace;
+                this.textboxEntityPath.Text = SaveBack.EntityModels.First().EntityPath;
+                this.textBoxEntitySapce.Text = SaveBack.EntityModels.First().EntityNamespace;
+                this.textBoxIRepositoryPath.Text = SaveBack.EntityModels.First().IRepositoryPath;
+                this.textBoxIRepositorySpace.Text = SaveBack.EntityModels.First().IRepositoryNamespace;
+                this.textBoxRepositoryPath.Text = SaveBack.EntityModels.First().RepositoryPath;
+                this.textBoxRepositorySpace.Text = SaveBack.EntityModels.First().RepositoryNamespace;
             }
         }
 
         private void buttonEntityC_Click(object sender, EventArgs e)
         {
-            if (EntityModels != null && EntityModels.Count > 0)
+            if (SaveBack.EntityModels != null && SaveBack.EntityModels.Count > 0)
             {
-                EntityModels.ForEach(it =>
+                SaveBack.EntityModels.ForEach(it =>
                 {
                     if (!Directory.Exists(it.EntityPath + "\\" + it.DomainName))
                     {
@@ -308,9 +311,10 @@ namespace AutoCodeGeneration3._0.UControl
 
         private void buttonIRepositoryC_Click(object sender, EventArgs e)
         {
-            if (EntityModels != null && EntityModels.Count > 0)
+            if (SaveBack.EntityModels != null && SaveBack.EntityModels.Count > 0)
             {
-                EntityModels.ForEach(it => {
+                SaveBack.EntityModels.ForEach(it =>
+                {
                     if (it.IsEntityType)
                     {
                         if (!Directory.Exists(it.IRepositoryPath + "\\" + it.DomainName))
@@ -358,9 +362,10 @@ namespace AutoCodeGeneration3._0.UControl
 
         private void buttonRepositoryC_Click(object sender, EventArgs e)
         {
-            if (EntityModels != null && EntityModels.Count > 0)
+            if (SaveBack.EntityModels != null && SaveBack.EntityModels.Count > 0)
             {
-                EntityModels.ForEach(it => {
+                SaveBack.EntityModels.ForEach(it =>
+                {
                     if (it.IsEntityType)
                     {
                         if (!Directory.Exists(it.RepositoryPath + "\\" + it.DomainName))
@@ -407,9 +412,10 @@ namespace AutoCodeGeneration3._0.UControl
 
         private void buttonConfigurationC_Click(object sender, EventArgs e)
         {
-            if (EntityModels != null && EntityModels.Count > 0)
+            if (SaveBack.EntityModels != null && SaveBack.EntityModels.Count > 0)
             {
-                EntityModels.ForEach(it => {
+                SaveBack.EntityModels.ForEach(it =>
+                {
                     if (it.IsEntityType||it.IsComplexyType)
                     {
                         if (!Directory.Exists(it.ConfigurationPath + "\\" + it.DomainName))
@@ -511,10 +517,10 @@ namespace AutoCodeGeneration3._0.UControl
 
         private void buttonDataContextC_Click(object sender, EventArgs e)
         {
-            if (EntityModels != null && EntityModels.Count > 0)
+            if (SaveBack.EntityModels != null && SaveBack.EntityModels.Count > 0)
             {
-                if (this.checkBoxDataContext.Checked == false && File.Exists(EntityModels.First().DataContextPath + "\\DataContext.cs")) return;
-                FileStream fs = new FileStream(EntityModels.First().DataContextPath + "\\DataContext.cs", FileMode.Create);
+                if (this.checkBoxDataContext.Checked == false && File.Exists(SaveBack.EntityModels.First().DataContextPath + "\\DataContext.cs")) return;
+                FileStream fs = new FileStream(SaveBack.EntityModels.First().DataContextPath + "\\DataContext.cs", FileMode.Create);
                 using (var sw = new StreamWriter(fs))
                 {
                     sw.WriteLine("/*==================================================");
@@ -528,12 +534,12 @@ namespace AutoCodeGeneration3._0.UControl
                     sw.WriteLine("using System.Data.Entity;");
                     sw.WriteLine("using System.Linq;");
                     sw.WriteLine("using System.Text;");
-                    if (EntityModels.First().DataContextQuoteNamespaces != null && EntityModels.First().DataContextQuoteNamespaces.Count > 0)
+                    if (SaveBack.EntityModels.First().DataContextQuoteNamespaces != null && SaveBack.EntityModels.First().DataContextQuoteNamespaces.Count > 0)
                     {
-                        EntityModels.First().DataContextQuoteNamespaces.ForEach(ep => sw.WriteLine(ep));
+                        SaveBack.EntityModels.First().DataContextQuoteNamespaces.ForEach(ep => sw.WriteLine(ep));
                     }
                     sw.WriteLine("");
-                    sw.WriteLine("namespace " + EntityModels.First().DataContextNamespace);
+                    sw.WriteLine("namespace " + SaveBack.EntityModels.First().DataContextNamespace);
                     sw.WriteLine("{");
                     sw.WriteLine("    public class DataContext:DbContext,IDisposable");
                     sw.WriteLine("    {");
@@ -544,7 +550,8 @@ namespace AutoCodeGeneration3._0.UControl
                     sw.WriteLine("");
                     sw.WriteLine("        public DataContext(String connectionStrings) : base(connectionStrings) { }");
                     sw.WriteLine("");
-                    EntityModels.ForEach(it => {
+                    SaveBack.EntityModels.ForEach(it =>
+                    {
                         if (it.IsEntityType)
                         {
                             sw.WriteLine("        /// <summary>");
@@ -557,7 +564,8 @@ namespace AutoCodeGeneration3._0.UControl
 
                     sw.WriteLine("        protected override void OnModelCreating(DbModelBuilder modelBuilder)");
                     sw.WriteLine("        {");
-                    EntityModels.ForEach(it => {
+                    SaveBack.EntityModels.ForEach(it =>
+                    {
                         if (it.IsEntityType)
                         {
                             sw.WriteLine("            modelBuilder.Configurations.Add(new " + it.ClassName + "Configuration());");
@@ -584,56 +592,56 @@ namespace AutoCodeGeneration3._0.UControl
         private void buttonEntity_Click(object sender, EventArgs e)
         {
             EntityQFrm eqf = new EntityQFrm();
-            eqf.Init(EntityModels != null && EntityModels.Count > 0 ? EntityModels.First().EntityQuoteNamespaces : null);
+            eqf.Init(SaveBack.EntityModels != null && SaveBack.EntityModels.Count > 0 ? SaveBack.EntityModels.First().EntityQuoteNamespaces : null);
             if (eqf.ShowDialog() == DialogResult.Cancel)
             {
-                if(EntityModels!=null)
-                    EntityModels.ForEach(it => it.EntityQuoteNamespaces = eqf.EntityQuoteNamespace);
+                if (SaveBack.EntityModels != null)
+                    SaveBack.EntityModels.ForEach(it => it.EntityQuoteNamespaces = eqf.EntityQuoteNamespace);
             }
         }
 
         private void buttonIRepository_Click(object sender, EventArgs e)
         {
             IRepositoryQFrm irqf = new IRepositoryQFrm();
-            irqf.Init(EntityModels != null && EntityModels.Count > 0 ? EntityModels.First().IRepositoryQuoteNamespaces : null);
+            irqf.Init(SaveBack.EntityModels != null && SaveBack.EntityModels.Count > 0 ? SaveBack.EntityModels.First().IRepositoryQuoteNamespaces : null);
             if (irqf.ShowDialog() == DialogResult.Cancel)
             {
-                if (EntityModels != null)
-                    EntityModels.ForEach(it => it.IRepositoryQuoteNamespaces = irqf.IRepositroyQuoteNamespace);
+                if (SaveBack.EntityModels != null)
+                    SaveBack.EntityModels.ForEach(it => it.IRepositoryQuoteNamespaces = irqf.IRepositroyQuoteNamespace);
             }
         }
 
         private void buttonRepository_Click(object sender, EventArgs e)
         {
             RepositoryQFrm rqf = new RepositoryQFrm();
-            rqf.Init(EntityModels != null && EntityModels.Count > 0 ? EntityModels.First().RepositoryQuoteNamespaces : null);
+            rqf.Init(SaveBack.EntityModels != null && SaveBack.EntityModels.Count > 0 ? SaveBack.EntityModels.First().RepositoryQuoteNamespaces : null);
             if (rqf.ShowDialog() == DialogResult.Cancel)
             {
-                if (EntityModels != null)
-                    EntityModels.ForEach(it => it.RepositoryQuoteNamespaces = rqf.ReposiotryQuoteNamespace);
+                if (SaveBack.EntityModels != null)
+                    SaveBack.EntityModels.ForEach(it => it.RepositoryQuoteNamespaces = rqf.ReposiotryQuoteNamespace);
             }
         }
 
         private void buttonConfiguration_Click(object sender, EventArgs e)
         {
             ConfigurationQFrm cqf = new ConfigurationQFrm();
-            cqf.Init(EntityModels != null && EntityModels.Count > 0 ? EntityModels.First().ConfigurationQuoteNamespaces : null);
+            cqf.Init(SaveBack.EntityModels != null && SaveBack.EntityModels.Count > 0 ? SaveBack.EntityModels.First().ConfigurationQuoteNamespaces : null);
             if (cqf.ShowDialog() == DialogResult.Cancel)
             {
-                if (EntityModels != null)
-                    EntityModels.ForEach(it => it.ConfigurationQuoteNamespaces = cqf.ConfigurationQuoteNamesapce);
+                if (SaveBack.EntityModels != null)
+                    SaveBack.EntityModels.ForEach(it => it.ConfigurationQuoteNamespaces = cqf.ConfigurationQuoteNamesapce);
             }
         }
 
         private void buttonDataContext_Click(object sender, EventArgs e)
         {
             DataContextQFrm dqf = new DataContextQFrm();
-            dqf.Init(EntityModels != null && EntityModels.Count > 0 ? EntityModels.First().DataContextQuoteNamespaces : null);
+            dqf.Init(SaveBack.EntityModels != null && SaveBack.EntityModels.Count > 0 ? SaveBack.EntityModels.First().DataContextQuoteNamespaces : null);
             if (dqf.ShowDialog() == DialogResult.Cancel)
             {
-                if (EntityModels != null)
+                if (SaveBack.EntityModels != null)
                 {
-                    EntityModels.ForEach(it => it.DataContextQuoteNamespaces = dqf.DataContextQuoteNamespace);
+                    SaveBack.EntityModels.ForEach(it => it.DataContextQuoteNamespaces = dqf.DataContextQuoteNamespace);
                 }
             }
         }

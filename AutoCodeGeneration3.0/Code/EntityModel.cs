@@ -183,10 +183,11 @@ namespace AutoCodeGeneration3._0.Code
 
     [Serializable]
     public class ViewModel
-    {
-        public String DomainName { get; set; }
+    {        
         public String ClassName { get; set; }
         public String MappingEntityName { get; set; }
+        public String Description { get; set; }
+        public String DomainName { get; set; }
         public bool IsClass { get; set; }
         public bool IsEnum { get; set; }
         public String Namespace { get; set; }
@@ -208,6 +209,7 @@ namespace AutoCodeGeneration3._0.Code
                         temp.ClassName = it.ClassName+"DTO";
                         temp.MappingEntityName = it.ClassName;
                         temp.DomainName = it.DomainName;
+                        temp.Description = it.Description;
                         if (it.EntityProperties != null && it.EntityProperties.Count > 0)
                         {
                             it.EntityProperties.ForEach(ep => {
@@ -221,7 +223,8 @@ namespace AutoCodeGeneration3._0.Code
                                         PropertyName=ep.ItemName,
                                         PropertyType=string.Empty,
                                         MappingPropertyName=ep.ItemName,
-                                        MappingPropertyType=string.Empty
+                                        MappingPropertyType=string.Empty,
+                                        Description=ep.Description
                                     });
                                 }
                             });
@@ -236,7 +239,8 @@ namespace AutoCodeGeneration3._0.Code
                             IsClass=true,
                             IsEnum=false,
                             MappingEntityName=it.ClassName,
-                            DomainName=it.DomainName
+                            DomainName=it.DomainName,
+                            Description=it.Description
                         };
                         if (it.EntityProperties != null && it.EntityProperties.Count > 0)
                         {
@@ -251,7 +255,8 @@ namespace AutoCodeGeneration3._0.Code
                                         PropertyName = ep.PropertyName,
                                         PropertyType = ep.PropertyType,
                                         MappingPropertyName = ep.PropertyName,
-                                        MappingPropertyType = ep.PropertyType
+                                        MappingPropertyType = ep.PropertyType,
+                                        Description=ep.Description
                                     });
                                 }
 
@@ -284,6 +289,7 @@ namespace AutoCodeGeneration3._0.Code
     [Serializable]
     public class ViewProperty
     {
+        public String Description { get; set; }
         public String PropertyName { get; set; }
         public String PropertyType { get; set; }
         public String MappingPropertyName { get; set; }
@@ -291,4 +297,17 @@ namespace AutoCodeGeneration3._0.Code
         public bool IsGeneric { get; set; }
         public bool IsMappingGeneric { get; set; }
     }
+
+    public class ServiceModel
+    {
+        public String ServiceName { get; set; }
+        public String Path { get; set; }
+        public String Namespace { get; set; }
+        public String IsOverride { get; set; }//文件是否覆盖 默认为不覆盖
+        public List<String> QuoteNamspace { get; set; }
+        public List<String> QuoteEntity { get; set; }
+    }
+
+    public class ServiceMethod
+    { }
 }

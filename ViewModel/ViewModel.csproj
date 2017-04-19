@@ -39,11 +39,25 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Models\Sys\ErrorDTO.cs" />
+    <Compile Include="Models\Sys\ErrorTypeDTO.cs" />
+    <Compile Include="Models\Sys\LogDTO.cs" />
+    <Compile Include="Models\Sys\ModuleDTO.cs" />
+    <Compile Include="Models\Sys\ModuleMenuDTO.cs" />
+    <Compile Include="Models\Sys\ModuleOperateDTO.cs" />
+    <Compile Include="Models\Sys\ModuleServiceDTO.cs" />
+    <Compile Include="Models\Sys\RoleDTO.cs" />
+    <Compile Include="Models\Sys\RolePermissionDTO.cs" />
+    <Compile Include="Models\Sys\RoleTypeDTO.cs" />
+    <Compile Include="Models\Sys\ServiceDTO.cs" />
+    <Compile Include="Models\Sys\ServiceMethodDTO.cs" />
+    <Compile Include="Models\Sys\SexDTO.cs" />
+    <Compile Include="Models\Sys\UserDTO.cs" />
+    <Compile Include="Models\Sys\UserGroupDTO.cs" />
+    <Compile Include="Models\Sys\WebConfigDTO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Models\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
