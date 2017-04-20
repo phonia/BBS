@@ -232,6 +232,16 @@ namespace AutoCodeGeneration3._0.UControl
                                         sw.WriteLine("");
                                     }
 
+                                    if (ep.IsComplexyType)
+                                    {
+                                        sw.WriteLine("        /// <summary>");
+                                        sw.WriteLine("        /// " + ep.Description);
+                                        sw.WriteLine("        /// </summary>");
+                                        sw.Write("        public ");
+                                        sw.Write(ep.PropertyType + " " + ep.PropertyName + " { get; set; }");
+                                        sw.WriteLine("");
+                                    }
+
                                     if (ep.IsNavigationProperty)
                                     {
                                         sw.WriteLine("");
@@ -566,7 +576,7 @@ namespace AutoCodeGeneration3._0.UControl
                     sw.WriteLine("        {");
                     SaveBack.EntityModels.ForEach(it =>
                     {
-                        if (it.IsEntityType)
+                        if (it.IsEntityType||it.IsComplexyType)
                         {
                             sw.WriteLine("            modelBuilder.Configurations.Add(new " + it.ClassName + "Configuration());");
                         }

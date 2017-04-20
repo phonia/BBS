@@ -102,6 +102,8 @@ namespace Repository
             modelBuilder.Configurations.Add(new RoleConfiguration());
             modelBuilder.Configurations.Add(new RolePermissionConfiguration());
             modelBuilder.Configurations.Add(new UserConfiguration());
+            modelBuilder.Configurations.Add(new PersonalInfoConfiguration());
+            modelBuilder.Configurations.Add(new AccountInfoConfiguration());
             //将一堆多的级联删除全部设置成不可用
             modelBuilder.Conventions.Remove<OneToManyCascadeDeleteConvention>();
 

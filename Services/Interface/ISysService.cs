@@ -8,5 +8,6 @@ namespace Services.Interface
     public interface ISysService:IDomainService
     {
         void InitDataBase();
+        void ReInitDataBase();
     }
 }

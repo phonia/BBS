@@ -1,0 +1,15 @@
+﻿.icon-house {
+    background:url('ExtJSicons/house.png') no-repeat center center;
+}
+.icon-nav {
+    background:url('ExtJSicons/page/page.png') no-repeat center center;
+    width:18px;
+    line-height:18px;
+    display:inline-block;
+}
+.icon-mianmenu {
+    background:url('ExtJSicons/box.png') no-repeat center center;
+}
+.icon-leaf {
+    background:url('ExtJSicons/cup.png') no-repeat center center;
+}

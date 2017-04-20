@@ -46,6 +46,10 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
+    <ProjectReference Include="..\Common\Common.csproj">
+      <Project>{2774a4cf-c38c-45de-a4d0-37a82ef499e4}</Project>
+      <Name>Common</Name>
+    </ProjectReference>
     <ProjectReference Include="..\Infrastructure\Infrastructure.csproj">
       <Project>{aebea62b-0b83-4442-ab98-d46ba420539a}</Project>
       <Name>Infrastructure</Name>

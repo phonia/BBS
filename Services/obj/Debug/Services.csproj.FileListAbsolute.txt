@@ -1,0 +1,17 @@
+E:\Code\BBS\Services\bin\Debug\Services.dll
+E:\Code\BBS\Services\bin\Debug\Services.pdb
+E:\Code\BBS\Services\bin\Debug\Common.dll
+E:\Code\BBS\Services\bin\Debug\Infrastructure.dll
+E:\Code\BBS\Services\bin\Debug\Model.dll
+E:\Code\BBS\Services\bin\Debug\Repository.dll
+E:\Code\BBS\Services\bin\Debug\ViewModel.dll
+E:\Code\BBS\Services\bin\Debug\EntityFramework.dll
+E:\Code\BBS\Services\bin\Debug\Common.pdb
+E:\Code\BBS\Services\bin\Debug\Infrastructure.pdb
+E:\Code\BBS\Services\bin\Debug\Model.pdb
+E:\Code\BBS\Services\bin\Debug\Repository.pdb
+E:\Code\BBS\Services\bin\Debug\ViewModel.pdb
+E:\Code\BBS\Services\bin\Debug\EntityFramework.xml
+E:\Code\BBS\Services\obj\Debug\Services.csprojResolveAssemblyReference.cache
+E:\Code\BBS\Services\obj\Debug\Services.dll
+E:\Code\BBS\Services\obj\Debug\Services.pdb
