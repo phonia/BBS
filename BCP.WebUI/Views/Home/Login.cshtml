@@ -1,0 +1,56 @@
+﻿@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>用户登录</title>
+    <script src="~/Scripts/jquery-easyui-1.4.4/jquery.min.js"></script>
+    <script src="~/Scripts/jquery-easyui-1.4.4/jquery.easyui.min.js"></script>
+    <script src="~/Scripts/Project/validateboxrules.js"></script>
+    <script src="~/Scripts/Project/Common.js"></script>
+    @Styles.Render("~/Content/CSS")
+    <link href="~/Content/default.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/icon.css" rel="stylesheet" type="text/css" />
+    <link href="~/Scripts/jquery-easyui-1.4.4/themes/default/easyui.css" rel="stylesheet" type="text/css" />
+    <link href="~/Scripts/jquery-easyui-1.4.4/themes/icon.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript">
+        function Login() { }
+    </script>
+</head>
+<body>
+    <div style="display:block;width:400px;margin:0 auto;text-align:left;margin-top:200px;">
+    <div class="easyui-panel" title="登录界面" style="width:400px">
+        <div style="padding:10px 60px 20px 60px">
+            <form id="fbi"  method="post">
+                <div class="fitem">
+                    <label style="display:inline-block;width:80px;text-align:right">用户名:</label>
+                    <input id="UserName" name="userName" class="easyui-validatebox" required="required" value="Admin" />
+                    <div style="height:20px">
+                    </div>
+                    <div class="fitem">
+                        <label style="display:inline-block;width:80px;text-align:right">密&nbsp;&nbsp;码:</label>
+                        <input id="UserPwd" name="userPwd" class="easyui-validatebox" required="required" type="password" value="Admin" />
+                    </div>
+                    <div class="fitem">
+                        <label id="lable" style="color:red">
+                        </label>
+                    </div>
+                    <div style="height:20px"></div>
+                    <div style="text-align:center;padding:5px">
+@*                        <input class="easyui-linkbutton" type="submit" value="登录" />
+                        <input class="easyui-linkbutton" type="submit" value="清除" onclick="clearForm()" />*@
+@*                        <a href="javascript:" class="easyui-linkbutton" onclick="ShowRegisterUserWin()">注册</a>*@
+                        <a href="javascript:" class="easyui-linkbutton"  onclick="Login()">登录</a>
+@*                        <a href="javascript:" class="easyui-linkbutton" onclick="clearForm()">清除</a>*@
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+</body>
+</html>

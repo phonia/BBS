@@ -6,6 +6,7 @@ using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
+using BCP.WebUI.App_Start;
 
 namespace BCP.WebUI
 {
@@ -21,7 +22,13 @@ namespace BCP.WebUI
             WebApiConfig.Register(GlobalConfiguration.Configuration);
             FilterConfig.RegisterGlobalFilters(GlobalFilters.Filters);
             RouteConfig.RegisterRoutes(RouteTable.Routes);
-            BundleConfig.RegisterBundles(BundleTable.Bundles);
+
+
+            BundleTable.EnableOptimizations = true;
+            BundleConfig.RegisterBundles(BundleTable.Bundles);;
+
+            //Ioc的两种方式 DefaultControllerFactory||(DenpendencyResolver&&DenpendencyScope)
+            ControllerBuilder.Current.SetControllerFactory(new UnityControllerFactory());
         }
     }
 }
