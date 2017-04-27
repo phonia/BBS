@@ -39,6 +39,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="JSONMessageDTO.cs" />
     <Compile Include="Models\Sys\ErrorDTO.cs" />
     <Compile Include="Models\Sys\ErrorTypeDTO.cs" />
     <Compile Include="Models\Sys\LogDTO.cs" />
@@ -56,6 +57,7 @@
     <Compile Include="Models\Sys\UserGroupDTO.cs" />
     <Compile Include="Models\Sys\WebConfigDTO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TreeDTO.cs" />
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

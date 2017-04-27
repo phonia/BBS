@@ -40,10 +40,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="IDomainService.cs" />
+    <Compile Include="Implementation\ModuleMenuService.cs" />
     <Compile Include="Implementation\SysService.cs" />
     <Compile Include="Implementation\UserService.cs" />
+    <Compile Include="Interface\IModuleMenuService.cs" />
     <Compile Include="Interface\ISysService.cs" />
     <Compile Include="Interface\IUserService.cs" />
+    <Compile Include="Mapping\ModuleMenuMapping.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup />

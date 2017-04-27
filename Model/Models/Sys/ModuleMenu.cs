@@ -56,6 +56,20 @@ namespace Model
         /// </summary>
         public Int32 ModuleId { get; set; }
 
+        /// <summary>
+        /// 导航属性父级
+        /// </summary>
+        public ModuleMenu Parent { get; set; }
+        /// <summary>
+        /// 父级
+        /// </summary>
+        public Int32? ParentId { get; set; }
+
+        /// <summary>
+        /// 导航属性模块目录
+        /// </summary>
+        public IList<ModuleMenu> Children { get; set; }
+
         public Int32? CreateUserId { get; set; }
 
         public Int32? UpdateUserId { get; set; }

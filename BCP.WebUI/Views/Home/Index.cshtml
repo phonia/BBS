@@ -7,11 +7,45 @@
 <html>
 <head>
     <meta name="viewport" content="width=device-width" />
-    <title>Index</title>
+    <title>后台管理</title>
+    <script src="~/Scripts/jquery-easyui-1.4.4/jquery.min.js"></script>
+    <script src="~/Scripts/jquery-easyui-1.4.4/jquery.easyui.min.js"></script>
+    <script src="~/Scripts/Project/validateboxrules.js"></script>
+    <script src="~/Scripts/Project/Common.js"></script>
+
+    @Styles.Render("~/Content/CSS")
+    <link href="~/Content/default.css" rel="stylesheet"  type="text/css"/>
+    <link href="~/Content/icon.css" rel="stylesheet" type="text/css" />
+    <link href="~/Scripts/jquery-easyui-1.4.4/themes/default/easyui.css" rel="stylesheet" type="text/css" />
+    <link href="~/Scripts/jquery-easyui-1.4.4/themes/icon.css" rel="stylesheet" type="text/css" />
+    <link href="~/Content/icon.css" rel="stylesheet" type="text/css" />
+    <script type="text/javascript">
+        $(function () {
+            $.ajax({
+                url: '',
+                type: 'GET',
+                dataType: 'json',
+                success: function (msg) {
+
+                }
+            });
+        });
+    </script>
 </head>
-<body>
-    <div>
-        
+<body class="easyui-layout" style="background:#fff;overflow:hidden;height:100%;margin:0px;border:none" onscroll="no">
+    <div data-options="region:'north',title:'North Tilte',split:true,noheader:true" style="height:50px;"></div>
+    <div data-options="region:'south',title:'South Tilte',split:true,noheader:true" style="height:50px"></div>
+    <div data-options="region:'west',title:'菜单',split:true" style="width:200px">
+        <div id="MainMenu" class="easyui-accordion" style="border:none">
+        </div>
     </div>
+    <div data-options="region:'center',title:'center title',noheader:true" style="padding:5px;background:#eee;overflow:hidden;">
+        <div id="Maintabs" class="easyui-tabs" data-options="fit:true" style="border:none; padding:0px;margin:0px;overflow:hidden">
+            <div id="welcome" title="主页" data-options="iconCls:'icon-house'">
+
+            </div>
+        </div>
+    </div>
+</body>
 </body>
 </html>

@@ -30,10 +30,12 @@ namespace BCP.WebUI.App_Start
             UnityContainer.RegisterType<IUserRepository, UserRepository>();
             UnityContainer.RegisterType<IServiceRepository, ServiceRepository>();
             UnityContainer.RegisterType<IServiceMethodRepository, ServiceMethodRepository>();
+            UnityContainer.RegisterType<IUserRepository, UserRepository>();
 
 
             //服务接口
             UnityContainer.RegisterType<ISysService, SysService>();
+            UnityContainer.RegisterType<IUserService, UserService>();
             //UnityContainer.RegisterType<IAccountService, AccountService>(
             //                    new Interceptor<InterfaceInterceptor>(),
             //    new InterceptionBehavior<PermissonValidateInterceptor>(),

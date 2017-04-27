@@ -18,22 +18,37 @@
     <link href="~/Scripts/jquery-easyui-1.4.4/themes/default/easyui.css" rel="stylesheet" type="text/css" />
     <link href="~/Scripts/jquery-easyui-1.4.4/themes/icon.css" rel="stylesheet" type="text/css" />
     <script type="text/javascript">
-        function Login() { }
+        function Login() {
+            $('#LoginForm').form('submit', {
+                url: '/Home/Login',
+                success: function (data) {
+                    msg = eval('(' + data + ')');
+                    if (msg.Success)
+                    {
+                        location.href = "/Home/Index";
+                    }
+                    else
+                    {
+                        $.messager.alert("登录", msg.Message, "info", function () { });
+                    }
+                },
+            });
+        }
     </script>
 </head>
 <body>
     <div style="display:block;width:400px;margin:0 auto;text-align:left;margin-top:200px;">
     <div class="easyui-panel" title="登录界面" style="width:400px">
         <div style="padding:10px 60px 20px 60px">
-            <form id="fbi"  method="post">
+            <form id="LoginForm"  method="post">
                 <div class="fitem">
                     <label style="display:inline-block;width:80px;text-align:right">用户名:</label>
-                    <input id="UserName" name="userName" class="easyui-validatebox" required="required" value="Admin" />
+                    <input id="UserName" name="name" class="easyui-validatebox" required="required" value="Admin" />
                     <div style="height:20px">
                     </div>
                     <div class="fitem">
                         <label style="display:inline-block;width:80px;text-align:right">密&nbsp;&nbsp;码:</label>
-                        <input id="UserPwd" name="userPwd" class="easyui-validatebox" required="required" type="password" value="Admin" />
+                        <input id="UserPwd" name="password" class="easyui-validatebox" required="required" type="password" value="Admin" />
                     </div>
                     <div class="fitem">
                         <label id="lable" style="color:red">

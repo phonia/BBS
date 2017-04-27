@@ -5,6 +5,7 @@ using System.Text;
 using Infrastructure;
 using Model;
 using Services.Interface;
+using ViewModel;
 
 namespace Services.Implementation
 {
@@ -23,9 +24,9 @@ namespace Services.Implementation
 
         #region IUserService 成员
 
-        public bool Login(string name, string password)
+        public UserDTO Login(string name, string password)
         {
-            return true;
+            return new UserDTO();
         }
 
         public bool Logout(string accountId)

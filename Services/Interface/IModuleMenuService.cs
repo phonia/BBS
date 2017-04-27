@@ -6,9 +6,9 @@ using ViewModel;
 
 namespace Services.Interface
 {
-    public interface IUserService:IDomainService
+    public interface IModuleMenuService:IDomainService
     {
-        UserDTO Login(String name, String password);
-        bool Logout(String accountId);
+        List<ModuleMenuDTO> GetTopMenu();
+        TreeDTO GetChildMenuTreeByTopId();
     }
 }
