@@ -102,6 +102,20 @@ namespace Services.Implementation
 
             #endregion
 
+            #region 预置模块
+
+            Model.Module m1 = new Model.Module()
+            {
+                IsDeleted = false,
+                ModuleCode = "SysSetting",
+                NameCH = "系统设置",
+                Menus = new List<ModuleMenu>(){
+                    new ModuleMenu(){IsEnable=true,IsPage=false,IsVisible=true,MenuCode="SysSetting",URL="/",MenuName="系统设置"}
+                }
+            };
+
+            #endregion
+
             _unitOfWork.Commit();
         }
 

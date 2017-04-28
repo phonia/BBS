@@ -22,11 +22,26 @@
     <script type="text/javascript">
         $(function () {
             $.ajax({
-                url: '',
+                url: '/Home/GetTopMenu',
                 type: 'GET',
                 dataType: 'json',
                 success: function (msg) {
-
+                    if (msg.Success)
+                    {
+                        for (var i = 0; i < msg.Data.Length; i++)
+                        {
+                            $('#MainMenu').accordion('add', {
+                                title: msg.Data[i].MenuName,
+                                selected: false,
+                                id: msg.Data[i].URL,
+                                iconCls: 'icon icon-mianmenu'
+                            });
+                        }
+                    }
+                    else
+                    {
+                        $.messager.alert("异常", msg.Message, "info", function () { });
+                    }
                 }
             });
         });
