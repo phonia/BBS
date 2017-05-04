@@ -50,11 +50,6 @@ namespace Model
         /// </summary>
         public IList<ModuleOperate> Operates { get; set; }
 
-        /// <summary>
-        /// 导航属性模块
-        /// </summary>
-        public IList<ModuleMenu> Menus { get; set; }
-
         public Int32? CreateUserId { get; set; }
 
         public Int32? UpdateUserId { get; set; }

@@ -1,5 +1,5 @@
 E:\Code\BBS\ViewModel\bin\Debug\ViewModel.dll
 E:\Code\BBS\ViewModel\bin\Debug\ViewModel.pdb
-E:\Code\BBS\ViewModel\obj\Debug\ViewModel.csprojResolveAssemblyReference.cache
 E:\Code\BBS\ViewModel\obj\Debug\ViewModel.dll
 E:\Code\BBS\ViewModel\obj\Debug\ViewModel.pdb
+E:\Code\BBS\ViewModel\obj\Debug\ViewModel.csprojResolveAssemblyReference.cache

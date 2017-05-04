@@ -53,8 +53,13 @@ namespace ViewModel
         public bool IsEnable { get; set; }
 
         /// <summary>
-        /// 所属模型
+        /// 父级
         /// </summary>
-        public Int32 ModuleId { get; set; }
+        public Int32 ParentId { get; set; }
+
+        /// <summary>
+        /// 目录类型
+        /// </summary>
+        public MenuTypeDTO MenuType { get; set; }
     }
 }

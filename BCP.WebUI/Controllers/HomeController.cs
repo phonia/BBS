@@ -24,6 +24,7 @@ namespace BCP.WebUI.Controllers
 
         public ActionResult Index()
         {
+            SysService.InitDataBase();
             return View();
         }
 
@@ -50,7 +51,13 @@ namespace BCP.WebUI.Controllers
 
         public JsonResult GetTopMenu()
         {
-            var list = ModuleMenuService.GetTopMenu();
+            var list = ModuleMenuService.GetBackStageMenu();
+            return Json(new JSONMessageDTO() { Success = true, Message = Constant.SUCCESS_MESSAGE, Data = list }, JsonRequestBehavior.AllowGet);
+        }
+
+        public JsonResult GetBackStageSecondaryMenu(int id)
+        {
+            var list = ModuleMenuService.GetBackStageMenu(id);
             return Json(new JSONMessageDTO() { Success = true, Message = Constant.SUCCESS_MESSAGE, Data = list }, JsonRequestBehavior.AllowGet);
         }
 

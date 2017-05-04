@@ -19,8 +19,8 @@ namespace Services.Mapping
                 IsVisible=it.IsVisible,
                 MenuCode=it.MenuCode,
                 MenuName=it.MenuName,
-                ModuleId=it.ModuleId,
-                URL=it.URL
+                URL=it.URL,
+                ParentId=it.ParentId==null?-1:(int)it.ParentId
             };
         }
     }

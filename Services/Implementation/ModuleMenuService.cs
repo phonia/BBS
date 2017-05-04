@@ -25,16 +25,27 @@ namespace Services.Implementation
 
         #region IModuleMenuService 成员
 
-        public List<ModuleMenuDTO> GetTopMenu()
+        public List<ModuleMenuDTO> GetBackStageMenu(int id = -1)
         {
-            var ret = this._moduleMenuRepository.Select(it => it.IsDeleted == false && it.IsEnable == true && it.IsVisible == true && it.IsPage == false && it.ParentId == null,
-                ModuleMenuMapping.ConvertToDTO());
-            return ret.ToList();
+            if (id < 0)
+            {
+                var ret = this._moduleMenuRepository.Select(it => it.IsDeleted == false && it.IsEnable == true && it.IsVisible == true && it.IsPage == false && it.ParentId == null && it.MenuType == MenuType.BackStage,
+                    ModuleMenuMapping.ConvertToDTO());
+                return ret.ToList();
+            }
+            else
+            {
+                return this._moduleMenuRepository.Select(it => it.IsDeleted == false && it.IsEnable == true && it.IsVisible == true && it.IsPage == false 
+                    &&(it.ParentId==id||it.Parent.ParentId==id||it.Parent.Parent.ParentId==id||it.Parent.Parent.Parent.ParentId==id)
+                    && it.MenuType == MenuType.BackStage,
+                    ModuleMenuMapping.ConvertToDTO())
+                    .ToList();
+            }
         }
 
-        public TreeDTO GetChildMenuTreeByTopId()
+        public List<ModuleMenuDTO> GetAllMenu()
         {
-            throw new NotImplementedException();
+            return this._moduleMenuRepository.Select(it => it.IsDeleted == false, ModuleMenuMapping.ConvertToDTO()).ToList();
         }
 
         #endregion

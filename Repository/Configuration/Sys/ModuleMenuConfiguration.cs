@@ -30,8 +30,8 @@ namespace Repository
             Property(e =>e.IsPage).HasColumnName("IsPage").HasColumnType("bit").IsRequired();
             Property(e =>e.URL).HasColumnName("URL").HasColumnType("nvarchar").HasMaxLength(50).IsRequired();
             Property(e =>e.IsEnable).HasColumnName("IsEnable").HasColumnType("bit").IsRequired();
-            HasRequired(e=>e.Module).WithMany(e=>e.Menus).HasForeignKey(e=>e.ModuleId);
             HasOptional(e=>e.Parent).WithMany(e=>e.Children).HasForeignKey(e=>e.ParentId);
+            Property(e =>e.MenuType).HasColumnName("MenuType").HasColumnType("int").IsRequired();
         }
     }
 }

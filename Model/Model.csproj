@@ -56,6 +56,7 @@
     <Compile Include="Models\Sys\Error.cs" />
     <Compile Include="Models\Sys\ErrorType.cs" />
     <Compile Include="Models\Sys\Log.cs" />
+    <Compile Include="Models\Sys\MenuType.cs" />
     <Compile Include="Models\Sys\Module.cs" />
     <Compile Include="Models\Sys\ModuleMenu.cs" />
     <Compile Include="Models\Sys\ModuleOperate.cs" />

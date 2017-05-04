@@ -1,0 +1,135 @@
+﻿@{
+    ViewBag.Title = "EditMenu";
+    Layout = "~/Views/Shared/_BackStageLayout.cshtml";
+}
+
+<script type="text/javascript">
+    var dlg_edit;
+
+    function add() {
+        //$('#dlg-edit').dialog('open');
+        dlg_edit.dialog('open');
+    }
+
+    function del() { }
+
+    function save() { }
+
+    $(function () {
+        $('#grid').datagrid({
+            title: '目录',
+            iconCls: 'icon-save',
+            method: 'GET',
+            url: '/Menu/GetAllMenus',
+            sortName: 'Id',
+            sortOrder: 'Id',
+            idField: 'Id',
+            pageSize: 10,
+            striped: true,
+            scrollbarSize: 0,
+            fit: true,
+            pagenation: true,
+            rownumber: true,
+            singleSelect:true,
+            frozenColumns: [[{field:'ck',checkbox:true}]],
+            columns: [[
+                { field: 'Id', title: '', width: '8%', sortable: true },
+                { field: 'MenuName', title: '目录名称', width: '10%' },
+                { field: 'MenuCode', title: '目录编码', width: '10%' },
+                { field: 'IsVisible', title: '可见', width: '10%' },
+                { field: 'IsPage', title: '页面目录', width: '10%' },
+                { field: 'URL', title: '路径', width: '30%' },
+                { field: 'IsEnable', title: '启用', width: '10%' },
+                { field: 'ParentId', title: '父级Id', width: '10%',hidden:true },
+                {
+                    field: 'MenuType', title: '目录类型', width: '10%'
+                    //,
+                    //formatter: function (value, row) {
+                    //    $.ajax({})
+                    //},
+                }
+            ]],
+            toolbar: [
+                { text: '添加', iconCls: 'icon-add', handler: add },
+                '-', { text: '删除', iconCls: 'icon-remove', handler: del }
+            ]
+        });
+
+
+        //加载combobox数据
+        $('#parentId').combobox({
+            url: '/Menu/LoadMenuParentCombobox',
+            valueField: 'Id',
+            textField: 'Text',
+            editable: false,
+            panelHeight:'auto'
+        });
+
+        $('#menuType').combobox({
+            url: '/Menu/LoadMenuTypeCombobxo',
+            valueField: 'Id',
+            textField: 'Text',
+            editable: false,
+            panelHeight: 'auto'
+        });
+
+        //添加目录对话框
+        dlg_edit = $('#dlg-edit').dialog({
+            closed: true,
+            modal: true,
+            toolbar: [
+                { text: '添加', iconCls: 'icon-save', handler: save },
+                '-', { text: '取消', iconCls: 'icon-no', handler: function () { dlg_edit.dialog('close') } }
+            ]
+        });
+    });
+</script>
+
+<style type="text/css"></style>
+
+<div region="center" style="width:500px;height:300px;padding:1px;overflow-y:hidden;border:none">
+    <div style="width:100%;height:100%">
+        <div id="grid"></div>
+    </div>
+</div>
+
+<div id="dlg-edit" title="添加目录" style="width:300px;height:250px">
+    <div class="easy-panel" style="vertical-align:central">
+        <form method="post" id="MenuForm">
+            <div class="fitem">
+                <label>目录名称：</label>
+                <input class="easyui-validate" required="required" name="menuName" value="目录名称" />
+            </div>
+            <div class="fitem">
+                <label>目录编码：</label>
+                <input class="easyui-validate" required="required" name="menuCode" value="menuCode" />
+            </div>
+            <div class="fitem">
+                <label>目录可见：</label>
+                <input type="checkbox" name="isVisible" />
+            </div>
+            <div class="fitem">
+                <label>页面目录：</label>
+                <input type="checkbox" name="isPage" />
+            </div>
+            <div class="fitem">
+                <label>URL:</label>
+                <input class="easyui-validate" required="required" name="url" />
+            </div>
+            <div class="fitem">
+                <label>是否启用：</label>
+                <input type="checkbox" name="isEnable" />
+            </div>
+            <div class="fitem">
+                <label>目录类型：</label>
+                <input id="menuType" name="menuType" />
+            </div>
+            <div class="fitem">
+                <label>父级目录：</label>
+                <input id="parentId" name="parentId" />
+            </div>
+        </form>
+    </div>
+</div>
+
+

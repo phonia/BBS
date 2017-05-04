@@ -1,5 +1,4 @@
 E:\Code\BBS\Common\bin\Debug\Common.dll
 E:\Code\BBS\Common\bin\Debug\Common.pdb
-E:\Code\BBS\Common\obj\Debug\Common.csprojResolveAssemblyReference.cache
 E:\Code\BBS\Common\obj\Debug\Common.dll
 E:\Code\BBS\Common\obj\Debug\Common.pdb

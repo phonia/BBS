@@ -39,10 +39,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DataGridDTO.cs" />
     <Compile Include="JSONMessageDTO.cs" />
     <Compile Include="Models\Sys\ErrorDTO.cs" />
     <Compile Include="Models\Sys\ErrorTypeDTO.cs" />
     <Compile Include="Models\Sys\LogDTO.cs" />
+    <Compile Include="Models\Sys\MenuTypeDTO.cs" />
     <Compile Include="Models\Sys\ModuleDTO.cs" />
     <Compile Include="Models\Sys\ModuleMenuDTO.cs" />
     <Compile Include="Models\Sys\ModuleOperateDTO.cs" />

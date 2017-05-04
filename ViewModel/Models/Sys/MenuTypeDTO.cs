@@ -12,26 +12,26 @@ using System.Text;
 namespace ViewModel
 {
     /// <summary>
-    /// 角色类型 枚举类
+    /// 目录类型 枚举类
     /// </summary>
-    public enum RoleTypeDTO
+    public enum MenuTypeDTO
     {
 
         /// <summary>
-        /// 用户定义
+        /// 后端系统目录
         /// </summary>
-        [Description("用户定义")]
-        UserDefine,
+        [Description("后端系统目录")]
+        BackStage,
 
         /// <summary>
-        /// 系统定义
+        /// 预置1
         /// </summary>
-        [Description("系统定义")]
-        SysBuiltIn,
+        [Description("预置1")]
+        space1,
 
         /// <summary>
-        /// 匿名用户
+        /// 预置2
         /// </summary>
-        [Description("匿名用户")]
-        UnKnown    }
+        [Description("预置2")]
+        space2    }
 }

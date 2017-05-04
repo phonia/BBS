@@ -17,16 +17,20 @@ namespace Services.Implementation
         private IWebConfigRepository _webConfigRepository = null;
         private IServiceRepository _serviceRepository = null;
         private IServiceMethodRepository _serviceMethodRepository = null;
+        private IModuleMenuRepository _moduleMenuRepository = null;
 
         public SysService(IWebConfigRepository webCoifigRepository,IUserRepository userRepository,
             IServiceRepository serviceRepository,IServiceMethodRepository serviceMethodRepository,
+            IModuleMenuRepository moduleMenuRepository,
             IUnitOfWork unitOfWork)
         {
             this._userRepository = userRepository;
             this._webConfigRepository = webCoifigRepository;
             this._serviceRepository = serviceRepository;
             this._serviceMethodRepository = serviceMethodRepository;
+            this._moduleMenuRepository = moduleMenuRepository;
 
+            this._moduleMenuRepository.UnitOfWork = unitOfWork;
             this._serviceRepository.UnitOfWork = unitOfWork;
             this._serviceMethodRepository.UnitOfWork = unitOfWork;
             this._userRepository.UnitOfWork = unitOfWork;
@@ -43,7 +47,7 @@ namespace Services.Implementation
 
             #region 领域服务
             Type[] types = Assembly.GetExecutingAssembly().GetTypes();
-            if (types != null&&types.Count()>0)
+            if (types != null && types.Count() > 0)
             {
                 foreach (var service in types)
                 {
@@ -52,9 +56,10 @@ namespace Services.Implementation
                         //TODO
                         Service s = new Service()
                         {
-                            Assembly = Assembly.GetExecutingAssembly().FullName
+                            Assembly = Assembly.GetExecutingAssembly().FullName,
+                            FullName=service.FullName
                         };
-                        MethodInfo[] methodInfos= service.GetMethods();
+                        MethodInfo[] methodInfos = service.GetMethods();
                         if (methodInfos != null && methodInfos.Count() > 0)
                         {
                             foreach (var type in methodInfos)
@@ -75,8 +80,8 @@ namespace Services.Implementation
 
             #region 用户、角色
 
-            UserGroup ug1 = new UserGroup() { Name =Constant.DEFAULT_USERGROUP };
-            Role r1 = new Role() { Name = Constant.ANONYMOUS_ROLE, RoleType = RoleType.SysBuiltIn };
+            UserGroup ug1 = new UserGroup() { Name = Constant.DEFAULT_USERGROUP };
+            Role r1 = new Role() { Name = Constant.ANONYMOUS_ROLE, RoleType = RoleType.UnKnown };
             Role r2 = new Role() { Name = Constant.MANAGER_ROLE, RoleType = RoleType.SysBuiltIn };
             User u1 = new User()
             {
@@ -102,17 +107,46 @@ namespace Services.Implementation
 
             #endregion
 
-            #region 预置模块
+            #region 预置目录
 
-            Model.Module m1 = new Model.Module()
+            ModuleMenu mm1 = new ModuleMenu()
             {
+                IsEnable = true,
+                CreateDateTime = DateTime.Now,
                 IsDeleted = false,
-                ModuleCode = "SysSetting",
-                NameCH = "系统设置",
-                Menus = new List<ModuleMenu>(){
-                    new ModuleMenu(){IsEnable=true,IsPage=false,IsVisible=true,MenuCode="SysSetting",URL="/",MenuName="系统设置"}
+                IsPage = false,
+                IsVisible = true,
+                MenuCode = "ModuleMenu",
+                MenuName = "系统设置",
+                URL = "/Home/GetBackStageSecondaryMenu",
+                MenuType=MenuType.BackStage,
+                Children = new List<ModuleMenu>() { 
+                    new ModuleMenu()
+                    {
+                        IsEnable = true,
+                        CreateDateTime=DateTime.Now,
+                        IsDeleted=false,
+                        IsPage=false,
+                        IsVisible=true,
+                        MenuCode="MenuSetting",
+                        MenuName="目录设置",
+                        MenuType=MenuType.BackStage,
+                        URL="/Menu/EditMenu"
+                    }
                 }
             };
+
+            //ModuleMenu mm1 = new ModuleMenu()
+            //{
+            //    IsEnable = true,
+            //    Children = new List<ModuleMenu>() { 
+            //        new ModuleMenu()
+            //        {
+            //            IsEnable=true
+            //        }
+            //    }
+            //};
+            this._moduleMenuRepository.Add(mm1);
 
             #endregion
 

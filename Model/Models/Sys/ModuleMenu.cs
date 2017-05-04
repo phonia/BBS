@@ -48,15 +48,6 @@ namespace Model
         public bool IsEnable { get; set; }
 
         /// <summary>
-        /// 导航属性所属模型
-        /// </summary>
-        public Module Module { get; set; }
-        /// <summary>
-        /// 所属模型
-        /// </summary>
-        public Int32 ModuleId { get; set; }
-
-        /// <summary>
         /// 导航属性父级
         /// </summary>
         public ModuleMenu Parent { get; set; }
@@ -69,6 +60,10 @@ namespace Model
         /// 导航属性模块目录
         /// </summary>
         public IList<ModuleMenu> Children { get; set; }
+        /// <summary>
+        /// 目录类型
+        /// </summary>
+        public MenuType MenuType { get; set; }
 
         public Int32? CreateUserId { get; set; }
 

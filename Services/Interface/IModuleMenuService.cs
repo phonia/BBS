@@ -8,7 +8,8 @@ namespace Services.Interface
 {
     public interface IModuleMenuService:IDomainService
     {
-        List<ModuleMenuDTO> GetTopMenu();
-        TreeDTO GetChildMenuTreeByTopId();
+        List<ModuleMenuDTO> GetBackStageMenu(int id=-1);
+
+        List<ModuleMenuDTO> GetAllMenu();
     }
 }
