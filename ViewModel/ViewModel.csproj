@@ -39,6 +39,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ComboboxDTO.cs" />
     <Compile Include="DataGridDTO.cs" />
     <Compile Include="JSONMessageDTO.cs" />
     <Compile Include="Models\Sys\ErrorDTO.cs" />
