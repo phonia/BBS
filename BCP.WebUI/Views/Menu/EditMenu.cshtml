@@ -6,17 +6,56 @@
 <script type="text/javascript">
     var dlg_edit;
 
-    function add() {
+    function Add() {
         //$('#dlg-edit').dialog('open');
         dlg_edit.dialog('open');
+
+        var com1 = $('#parentId').combobox('getData');//需要在对话框加载完成之后才能设置combobox的值吗？
+        for(var item in com1[0])
+        {
+            if (item == 'Id') { $('#parentId').combobox('select', com1[0][item]) }
+        }
+
+        var com2=$('#menuType').combobox('getData');
+        for(var item in com2[0])
+        {
+            if (item == 'Id') { $('#menuType').combobox('select', com2[0][item]) }
+        }
     }
 
-    function del() { }
+    function Del() { }
 
-    function save() { }
+    function Collopse() { }
+
+    function Save() {
+        $('#MenuForm').form('submit', {
+            url: '/Menu/AddMenu',
+            onSubmit: function (param) {
+                //在form中附加checkbox的值 注意checkbox的取值方式 
+                //注意 如果checkbox选中且存在name那么form中会制动加入该checkbox的值'on'
+                //alert($('#isPage').is(':checked'));
+                var isPage = $('#isPage').is(':checked');
+                var isVisible = $('#isVisible').is(':checked');
+                var isEnable = $('#isEnable').is(':checked');
+                param.isPage = isPage;
+                param.isVisible = isVisible;
+                param.isEnable = isEnable;
+                return $(this).form('validate');
+            },
+            success: function (data)
+            {
+                if (!data) $.message.alert("异常", "出错了", "info", function () { });
+                var msg = eval('(' + data + ')');
+                if (msg.Success)
+                { }
+                else
+                { }
+            }
+        });
+    }
 
     $(function () {
-        $('#grid').datagrid({
+        $('#grid').treegrid({
             title: '目录',
             iconCls: 'icon-save',
             method: 'Get',
@@ -24,6 +63,7 @@
             sortName: 'Id',
             sortOrder: 'desc',
             idField: 'Id',
+            treeFiedl: 'MenuName',
             pageSize: 10,
             stried: true,
             scrollbarSize: 0,
@@ -33,7 +73,7 @@
             singleSelect: true,
             frozenColumns: [[{field:'ck',checkbox:true}]],
             columns: [[
-                { field: 'Id', title: '编号', width: '8%', sortable: true },
+                { field: 'Id', title: '编号', width: '7%', sortable: true },
                 { field: 'MenuName', title: '目录名称', width: '10%' },
                 { field: 'MenuCode', title: '目录编码', width: '10%' },
                 { field: 'IsVisible', title: '可见', width: '10%' },
@@ -50,8 +90,9 @@
                 }
             ]],
             toolbar: [
-                { text: '添加', iconCls: 'icon-add', handler: add },
-                '-', { text: '删除', iconCls: 'icon-remove', handler: del }
+                { text: '添加', iconCls: 'icon-add', handler: Add },
+                '-', { text: '删除', iconCls: 'icon-remove', handler: Del },
+                '-', { text: '展开/折叠', iconCls: 'icon-more', handler: Collopse }
             ]
         });
 
@@ -62,7 +103,16 @@
             valueField: 'Id',
             textField: 'Text',
             editable: false,
-            panelHeight:'auto'
+            panelHeight: 'auto'
+            //需要在对话框加载完成之后才能设置combobox的值吗？
+            //onLoadSuccess: function () { //加载完成后,设置选中第一项  
+            //    var val = $(this).combobox('getData');
+            //    for (var item in val[0]) {
+            //        if (item == 'id') {
+            //            $(this).combobox('select', val[0][item]);
+            //        }
+            //    }
+            //}
         });
 
         $('#menuType').combobox({
@@ -71,6 +121,15 @@
             textField: 'Text',
             editable: false,
             panelHeight: 'auto'
+            //需要在对话框加载完成之后才能设置combobox的值吗？
+            //onLoadSuccess: function () { //加载完成后,设置选中第一项  
+            //    var val = $(this).combobox('getData');
+            //    for (var item in val[0]) {
+            //        if (item == 'id') {
+            //            $(this).combobox('select', val[0][item]);
+            //        }
+            //    }
+            //}
         });
 
         //添加目录对话框
@@ -78,14 +137,26 @@
             closed: true,
             modal: true,
             toolbar: [
-                { text: '添加', iconCls: 'icon-save', handler: save },
+                { text: '添加', iconCls: 'icon-save', handler: Save },
                 '-', { text: '取消', iconCls: 'icon-no', handler: function () { dlg_edit.dialog('close') } }
             ]
         });
     });
 </script>
 
-<style type="text/css"></style>
+<style type="text/css">
+    .fitem {
+        margin: 5px 5px 5px 5px;
+    }
+    .easyui-panel {
+        border:none
+    }
+    label {
+        display:inline-block;
+        width:80px;
+        text-align:right
+    }
+</style>
 
 <div region="center" style="width:500px;height:100px;padding:1px;overflow-y:hidden;border:none">
         <div id="grid"></div>
@@ -104,11 +175,11 @@
             </div>
             <div class="fitem">
                 <label>目录可见：</label>
-                <input type="checkbox" name="isVisible" />
+                <input type="checkbox"   id="isVisible"/>
             </div>
             <div class="fitem">
                 <label>页面目录：</label>
-                <input type="checkbox" name="isPage" />
+                <input type="checkbox"  id="isPage" />
             </div>
             <div class="fitem">
                 <label>URL:</label>
@@ -116,7 +187,7 @@
             </div>
             <div class="fitem">
                 <label>是否启用：</label>
-                <input type="checkbox" name="isEnable" />
+                <input type="checkbox"  id="IsEnable" />
             </div>
             <div class="fitem">
                 <label>目录类型：</label>

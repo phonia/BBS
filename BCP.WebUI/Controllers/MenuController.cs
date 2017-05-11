@@ -30,13 +30,29 @@ namespace BCP.WebUI.Controllers
 
         public JsonResult LoadMenuTypeCombobxo()
         {
-            return Json(EnumHepler.ConvertEnumToComboboxDTO<MenuTypeDTO>(), JsonRequestBehavior.AllowGet);
+            List<ComboboxDTO> list = EnumHepler.ConvertEnumToComboboxDTO<MenuTypeDTO>();
+            list.Insert(0, new ComboboxDTO() { Id = "-1", Text = "———请选择———" });
+            return Json(list, JsonRequestBehavior.AllowGet);
         }
 
         public JsonResult LoadMenuParentCombobox()
         {
-            var list = ModuleMenuService.GetAllMenu();
-            return Json(list.Select(it => new ComboboxDTO() { Id = it.Id.ToString(), Text = it.MenuName }).ToList(), JsonRequestBehavior.AllowGet);
+            var list = ModuleMenuService.GetAllMenu().Select(it => new ComboboxDTO() { Id = it.Id.ToString(), Text = it.MenuName }).ToList();
+            list.Insert(0, new ComboboxDTO() { Id = "-1", Text = "———请选择———" });
+            return Json(list, JsonRequestBehavior.AllowGet);
+        }
+
+        [HttpPost]
+        public JsonResult AddMenu(String menuName,String menuCode,int menuType,int parentId,String url,bool isPage,bool isEnable,bool isVisible)
+        {
+            if (ModuleMenuService.AddMenu(menuName, menuCode, menuType, parentId, url, isPage, isEnable, isVisible))
+            {
+                return Json(new JSONMessageDTO() { Success = true }, JsonRequestBehavior.AllowGet);
+            }
+            else
+            {
+                return Json(new JSONMessageDTO() { Success = false,Message="Not Mentioned" }, JsonRequestBehavior.AllowGet);
+            }
         }
     }
 }

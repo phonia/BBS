@@ -10,7 +10,7 @@ using ViewModel;
 
 namespace BCP.WebUI.Controllers
 {
-    public class HomeController : Controller
+    public class HomeController : BaseController
     {
         //
         // GET: /Home/

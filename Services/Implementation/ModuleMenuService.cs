@@ -7,6 +7,7 @@ using Model;
 using Services.Interface;
 using ViewModel;
 using Services.Mapping;
+using Common;
 
 namespace Services.Implementation
 {
@@ -46,6 +47,31 @@ namespace Services.Implementation
         public List<ModuleMenuDTO> GetAllMenu()
         {
             return this._moduleMenuRepository.Select(it => it.IsDeleted == false, ModuleMenuMapping.ConvertToDTO()).ToList();
+        }
+
+        public bool AddMenu(string menuName, string menuCode, int menuType, int parentId, string url, bool isPage, bool isEnable, bool isVisible)
+        {
+            if (_moduleMenuRepository.GetFilter(it => it.MenuName.Equals(menuName) || it.MenuCode.Equals(menuCode)).Count() > 0)
+            {
+                throw new CustomException(Constant.REPEATED_MENU);
+            }
+            if (menuType < 0) throw new CustomException(Constant.ERRORPARAM_MENU);
+            ModuleMenu mm = new ModuleMenu()
+            {
+                CreateDateTime = DateTime.Now,
+                IsDeleted = false,
+                IsEnable = isEnable,
+                IsPage = isPage,
+                IsVisible = isVisible,
+                MenuCode = menuCode,
+                MenuName = menuName,
+                MenuType = (MenuType)menuType,
+                URL = url
+            };
+            if (parentId > 0) mm.ParentId = parentId;
+            _moduleMenuRepository.Add(mm);
+            _unitOfWork.Commit();
+            return true;
         }
 
         #endregion

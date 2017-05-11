@@ -20,5 +20,9 @@ namespace Common
 
         //session中的key
         public const String LoginUser = "LoginUser";
+
+        //menu
+        public const String REPEATED_MENU = "重复的目录";
+        public const String ERRORPARAM_MENU = "参数错误";
     }
 }

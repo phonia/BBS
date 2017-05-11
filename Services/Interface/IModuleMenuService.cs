@@ -11,5 +11,7 @@ namespace Services.Interface
         List<ModuleMenuDTO> GetBackStageMenu(int id=-1);
 
         List<ModuleMenuDTO> GetAllMenu();
+
+        bool AddMenu(string menuName, string menuCode, int menuType, int parentId, string url, bool isPage, bool isEnable, bool isVisible);
     }
 }
