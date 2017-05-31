@@ -69,7 +69,7 @@ namespace AutoCodeGeneration3._0.UControl
 
         private void buttonVMG_Click(object sender, EventArgs e)
         {
-            if (SaveBack != null) SaveBack.ViewModels = ViewModel.ConvertEntityToViewModel(SaveBack.EntityModels);
+            if (SaveBack != null) SaveBack.ViewModels = ViewModel.ConvertEntityToViewModel(SaveBack.EntityModels,SaveBack.ViewModels);
             this.dataGridView1.DataSource = SaveBack.ViewModels;
         }
 
@@ -175,6 +175,7 @@ namespace AutoCodeGeneration3._0.UControl
                     temp.Namespace = SaveBack.ViewModels.First().Namespace;
                     temp.Path = SaveBack.ViewModels.First().Path;
                     temp.QuoteNamespace = SaveBack.ViewModels.First().QuoteNamespace;
+                    temp.IsModified = true;
                 }
                 else if (SaveBack != null)
                 {
@@ -206,6 +207,7 @@ namespace AutoCodeGeneration3._0.UControl
                     var temp = this.dataGridView1.SelectedRows[0].DataBoundItem as ViewModel;
                     if (temp.ViewProperties == null) temp.ViewProperties = new List<ViewProperty>();
                     temp.ViewProperties.Add(vpf.ViewProperty);
+                    temp.IsModified = true;
                     this.dataGridView2.DataSource = null;
                     this.dataGridView2.DataSource = temp.ViewProperties;
                 }

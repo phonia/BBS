@@ -74,6 +74,56 @@ namespace Services.Implementation
             return true;
         }
 
+        public List<ModuleMenuTreeGridDTO> GetModelMenuTreeGrid(int id=-1,int treeId=1)
+        {
+            List<ModuleMenuTreeGridDTO> mm = null;
+            if (id >= 0)
+            {
+                mm = _moduleMenuRepository.Select(it => it.ParentId == id || (it.Parent != null && it.Parent.ParentId == id)
+                    || (it.Parent.Parent != null && it.Parent.Parent.ParentId == id) ||
+                    (it.Parent.Parent.Parent != null && it.Parent.Parent.Parent.ParentId == id), it => new ModuleMenuTreeGridDTO()
+                    {
+                        Id = it.Id,
+                        IsEnable=it.IsEnable,
+                        IsPage=it.IsPage,
+                        IsVisible=it.IsVisible,
+                        MenuCode=it.MenuCode,
+                        MenuName=it.MenuName,
+                        MenuType=(MenuTypeDTO)((int)it.MenuType),
+                        ParentId=it.ParentId==null?-1:(int)it.ParentId,
+                        URL=it.URL
+                    }).ToList();
+            }
+            else
+            {
+                mm = _moduleMenuRepository.Select(it => true, it => new ModuleMenuTreeGridDTO()
+                    {
+                        Id = it.Id,
+                        IsEnable = it.IsEnable,
+                        IsPage = it.IsPage,
+                        IsVisible = it.IsVisible,
+                        MenuCode = it.MenuCode,
+                        MenuName = it.MenuName,
+                        MenuType = (MenuTypeDTO)((int)it.MenuType),
+                        ParentId = it.ParentId == null ? -1 : (int)it.ParentId,
+                        URL = it.URL
+                    }).ToList();
+            }
+            if (mm != null)
+            {
+                mm.ForEach(it => {
+                    if (it.children == null) it.children = new List<ModuleMenuTreeGridDTO>();
+                    it.children.AddRange(mm.FindAll(rpl => rpl.ParentId == it.Id));
+                    it.TreeId = treeId++;
+                });
+                return mm.Where(it => it.ParentId == -1).ToList();
+            }
+            else
+            {
+                return new List<ModuleMenuTreeGridDTO>();
+            }
+        }
+
         #endregion
     }
 }

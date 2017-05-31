@@ -5,10 +5,13 @@
 
 <script type="text/javascript">
     var dlg_edit;
+    var isCollapse = false;
 
     function Add() {
         //$('#dlg-edit').dialog('open');
         dlg_edit.dialog('open');
+        $('#menuType').combobox('reload');
+        $('#parentId').combobox('reload');
 
         var com1 = $('#parentId').combobox('getData');//需要在对话框加载完成之后才能设置combobox的值吗？
         for(var item in com1[0])
@@ -25,7 +28,18 @@
 
     function Del() { }
 
-    function Collopse() { }
+    function Collopse() {
+        if (isCollapse)
+        {
+            $('#grid').treegrid('expandAll');
+            isCollapse = false;
+        }
+        else
+        {
+            $('#grid').treegrid('collapseAll');
+            isCollapse = true;
+        }
+    }
 
     function Save() {
         $('#MenuForm').form('submit', {
@@ -47,12 +61,51 @@
                 if (!data) $.message.alert("异常", "出错了", "info", function () { });
                 var msg = eval('(' + data + ')');
                 if (msg.Success)
-                { }
+                {
+                    $.messager.show({
+                        title: '目录注册',
+                        msg: '注册成功',
+                        timeout: 5000,
+                        showType: 'slide'
+                    });
+                    dlg_edit.dialog('close');
+                    $('#grid').treegrid('load');
+                }
                 else
-                { }
+                {
+                    $.message.alert("异常", msg.Message, "info", function () { });
+                }
             }
         });
     }
+
+    /*
+    function RowClick(index,row)
+    {
+        var selections = $('#grid').treegrid('getSelections');
+        var mark = Mark(selections, row);
+        var children = $('#grid').treegrid('getChildren');
+        if (children != null)
+        {
+            for (var i = 0; i < children.length; i++)
+            {
+                $('#grid').treegrid('select', children[i].TreeId);
+            }
+        }
+    }
+
+    function Mark(list, row)
+    {
+        if(list!=null)
+        {
+            for (var i = 0; i < list.length; i++)
+            {
+                if (list[i].Id == row.Id) return true;
+            }
+        }
+        return false;
+    }
+    */
 
     $(function () {
         $('#grid').treegrid({
@@ -60,24 +113,27 @@
             iconCls: 'icon-save',
             method: 'Get',
             url: '/Menu/GetAllMenus',
-            sortName: 'Id',
+            sortName: 'TreeId',
             sortOrder: 'desc',
-            idField: 'Id',
-            treeFiedl: 'MenuName',
+            idField: 'TreeId',
+            treeField: 'MenuName',
             pageSize: 10,
             stried: true,
             scrollbarSize: 0,
             fit: true,
             pagination: true,
             rownumber: true,
-            singleSelect: true,
+            singleSelect: false,
+            checkOnSelect: true,
+            //selectOnCheck:true,
             frozenColumns: [[{field:'ck',checkbox:true}]],
             columns: [[
-                { field: 'Id', title: '编号', width: '7%', sortable: true },
-                { field: 'MenuName', title: '目录名称', width: '10%' },
+                {field:'TreeId',title:'编号',width:'7%'},
+                { field: 'Id', title: '编号', width: '0%', hidden:true},
+                { field: 'MenuName', title: '目录名称', width: '20%' },
                 { field: 'MenuCode', title: '目录编码', width: '10%' },
-                { field: 'IsVisible', title: '可见', width: '10%' },
-                { field: 'IsPage', title: '页面目录', width: '10%' },
+                { field: 'IsVisible', title: '可见', width: '5%' },
+                { field: 'IsPage', title: '页面目录', width: '5%' },
                 { field: 'URL', title: '路径', width: '30%' },
                 { field: 'IsEnable', title: '启用', width: '10%' },
                 { field: 'ParentId', title: '父级Id', width: '10%',hidden:true },
@@ -93,7 +149,13 @@
                 { text: '添加', iconCls: 'icon-add', handler: Add },
                 '-', { text: '删除', iconCls: 'icon-remove', handler: Del },
                 '-', { text: '展开/折叠', iconCls: 'icon-more', handler: Collopse }
-            ]
+            ],
+            //onSelect: function (rowIndex, rowData) {
+            //    RowClick(rowIndex, rowData);
+            //onSelect: function (rowIndex, rowData) {
+            //    alert(rowIndex);
+            //    alert(rowData["Id"]);
+            }
         });
 
 

@@ -192,16 +192,18 @@ namespace AutoCodeGeneration3._0.Code
         public bool IsEnum { get; set; }
         public String Namespace { get; set; }
         public String Path { get; set; }
+        public bool IsModified { get; set; }
         public List<ViewProperty> ViewProperties { get; set; }
         public List<String> QuoteNamespace { get; set; }
 
-        public static List<ViewModel> ConvertEntityToViewModel(List<EntityModel> entitymodels)
+        public static List<ViewModel> ConvertEntityToViewModel(List<EntityModel> entitymodels,List<ViewModel> preViewModels)
         {
             List<ViewModel> viewModels = new List<ViewModel>();
             if (entitymodels != null && entitymodels.Count > 0)
             {
                 entitymodels.ForEach(it => {
                     ViewModel temp = null;
+                    if (preViewModels!=null&&preViewModels.Where(p => p.ClassName.Equals(it.ClassName + "DTO")).FirstOrDefault() != null) return;
                     if (it.IsEnum)
                     {
                         temp = new ViewModel();
@@ -210,6 +212,9 @@ namespace AutoCodeGeneration3._0.Code
                         temp.MappingEntityName = it.ClassName;
                         temp.DomainName = it.DomainName;
                         temp.Description = it.Description;
+                        temp.Namespace=preViewModels==null?"":preViewModels.First().Namespace;
+                        temp.Path = preViewModels == null ? "" : preViewModels.First().Path;
+                        temp.QuoteNamespace = preViewModels == null ? null : preViewModels.First().QuoteNamespace;
                         if (it.EntityProperties != null && it.EntityProperties.Count > 0)
                         {
                             it.EntityProperties.ForEach(ep => {
@@ -242,6 +247,9 @@ namespace AutoCodeGeneration3._0.Code
                             DomainName=it.DomainName,
                             Description=it.Description
                         };
+                        temp.Namespace = preViewModels == null ? "" : preViewModels.First().Namespace;
+                        temp.Path = preViewModels == null ? "" : preViewModels.First().Path;
+                        temp.QuoteNamespace = preViewModels == null ? null : preViewModels.First().QuoteNamespace;
                         if (it.EntityProperties != null && it.EntityProperties.Count > 0)
                         {
                             it.EntityProperties.ForEach(ep => {
@@ -282,6 +290,15 @@ namespace AutoCodeGeneration3._0.Code
                     //}
                 });
             }
+
+            if (preViewModels != null)
+            {
+                preViewModels.ForEach(it => {
+                    if (it.IsModified)
+                        viewModels.Add(it);
+                });
+            }
+
             return viewModels;
         }
     }

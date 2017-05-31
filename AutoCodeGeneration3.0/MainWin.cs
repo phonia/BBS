@@ -127,6 +127,28 @@ namespace AutoCodeGeneration3._0
                         it.DataContextPath = temp.DataContextPath;
                         it.DataContextQuoteNamespaces = temp.DataContextQuoteNamespaces;
                     }
+                    else
+                    {
+                        var first = bck.FirstOrDefault();
+                        if (first != null)
+                        {
+                            it.ConfigurationQuoteNamespaces = first.ConfigurationQuoteNamespaces;
+                            it.EntityQuoteNamespaces = first.EntityQuoteNamespaces;
+                            it.IRepositoryQuoteNamespaces = first.IRepositoryQuoteNamespaces;
+                            it.RepositoryQuoteNamespaces = first.RepositoryQuoteNamespaces;
+                            it.EntityPath = first.EntityPath;
+                            it.EntityNamespace = first.EntityNamespace;
+                            it.IRepositoryNamespace = first.IRepositoryNamespace;
+                            it.IRepositoryPath = first.IRepositoryPath;
+                            it.RepositoryNamespace = first.RepositoryNamespace;
+                            it.RepositoryPath = first.RepositoryPath;
+                            it.ConfigurationNamespace = first.ConfigurationNamespace;
+                            it.ConfigurationPath = first.ConfigurationPath;
+                            it.DataContextNamespace = first.DataContextNamespace;
+                            it.DataContextPath = first.DataContextPath;
+                            it.DataContextQuoteNamespaces = first.DataContextQuoteNamespaces;
+                        }
+                    }
                 });
             }
             //this.EntityModels = excel;

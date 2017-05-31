@@ -13,5 +13,7 @@ namespace Services.Interface
         List<ModuleMenuDTO> GetAllMenu();
 
         bool AddMenu(string menuName, string menuCode, int menuType, int parentId, string url, bool isPage, bool isEnable, bool isVisible);
+
+        List<ModuleMenuTreeGridDTO> GetModelMenuTreeGrid(int id=-1,int treeId=1);
     }
 }

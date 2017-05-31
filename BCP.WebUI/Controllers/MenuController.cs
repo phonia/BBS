@@ -24,8 +24,8 @@ namespace BCP.WebUI.Controllers
 
         public JsonResult GetAllMenus()
         {
-            var list = ModuleMenuService.GetAllMenu();
-            return Json(new DataGridDTO<ModuleMenuDTO>() { rows = list, total = list.Count }, JsonRequestBehavior.AllowGet);
+            var list = ModuleMenuService.GetModelMenuTreeGrid(-1);
+            return Json(new DataGridDTO<ModuleMenuTreeGridDTO>() { rows = list, total = list.Count }, JsonRequestBehavior.AllowGet);
         }
 
         public JsonResult LoadMenuTypeCombobxo()
